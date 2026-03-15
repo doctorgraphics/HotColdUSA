@@ -40,11 +40,15 @@ def fetch_json(url: str) -> dict:
     raise RuntimeError(f"Failed to fetch {url} after {MAX_RETRIES} attempts.")
 
 def get_next_url(payload: dict) -> str | None:
-    """Extracts pagination link."""
+    """Extracts and cleans the pagination link from the NWS API."""
     for key in ["pagination", "@pagination"]:
         page = payload.get(key)
-        if isinstance(page, dict) and page.get("next"):
-            return page.get("next")
+        if isinstance(page, dict):
+            next_url = page.get("next")
+            if next_url:
+                # FIX: The NWS API mangles 'state=AK' into 'state%5B0%5D=AK' 
+                # in its own pagination links. This line fixes it.
+                return next_url.replace("state%5B0%5D=", "state=")
     return None
 
 def parse_station(feature: dict) -> dict | None:
