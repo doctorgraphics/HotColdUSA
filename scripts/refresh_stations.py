@@ -115,10 +115,19 @@ def get_all_stations() -> list[dict]:
 
     while url:
         page_number += 1
+        if page_number > 200:
+            print("Stopping after 200 pages for safety.", flush=True)
+        break
+
         payload = fetch_json(url)
 
         features = payload.get("features", [])
         print(f"Page {page_number}: found {len(features)} features", flush=True)
+        # Stop if the API returns an empty page
+    if not features:
+        print("No features returned. Ending pagination.", flush=True)
+        break
+
 
         added_this_page = 0
 
