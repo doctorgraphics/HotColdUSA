@@ -15,6 +15,9 @@ jobs:
     steps:
       - name: Check out repo
         uses: actions/checkout@v5
+        with:
+          # Fetch the full history so we can switch branches properly
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -24,10 +27,25 @@ jobs:
       - name: Update weather data
         run: python scripts/fetch_weather.py
 
-      - name: Commit updated weather data
+      - name: Deploy data to orphan branch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          # Move the fresh data to a temporary location
+          cp data/latest.json /tmp/latest.json
+          
+          # Switch to an orphan branch named 'data-storage'
+          git checkout --orphan data-storage
+          
+          # Remove all tracked files from the new branch to start fresh
+          git rm -rf .
+          
+          # Restore only the data file
+          mkdir -p data
+          cp /tmp/latest.json data/latest.json
+          
+          # Commit and force-push to keep only the LATEST version
           git add data/latest.json
-          git diff --cached --quiet || git commit -m "Update weather data"
-          git push
+          git commit -m "Update weather data: $(date -u)"
+          git push origin data-storage --force
