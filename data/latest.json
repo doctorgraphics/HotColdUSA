@@ -1,0 +1,28 @@
+{
+  "generated_at": "2026-03-14T23:00:00Z",
+  "source": "National Weather Service API",
+  "station_count": 0,
+  "hottest": {
+    "station": "KNYL",
+    "city": "Yuma",
+    "state": "AZ",
+    "temp_f": 104,
+    "observed_at": "2026-03-14T22:18:00Z",
+    "condition": "Sunny",
+    "lat": 32.66,
+    "lon": -114.61
+  },
+  "coldest": {
+    "station": "KINL",
+    "city": "International Falls",
+    "state": "MN",
+    "temp_f": -12,
+    "observed_at": "2026-03-14T21:50:00Z",
+    "condition": "Clear",
+    "lat": 48.57,
+    "lon": -93.40
+  },
+  "spread_f": 116,
+  "top_hot": [],
+  "top_cold": []
+}
