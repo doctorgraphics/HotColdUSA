@@ -6,11 +6,13 @@ import urllib.request
 from datetime import datetime, timezone
 
 # List of all 50 US states, DC, and territories
-US_AREAS = [
-    "AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD",
-    "MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC",
-    "SD","TN","TX","UT","VT","VA","WA","WV","WI","WY","DC","AS","GU","MP","PR","VI"
-]
+US_AREAS = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD",
+            "MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC",
+            "SD","TN","TX","UT","VT","VA","WA","WV","WI","WY","DC","AS","GU","MP","PR","VI"]
+
+# Create a single string like "AL,AK,AZ..."
+state_string = ",".join(US_AREAS)
+BASE_URL = f"https://api.weather.gov/stations?state={state_string}"
 
 # Adding the state parameter filters the API results to the US only
 BASE_URL = f"https://api.weather.gov/stations?state={','.join(US_AREAS)}"
