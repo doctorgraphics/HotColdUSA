@@ -5,8 +5,15 @@ import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 
-# Constants for the National Weather Service API
-BASE_URL = "https://api.weather.gov/stations"
+# List of all 50 US states, DC, and territories
+US_AREAS = [
+    "AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD",
+    "MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC",
+    "SD","TN","TX","UT","VT","VA","WA","WV","WI","WY","DC","AS","GU","MP","PR","VI"
+]
+
+# Adding the state parameter filters the API results to the US only
+BASE_URL = f"https://api.weather.gov/stations?state={','.join(US_AREAS)}"
 USER_AGENT = "HotColdUSA/0.1 (https://github.com/doctorgraphics/HotColdUSA)"
 OUTPUT_PATH = pathlib.Path("data/stations.json")
 
@@ -15,157 +22,94 @@ HEADERS = {
     "Accept": "application/geo+json",
 }
 
-# Configuration for reliability and rate limiting
 REQUEST_TIMEOUT = 60
 MAX_RETRIES = 3
 RETRY_DELAY_SECONDS = 5
 PAGE_DELAY_SECONDS = 0.5
-MAX_PAGES = 500  # Safety limit to prevent infinite loops
-
 
 def fetch_json(url: str) -> dict:
-    """Fetches JSON data from a URL with retry logic."""
     last_error = None
-
     for attempt in range(1, MAX_RETRIES + 1):
         try:
             print(f"Fetching: {url} (attempt {attempt}/{MAX_RETRIES})", flush=True)
-
             request = urllib.request.Request(url, headers=HEADERS)
             with urllib.request.urlopen(request, timeout=REQUEST_TIMEOUT) as response:
-                body = response.read().decode("utf-8")
-                return json.loads(body)
-
-        except urllib.error.HTTPError as exc:
-            error_body = ""
-            try:
-                error_body = exc.read().decode("utf-8", errors="replace")
-            except Exception:
-                pass
-
-            print(f"HTTP error {exc.code} while fetching {url}", flush=True)
-            if error_body:
-                print(error_body[:1000], flush=True)
+                return json.loads(response.read().decode("utf-8"))
+        except Exception as exc:
+            print(f"Error fetching {url}: {exc}", flush=True)
             last_error = exc
-
-        except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, Exception) as exc:
-            print(f"Error while fetching {url}: {exc}", flush=True)
-            last_error = exc
-
         if attempt < MAX_RETRIES:
-            print(f"Retrying in {RETRY_DELAY_SECONDS} seconds...", flush=True)
             time.sleep(RETRY_DELAY_SECONDS)
-
-    raise RuntimeError(f"Failed to fetch {url} after {MAX_RETRIES} attempts: {last_error}")
-
+    raise RuntimeError(f"Failed to fetch {url}: {last_error}")
 
 def get_next_url(payload: dict) -> str | None:
-    """Extracts the 'next' page URL from the API response pagination."""
     for key in ["pagination", "@pagination"]:
-        pagination = payload.get(key)
-        if isinstance(pagination, dict):
-            next_url = pagination.get("next")
-            if next_url:
-                return next_url
+        page = payload.get(key)
+        if isinstance(page, dict) and page.get("next"):
+            return page.get("next")
     return None
 
-
 def parse_station(feature: dict) -> dict | None:
-    """Extracts relevant station metadata from a GeoJSON feature."""
     properties = feature.get("properties", {})
-    geometry = feature.get("geometry", {})
-
     station_id = properties.get("stationIdentifier")
-    if not station_id:
+    
+    # METAR/SYNOP stations strictly use 4-character identifiers (ICAO codes)
+    if not station_id or len(station_id) != 4:
         return None
 
-    coordinates = geometry.get("coordinates", [None, None])
-    # GeoJSON coordinates are [longitude, latitude]
-    longitude = coordinates[0] if len(coordinates) > 0 else None
-    latitude = coordinates[1] if len(coordinates) > 1 else None
+    geometry = feature.get("geometry", {})
+    coords = geometry.get("coordinates", [None, None])
 
     return {
         "station": station_id,
         "name": properties.get("name"),
-        "latitude": latitude,
-        "longitude": longitude,
+        "latitude": coords[1] if len(coords) > 1 else None,
+        "longitude": coords[0] if len(coords) > 0 else None,
         "time_zone": properties.get("timeZone"),
-        "county": properties.get("county"),
-        "forecast": properties.get("forecast"),
     }
 
-
 def get_all_stations() -> list[dict]:
-    """Iterates through all pages of the NWS API to collect every weather station."""
     url = BASE_URL
-    page_number = 0
     stations = []
-    seen_station_ids = set()
+    seen = set()
+    page = 0
 
     while url:
-        page_number += 1
-        if page_number > MAX_PAGES:
-            print(f"Reached safety limit of {MAX_PAGES} pages. Stopping.", flush=True)
-            break
-
+        page += 1
         payload = fetch_json(url)
         features = payload.get("features", [])
         
         if not features:
-            print("No features returned. Ending pagination.", flush=True)
             break
 
         added_this_page = 0
-        for feature in features:
-            station = parse_station(feature)
-            if not station:
-                continue
+        for f in features:
+            station = parse_station(f)
+            if station and station["station"] not in seen:
+                seen.add(station["station"])
+                stations.append(station)
+                added_this_page += 1
 
-            station_id = station["station"]
-            if station_id in seen_station_ids:
-                continue
-
-            seen_station_ids.add(station_id)
-            stations.append(station)
-            added_this_page += 1
-
-        print(f"Page {page_number}: Added {added_this_page} new stations. Total: {len(stations)}", flush=True)
-
+        print(f"Page {page}: Added {added_this_page} METAR stations. Total: {len(stations)}", flush=True)
         url = get_next_url(payload)
         if url:
             time.sleep(PAGE_DELAY_SECONDS)
 
     return stations
 
-
-def write_output(stations: list[dict]) -> None:
-    """Saves the collected station list to the data directory."""
+def main():
+    print("Refreshing US METAR/SYNOP station catalog...", flush=True)
+    stations = get_all_stations()
+    
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-
     output = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "source": "National Weather Service API",
+        "source": "National Weather Service API (METAR/SYNOP)",
         "station_count": len(stations),
         "stations": stations,
     }
-
     OUTPUT_PATH.write_text(json.dumps(output, indent=2), encoding="utf-8")
-
-
-def main() -> None:
-    """Main execution flow for refreshing the station catalog."""
-    print("Refreshing full NWS station catalog...", flush=True)
-    try:
-        stations = get_all_stations()
-        if not stations:
-            raise RuntimeError("No stations were retrieved from the NWS API.")
-
-        write_output(stations)
-        print(f"Successfully wrote {OUTPUT_PATH} with {len(stations)} stations.", flush=True)
-    except Exception as e:
-        print(f"Failed to refresh stations: {e}", flush=True)
-        exit(1)
-
+    print(f"Wrote {len(stations)} stations to {OUTPUT_PATH}.", flush=True)
 
 if __name__ == "__main__":
     main()
