@@ -71,31 +71,42 @@ def parse_station(feature: dict) -> dict | None:
     }
 
 def get_all_stations() -> list[dict]:
-    url = BASE_URL
+    """Fetches stations for each state/territory individually to avoid pagination bugs."""
     stations = []
-    seen = set()
-    page = 0
+    seen_station_ids = set()
 
-    while url:
-        page += 1
-        payload = fetch_json(url)
-        features = payload.get("features", [])
+    for area in US_AREAS:
+        print(f"--- Processing {area} ---", flush=True)
+        # Use a single state per request to keep the URL clean and reliable
+        url = f"https://api.weather.gov/stations?state={area}&limit=500"
         
-        if not features:
-            break
+        while url:
+            payload = fetch_json(url)
+            features = payload.get("features", [])
+            
+            if not features:
+                break
 
-        added_this_page = 0
-        for f in features:
-            station = parse_station(f)
-            if station and station["station"] not in seen:
-                seen.add(station["station"])
+            added_this_area = 0
+            for feature in features:
+                station = parse_station(feature)
+                if not station:
+                    continue
+
+                station_id = station["station"]
+                if station_id in seen_station_ids:
+                    continue
+
+                seen_station_ids.add(station_id)
                 stations.append(station)
-                added_this_page += 1
+                added_this_area += 1
 
-        print(f"Page {page}: Added {added_this_page} METAR stations. Total: {len(stations)}", flush=True)
-        url = get_next_url(payload)
-        if url:
-            time.sleep(PAGE_DELAY_SECONDS)
+            print(f"  {area}: Added {added_this_area} METAR stations. Total: {len(stations)}", flush=True)
+
+            # Follow pagination if a state has more than 500 stations (rare for METAR)
+            url = get_next_url(payload)
+            if url:
+                time.sleep(PAGE_DELAY_SECONDS)
 
     return stations
 
