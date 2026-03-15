@@ -8,7 +8,6 @@
     :root {
       --bg: #0f172a;
       --panel: rgba(255,255,255,0.08);
-      --panel-solid: #111827;
       --text: #f8fafc;
       --muted: #cbd5e1;
       --line: rgba(255,255,255,0.12);
@@ -21,6 +20,7 @@
     }
 
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -310,6 +310,20 @@
       text-align: center;
     }
 
+    .loading,
+    .error {
+      margin-top: 20px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(2, 6, 23, 0.6);
+    }
+
+    .error {
+      border-color: rgba(248, 113, 113, 0.4);
+      color: #fecaca;
+    }
+
     @media (max-width: 900px) {
       .grid-2,
       .main-grid,
@@ -331,29 +345,31 @@
         <div class="eyebrow">HotCold USA</div>
         <h1>United States Temperature Extremes</h1>
         <div class="subtext">
-          A simple web prototype that shows the warmest and coldest places in the country, plus the national temperature spread.
+          A simple web app that shows the warmest and coldest places in the country, plus the national temperature spread.
         </div>
       </div>
       <div class="badge">
         <div class="eyebrow" style="margin-bottom: 6px;">Today</div>
-        <div id="todayDate" style="font-size: 1.15rem; font-weight: 700;">March 14</div>
-        <div id="updatedAt" class="muted" style="margin-top: 6px;">Updated 2:18 PM</div>
+        <div id="todayDate" style="font-size: 1.15rem; font-weight: 700;">Loading...</div>
+        <div id="updatedAt" class="muted" style="margin-top: 6px;">Waiting for data</div>
       </div>
     </section>
+
+    <div id="statusMessage" class="loading">Loading weather data...</div>
 
     <section class="grid-2">
       <article class="card extreme hot">
         <h2>🔥 Hottest Place Today</h2>
-        <div class="temp" id="hotTemp">104°F</div>
-        <div class="place" id="hotPlace">Yuma, Arizona</div>
-        <div class="meta" id="hotMeta">Sunny • Observed 2:18 PM</div>
+        <div class="temp" id="hotTemp">--°F</div>
+        <div class="place" id="hotPlace">Loading...</div>
+        <div class="meta" id="hotMeta">Waiting for data</div>
       </article>
 
       <article class="card extreme cold">
         <h2>❄️ Coldest Place Today</h2>
-        <div class="temp" id="coldTemp">-12°F</div>
-        <div class="place" id="coldPlace">International Falls, Minnesota</div>
-        <div class="meta" id="coldMeta">Clear • Observed 1:50 PM</div>
+        <div class="temp" id="coldTemp">--°F</div>
+        <div class="place" id="coldPlace">Loading...</div>
+        <div class="meta" id="coldMeta">Waiting for data</div>
       </article>
     </section>
 
@@ -364,37 +380,39 @@
             <h3>National Spread</h3>
             <p>Difference between the hottest and coldest reported temperatures.</p>
           </div>
-          <div class="spread-value" id="spreadValue">116°F</div>
+          <div class="spread-value" id="spreadValue">--°F</div>
         </div>
 
         <div class="map-shell">
           <div class="map-top">
             <span>Prototype U.S. map</span>
-            <span>Static demo for GitHub Pages</span>
+            <span id="stationCount">Stations checked: --</span>
           </div>
           <div class="map">
-            <div class="map-label label-hot" id="mapHotLabel">🔥 Yuma</div>
-            <div class="map-label label-cold" id="mapColdLabel">❄️ Intl Falls</div>
-            <div class="map-note">Future version: replace this mock map with live weather markers and a real U.S. outline.</div>
+            <div class="map-label label-hot" id="mapHotLabel">🔥 Hot</div>
+            <div class="map-label label-cold" id="mapColdLabel">❄️ Cold</div>
+            <div class="map-note">
+              Prototype map for now. Later you can replace this with a real U.S. map and true marker positions.
+            </div>
           </div>
         </div>
       </article>
 
       <div class="stack">
         <article class="card section">
-          <h3>Your Comparison</h3>
-          <div class="stat-row"><span>Turlock, CA</span><strong id="localTemp">71°F</strong></div>
-          <div class="stat-row muted"><span>Cooler than hottest</span><span id="coolerDiff">33°F</span></div>
-          <div class="stat-row muted"><span>Warmer than coldest</span><span id="warmerDiff">83°F</span></div>
+          <h3>Data Source</h3>
+          <div class="stat-row"><span>Provider</span><strong id="dataSource">National Weather Service API</strong></div>
+          <div class="stat-row muted"><span>Generated</span><span id="generatedAt">--</span></div>
+          <div class="stat-row muted"><span>Stations checked</span><span id="stationCountSide">--</span></div>
         </article>
 
         <article class="card section">
           <h3>Daily Share Card</h3>
           <div class="share-card">
-            <div class="eyebrow" style="margin-bottom: 10px;">HotCold USA — <span id="shareDate">March 14</span></div>
-            <div id="shareHot">🔥 Yuma, AZ — 104°F</div>
-            <div id="shareCold">❄️ Intl Falls, MN — -12°F</div>
-            <div id="shareSpread">🌡️ Spread — 116°F</div>
+            <div class="eyebrow" style="margin-bottom: 10px;">HotCold USA — <span id="shareDate">Loading...</span></div>
+            <div id="shareHot">🔥 Loading...</div>
+            <div id="shareCold">❄️ Loading...</div>
+            <div id="shareSpread">🌡️ Spread — --°F</div>
           </div>
         </article>
       </div>
@@ -402,130 +420,157 @@
 
     <section class="bottom-grid">
       <article class="card section">
-        <h3>Past 3 Days</h3>
+        <h3>Top 5 Hottest</h3>
         <table>
           <thead>
             <tr>
-              <th>Date</th>
-              <th>Hottest</th>
-              <th>Coldest</th>
+              <th>Place</th>
+              <th>Temp</th>
             </tr>
           </thead>
-          <tbody id="historyBody"></tbody>
+          <tbody id="hotTableBody"></tbody>
         </table>
       </article>
 
       <article class="card section">
-        <h3>Leaderboard</h3>
-        <div class="panel-inner">
-          <div class="mini">
-            <div class="eyebrow" style="color: #fecaca;">Top Hot</div>
-            <ol id="hotList"></ol>
-          </div>
-          <div class="mini">
-            <div class="eyebrow" style="color: #bae6fd;">Top Cold</div>
-            <ol id="coldList"></ol>
-          </div>
-        </div>
+        <h3>Top 5 Coldest</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Place</th>
+              <th>Temp</th>
+            </tr>
+          </thead>
+          <tbody id="coldTableBody"></tbody>
+        </table>
       </article>
     </section>
 
-    <div class="footer">This version uses mock data so you can drop it straight into GitHub Pages as a single file.</div>
+    <div class="footer">
+      Auto-updated from weather station data stored in <code>data/latest.json</code>.
+    </div>
   </main>
 
   <script>
-    const appData = {
-      today: "March 14",
-      updated: "2:18 PM",
-      hottest: {
-        city: "Yuma",
-        state: "Arizona",
-        shortState: "AZ",
-        temp: 104,
-        observed: "2:18 PM",
-        condition: "Sunny"
-      },
-      coldest: {
-        city: "International Falls",
-        state: "Minnesota",
-        shortState: "MN",
-        temp: -12,
-        observed: "1:50 PM",
-        condition: "Clear"
-      },
-      local: {
-        city: "Turlock",
-        state: "CA",
-        temp: 71
-      },
-      history: [
-        { date: "Mar 14", hot: "Yuma, AZ — 104°F", cold: "Intl Falls, MN — -12°F" },
-        { date: "Mar 13", hot: "Phoenix, AZ — 102°F", cold: "Ely, MN — -10°F" },
-        { date: "Mar 12", hot: "Palm Springs, CA — 101°F", cold: "Fairbanks, AK — -18°F" }
-      ],
-      leaderboards: {
-        hot: [
-          "Death Valley, CA — 116°F",
-          "Yuma, AZ — 104°F",
-          "Phoenix, AZ — 102°F"
-        ],
-        cold: [
-          "Fairbanks, AK — -18°F",
-          "International Falls, MN — -12°F",
-          "Ely, MN — -10°F"
-        ]
+    function formatTemp(value) {
+      if (value === null || value === undefined || Number.isNaN(Number(value))) {
+        return "--°F";
       }
-    };
+      return `${Math.round(Number(value))}°F`;
+    }
 
-    const spread = appData.hottest.temp - appData.coldest.temp;
-    const coolerDiff = appData.hottest.temp - appData.local.temp;
-    const warmerDiff = appData.local.temp - appData.coldest.temp;
+    function formatShortDate(isoString) {
+      const date = new Date(isoString);
+      return date.toLocaleDateString(undefined, {
+        month: "long",
+        day: "numeric"
+      });
+    }
 
-    document.getElementById("todayDate").textContent = appData.today;
-    document.getElementById("updatedAt").textContent = `Updated ${appData.updated}`;
+    function formatTime(isoString) {
+      const date = new Date(isoString);
+      return date.toLocaleTimeString([], {
+        hour: "numeric",
+        minute: "2-digit"
+      });
+    }
 
-    document.getElementById("hotTemp").textContent = `${appData.hottest.temp}°F`;
-    document.getElementById("hotPlace").textContent = `${appData.hottest.city}, ${appData.hottest.state}`;
-    document.getElementById("hotMeta").textContent = `${appData.hottest.condition} • Observed ${appData.hottest.observed}`;
+    function formatDateTime(isoString) {
+      const date = new Date(isoString);
+      return date.toLocaleString([], {
+        month: "short",
+        day: "numeric",
+        hour: "numeric",
+        minute: "2-digit"
+      });
+    }
 
-    document.getElementById("coldTemp").textContent = `${appData.coldest.temp}°F`;
-    document.getElementById("coldPlace").textContent = `${appData.coldest.city}, ${appData.coldest.state}`;
-    document.getElementById("coldMeta").textContent = `${appData.coldest.condition} • Observed ${appData.coldest.observed}`;
+    function placeName(entry) {
+      if (!entry) return "Unknown";
+      if (entry.state) return `${entry.city}, ${entry.state}`;
+      return entry.city || entry.station || "Unknown";
+    }
 
-    document.getElementById("spreadValue").textContent = `${spread}°F`;
-    document.getElementById("mapHotLabel").textContent = `🔥 ${appData.hottest.city}`;
-    document.getElementById("mapColdLabel").textContent = `❄️ Intl Falls`;
+    function renderTableRows(tbody, items) {
+      tbody.innerHTML = "";
 
-    document.getElementById("localTemp").textContent = `${appData.local.temp}°F`;
-    document.getElementById("coolerDiff").textContent = `${coolerDiff}°F`;
-    document.getElementById("warmerDiff").textContent = `${warmerDiff}°F`;
+      if (!Array.isArray(items) || items.length === 0) {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `<td colspan="2">No data available</td>`;
+        tbody.appendChild(tr);
+        return;
+      }
 
-    document.getElementById("shareDate").textContent = appData.today;
-    document.getElementById("shareHot").textContent = `🔥 ${appData.hottest.city}, ${appData.hottest.shortState} — ${appData.hottest.temp}°F`;
-    document.getElementById("shareCold").textContent = `❄️ Intl Falls, ${appData.coldest.shortState} — ${appData.coldest.temp}°F`;
-    document.getElementById("shareSpread").textContent = `🌡️ Spread — ${spread}°F`;
+      items.forEach((item) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${placeName(item)}</td>
+          <td>${formatTemp(item.temp_f)}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
 
-    const historyBody = document.getElementById("historyBody");
-    appData.history.forEach((row) => {
-      const tr = document.createElement("tr");
-      tr.innerHTML = `<td>${row.date}</td><td style="color:#fecaca;">${row.hot}</td><td style="color:#bae6fd;">${row.cold}</td>`;
-      historyBody.appendChild(tr);
-    });
+    async function loadWeather() {
+      const statusMessage = document.getElementById("statusMessage");
 
-    const hotList = document.getElementById("hotList");
-    const coldList = document.getElementById("coldList");
+      try {
+        const response = await fetch("./data/latest.json", { cache: "no-store" });
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
 
-    appData.leaderboards.hot.forEach((item) => {
-      const li = document.createElement("li");
-      li.textContent = item;
-      hotList.appendChild(li);
-    });
+        const data = await response.json();
 
-    appData.leaderboards.cold.forEach((item) => {
-      const li = document.createElement("li");
-      li.textContent = item;
-      coldList.appendChild(li);
-    });
+        const hottest = data.hottest;
+        const coldest = data.coldest;
+        const spread = data.spread_f;
+        const generatedAt = data.generated_at;
+        const stationCount = data.station_count ?? "--";
+
+        document.getElementById("todayDate").textContent = formatShortDate(generatedAt);
+        document.getElementById("updatedAt").textContent = `Updated ${formatTime(generatedAt)}`;
+
+        document.getElementById("hotTemp").textContent = formatTemp(hottest.temp_f);
+        document.getElementById("hotPlace").textContent = placeName(hottest);
+        document.getElementById("hotMeta").textContent =
+          `${hottest.condition || "Unknown"} • Observed ${formatTime(hottest.observed_at)}`;
+
+        document.getElementById("coldTemp").textContent = formatTemp(coldest.temp_f);
+        document.getElementById("coldPlace").textContent = placeName(coldest);
+        document.getElementById("coldMeta").textContent =
+          `${coldest.condition || "Unknown"} • Observed ${formatTime(coldest.observed_at)}`;
+
+        document.getElementById("spreadValue").textContent = formatTemp(spread);
+        document.getElementById("mapHotLabel").textContent = `🔥 ${hottest.city || hottest.station || "Hot"}`;
+        document.getElementById("mapColdLabel").textContent = `❄️ ${coldest.city || coldest.station || "Cold"}`;
+
+        document.getElementById("stationCount").textContent = `Stations checked: ${stationCount}`;
+        document.getElementById("stationCountSide").textContent = stationCount;
+        document.getElementById("dataSource").textContent = data.source || "National Weather Service API";
+        document.getElementById("generatedAt").textContent = formatDateTime(generatedAt);
+
+        document.getElementById("shareDate").textContent = formatShortDate(generatedAt);
+        document.getElementById("shareHot").textContent =
+          `🔥 ${placeName(hottest)} — ${formatTemp(hottest.temp_f)}`;
+        document.getElementById("shareCold").textContent =
+          `❄️ ${placeName(coldest)} — ${formatTemp(coldest.temp_f)}`;
+        document.getElementById("shareSpread").textContent =
+          `🌡️ Spread — ${formatTemp(spread)}`;
+
+        renderTableRows(document.getElementById("hotTableBody"), data.top_hot);
+        renderTableRows(document.getElementById("coldTableBody"), data.top_cold);
+
+        statusMessage.textContent = "Weather data loaded successfully.";
+        statusMessage.className = "loading";
+      } catch (error) {
+        console.error("Failed to load weather data:", error);
+        statusMessage.textContent = "Could not load weather data. Make sure data/latest.json exists and GitHub Pages has deployed the newest version.";
+        statusMessage.className = "error";
+      }
+    }
+
+    loadWeather();
   </script>
 </body>
 </html>
