@@ -1,6 +1,47 @@
 {
-  "generated_at": "2026-03-14T00:00:00Z",
-  "source": "National Weather Service API",
-  "station_count": 0,
-  "stations": []
+  "generated_at": "2026-03-15T16:00:00Z",
+  "source": "Manual Test Seed (METAR/SYNOP)",
+  "station_count": 5,
+  "stations": [
+    {
+      "station": "KMOD",
+      "name": "Modesto City-County-Harry Sham Field",
+      "latitude": 37.625,
+      "longitude": -120.954,
+      "time_zone": "America/Los_Angeles",
+      "county": "https://api.weather.gov/county/CAC099"
+    },
+    {
+      "station": "KMCE",
+      "name": "Merced Regional Macready Field",
+      "latitude": 37.284,
+      "longitude": -120.512,
+      "time_zone": "America/Los_Angeles",
+      "county": "https://api.weather.gov/county/CAC047"
+    },
+    {
+      "station": "KMOT",
+      "name": "Minot International Airport",
+      "latitude": 48.259,
+      "longitude": -101.279,
+      "time_zone": "America/Chicago",
+      "county": "https://api.weather.gov/county/NDC101"
+    },
+    {
+      "station": "PADE",
+      "name": "Chicken Airport",
+      "latitude": 64.072,
+      "longitude": -141.942,
+      "time_zone": "America/Anchorage",
+      "county": "https://api.weather.gov/county/AKC240"
+    },
+    {
+      "station": "KPHX",
+      "name": "Phoenix Sky Harbor International Airport",
+      "latitude": 33.434,
+      "longitude": -112.011,
+      "time_zone": "America/Phoenix",
+      "county": "https://api.weather.gov/county/AZC013"
+    }
+  ]
 }
