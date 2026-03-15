@@ -5,6 +5,7 @@ import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 
+# Constants for the National Weather Service API
 BASE_URL = "https://api.weather.gov/stations"
 USER_AGENT = "HotColdUSA/0.1 (https://github.com/doctorgraphics/HotColdUSA)"
 OUTPUT_PATH = pathlib.Path("data/stations.json")
@@ -14,13 +15,16 @@ HEADERS = {
     "Accept": "application/geo+json",
 }
 
+# Configuration for reliability and rate limiting
 REQUEST_TIMEOUT = 60
 MAX_RETRIES = 3
 RETRY_DELAY_SECONDS = 5
 PAGE_DELAY_SECONDS = 0.5
+MAX_PAGES = 500  # Safety limit to prevent infinite loops
 
 
 def fetch_json(url: str) -> dict:
+    """Fetches JSON data from a URL with retry logic."""
     last_error = None
 
     for attempt in range(1, MAX_RETRIES + 1):
@@ -42,23 +46,10 @@ def fetch_json(url: str) -> dict:
             print(f"HTTP error {exc.code} while fetching {url}", flush=True)
             if error_body:
                 print(error_body[:1000], flush=True)
-
             last_error = exc
 
-        except urllib.error.URLError as exc:
-            print(f"URL error while fetching {url}: {exc}", flush=True)
-            last_error = exc
-
-        except TimeoutError as exc:
-            print(f"Timeout while fetching {url}: {exc}", flush=True)
-            last_error = exc
-
-        except json.JSONDecodeError as exc:
-            print(f"Invalid JSON from {url}: {exc}", flush=True)
-            last_error = exc
-
-        except Exception as exc:
-            print(f"Unexpected error while fetching {url}: {exc}", flush=True)
+        except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, Exception) as exc:
+            print(f"Error while fetching {url}: {exc}", flush=True)
             last_error = exc
 
         if attempt < MAX_RETRIES:
@@ -69,22 +60,18 @@ def fetch_json(url: str) -> dict:
 
 
 def get_next_url(payload: dict) -> str | None:
-    pagination = payload.get("pagination")
-    if isinstance(pagination, dict):
-        next_url = pagination.get("next")
-        if next_url:
-            return next_url
-
-    alt_pagination = payload.get("@pagination")
-    if isinstance(alt_pagination, dict):
-        next_url = alt_pagination.get("next")
-        if next_url:
-            return next_url
-
+    """Extracts the 'next' page URL from the API response pagination."""
+    for key in ["pagination", "@pagination"]:
+        pagination = payload.get(key)
+        if isinstance(pagination, dict):
+            next_url = pagination.get("next")
+            if next_url:
+                return next_url
     return None
 
 
 def parse_station(feature: dict) -> dict | None:
+    """Extracts relevant station metadata from a GeoJSON feature."""
     properties = feature.get("properties", {})
     geometry = feature.get("geometry", {})
 
@@ -93,6 +80,7 @@ def parse_station(feature: dict) -> dict | None:
         return None
 
     coordinates = geometry.get("coordinates", [None, None])
+    # GeoJSON coordinates are [longitude, latitude]
     longitude = coordinates[0] if len(coordinates) > 0 else None
     latitude = coordinates[1] if len(coordinates) > 1 else None
 
@@ -108,6 +96,7 @@ def parse_station(feature: dict) -> dict | None:
 
 
 def get_all_stations() -> list[dict]:
+    """Iterates through all pages of the NWS API to collect every weather station."""
     url = BASE_URL
     page_number = 0
     stations = []
@@ -115,22 +104,18 @@ def get_all_stations() -> list[dict]:
 
     while url:
         page_number += 1
-        if page_number > 200:
-            print("Stopping after 200 pages for safety.", flush=True)
-        break
+        if page_number > MAX_PAGES:
+            print(f"Reached safety limit of {MAX_PAGES} pages. Stopping.", flush=True)
+            break
 
         payload = fetch_json(url)
-
         features = payload.get("features", [])
-        print(f"Page {page_number}: found {len(features)} features", flush=True)
-        # Stop if the API returns an empty page
-    if not features:
-        print("No features returned. Ending pagination.", flush=True)
-        break
-
+        
+        if not features:
+            print("No features returned. Ending pagination.", flush=True)
+            break
 
         added_this_page = 0
-
         for feature in features:
             station = parse_station(feature)
             if not station:
@@ -144,22 +129,17 @@ def get_all_stations() -> list[dict]:
             stations.append(station)
             added_this_page += 1
 
-        print(
-            f"Added {added_this_page} new stations on page {page_number}. "
-            f"Total stations so far: {len(stations)}",
-            flush=True,
-        )
+        print(f"Page {page_number}: Added {added_this_page} new stations. Total: {len(stations)}", flush=True)
 
         url = get_next_url(payload)
-
         if url:
-            print("Moving to next page...", flush=True)
             time.sleep(PAGE_DELAY_SECONDS)
 
     return stations
 
 
 def write_output(stations: list[dict]) -> None:
+    """Saves the collected station list to the data directory."""
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
 
     output = {
@@ -169,22 +149,22 @@ def write_output(stations: list[dict]) -> None:
         "stations": stations,
     }
 
-    OUTPUT_PATH.write_text(
-        json.dumps(output, indent=2),
-        encoding="utf-8",
-    )
+    OUTPUT_PATH.write_text(json.dumps(output, indent=2), encoding="utf-8")
 
 
 def main() -> None:
+    """Main execution flow for refreshing the station catalog."""
     print("Refreshing full NWS station catalog...", flush=True)
-    stations = get_all_stations()
+    try:
+        stations = get_all_stations()
+        if not stations:
+            raise RuntimeError("No stations were retrieved from the NWS API.")
 
-    if not stations:
-        raise RuntimeError("No stations were retrieved from the NWS API.")
-
-    write_output(stations)
-
-    print(f"Wrote {OUTPUT_PATH} with {len(stations)} stations.", flush=True)
+        write_output(stations)
+        print(f"Successfully wrote {OUTPUT_PATH} with {len(stations)} stations.", flush=True)
+    except Exception as e:
+        print(f"Failed to refresh stations: {e}", flush=True)
+        exit(1)
 
 
 if __name__ == "__main__":
