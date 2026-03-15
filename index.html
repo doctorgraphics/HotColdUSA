@@ -515,7 +515,10 @@
       const statusMessage = document.getElementById("statusMessage");
 
       try {
-        const response = await fetch("./data/latest.json", { cache: "no-store" });
+        // Point to the latest.json file on your orphan 'data-storage' branch
+        const dataUrl = "https://raw.githubusercontent.com/doctorgraphics/HotColdUSA/data-storage/data/latest.json";
+        
+        const response = await fetch(dataUrl, { cache: "no-store" });
         if (!response.ok) {
           throw new Error(`HTTP ${response.status}`);
         }
@@ -565,7 +568,7 @@
         statusMessage.className = "loading";
       } catch (error) {
         console.error("Failed to load weather data:", error);
-        statusMessage.textContent = "Could not load weather data. Make sure data/latest.json exists and GitHub Pages has deployed the newest version.";
+        statusMessage.textContent = "Could not load weather data from the data-storage branch.";
         statusMessage.className = "error";
       }
     }
