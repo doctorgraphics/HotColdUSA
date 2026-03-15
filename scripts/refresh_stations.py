@@ -5,17 +5,13 @@ import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 
-# List of all 50 US states, DC, and territories
-US_AREAS = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD",
-            "MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC",
-            "SD","TN","TX","UT","VT","VA","WA","WV","WI","WY","DC","AS","GU","MP","PR","VI"]
+# Constants for filtering
+US_AREAS = [
+    "AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD",
+    "MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC",
+    "SD","TN","TX","UT","VT","VA","WA","WV","WI","WY","DC","AS","GU","MP","PR","VI"
+]
 
-# Create a single string like "AL,AK,AZ..."
-state_string = ",".join(US_AREAS)
-BASE_URL = f"https://api.weather.gov/stations?state={state_string}"
-
-# Adding the state parameter filters the API results to the US only
-BASE_URL = f"https://api.weather.gov/stations?state={','.join(US_AREAS)}"
 USER_AGENT = "HotColdUSA/0.1 (https://github.com/doctorgraphics/HotColdUSA)"
 OUTPUT_PATH = pathlib.Path("data/stations.json")
 
@@ -30,7 +26,7 @@ RETRY_DELAY_SECONDS = 5
 PAGE_DELAY_SECONDS = 0.5
 
 def fetch_json(url: str) -> dict:
-    last_error = None
+    """Fetches JSON data from a URL with retry logic."""
     for attempt in range(1, MAX_RETRIES + 1):
         try:
             print(f"Fetching: {url} (attempt {attempt}/{MAX_RETRIES})", flush=True)
@@ -39,12 +35,12 @@ def fetch_json(url: str) -> dict:
                 return json.loads(response.read().decode("utf-8"))
         except Exception as exc:
             print(f"Error fetching {url}: {exc}", flush=True)
-            last_error = exc
-        if attempt < MAX_RETRIES:
-            time.sleep(RETRY_DELAY_SECONDS)
-    raise RuntimeError(f"Failed to fetch {url}: {last_error}")
+            if attempt < MAX_RETRIES:
+                time.sleep(RETRY_DELAY_SECONDS)
+    raise RuntimeError(f"Failed to fetch {url} after {MAX_RETRIES} attempts.")
 
 def get_next_url(payload: dict) -> str | None:
+    """Extracts pagination link."""
     for key in ["pagination", "@pagination"]:
         page = payload.get(key)
         if isinstance(page, dict) and page.get("next"):
@@ -52,16 +48,15 @@ def get_next_url(payload: dict) -> str | None:
     return None
 
 def parse_station(feature: dict) -> dict | None:
+    """Filters for 4-character METAR/ICAO identifiers."""
     properties = feature.get("properties", {})
     station_id = properties.get("stationIdentifier")
     
-    # METAR/SYNOP stations strictly use 4-character identifiers (ICAO codes)
+    # Only keep professional airport stations (4 chars)
     if not station_id or len(station_id) != 4:
         return None
 
-    geometry = feature.get("geometry", {})
-    coords = geometry.get("coordinates", [None, None])
-
+    coords = feature.get("geometry", {}).get("coordinates", [None, None])
     return {
         "station": station_id,
         "name": properties.get("name"),
@@ -71,13 +66,12 @@ def parse_station(feature: dict) -> dict | None:
     }
 
 def get_all_stations() -> list[dict]:
-    """Fetches stations for each state/territory individually to avoid pagination bugs."""
+    """Fetches stations state-by-state to ensure reliability and speed."""
     stations = []
-    seen_station_ids = set()
+    seen = set()
 
     for area in US_AREAS:
         print(f"--- Processing {area} ---", flush=True)
-        # Use a single state per request to keep the URL clean and reliable
         url = f"https://api.weather.gov/stations?state={area}&limit=500"
         
         while url:
@@ -88,22 +82,14 @@ def get_all_stations() -> list[dict]:
                 break
 
             added_this_area = 0
-            for feature in features:
-                station = parse_station(feature)
-                if not station:
-                    continue
+            for f in features:
+                station = parse_station(f)
+                if station and station["station"] not in seen:
+                    seen.add(station["station"])
+                    stations.append(station)
+                    added_this_area += 1
 
-                station_id = station["station"]
-                if station_id in seen_station_ids:
-                    continue
-
-                seen_station_ids.add(station_id)
-                stations.append(station)
-                added_this_area += 1
-
-            print(f"  {area}: Added {added_this_area} METAR stations. Total: {len(stations)}", flush=True)
-
-            # Follow pagination if a state has more than 500 stations (rare for METAR)
+            print(f"  {area}: Added {added_this_area} stations. Total: {len(stations)}", flush=True)
             url = get_next_url(payload)
             if url:
                 time.sleep(PAGE_DELAY_SECONDS)
@@ -111,18 +97,24 @@ def get_all_stations() -> list[dict]:
     return stations
 
 def main():
-    print("Refreshing US METAR/SYNOP station catalog...", flush=True)
-    stations = get_all_stations()
-    
-    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    output = {
-        "generated_at": datetime.now(timezone.utc).isoformat(),
-        "source": "National Weather Service API (METAR/SYNOP)",
-        "station_count": len(stations),
-        "stations": stations,
-    }
-    OUTPUT_PATH.write_text(json.dumps(output, indent=2), encoding="utf-8")
-    print(f"Wrote {len(stations)} stations to {OUTPUT_PATH}.", flush=True)
+    print("Refreshing US METAR station catalog...", flush=True)
+    try:
+        stations = get_all_stations()
+        if not stations:
+            raise RuntimeError("No stations found.")
+
+        OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+        output = {
+            "generated_at": datetime.now(timezone.utc).isoformat(),
+            "source": "National Weather Service API (METAR/SYNOP)",
+            "station_count": len(stations),
+            "stations": stations,
+        }
+        OUTPUT_PATH.write_text(json.dumps(output, indent=2), encoding="utf-8")
+        print(f"Successfully wrote {len(stations)} stations to {OUTPUT_PATH}.", flush=True)
+    except Exception as e:
+        print(f"Refresh failed: {e}", flush=True)
+        exit(1)
 
 if __name__ == "__main__":
     main()
