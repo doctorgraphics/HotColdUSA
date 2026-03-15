@@ -1,58 +1,48 @@
 {
-  "generated_at": "2026-03-15T04:43:46.581035+00:00",
+  "generated_at": "2026-03-15T05:04:42.915484+00:00",
   "source": "National Weather Service API",
   "station_count": 18,
   "hottest": {
-    "station": "KPSP",
-    "city": "Palm Springs Regional Airport",
+    "station": "KPHX",
+    "city": "Phoenix, Phoenix Sky Harbor International Airport",
     "state": null,
-    "temp_f": 82.4,
-    "observed_at": "2026-03-15T04:25:00+00:00",
+    "temp_f": 80.6,
+    "observed_at": "2026-03-15T04:45:00+00:00",
     "condition": "Clear",
-    "lat": 33.83,
-    "lon": -116.5
+    "lat": 33.43,
+    "lon": -112.02
   },
   "coldest": {
     "station": "PANC",
     "city": "Anchorage, Ted Stevens Anchorage International Airport",
     "state": null,
     "temp_f": 17.6,
-    "observed_at": "2026-03-15T04:20:00+00:00",
-    "condition": "Light Snow",
+    "observed_at": "2026-03-15T04:50:00+00:00",
+    "condition": "Light Snow and Fog/Mist",
     "lat": 61.17,
     "lon": -150.02
   },
-  "spread_f": 64.8,
+  "spread_f": 63.0,
   "top_hot": [
-    {
-      "station": "KPSP",
-      "city": "Palm Springs Regional Airport",
-      "state": null,
-      "temp_f": 82.4,
-      "observed_at": "2026-03-15T04:25:00+00:00",
-      "condition": "Clear",
-      "lat": 33.83,
-      "lon": -116.5
-    },
     {
       "station": "KPHX",
       "city": "Phoenix, Phoenix Sky Harbor International Airport",
       "state": null,
       "temp_f": 80.6,
-      "observed_at": "2026-03-15T04:25:00+00:00",
+      "observed_at": "2026-03-15T04:45:00+00:00",
       "condition": "Clear",
       "lat": 33.43,
       "lon": -112.02
     },
     {
-      "station": "KIPL",
-      "city": "Imperial, Imperial County Airport",
+      "station": "KPSP",
+      "city": "Palm Springs Regional Airport",
       "state": null,
-      "temp_f": 78.8,
-      "observed_at": "2026-03-15T04:25:00+00:00",
+      "temp_f": 80.6,
+      "observed_at": "2026-03-15T04:40:00+00:00",
       "condition": "Clear",
-      "lat": 32.83,
-      "lon": -115.58
+      "lat": 33.83,
+      "lon": -116.5
     },
     {
       "station": "KNYL",
@@ -65,11 +55,21 @@
       "lon": -114.62
     },
     {
+      "station": "KIPL",
+      "city": "Imperial, Imperial County Airport",
+      "state": null,
+      "temp_f": 75.2,
+      "observed_at": "2026-03-15T04:40:00+00:00",
+      "condition": "Clear",
+      "lat": 32.83,
+      "lon": -115.58
+    },
+    {
       "station": "KLAS",
       "city": "Harry Reid International Airport",
       "state": null,
       "temp_f": 75.2,
-      "observed_at": "2026-03-15T04:25:00+00:00",
+      "observed_at": "2026-03-15T04:45:00+00:00",
       "condition": "Clear",
       "lat": 36.08,
       "lon": -115.17
@@ -81,8 +81,8 @@
       "city": "Anchorage, Ted Stevens Anchorage International Airport",
       "state": null,
       "temp_f": 17.6,
-      "observed_at": "2026-03-15T04:20:00+00:00",
-      "condition": "Light Snow",
+      "observed_at": "2026-03-15T04:50:00+00:00",
+      "condition": "Light Snow and Fog/Mist",
       "lat": 61.17,
       "lon": -150.02
     },
@@ -91,37 +91,37 @@
       "city": "Falls International Airport",
       "state": null,
       "temp_f": 19.4,
-      "observed_at": "2026-03-15T04:25:00+00:00",
+      "observed_at": "2026-03-15T04:40:00+00:00",
       "condition": "Clear",
       "lat": 48.57,
       "lon": -93.38
     },
     {
-      "station": "KDLH",
-      "city": "Duluth International Airport",
-      "state": null,
-      "temp_f": 24.8,
-      "observed_at": "2026-03-15T04:25:00+00:00",
-      "condition": "Cloudy",
-      "lat": 46.85,
-      "lon": -92.18
-    },
-    {
       "station": "KMSP",
       "city": "Minneapolis, Minneapolis-St. Paul International Airport",
       "state": null,
-      "temp_f": 28.4,
-      "observed_at": "2026-03-15T04:20:00+00:00",
-      "condition": "Snow and Freezing Fog",
+      "temp_f": 26.6,
+      "observed_at": "2026-03-15T04:45:00+00:00",
+      "condition": "Light Snow and Fog/Mist",
       "lat": 44.88,
       "lon": -93.22
+    },
+    {
+      "station": "KDLH",
+      "city": "Duluth International Airport",
+      "state": null,
+      "temp_f": 26.6,
+      "observed_at": "2026-03-15T04:40:00+00:00",
+      "condition": "Cloudy",
+      "lat": 46.85,
+      "lon": -92.18
     },
     {
       "station": "KBOS",
       "city": "Boston, Logan International Airport",
       "state": null,
       "temp_f": 35.6,
-      "observed_at": "2026-03-15T04:20:00+00:00",
+      "observed_at": "2026-03-15T04:40:00+00:00",
       "condition": "Clear",
       "lat": 42.36,
       "lon": -71.01
