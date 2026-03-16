@@ -2116,14 +2116,6 @@
       "county": "https://api.weather.gov/zones/county/AZC005"
     },
     {
-      "station": "KPHX",
-      "name": "Phoenix, Phoenix Sky Harbor International Airport",
-      "latitude": 33.427799,
-      "longitude": -112.003465,
-      "time_zone": "America/Phoenix",
-      "county": "https://api.weather.gov/zones/county/AZC013"
-    },
-    {
       "station": "KPRC",
       "name": "Prescott, Love Field",
       "latitude": 34.64917,
