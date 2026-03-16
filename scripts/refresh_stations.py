@@ -67,6 +67,7 @@ def parse_station(feature: dict) -> dict | None:
         "latitude": coords[1] if len(coords) > 1 else None,
         "longitude": coords[0] if len(coords) > 0 else None,
         "time_zone": properties.get("timeZone"),
+        "county": properties.get("county")
     }
 
 def get_all_stations() -> list[dict]:
