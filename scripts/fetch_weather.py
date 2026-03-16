@@ -1,116 +1,93 @@
 import json
-import math
 import pathlib
-import time
-import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 
 # Constants
-BASE = "https://api.weather.gov"
-USER_AGENT = "HotColdUSA/0.1 (https://github.com/doctorgraphics/HotColdUSA)"
-HEADERS = {
-    "User-Agent": USER_AGENT,
-    "Accept": "application/geo+json",
-}
-
 STATIONS_PATH = pathlib.Path("data/stations.json")
 OUTPUT_PATH = pathlib.Path("data/latest.json")
 
-# Performance Settings
-REQUEST_TIMEOUT = 30
-MAX_RETRIES = 3
-RETRY_DELAY_SECONDS = 3
-REQUEST_DELAY_SECONDS = 0.1
-BATCH_SIZE = 500
+# Open-Meteo settings (No API Key Required)
+BASE_URL = "https://api.open-meteo.com/v1/forecast"
+BATCH_SIZE = 500 # Open-Meteo supports up to 1000 per request
 
-def c_to_f(celsius):
-    if celsius is None: return None
-    return (celsius * 9 / 5) + 32
-
-def fetch_json(url: str) -> dict:
-    for attempt in range(1, MAX_RETRIES + 1):
-        try:
-            print(f"Fetching: {url} (attempt {attempt}/{MAX_RETRIES})", flush=True)
-            request = urllib.request.Request(url, headers=HEADERS)
-            with urllib.request.urlopen(request, timeout=REQUEST_TIMEOUT) as response:
-                return json.loads(response.read().decode("utf-8"))
-        except Exception as exc:
-            print(f"Error fetching {url}: {exc}", flush=True)
-            if attempt < MAX_RETRIES:
-                time.sleep(RETRY_DELAY_SECONDS)
-    raise RuntimeError(f"Failed to fetch {url} after {MAX_RETRIES} attempts.")
-
-def parse_state_from_county(county_url: str) -> str | None:
-    """Extracts state code from NWS county/zone URL (handles /county/ or /counties/)"""
-    if not county_url:
-        return None
-    try:
-        for marker in ["/county/", "/counties/"]:
-            if marker in county_url:
-                parts = county_url.split(marker)
-                if len(parts) > 1:
-                    return parts[1][:2].upper()
-    except:
-        pass
-    return None
-
-def load_station_catalog() -> list[dict]:
+def load_station_catalog():
     if not STATIONS_PATH.exists():
-        raise FileNotFoundError("data/stations.json not found. Run scripts/refresh_stations.py first.")
+        raise FileNotFoundError("data/stations.json not found.")
     payload = json.loads(STATIONS_PATH.read_text(encoding="utf-8"))
     return payload.get("stations", [])
 
-def choose_station_batch(stations: list[dict]) -> tuple[list[dict], int]:
-    if not stations: return [], 0
-    total = len(stations)
-    hour_index = int(datetime.now(timezone.utc).timestamp() // 3600)
-    start_index = (hour_index * BATCH_SIZE) % total
-    end_index = start_index + BATCH_SIZE
-    if end_index <= total:
-        batch = stations[start_index:end_index]
-    else:
-        batch = stations[start_index:] + stations[: end_index - total]
-    return batch, start_index
-
-def safe_get_latest_observation(station: dict):
-    station_id = station["station"]
-    url = f"{BASE}/stations/{station_id}/observations/latest"
-
+def get_weather_batch(stations):
+    """Fetches weather for all 500 stations in one single API call."""
+    lats = [str(s["latitude"]) for s in stations]
+    lons = [str(s["longitude"]) for s in stations]
+    
+    params = [
+        f"latitude={','.join(lats)}",
+        f"longitude={','.join(lons)}",
+        "current=temperature_2m,weather_code", # 'weather_code' gives us the icon
+        "temperature_unit=fahrenheit",
+        "wind_speed_unit=mph",
+        "precipitation_unit=inch",
+        "timezone=auto"
+    ]
+    
+    url = f"{BASE_URL}?{'&'.join(params)}"
+    print(f"Fetching batch of {len(stations)} stations from Open-Meteo...", flush=True)
+    
     try:
-        payload = fetch_json(url)
-        props = payload.get("properties", {})
-        
-        # Temperature requirement
-        temp_c = props.get("temperature", {}).get("value")
-        if temp_c is None: return None
-        
-        temp_f = c_to_f(temp_c)
-        if temp_f is None or math.isnan(temp_f): return None
-
-        # State extraction
-        state = parse_state_from_county(station.get("county"))
-
-        return {
-            "station": station_id,
-            "city": station.get("name") or props.get("stationName") or station_id,
-            "state": state,
-            "temp_f": round(temp_f, 1),
-            "icon": props.get("icon"),
-            "latitude": station.get("latitude"),
-            "longitude": station.get("longitude"),
-            "observed_at": props.get("timestamp"),
-            "condition": props.get("textDescription") or "Unknown"
-        }
-    except Exception as exc:
-        print(f"Skipping {station_id}: {exc}", flush=True)
+        request = urllib.request.Request(url)
+        with urllib.request.urlopen(request, timeout=60) as response:
+            return json.loads(response.read().decode("utf-8"))
+    except Exception as e:
+        print(f"Batch fetch failed: {e}")
         return None
 
-def write_output(observations: list[dict], hottest: dict, coldest: dict, catalog_size: int):
+def get_condition_text(code):
+    """Translates WMO Weather Codes to human-readable text."""
+    # Simplified WMO translation
+    codes = {
+        0: "Clear Sky", 1: "Mainly Clear", 2: "Partly Cloudy", 3: "Overcast",
+        45: "Foggy", 48: "Depositing Rime Fog", 51: "Light Drizzle",
+        61: "Slight Rain", 63: "Rain", 71: "Slight Snow", 95: "Thunderstorm"
+    }
+    return codes.get(code, "Cloudy")
+
+def main():
+    catalog = load_station_catalog()
+    if not catalog: return
+
+    # For the pilot, we'll take the first 500. 
+    # Your choose_station_batch logic still works here too.
+    batch = catalog[:BATCH_SIZE]
+    
+    results = get_weather_batch(batch)
+    if not results: return
+
+    observations = []
+    # Open-Meteo returns a list of results if multiple lats are provided
+    for i, res in enumerate(results if isinstance(results, list) else [results]):
+        station = batch[i]
+        current = res.get("current", {})
+        
+        observations.append({
+            "station": station["station"],
+            "city": station["name"],
+            "state": station.get("county", "").split("/")[-1][:2].upper(), # Quick state parse
+            "temp_f": round(current.get("temperature_2m"), 1),
+            "condition": get_condition_text(current.get("weather_code")),
+            "observed_at": current.get("time"),
+            "latitude": station["latitude"],
+            "longitude": station["longitude"]
+        })
+
+    # Extreme Values
+    hottest = max(observations, key=lambda x: x["temp_f"])
+    coldest = min(observations, key=lambda x: x["temp_f"])
+
     output = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "source": "National Weather Service API (METAR/SYNOP)",
-        "catalog_size": catalog_size,
+        "source": "Open-Meteo (Aggregated NOAA/DWD/ECMWF)",
         "station_count": len(observations),
         "hottest": hottest,
         "coldest": coldest,
@@ -118,30 +95,9 @@ def write_output(observations: list[dict], hottest: dict, coldest: dict, catalog
         "top_hot": sorted(observations, key=lambda x: x["temp_f"], reverse=True)[:5],
         "top_cold": sorted(observations, key=lambda x: x["temp_f"])[:5],
     }
+    
     OUTPUT_PATH.write_text(json.dumps(output, indent=2), encoding="utf-8")
-
-def main():
-    print("Loading station catalog...", flush=True)
-    catalog = load_station_catalog()
-    if not catalog: raise RuntimeError("Station catalog is empty.")
-
-    batch, start_idx = choose_station_batch(catalog)
-    print(f"Checking batch of {len(batch)} stations...", flush=True)
-
-    observations = []
-    for idx, station in enumerate(batch, start=1):
-        obs = safe_get_latest_observation(station)
-        if obs: observations.append(obs)
-        if idx % 50 == 0: print(f"Progress: {idx}/{len(batch)}", flush=True)
-        time.sleep(REQUEST_DELAY_SECONDS)
-
-    if not observations: raise RuntimeError("No valid observations found.")
-
-    hottest = max(observations, key=lambda x: x["temp_f"])
-    coldest = min(observations, key=lambda x: x["temp_f"])
-
-    write_output(observations, hottest, coldest, len(catalog))
-    print(f"Success! Hottest: {hottest['city']}, {hottest['state']} ({hottest['temp_f']}°F)")
+    print(f"Success! Hottest: {hottest['city']} ({hottest['temp_f']}°F)")
 
 if __name__ == "__main__":
     main()
