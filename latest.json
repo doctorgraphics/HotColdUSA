@@ -1,0 +1,57 @@
+{
+  "generated_at": "2026-03-16T22:09:11.268410+00:00",
+  "top_5_hot": [
+    {
+      "city": "Phoenix",
+      "state": "AZ",
+      "temp_f": 92.3
+    },
+    {
+      "city": "Sacramento",
+      "state": "CA",
+      "temp_f": 83.6
+    },
+    {
+      "city": "Honolulu",
+      "state": "HI",
+      "temp_f": 79.2
+    },
+    {
+      "city": "Carson City",
+      "state": "NV",
+      "temp_f": 72.9
+    },
+    {
+      "city": "Salem",
+      "state": "OR",
+      "temp_f": 65.3
+    }
+  ],
+  "top_5_cold": [
+    {
+      "city": "St. Paul",
+      "state": "MN",
+      "temp_f": 18.0
+    },
+    {
+      "city": "Des Moines",
+      "state": "IA",
+      "temp_f": 19.4
+    },
+    {
+      "city": "Springfield",
+      "state": "IL",
+      "temp_f": 19.6
+    },
+    {
+      "city": "Bismarck",
+      "state": "ND",
+      "temp_f": 19.8
+    },
+    {
+      "city": "Madison",
+      "state": "WI",
+      "temp_f": 21.8
+    }
+  ]
+}
