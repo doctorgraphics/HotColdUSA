@@ -1,53 +1,31 @@
-name: Refresh station catalog
+name: Refresh Station Catalog
 
 on:
-  workflow_dispatch:
-
-  schedule:
-    # Weekly refresh Monday morning UTC
-    - cron: "23 6 * * 1"
+  workflow_dispatch: # Manual trigger
 
 permissions:
   contents: write
 
 jobs:
   refresh:
-    name: Refresh station catalog
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v5
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v6
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Show Python version
-        run: python --version
+      - name: Run Refresh Script
+        run: python scripts/refresh_stations.py
 
-      - name: Refresh station catalog
-        run: python -u scripts/refresh_stations.py
-
-      - name: Commit updated station catalog
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          
-          # Stage the file
-          git add data/stations.json
-          
-          # Only proceed if there are actual changes
-          if git diff --cached --quiet; then
-            echo "No changes to commit."
-          else
-            # 1. Commit locally first to clear the index
-            git commit -m "Refresh station catalog"
-            
-            # 2. Rebase to catch up with any changes on main
-            git pull --rebase origin main
-            
-            # 3. Push the combined work
-            git push
-          fi
+      - name: Deploy to Data Storage
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./data
+          publish_branch: data-storage
+          # Set force_orphan to false here if you want to keep the history of both files
+          force_orphan: false
