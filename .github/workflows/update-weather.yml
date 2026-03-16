@@ -2,7 +2,7 @@ name: Update Weather Data
 
 on:
   schedule:
-    - cron: "47 * * * *" # Runs every hour
+    - cron: "0 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -12,22 +12,31 @@ jobs:
   fetch-weather:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
+      - name: Checkout Main (Scripts)
         uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          path: main-repo
 
-      - name: Fetch Latest Observations
-        run: python scripts/fetch_weather.py
+      - name: Checkout Data Storage (Catalog)
+        uses: actions/checkout@v4
+        with:
+          ref: data-storage
+          path: data-repo
 
-      - name: Deploy to Data Branch
+      - name: Sync Catalog to Runner
+        run: |
+          mkdir -p main-repo/data
+          cp data-repo/stations.json main-repo/data/stations.json
+
+      - name: Run Fetch Weather
+        run: |
+          cd main-repo
+          python scripts/fetch_weather.py
+
+      - name: Deploy to Data Storage
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./data
-          publish_branch: data # This moves latest.json to its own branch
-          force_orphan: true    # This keeps the branch size tiny
-          commit_message: "Hourly Weather Update"
+          publish_dir: ./main-repo/data
+          publish_branch: data-storage
+          keep_files: true # Keeps stations.json alive
