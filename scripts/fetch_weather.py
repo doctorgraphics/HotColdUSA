@@ -6,6 +6,7 @@ import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 
+# Constants
 BASE = "https://api.weather.gov"
 USER_AGENT = "HotColdUSA/0.1 (https://github.com/doctorgraphics/HotColdUSA)"
 HEADERS = {
@@ -16,6 +17,7 @@ HEADERS = {
 STATIONS_PATH = pathlib.Path("data/stations.json")
 OUTPUT_PATH = pathlib.Path("data/latest.json")
 
+# Performance Settings
 REQUEST_TIMEOUT = 30
 MAX_RETRIES = 3
 RETRY_DELAY_SECONDS = 3
@@ -39,6 +41,20 @@ def fetch_json(url: str) -> dict:
                 time.sleep(RETRY_DELAY_SECONDS)
     raise RuntimeError(f"Failed to fetch {url} after {MAX_RETRIES} attempts.")
 
+def parse_state_from_county(county_url: str) -> str | None:
+    """Extracts state code from NWS county/zone URL (handles /county/ or /counties/)"""
+    if not county_url:
+        return None
+    try:
+        for marker in ["/county/", "/counties/"]:
+            if marker in county_url:
+                parts = county_url.split(marker)
+                if len(parts) > 1:
+                    return parts[1][:2].upper()
+    except:
+        pass
+    return None
+
 def load_station_catalog() -> list[dict]:
     if not STATIONS_PATH.exists():
         raise FileNotFoundError("data/stations.json not found. Run scripts/refresh_stations.py first.")
@@ -57,22 +73,6 @@ def choose_station_batch(stations: list[dict]) -> tuple[list[dict], int]:
         batch = stations[start_index:] + stations[: end_index - total]
     return batch, start_index
 
-def parse_state_from_county(county_url: str) -> str | None:
-    """Extracts state code from NWS county/zone URL (handles /county/ or /counties/)"""
-    if not county_url:
-        return None
-    try:
-        # Check for either /county/ or /counties/
-        for marker in ["/county/", "/counties/"]:
-            if marker in county_url:
-                parts = county_url.split(marker)
-                if len(parts) > 1:
-                    # The 2 characters immediately following the marker are the state
-                    return parts[1][:2].upper()
-    except:
-        pass
-    return None
-
 def safe_get_latest_observation(station: dict):
     station_id = station["station"]
     url = f"{BASE}/stations/{station_id}/observations/latest"
@@ -81,25 +81,26 @@ def safe_get_latest_observation(station: dict):
         payload = fetch_json(url)
         props = payload.get("properties", {})
         
+        # Temperature requirement
         temp_c = props.get("temperature", {}).get("value")
         if temp_c is None: return None
         
         temp_f = c_to_f(temp_c)
         if temp_f is None or math.isnan(temp_f): return None
 
-        # Extract state from the station catalog or the observation's county metadata
-        state = station.get("state") or parse_state_from_county(station.get("county"))
+        # State extraction
+        state = parse_state_from_county(station.get("county"))
 
         return {
             "station": station_id,
-            "city": station.get("name") or station_id,
+            "city": station.get("name") or props.get("stationName") or station_id,
             "state": state,
             "temp_f": round(temp_f, 1),
-            "observed_at": props.get("timestamp"),
-            "condition": props.get("textDescription") or "Unknown",
+            "icon": props.get("icon"),
             "latitude": station.get("latitude"),
             "longitude": station.get("longitude"),
-            "county": properties.get("county")
+            "observed_at": props.get("timestamp"),
+            "condition": props.get("textDescription") or "Unknown"
         }
     except Exception as exc:
         print(f"Skipping {station_id}: {exc}", flush=True)
