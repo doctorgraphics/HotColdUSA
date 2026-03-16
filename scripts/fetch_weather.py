@@ -7,35 +7,18 @@ from datetime import datetime, timezone
 STATIONS_PATH = pathlib.Path("data/stations.json")
 OUTPUT_PATH = pathlib.Path("data/latest.json")
 
-def get_condition_text(code):
-    """Translates WMO Weather Codes from Open-Meteo to human-readable text."""
-    mapping = {
-        0: "Clear Sky", 1: "Mainly Clear", 2: "Partly Cloudy", 3: "Overcast",
-        45: "Foggy", 48: "Rime Fog", 51: "Light Drizzle", 53: "Drizzle",
-        61: "Slight Rain", 63: "Rain", 71: "Slight Snow", 73: "Snow",
-        80: "Rain Showers", 95: "Thunderstorm"
-    }
-    return mapping.get(code, "Cloudy")
-
 def main():
-    print("Loading city catalog...", flush=True)
     if not STATIONS_PATH.exists():
         print(f"Error: {STATIONS_PATH} not found.")
         return
 
+    # 1. Load the fixed catalog
     catalog = json.loads(STATIONS_PATH.read_text(encoding="utf-8"))["stations"]
     
-    # 1. Build the Batch URL
+    # 2. Build the Batch URL for Open-Meteo
     lats = ",".join(str(s["latitude"]) for s in catalog)
     lons = ",".join(str(s["longitude"]) for s in catalog)
-    
-    url = (
-        f"https://api.open-meteo.com/v1/forecast?"
-        f"latitude={lats}&longitude={lons}&current=temperature_2m,weather_code"
-        f"&temperature_unit=fahrenheit&timezone=auto"
-    )
-    
-    print(f"Fetching weather for {len(catalog)} cities from Open-Meteo...", flush=True)
+    url = f"https://api.open-meteo.com/v1/forecast?latitude={lats}&longitude={lons}&current=temperature_2m&temperature_unit=fahrenheit"
     
     try:
         with urllib.request.urlopen(url, timeout=30) as resp:
@@ -44,45 +27,34 @@ def main():
         print(f"API Fetch Failed: {e}")
         return
 
-    # Open-Meteo returns a list if multiple lats were provided
     data_list = results if isinstance(results, list) else [results]
     
+    # 3. Process observations
     observations = []
-    by_state = {}
-
     for i, res in enumerate(data_list):
         city_info = catalog[i]
         curr = res.get("current", {})
         
-        obs = {
+        observations.append({
             "city": city_info["name"],
             "state": city_info["state"],
-            "temp_f": round(curr.get("temperature_2m", 0), 1),
-            "condition": get_condition_text(curr.get("weather_code")),
-            "observed_at": curr.get("time"),
-            "latitude": city_info["latitude"],
-            "longitude": city_info["longitude"]
-        }
-        observations.append(obs)
-        by_state[city_info["state"]] = obs
+            "temp_f": round(curr.get("temperature_2m", 0), 1)
+        })
 
-    # 2. Rank and Group
+    # 4. Sort for rankings
     observations.sort(key=lambda x: x["temp_f"], reverse=True)
 
+    # 5. Save only the essentials
     output = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "source": "Open-Meteo",
-        "hottest": observations[0],
-        "coldest": observations[-1],
         "top_5_hot": observations[:5],
-        "top_5_cold": observations[-5:][::-1],
-        "by_state": by_state
+        "top_5_cold": observations[-5:][::-1] # Reverse so coldest is #1
     }
     
-    # 3. Save to data/latest.json
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(json.dumps(output, indent=2), encoding="utf-8")
-    print(f"Success! Hottest: {output['hottest']['city']} ({output['hottest']['temp_f']}°F)")
+    
+    print(f"Latest.json updated with Top 5 extremes.")
 
 if __name__ == "__main__":
     main()
