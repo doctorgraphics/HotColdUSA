@@ -7,9 +7,9 @@ from datetime import datetime, timezone
 
 # Constants for filtering
 US_AREAS = [
-    "AL","AK","AZ","AR"
+    "AL","AK"
 ]
-    #,"CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD",
+    # "AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD",
     #"MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC",
     #"SD","TN","TX","UT","VT","VA","WA","WV","WI","WY","DC","AS","GU","MP","PR","VI"
 #]
@@ -49,27 +49,27 @@ def get_next_url(payload: dict) -> str | None:
             next_url = page.get("next")
             if next_url:
                 # FIX: The NWS API mangles 'state=AK' into 'state%5B0%5D=AK' 
-                # in its own pagination links. This line fixes it.
                 return next_url.replace("state%5B0%5D=", "state=")
     return None
 
 def parse_station(feature: dict) -> dict | None:
-    """Filters for 4-character METAR/ICAO identifiers."""
+    """Filters for 4-character METAR/ICAO identifiers and extracts core metadata."""
     properties = feature.get("properties", {})
     station_id = properties.get("stationIdentifier")
     
-    # Only keep professional airport stations (4 chars)
+    # Requirement: Only keep professional airport stations (4 chars)
     if not station_id or len(station_id) != 4:
         return None
 
+    # Requirement: Extract coordinates for mapping
     coords = feature.get("geometry", {}).get("coordinates", [None, None])
+    
     return {
         "station": station_id,
         "name": properties.get("name"),
         "latitude": coords[1] if len(coords) > 1 else None,
         "longitude": coords[0] if len(coords) > 0 else None,
-        "time_zone": properties.get("timeZone"),
-        "county": properties.get("county")
+        "county": properties.get("county") # Requirement: Needed for state parsing
     }
 
 def get_all_stations() -> list[dict]:
