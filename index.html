@@ -511,17 +511,17 @@
       });
     }
 
-    async function loadWeather() {
-      const statusMessage = document.getElementById("statusMessage");
+    const DATA_URL = "https://raw.githubusercontent.com/doctorgraphics/HotColdUSA/data/latest.json";
 
-      try {
-        // Point to the latest.json file on your orphan 'data-storage' branch
-        const dataUrl = "https://raw.githubusercontent.com/doctorgraphics/HotColdUSA/data-storage/data/latest.json";
-        
-        const response = await fetch(dataUrl, { cache: "no-store" });
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}`);
-        }
+async function loadWeather() {
+    try {
+        const response = await fetch(DATA_URL);
+        const data = await response.json();
+        // ... rest of your logic
+    } catch (e) {
+        console.error("Failed to load weather:", e);
+    }
+}
 
         const data = await response.json();
 
