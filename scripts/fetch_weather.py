@@ -58,14 +58,17 @@ def choose_station_batch(stations: list[dict]) -> tuple[list[dict], int]:
     return batch, start_index
 
 def parse_state_from_county(county_url: str) -> str | None:
-    """Extracts state code from NWS county URL (e.g., .../counties/AZC013 -> AZ)"""
-    if not county_url or "/counties/" not in county_url:
+    """Extracts state code from NWS county/zone URL (handles /county/ or /counties/)"""
+    if not county_url:
         return None
     try:
-        # State abbreviation starts immediately after '/counties/'
-        parts = county_url.split("/counties/")
-        if len(parts) > 1:
-            return parts[1][:2].upper()
+        # Check for either /county/ or /counties/
+        for marker in ["/county/", "/counties/"]:
+            if marker in county_url:
+                parts = county_url.split(marker)
+                if len(parts) > 1:
+                    # The 2 characters immediately following the marker are the state
+                    return parts[1][:2].upper()
     except:
         pass
     return None
@@ -96,6 +99,7 @@ def safe_get_latest_observation(station: dict):
             "condition": props.get("textDescription") or "Unknown",
             "latitude": station.get("latitude"),
             "longitude": station.get("longitude"),
+            "county": properties.get("county")
         }
     except Exception as exc:
         print(f"Skipping {station_id}: {exc}", flush=True)
