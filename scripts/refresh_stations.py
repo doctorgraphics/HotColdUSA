@@ -1,127 +1,81 @@
-import json
-import pathlib
-import time
-import urllib.error
-import urllib.request
-from datetime import datetime, timezone
-
-# Constants for filtering
-US_AREAS = [
-    "AL","AK"
-]
-    # "AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD",
-    #"MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC",
-    #"SD","TN","TX","UT","VT","VA","WA","WV","WI","WY","DC","AS","GU","MP","PR","VI"
-#]
-
-USER_AGENT = "HotColdUSA/0.1 (https://github.com/doctorgraphics/HotColdUSA)"
 OUTPUT_PATH = pathlib.Path("data/stations.json")
 
-HEADERS = {
-    "User-Agent": USER_AGENT,
-    "Accept": "application/geo+json",
-}
-
-REQUEST_TIMEOUT = 60
-MAX_RETRIES = 3
-RETRY_DELAY_SECONDS = 5
-PAGE_DELAY_SECONDS = 0.5
-
-def fetch_json(url: str) -> dict:
-    """Fetches JSON data from a URL with retry logic."""
-    for attempt in range(1, MAX_RETRIES + 1):
-        try:
-            print(f"Fetching: {url} (attempt {attempt}/{MAX_RETRIES})", flush=True)
-            request = urllib.request.Request(url, headers=HEADERS)
-            with urllib.request.urlopen(request, timeout=REQUEST_TIMEOUT) as response:
-                return json.loads(response.read().decode("utf-8"))
-        except Exception as exc:
-            print(f"Error fetching {url}: {exc}", flush=True)
-            if attempt < MAX_RETRIES:
-                time.sleep(RETRY_DELAY_SECONDS)
-    raise RuntimeError(f"Failed to fetch {url} after {MAX_RETRIES} attempts.")
-
-def get_next_url(payload: dict) -> str | None:
-    """Extracts and cleans the pagination link from the NWS API."""
-    for key in ["pagination", "@pagination"]:
-        page = payload.get(key)
-        if isinstance(page, dict):
-            next_url = page.get("next")
-            if next_url:
-                # FIX: The NWS API mangles 'state=AK' into 'state%5B0%5D=AK' 
-                return next_url.replace("state%5B0%5D=", "state=")
-    return None
-
-def parse_station(feature: dict) -> dict | None:
-    """Filters for 4-character METAR/ICAO identifiers and extracts core metadata."""
-    properties = feature.get("properties", {})
-    station_id = properties.get("stationIdentifier")
-    
-    # Requirement: Only keep professional airport stations (4 chars)
-    if not station_id or len(station_id) != 4:
-        return None
-
-    # Requirement: Extract coordinates for mapping
-    coords = feature.get("geometry", {}).get("coordinates", [None, None])
-    
-    return {
-        "station": station_id,
-        "name": properties.get("name"),
-        "latitude": coords[1] if len(coords) > 1 else None,
-        "longitude": coords[0] if len(coords) > 0 else None,
-        "county": properties.get("county") # Requirement: Needed for state parsing
-    }
-
-def get_all_stations() -> list[dict]:
-    """Fetches stations state-by-state to ensure reliability and speed."""
-    stations = []
-    seen = set()
-
-    for area in US_AREAS:
-        print(f"--- Processing {area} ---", flush=True)
-        url = f"https://api.weather.gov/stations?state={area}&limit=500"
-        
-        while url:
-            payload = fetch_json(url)
-            features = payload.get("features", [])
-            
-            if not features:
-                break
-
-            added_this_area = 0
-            for f in features:
-                station = parse_station(f)
-                if station and station["station"] not in seen:
-                    seen.add(station["station"])
-                    stations.append(station)
-                    added_this_area += 1
-
-            print(f"  {area}: Added {added_this_area} stations. Total: {len(stations)}", flush=True)
-            url = get_next_url(payload)
-            if url:
-                time.sleep(PAGE_DELAY_SECONDS)
-
-    return stations
+# Generic city list grouped by state
+CITIES = [
+    {"city": "Montgomery", "state": "AL", "lat": 32.377, "lon": -86.300},
+    {"city": "Juneau", "state": "AK", "lat": 58.301, "lon": -134.420},
+    {"city": "Phoenix", "state": "AZ", "lat": 33.448, "lon": -112.074},
+    {"city": "Sacramento", "state": "CA", "lat": 38.576, "lon": -121.493},
+    {"city": "Denver", "state": "CO", "lat": 39.739, "lon": -104.990},
+    {"city": "Bismarck", "state": "ND", "lat": 46.808, "lon": -100.783},
+    {"city": "Little Rock", "state": "AR", "lat": 34.746, "lon": -92.289},
+    {"city": "Hartford", "state": "CT", "lat": 41.764, "lon": -72.682},
+    {"city": "Dover", "state": "DE", "lat": 39.158, "lon": -75.524},
+    {"city": "Tallahassee", "state": "FL", "lat": 30.438, "lon": -84.281},
+    {"city": "Atlanta", "state": "GA", "lat": 33.749, "lon": -84.388},
+    {"city": "Honolulu", "state": "HI", "lat": 21.307, "lon": -157.858},
+    {"city": "Boise", "state": "ID", "lat": 43.615, "lon": -116.202},
+    {"city": "Springfield", "state": "IL", "lat": 39.799, "lon": -89.644},
+    {"city": "Indianapolis", "state": "IN", "lat": 39.768, "lon": -86.158},
+    {"city": "Des Moines", "state": "IA", "lat": 41.586, "lon": -93.625},
+    {"city": "Topeka", "state": "KS", "lat": 39.047, "lon": -95.675},
+    {"city": "Frankfort", "state": "KY", "lat": 38.200, "lon": -84.873},
+    {"city": "Baton Rouge", "state": "LA", "lat": 30.451, "lon": -91.187},
+    {"city": "Augusta", "state": "ME", "lat": 44.310, "lon": -69.779},
+    {"city": "Annapolis", "state": "MD", "lat": 38.978, "lon": -76.492},
+    {"city": "Boston", "state": "MA", "lat": 42.360, "lon": -71.058},
+    {"city": "Lansing", "state": "MI", "lat": 42.732, "lon": -84.555},
+    {"city": "Saint Paul", "state": "MN", "lat": 44.953, "lon": -93.090},
+    {"city": "Jackson", "state": "MS", "lat": 32.299, "lon": -90.184},
+    {"city": "Jefferson City", "state": "MO", "lat": 38.576, "lon": -92.173},
+    {"city": "Helena", "state": "MT", "lat": 46.589, "lon": -112.039},
+    {"city": "Lincoln", "state": "NE", "lat": 40.813, "lon": -96.702},
+    {"city": "Carson City", "state": "NV", "lat": 39.163, "lon": -119.767},
+    {"city": "Concord", "state": "NH", "lat": 43.208, "lon": -71.538},
+    {"city": "Trenton", "state": "NJ", "lat": 40.217, "lon": -74.743},
+    {"city": "Santa Fe", "state": "NM", "lat": 35.687, "lon": -105.938},
+    {"city": "Albany", "state": "NY", "lat": 42.652, "lon": -73.756},
+    {"city": "Raleigh", "state": "NC", "lat": 35.780, "lon": -78.639},
+    {"city": "Columbus", "state": "OH", "lat": 39.961, "lon": -82.999},
+    {"city": "Oklahoma City", "state": "OK", "lat": 35.467, "lon": -97.516},
+    {"city": "Salem", "state": "OR", "lat": 44.942, "lon": -123.035},
+    {"city": "Harrisburg", "state": "PA", "lat": 40.273, "lon": -76.886},
+    {"city": "Providence", "state": "RI", "lat": 41.824, "lon": -71.412},
+    {"city": "Columbia", "state": "SC", "lat": 34.000, "lon": -81.035},
+    {"city": "Pierre", "state": "SD", "lat": 44.368, "lon": -100.351},
+    {"city": "Nashville", "state": "TN", "lat": 36.162, "lon": -86.781},
+    {"city": "Austin", "state": "TX", "lat": 30.267, "lon": -97.743},
+    {"city": "Salt Lake City", "state": "UT", "lat": 40.760, "lon": -111.891},
+    {"city": "Montpelier", "state": "VT", "lat": 44.260, "lon": -72.575},
+    {"city": "Richmond", "state": "VA", "lat": 37.540, "lon": -77.436},
+    {"city": "Olympia", "state": "WA", "lat": 47.037, "lon": -122.900},
+    {"city": "Charleston", "state": "WV", "lat": 38.349, "lon": -81.633},
+    {"city": "Madison", "state": "WI", "lat": 43.073, "lon": -89.401},
+    {"city": "Cheyenne", "state": "WY", "lat": 41.140, "lon": -104.820}
+]
 
 def main():
-    print("Refreshing US METAR station catalog...", flush=True)
-    try:
-        stations = get_all_stations()
-        if not stations:
-            raise RuntimeError("No stations found.")
+    print("Generating city catalog...")
+    
+    stations = []
+    for city in CITIES:
+        stations.append({
+            "station": f"{city['state']}_{city['name'].replace(' ', '')}",
+            "name": city['name'],
+            "state": city['state'],
+            "latitude": city['lat'],
+            "longitude": city['lon']
+        })
 
-        OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-        output = {
-            "generated_at": datetime.now(timezone.utc).isoformat(),
-            "source": "National Weather Service API (METAR/SYNOP)",
-            "station_count": len(stations),
-            "stations": stations,
-        }
-        OUTPUT_PATH.write_text(json.dumps(output, indent=2), encoding="utf-8")
-        print(f"Successfully wrote {len(stations)} stations to {OUTPUT_PATH}.", flush=True)
-    except Exception as e:
-        print(f"Refresh failed: {e}", flush=True)
-        exit(1)
+    output = {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "description": "50 US Cities (One per State)",
+        "stations": stations
+    }
+    
+    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    OUTPUT_PATH.write_text(json.dumps(output, indent=2))
+    print(f"Catalog created with {len(stations)} cities.")
 
 if __name__ == "__main__":
     main()
