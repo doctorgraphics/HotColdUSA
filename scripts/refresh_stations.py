@@ -1,3 +1,8 @@
+import json
+import pathlib
+from datetime import datetime, timezone
+
+# Define the path where the catalog will be saved
 OUTPUT_PATH = pathlib.Path("data/stations.json")
 
 # Generic city list grouped by state
