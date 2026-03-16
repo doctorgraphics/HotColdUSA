@@ -1,0 +1,131 @@
+{
+  "generated_at": "2026-03-16T00:58:43.410945+00:00",
+  "source": "National Weather Service API (METAR/SYNOP)",
+  "catalog_size": 5,
+  "station_count": 10,
+  "hottest": {
+    "station": "KPHX",
+    "city": "Phoenix Sky Harbor International Airport",
+    "state": null,
+    "temp_f": 89.6,
+    "observed_at": "2026-03-16T00:35:00+00:00",
+    "condition": "Clear",
+    "latitude": 33.434,
+    "longitude": -112.011
+  },
+  "coldest": {
+    "station": "PADE",
+    "city": "Chicken Airport",
+    "state": null,
+    "temp_f": -11.2,
+    "observed_at": "2026-03-16T00:40:00+00:00",
+    "condition": "Haze",
+    "latitude": 64.072,
+    "longitude": -141.942
+  },
+  "spread_f": 100.8,
+  "top_hot": [
+    {
+      "station": "KPHX",
+      "city": "Phoenix Sky Harbor International Airport",
+      "state": null,
+      "temp_f": 89.6,
+      "observed_at": "2026-03-16T00:35:00+00:00",
+      "condition": "Clear",
+      "latitude": 33.434,
+      "longitude": -112.011
+    },
+    {
+      "station": "KPHX",
+      "city": "Phoenix Sky Harbor International Airport",
+      "state": null,
+      "temp_f": 89.6,
+      "observed_at": "2026-03-16T00:35:00+00:00",
+      "condition": "Clear",
+      "latitude": 33.434,
+      "longitude": -112.011
+    },
+    {
+      "station": "KMOD",
+      "city": "Modesto City-County-Harry Sham Field",
+      "state": null,
+      "temp_f": 77.0,
+      "observed_at": "2026-03-16T00:40:00+00:00",
+      "condition": "Clear",
+      "latitude": 37.625,
+      "longitude": -120.954
+    },
+    {
+      "station": "KMOD",
+      "city": "Modesto City-County-Harry Sham Field",
+      "state": null,
+      "temp_f": 77.0,
+      "observed_at": "2026-03-16T00:40:00+00:00",
+      "condition": "Clear",
+      "latitude": 37.625,
+      "longitude": -120.954
+    },
+    {
+      "station": "KMCE",
+      "city": "Merced Regional Macready Field",
+      "state": null,
+      "temp_f": 75.2,
+      "observed_at": "2026-03-16T00:40:00+00:00",
+      "condition": "Clear",
+      "latitude": 37.284,
+      "longitude": -120.512
+    }
+  ],
+  "top_cold": [
+    {
+      "station": "PADE",
+      "city": "Chicken Airport",
+      "state": null,
+      "temp_f": -11.2,
+      "observed_at": "2026-03-16T00:40:00+00:00",
+      "condition": "Haze",
+      "latitude": 64.072,
+      "longitude": -141.942
+    },
+    {
+      "station": "PADE",
+      "city": "Chicken Airport",
+      "state": null,
+      "temp_f": -11.2,
+      "observed_at": "2026-03-16T00:40:00+00:00",
+      "condition": "Haze",
+      "latitude": 64.072,
+      "longitude": -141.942
+    },
+    {
+      "station": "KMOT",
+      "city": "Minot International Airport",
+      "state": null,
+      "temp_f": 8.6,
+      "observed_at": "2026-03-16T00:35:00+00:00",
+      "condition": "Clear",
+      "latitude": 48.259,
+      "longitude": -101.279
+    },
+    {
+      "station": "KMOT",
+      "city": "Minot International Airport",
+      "state": null,
+      "temp_f": 8.6,
+      "observed_at": "2026-03-16T00:35:00+00:00",
+      "condition": "Clear",
+      "latitude": 48.259,
+      "longitude": -101.279
+    },
+    {
+      "station": "KMCE",
+      "city": "Merced Regional Macready Field",
+      "state": null,
+      "temp_f": 75.2,
+      "observed_at": "2026-03-16T00:40:00+00:00",
+      "condition": "Clear",
+      "latitude": 37.284,
+      "longitude": -120.512
+    }
+  ]
+}
