@@ -1,7 +1,7 @@
 name: Refresh Station Catalog
 
 on:
-  workflow_dispatch: # Manual trigger
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -13,11 +13,6 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
       - name: Run Refresh Script
         run: python scripts/refresh_stations.py
 
@@ -27,5 +22,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./data
           publish_branch: data-storage
-          # Set force_orphan to false here if you want to keep the history of both files
-          force_orphan: false
+          keep_files: true  # Prevents deleting latest.json if it exists
