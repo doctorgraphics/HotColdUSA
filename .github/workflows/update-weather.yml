@@ -1,51 +1,33 @@
-name: Update weather data
+name: Update Weather Data
 
 on:
-  workflow_dispatch:
   schedule:
-    - cron: "17 * * * *"
+    - cron: "47 * * * *" # Runs every hour
+  workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  update:
+  fetch-weather:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Check out repo
-        uses: actions/checkout@v5
-        with:
-          # Fetch the full history so we can switch branches properly
-          fetch-depth: 0
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Update weather data
+      - name: Fetch Latest Observations
         run: python scripts/fetch_weather.py
 
-      - name: Deploy data to orphan branch
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          
-          # Move the fresh data to a temporary location
-          cp data/latest.json /tmp/latest.json
-          
-          # Switch to an orphan branch named 'data-storage'
-          git checkout --orphan data-storage
-          
-          # Remove all tracked files from the new branch to start fresh
-          git rm -rf .
-          
-          # Restore only the data file
-          mkdir -p data
-          cp /tmp/latest.json data/latest.json
-          
-          # Commit and force-push to keep only the LATEST version
-          git add data/latest.json
-          git commit -m "Update weather data: $(date -u)"
-          git push origin data-storage --force
+      - name: Deploy to Data Branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./data
+          publish_branch: data # This moves latest.json to its own branch
+          force_orphan: true    # This keeps the branch size tiny
+          commit_message: "Hourly Weather Update"
