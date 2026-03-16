@@ -1,1484 +1,356 @@
 {
-  "generated_at": "2026-03-16T06:53:34.543223+00:00",
-  "source": "National Weather Service API (METAR/SYNOP)",
-  "station_count": 211,
+  "generated_at": "2026-03-16T21:16:49.817151+00:00",
+  "description": "50 US Cities (One per State)",
   "stations": [
     {
-      "station": "K0J4",
-      "name": "Florala, Florala Municipal Airport",
-      "latitude": 31.0425,
-      "longitude": -86.31167,
-      "county": "https://api.weather.gov/zones/county/ALC039"
+      "station": "AL_Montgomery",
+      "name": "Montgomery",
+      "state": "AL",
+      "latitude": 32.377,
+      "longitude": -86.3
     },
     {
-      "station": "K1A9",
-      "name": "Prattville - Grouby Field",
-      "latitude": 32.4387,
-      "longitude": -86.5127,
-      "county": "https://api.weather.gov/zones/county/ALC001"
+      "station": "AK_Juneau",
+      "name": "Juneau",
+      "state": "AK",
+      "latitude": 58.301,
+      "longitude": -134.42
     },
     {
-      "station": "K1M4",
-      "name": "Haleyville, Posey Field Airport",
-      "latitude": 34.28028,
-      "longitude": -87.60028,
-      "county": "https://api.weather.gov/zones/county/ALC133"
+      "station": "AZ_Phoenix",
+      "name": "Phoenix",
+      "state": "AZ",
+      "latitude": 33.448,
+      "longitude": -112.074
     },
     {
-      "station": "K1R8",
-      "name": "Bay Minette Municipal Airport",
-      "latitude": 30.87033,
-      "longitude": -87.81933,
-      "county": "https://api.weather.gov/zones/county/ALC003"
+      "station": "AR_LittleRock",
+      "name": "Little Rock",
+      "state": "AR",
+      "latitude": 34.746,
+      "longitude": -92.289
     },
     {
-      "station": "K4A6",
-      "name": "Scottsboro Municipal Airport",
-      "latitude": 34.68871,
-      "longitude": -86.00593,
-      "county": "https://api.weather.gov/zones/county/ALC071"
+      "station": "CA_Sacramento",
+      "name": "Sacramento",
+      "state": "CA",
+      "latitude": 38.576,
+      "longitude": -121.493
     },
     {
-      "station": "K4A9",
-      "name": "Fort Payne, Isbell Field Airport",
-      "latitude": 34.47361,
-      "longitude": -85.72139,
-      "county": "https://api.weather.gov/zones/county/ALC049"
+      "station": "CO_Denver",
+      "name": "Denver",
+      "state": "CO",
+      "latitude": 39.739,
+      "longitude": -104.99
     },
     {
-      "station": "K79J",
-      "name": "Andalusia, Andalusia-Opp Municipal Airport",
-      "latitude": 31.3,
-      "longitude": -86.38333,
-      "county": "https://api.weather.gov/zones/county/ALC039"
+      "station": "CT_Hartford",
+      "name": "Hartford",
+      "state": "CT",
+      "latitude": 41.764,
+      "longitude": -72.691
     },
     {
-      "station": "K8A1",
-      "name": "Guntersville Municipal Airport",
-      "latitude": 34.40115,
-      "longitude": -86.26722,
-      "county": "https://api.weather.gov/zones/county/ALC095"
+      "station": "DE_Dover",
+      "name": "Dover",
+      "state": "DE",
+      "latitude": 39.157,
+      "longitude": -75.519
     },
     {
-      "station": "K9A4",
-      "name": "Lawrence County Airport",
-      "latitude": 34.65939,
-      "longitude": -87.34883,
-      "county": "https://api.weather.gov/zones/county/ALC079"
+      "station": "FL_Tallahassee",
+      "name": "Tallahassee",
+      "state": "FL",
+      "latitude": 30.438,
+      "longitude": -84.281
     },
     {
-      "station": "KALX",
-      "name": "Alexander City, Thomas C Russell Field Airport",
-      "latitude": 32.91472,
-      "longitude": -85.96278,
-      "county": "https://api.weather.gov/zones/county/ALC123"
+      "station": "GA_Atlanta",
+      "name": "Atlanta",
+      "state": "GA",
+      "latitude": 33.749,
+      "longitude": -84.388
     },
     {
-      "station": "KANB",
-      "name": "Anniston Metro Airport",
-      "latitude": 33.59045,
-      "longitude": -85.84789,
-      "county": "https://api.weather.gov/zones/county/ALC015"
+      "station": "HI_Honolulu",
+      "name": "Honolulu",
+      "state": "HI",
+      "latitude": 21.307,
+      "longitude": -157.858
     },
     {
-      "station": "KASN",
-      "name": "Talladega Municipal Airport",
-      "latitude": 33.5695,
-      "longitude": -86.0512,
-      "county": "https://api.weather.gov/zones/county/ALC121"
+      "station": "ID_Boise",
+      "name": "Boise",
+      "state": "ID",
+      "latitude": 43.618,
+      "longitude": -116.202
     },
     {
-      "station": "KAUO",
-      "name": "Auburn-Opelika Airport",
-      "latitude": 32.61667,
-      "longitude": -85.43333,
-      "county": "https://api.weather.gov/zones/county/ALC081"
+      "station": "IL_Springfield",
+      "name": "Springfield",
+      "state": "IL",
+      "latitude": 39.799,
+      "longitude": -89.646
     },
     {
-      "station": "KBFM",
-      "name": "Mobile, Mobile Downtown Airport",
-      "latitude": 30.61389,
-      "longitude": -88.06333,
-      "county": "https://api.weather.gov/zones/county/ALC097"
+      "station": "IN_Indianapolis",
+      "name": "Indianapolis",
+      "state": "IN",
+      "latitude": 39.768,
+      "longitude": -86.158
     },
     {
-      "station": "KBFZ",
-      "name": "Albertville Regional Airport-Thomas J Brumlik Field",
-      "latitude": 34.22911,
-      "longitude": -86.25575,
-      "county": "https://api.weather.gov/zones/county/ALC095"
+      "station": "IA_DesMoines",
+      "name": "Des Moines",
+      "state": "IA",
+      "latitude": 41.591,
+      "longitude": -93.604
     },
     {
-      "station": "KBHM",
-      "name": "Birmingham, Birmingham International Airport",
-      "latitude": 33.56556,
-      "longitude": -86.745,
-      "county": "https://api.weather.gov/zones/county/ALC073"
+      "station": "KS_Topeka",
+      "name": "Topeka",
+      "state": "KS",
+      "latitude": 39.048,
+      "longitude": -95.678
     },
     {
-      "station": "KCMD",
-      "name": "Cullman Regional Folsom Field",
-      "latitude": 34.2687,
-      "longitude": -86.858,
-      "county": "https://api.weather.gov/zones/county/ALC043"
+      "station": "KY_Frankfort",
+      "name": "Frankfort",
+      "state": "KY",
+      "latitude": 38.187,
+      "longitude": -84.875
     },
     {
-      "station": "KCQF",
-      "name": "Sonny Callahan Airport",
-      "latitude": 30.461,
-      "longitude": -87.877,
-      "county": "https://api.weather.gov/zones/county/ALC003"
+      "station": "LA_BatonRouge",
+      "name": "Baton Rouge",
+      "state": "LA",
+      "latitude": 30.457,
+      "longitude": -91.187
     },
     {
-      "station": "KDCU",
-      "name": "Decatur, Pryor Field",
-      "latitude": 34.65806,
-      "longitude": -86.94333,
-      "county": "https://api.weather.gov/zones/county/ALC083"
+      "station": "ME_Augusta",
+      "name": "Augusta",
+      "state": "ME",
+      "latitude": 44.307,
+      "longitude": -69.782
     },
     {
-      "station": "KDHN",
-      "name": "Dothan, Dothan Regional Airport",
-      "latitude": 31.32139,
-      "longitude": -85.44972,
-      "county": "https://api.weather.gov/zones/county/ALC045"
+      "station": "MD_Annapolis",
+      "name": "Annapolis",
+      "state": "MD",
+      "latitude": 38.978,
+      "longitude": -76.492
     },
     {
-      "station": "KDYA",
-      "name": "Demopolis Municipal Airport",
-      "latitude": 32.4638,
-      "longitude": -87.9541,
-      "county": "https://api.weather.gov/zones/county/ALC091"
+      "station": "MA_Boston",
+      "name": "Boston",
+      "state": "MA",
+      "latitude": 42.36,
+      "longitude": -71.058
     },
     {
-      "station": "KEDN",
-      "name": "Enterprise Municipal Airport",
-      "latitude": 31.2982,
-      "longitude": -85.9048,
-      "county": "https://api.weather.gov/zones/county/ALC031"
+      "station": "MI_Lansing",
+      "name": "Lansing",
+      "state": "MI",
+      "latitude": 42.734,
+      "longitude": -84.555
     },
     {
-      "station": "KEET",
-      "name": "Alabaster, Shelby County Airport",
-      "latitude": 33.17833,
-      "longitude": -86.78167,
-      "county": "https://api.weather.gov/zones/county/ALC117"
+      "station": "MN_St.Paul",
+      "name": "St. Paul",
+      "state": "MN",
+      "latitude": 44.953,
+      "longitude": -93.09
     },
     {
-      "station": "KEKY",
-      "name": "Bessemer Airport",
-      "latitude": 33.3126,
-      "longitude": -86.9263,
-      "county": "https://api.weather.gov/zones/county/ALC073"
+      "station": "MS_Jackson",
+      "name": "Jackson",
+      "state": "MS",
+      "latitude": 32.299,
+      "longitude": -90.185
     },
     {
-      "station": "KEUF",
-      "name": "Eufaula Municipal Airport",
-      "latitude": 31.951,
-      "longitude": -85.129,
-      "county": "https://api.weather.gov/zones/county/ALC005"
+      "station": "MO_JeffersonCity",
+      "name": "Jefferson City",
+      "state": "MO",
+      "latitude": 38.577,
+      "longitude": -92.172
     },
     {
-      "station": "KGAD",
-      "name": "Gadsden, Gadsden Municipal Airport",
-      "latitude": 33.96667,
-      "longitude": -86.08333,
-      "county": "https://api.weather.gov/zones/county/ALC055"
+      "station": "MT_Helena",
+      "name": "Helena",
+      "state": "MT",
+      "latitude": 46.593,
+      "longitude": -112.036
     },
     {
-      "station": "KGZH",
-      "name": "Evergreen, Middleton Field",
-      "latitude": 31.41889,
-      "longitude": -87.04806,
-      "county": "https://api.weather.gov/zones/county/ALC035"
+      "station": "NE_Lincoln",
+      "name": "Lincoln",
+      "state": "NE",
+      "latitude": 40.809,
+      "longitude": -96.675
     },
     {
-      "station": "KHEY",
-      "name": "Hanchey AHP / Ozark",
-      "latitude": 31.35,
-      "longitude": -85.66667,
-      "county": "https://api.weather.gov/zones/county/ALC045"
+      "station": "NV_CarsonCity",
+      "name": "Carson City",
+      "state": "NV",
+      "latitude": 39.164,
+      "longitude": -119.766
     },
     {
-      "station": "KHSV",
-      "name": "Huntsville, Huntsville International / Jones Field",
-      "latitude": 34.64361,
-      "longitude": -86.78556,
-      "county": "https://api.weather.gov/zones/county/ALC089"
+      "station": "NH_Concord",
+      "name": "Concord",
+      "state": "NH",
+      "latitude": 43.208,
+      "longitude": -71.538
     },
     {
-      "station": "KHUA",
-      "name": "Redstone Airfield",
-      "latitude": 34.6786,
-      "longitude": -86.6847,
-      "county": "https://api.weather.gov/zones/county/ALC089"
+      "station": "NJ_Trenton",
+      "name": "Trenton",
+      "state": "NJ",
+      "latitude": 40.221,
+      "longitude": -74.756
     },
     {
-      "station": "KJFX",
-      "name": "Jasper Walker County Airport & Bevill Field",
-      "latitude": 33.902,
-      "longitude": -87.31417,
-      "county": "https://api.weather.gov/zones/county/ALC127"
+      "station": "NM_SantaFe",
+      "name": "Santa Fe",
+      "state": "NM",
+      "latitude": 35.687,
+      "longitude": -105.939
     },
     {
-      "station": "KJKA",
-      "name": "Jack Edwards Airport",
-      "latitude": 30.2896,
-      "longitude": -87.6718,
-      "county": "https://api.weather.gov/zones/county/ALC003"
+      "station": "NY_Albany",
+      "name": "Albany",
+      "state": "NY",
+      "latitude": 42.653,
+      "longitude": -73.755
     },
     {
-      "station": "KLOR",
-      "name": "Fort Rucker, Lowe Army Heliport",
-      "latitude": 31.35889,
-      "longitude": -85.74833,
-      "county": "https://api.weather.gov/zones/county/ALC045"
+      "station": "NC_Raleigh",
+      "name": "Raleigh",
+      "state": "NC",
+      "latitude": 35.779,
+      "longitude": -78.638
     },
     {
-      "station": "KMDQ",
-      "name": "Huntsville, Madison County Executive Airport",
-      "latitude": 34.86139,
-      "longitude": -86.55722,
-      "county": "https://api.weather.gov/zones/county/ALC089"
+      "station": "ND_Bismarck",
+      "name": "Bismarck",
+      "state": "ND",
+      "latitude": 46.808,
+      "longitude": -100.783
     },
     {
-      "station": "KMGM",
-      "name": "Montgomery, Dannelly Field",
-      "latitude": 32.30028,
-      "longitude": -86.40611,
-      "county": "https://api.weather.gov/zones/county/ALC101"
+      "station": "OH_Columbus",
+      "name": "Columbus",
+      "state": "OH",
+      "latitude": 39.961,
+      "longitude": -82.999
     },
     {
-      "station": "KMOB",
-      "name": "Mobile, Mobile Regional Airport",
-      "latitude": 30.68833,
-      "longitude": -88.24556,
-      "county": "https://api.weather.gov/zones/county/ALC097"
+      "station": "OK_OklahomaCity",
+      "name": "Oklahoma City",
+      "state": "OK",
+      "latitude": 35.468,
+      "longitude": -97.516
     },
     {
-      "station": "KMSL",
-      "name": "Muscle Shoals, North West Alabama Regional Airport",
-      "latitude": 34.74389,
-      "longitude": -87.59944,
-      "county": "https://api.weather.gov/zones/county/ALC033"
+      "station": "OR_Salem",
+      "name": "Salem",
+      "state": "OR",
+      "latitude": 44.943,
+      "longitude": -123.035
     },
     {
-      "station": "KMXF",
-      "name": "Maxwell Air Force Base / Montgomery",
-      "latitude": 32.38333,
-      "longitude": -86.36667,
-      "county": "https://api.weather.gov/zones/county/ALC101"
+      "station": "PA_Harrisburg",
+      "name": "Harrisburg",
+      "state": "PA",
+      "latitude": 40.273,
+      "longitude": -76.887
     },
     {
-      "station": "KNBJ",
-      "name": "Barin, Barin Field, Naval Air Facility",
-      "latitude": 30.39111,
-      "longitude": -87.6325,
-      "county": "https://api.weather.gov/zones/county/ALC003"
+      "station": "RI_Providence",
+      "name": "Providence",
+      "state": "RI",
+      "latitude": 41.824,
+      "longitude": -71.412
     },
     {
-      "station": "KOZR",
-      "name": "Cairns Army Air Field / Ozark",
-      "latitude": 31.27672,
-      "longitude": -85.71099,
-      "county": "https://api.weather.gov/zones/county/ALC045"
+      "station": "SC_Columbia",
+      "name": "Columbia",
+      "state": "SC",
+      "latitude": 33.999,
+      "longitude": -81.035
     },
     {
-      "station": "KPLR",
-      "name": "St Clair County Airport",
-      "latitude": 33.5588,
-      "longitude": -86.2491,
-      "county": "https://api.weather.gov/zones/county/ALC115"
+      "station": "SD_Pierre",
+      "name": "Pierre",
+      "state": "SD",
+      "latitude": 44.368,
+      "longitude": -100.351
     },
     {
-      "station": "KPRN",
-      "name": "Mac Crenshaw Memorial Airport",
-      "latitude": 31.8457,
-      "longitude": -86.6107,
-      "county": "https://api.weather.gov/zones/county/ALC013"
+      "station": "TN_Nashville",
+      "name": "Nashville",
+      "state": "TN",
+      "latitude": 36.163,
+      "longitude": -86.782
     },
     {
-      "station": "KSCD",
-      "name": "Merkel Field Sylacauga Municipal Airport",
-      "latitude": 33.1718,
-      "longitude": -86.3055,
-      "county": "https://api.weather.gov/zones/county/ALC121"
+      "station": "TX_Austin",
+      "name": "Austin",
+      "state": "TX",
+      "latitude": 30.267,
+      "longitude": -97.743
     },
     {
-      "station": "KSEM",
-      "name": "Craig Field / Selma",
-      "latitude": 32.35,
-      "longitude": -86.98333,
-      "county": "https://api.weather.gov/zones/county/ALC047"
+      "station": "UT_SaltLakeCity",
+      "name": "Salt Lake City",
+      "state": "UT",
+      "latitude": 40.761,
+      "longitude": -111.891
     },
     {
-      "station": "KSXS",
-      "name": "SCHELL AHP",
-      "latitude": 31.35,
-      "longitude": -85.85,
-      "county": "https://api.weather.gov/zones/county/ALC031"
+      "station": "VT_Montpelier",
+      "name": "Montpelier",
+      "state": "VT",
+      "latitude": 44.26,
+      "longitude": -72.575
     },
     {
-      "station": "KTCL",
-      "name": "Tuscaloosa Regional Airport",
-      "latitude": 33.21215,
-      "longitude": -87.61554,
-      "county": "https://api.weather.gov/zones/county/ALC125"
+      "station": "VA_Richmond",
+      "name": "Richmond",
+      "state": "VA",
+      "latitude": 37.541,
+      "longitude": -77.436
     },
     {
-      "station": "KTOI",
-      "name": "Troy, Troy Municipal Airport",
-      "latitude": 31.86056,
-      "longitude": -86.01222,
-      "county": "https://api.weather.gov/zones/county/ALC109"
+      "station": "WA_Olympia",
+      "name": "Olympia",
+      "state": "WA",
+      "latitude": 47.038,
+      "longitude": -122.901
     },
     {
-      "station": "USA1",
-      "name": "USA West",
-      "latitude": 30.6944,
-      "longitude": -88.1944,
-      "county": "https://api.weather.gov/zones/county/ALC097"
+      "station": "WV_Charleston",
+      "name": "Charleston",
+      "state": "WV",
+      "latitude": 38.35,
+      "longitude": -81.632
     },
     {
-      "station": "USA3",
-      "name": "Grand Bay",
-      "latitude": 30.5065,
-      "longitude": -88.368,
-      "county": "https://api.weather.gov/zones/county/ALC097"
+      "station": "WI_Madison",
+      "name": "Madison",
+      "state": "WI",
+      "latitude": 43.073,
+      "longitude": -89.401
     },
     {
-      "station": "USA4",
-      "name": "Mobile Dog River",
-      "latitude": 30.5609,
-      "longitude": -88.0993,
-      "county": "https://api.weather.gov/zones/county/ALC097"
-    },
-    {
-      "station": "USA5",
-      "name": "Saraland",
-      "latitude": 30.8302,
-      "longitude": -88.0658,
-      "county": "https://api.weather.gov/zones/county/ALC097"
-    },
-    {
-      "station": "USA7",
-      "name": "Robertsdale",
-      "latitude": 30.584,
-      "longitude": -87.7301,
-      "county": "https://api.weather.gov/zones/county/ALC003"
-    },
-    {
-      "station": "USA8",
-      "name": "Elberta",
-      "latitude": 30.4113,
-      "longitude": -87.585,
-      "county": "https://api.weather.gov/zones/county/ALC003"
-    },
-    {
-      "station": "USA9",
-      "name": "Fairhope",
-      "latitude": 30.5412,
-      "longitude": -87.8819,
-      "county": "https://api.weather.gov/zones/county/ALC003"
-    },
-    {
-      "station": "CUTX",
-      "name": "CUT Chulitna",
-      "latitude": 62.4058,
-      "longitude": -150.2625,
-      "county": "https://api.weather.gov/zones/county/AKC170"
-    },
-    {
-      "station": "HDAX",
-      "name": "HDA Harding Lake",
-      "latitude": 64.4091,
-      "longitude": -146.9478,
-      "county": "https://api.weather.gov/zones/county/AKC090"
-    },
-    {
-      "station": "HOMX",
-      "name": "HOM Homer Trailer",
-      "latitude": 59.6572,
-      "longitude": -151.6515,
-      "county": "https://api.weather.gov/zones/county/AKC122"
-    },
-    {
-      "station": "MLYX",
-      "name": "MLY Manley Hot Springs",
-      "latitude": 65.0304,
-      "longitude": -150.7442,
-      "county": "https://api.weather.gov/zones/county/AKC290"
-    },
-    {
-      "station": "PAAD",
-      "name": "Point Thomson Airstrip",
-      "latitude": 70.136,
-      "longitude": -146.2901,
-      "county": "https://api.weather.gov/zones/county/AKC185"
-    },
-    {
-      "station": "PAAK",
-      "name": "Atka, Atka Airport",
-      "latitude": 52.22028,
-      "longitude": -174.20639,
-      "county": "https://api.weather.gov/zones/county/AKC016"
-    },
-    {
-      "station": "PAAQ",
-      "name": "Palmer, Palmer Municipal Airport",
-      "latitude": 61.6,
-      "longitude": -149.08333,
-      "county": "https://api.weather.gov/zones/county/AKC170"
-    },
-    {
-      "station": "PABA",
-      "name": "Barter Island, Barter Island LRRS Airport",
-      "latitude": 70.13389,
-      "longitude": -143.57694,
-      "county": null
-    },
-    {
-      "station": "PABE",
-      "name": "Bethel, Bethel Airport",
-      "latitude": 60.77972,
-      "longitude": -161.83778,
-      "county": "https://api.weather.gov/zones/county/AKC050"
-    },
-    {
-      "station": "PABI",
-      "name": "Delta Junction/Ft Greely, Allen Army Airfield",
-      "latitude": 64,
-      "longitude": -145.73333,
-      "county": "https://api.weather.gov/zones/county/AKC240"
-    },
-    {
-      "station": "PABL",
-      "name": "Buckland, Buckland Airport",
-      "latitude": 65.98222,
-      "longitude": -161.15194,
-      "county": "https://api.weather.gov/zones/county/AKC188"
-    },
-    {
-      "station": "PABP",
-      "name": "Badami Airport",
-      "latitude": 70.13747,
-      "longitude": -147.03044,
-      "county": "https://api.weather.gov/zones/county/AKC185"
-    },
-    {
-      "station": "PABR",
-      "name": "Wiley Post-Will Rogers Memorial Airport",
-      "latitude": 71.28528,
-      "longitude": -156.76583,
-      "county": "https://api.weather.gov/zones/county/AKC185"
-    },
-    {
-      "station": "PABT",
-      "name": "Bettles, Bettles Airport",
-      "latitude": 66.91667,
-      "longitude": -151.51667,
-      "county": "https://api.weather.gov/zones/county/AKC290"
-    },
-    {
-      "station": "PABV",
-      "name": "Birchwood, Birchwood Airport",
-      "latitude": 61.41667,
-      "longitude": -149.51667,
-      "county": "https://api.weather.gov/zones/county/AKC020"
-    },
-    {
-      "station": "PACD",
-      "name": "Cold Bay, Cold Bay Airport",
-      "latitude": 55.22083,
-      "longitude": -162.72778,
-      "county": "https://api.weather.gov/zones/county/AKC013"
-    },
-    {
-      "station": "PACV",
-      "name": "Cordova, Merle K (Mudhole) Smith Airport",
-      "latitude": 60.49167,
-      "longitude": -145.47778,
-      "county": "https://api.weather.gov/zones/county/AKC063"
-    },
-    {
-      "station": "PACX",
-      "name": "Coldfoot Airport",
-      "latitude": 67.25217,
-      "longitude": -150.20391,
-      "county": "https://api.weather.gov/zones/county/AKC290"
-    },
-    {
-      "station": "PACZ",
-      "name": "Cape Romanzof, Cape Romanzof LRRS Airport",
-      "latitude": 61.78333,
-      "longitude": -166.03333,
-      "county": "https://api.weather.gov/zones/county/AKC158"
-    },
-    {
-      "station": "PADE",
-      "name": "Deering, Deering/New Airport",
-      "latitude": 66.08333,
-      "longitude": -162.75,
-      "county": "https://api.weather.gov/zones/county/AKC188"
-    },
-    {
-      "station": "PADG",
-      "name": "Red Dog",
-      "latitude": 68.0321,
-      "longitude": -162.8992,
-      "county": "https://api.weather.gov/zones/county/AKC188"
-    },
-    {
-      "station": "PADK",
-      "name": "Adak Island, Adak Airport",
-      "latitude": 51.87778,
-      "longitude": -176.64583,
-      "county": "https://api.weather.gov/zones/county/AKC016"
-    },
-    {
-      "station": "PADL",
-      "name": "Dillingham, Dillingham Airport",
-      "latitude": 59.05,
-      "longitude": -158.51667,
-      "county": "https://api.weather.gov/zones/county/AKC070"
-    },
-    {
-      "station": "PADM",
-      "name": "Marshall",
-      "latitude": 61.8643,
-      "longitude": -162.0261,
-      "county": "https://api.weather.gov/zones/county/AKC158"
-    },
-    {
-      "station": "PADQ",
-      "name": "Kodiak, Kodiak Airport",
-      "latitude": 57.75,
-      "longitude": -152.5,
-      "county": "https://api.weather.gov/zones/county/AKC150"
-    },
-    {
-      "station": "PADU",
-      "name": "Unalaska, Unalaska Airport",
-      "latitude": 53.9,
-      "longitude": -166.53333,
-      "county": "https://api.weather.gov/zones/county/AKC016"
-    },
-    {
-      "station": "PAED",
-      "name": "Anchorage, Elmendorf Air Force Base",
-      "latitude": 61.25306,
-      "longitude": -149.79389,
-      "county": "https://api.weather.gov/zones/county/AKC020"
-    },
-    {
-      "station": "PAEG",
-      "name": "Eagle, Eagle Airport",
-      "latitude": 64.77639,
-      "longitude": -141.15083,
-      "county": "https://api.weather.gov/zones/county/AKC240"
-    },
-    {
-      "station": "PAEH",
-      "name": "Cape Newenham, Cape Newenham LRRS Airport",
-      "latitude": 58.65,
-      "longitude": -162.06667,
-      "county": "https://api.weather.gov/zones/county/AKC050"
-    },
-    {
-      "station": "PAEI",
-      "name": "Fairbanks, Eielson Air Force Base",
-      "latitude": 64.65,
-      "longitude": -147.1,
-      "county": "https://api.weather.gov/zones/county/AKC090"
-    },
-    {
-      "station": "PAEN",
-      "name": "Kenai, Kenai Municipal Airport",
-      "latitude": 60.57306,
-      "longitude": -151.245,
-      "county": "https://api.weather.gov/zones/county/AKC122"
-    },
-    {
-      "station": "PAFA",
-      "name": "Fairbanks, Fairbanks International Airport",
-      "latitude": 64.80389,
-      "longitude": -147.87611,
-      "county": "https://api.weather.gov/zones/county/AKC090"
-    },
-    {
-      "station": "PAFB",
-      "name": "Fort Wainwright AAF",
-      "latitude": 64.83667,
-      "longitude": -147.59556,
-      "county": "https://api.weather.gov/zones/county/AKC090"
-    },
-    {
-      "station": "PAFE",
-      "name": "Kake - Kake Airport",
-      "latitude": 56.964,
-      "longitude": -133.913,
-      "county": "https://api.weather.gov/zones/county/AKC198"
-    },
-    {
-      "station": "PAFM",
-      "name": "Ambler, Ambler Airport",
-      "latitude": 67.1,
-      "longitude": -157.85,
-      "county": "https://api.weather.gov/zones/county/AKC188"
-    },
-    {
-      "station": "PAFR",
-      "name": "Ft. Richardson / Bryant U. S. Army Heliport, Ak",
-      "latitude": 61.26667,
-      "longitude": -149.65,
-      "county": "https://api.weather.gov/zones/county/AKC020"
-    },
-    {
-      "station": "PAFS",
-      "name": "Nikolai",
-      "latitude": 63.019,
-      "longitude": -154.358,
-      "county": "https://api.weather.gov/zones/county/AKC290"
-    },
-    {
-      "station": "PAGA",
-      "name": "Galena, Edward G. Pitka Sr. Airport",
-      "latitude": 64.73333,
-      "longitude": -156.93333,
-      "county": "https://api.weather.gov/zones/county/AKC290"
-    },
-    {
-      "station": "PAGB",
-      "name": "Galbraith Lake, Galbraith Lake Airport",
-      "latitude": 68.48333,
-      "longitude": -149.48333,
-      "county": "https://api.weather.gov/zones/county/AKC185"
-    },
-    {
-      "station": "PAGH",
-      "name": "Shungnak Airport",
-      "latitude": 66.8881,
-      "longitude": -157.1624,
-      "county": "https://api.weather.gov/zones/county/AKC188"
-    },
-    {
-      "station": "PAGK",
-      "name": "Gulkana, Gulkana Airport",
-      "latitude": 62.15,
-      "longitude": -145.45,
-      "county": "https://api.weather.gov/zones/county/AKC066"
-    },
-    {
-      "station": "PAGL",
-      "name": "Golovin, Golovin Airport",
-      "latitude": 64.54333,
-      "longitude": -163.03944,
-      "county": "https://api.weather.gov/zones/county/AKC180"
-    },
-    {
-      "station": "PAGM",
-      "name": "Gambell, Gambell Airport",
-      "latitude": 63.76667,
-      "longitude": -171.73333,
-      "county": "https://api.weather.gov/zones/county/AKC180"
-    },
-    {
-      "station": "PAGN",
-      "name": "Angoon",
-      "latitude": 57.5,
-      "longitude": -134.58333,
-      "county": "https://api.weather.gov/zones/county/AKC105"
-    },
-    {
-      "station": "PAGS",
-      "name": "Gustavus, Gustavus Airport",
-      "latitude": 58.41667,
-      "longitude": -135.7,
-      "county": "https://api.weather.gov/zones/county/AKC105"
-    },
-    {
-      "station": "PAGY",
-      "name": "Skagway",
-      "latitude": 59.4544,
-      "longitude": -135.3263,
-      "county": null
-    },
-    {
-      "station": "PAHC",
-      "name": "Holy Cross",
-      "latitude": 62.1873,
-      "longitude": -159.77657,
-      "county": "https://api.weather.gov/zones/county/AKC290"
-    },
-    {
-      "station": "PAHL",
-      "name": "Huslia, Huslia Airport",
-      "latitude": 65.6975,
-      "longitude": -156.35111,
-      "county": "https://api.weather.gov/zones/county/AKC290"
-    },
-    {
-      "station": "PAHN",
-      "name": "Haines - Haines Airport",
-      "latitude": 59.2429,
-      "longitude": -135.5114,
-      "county": "https://api.weather.gov/zones/county/AKC100"
-    },
-    {
-      "station": "PAHO",
-      "name": "Homer, Homer Airport",
-      "latitude": 59.65,
-      "longitude": -151.48333,
-      "county": "https://api.weather.gov/zones/county/AKC122"
-    },
-    {
-      "station": "PAHP",
-      "name": "Hooper Bay, Hooper Bay Airport",
-      "latitude": 61.51667,
-      "longitude": -166.13333,
-      "county": "https://api.weather.gov/zones/county/AKC158"
-    },
-    {
-      "station": "PAHX",
-      "name": "Shageluk Airport",
-      "latitude": 62.6923,
-      "longitude": -159.5692,
-      "county": "https://api.weather.gov/zones/county/AKC290"
-    },
-    {
-      "station": "PAHY",
-      "name": "Hydaburg - Hydaburg Seaplane Base",
-      "latitude": 55.2,
-      "longitude": -132.83333,
-      "county": "https://api.weather.gov/zones/county/AKC198"
-    },
-    {
-      "station": "PAIG",
-      "name": "Igiugig",
-      "latitude": 59.32395,
-      "longitude": -155.90235,
-      "county": "https://api.weather.gov/zones/county/AKC164"
-    },
-    {
-      "station": "PAIK",
-      "name": "Kinana / Bob Baker Me",
-      "latitude": 66.98333,
-      "longitude": -160.43333,
-      "county": "https://api.weather.gov/zones/county/AKC188"
-    },
-    {
-      "station": "PAIL",
-      "name": "Iliamna, Iliamna Airport",
-      "latitude": 59.75,
-      "longitude": -154.9,
-      "county": "https://api.weather.gov/zones/county/AKC164"
-    },
-    {
-      "station": "PAIM",
-      "name": "Utopia Creek, Indian Mountain LRRS Airport",
-      "latitude": 66,
-      "longitude": -153.7,
-      "county": "https://api.weather.gov/zones/county/AKC290"
-    },
-    {
-      "station": "PAIN",
-      "name": "McKinley Park, McKinley National Park Airport",
-      "latitude": 63.73333,
-      "longitude": -148.91667,
-      "county": "https://api.weather.gov/zones/county/AKC068"
-    },
-    {
-      "station": "PAIW",
-      "name": "Wales",
-      "latitude": 65.6226,
-      "longitude": -168.0949,
-      "county": "https://api.weather.gov/zones/county/AKC180"
-    },
-    {
-      "station": "PAJC",
-      "name": "Chignik, Chignik Airport",
-      "latitude": 56.31139,
-      "longitude": -158.37333,
-      "county": "https://api.weather.gov/zones/county/AKC164"
-    },
-    {
-      "station": "PAJN",
-      "name": "Juneau, Juneau International Airport",
-      "latitude": 58.35472,
-      "longitude": -134.57611,
-      "county": "https://api.weather.gov/zones/county/AKC110"
-    },
-    {
-      "station": "PAJZ",
-      "name": "Koliganek",
-      "latitude": 59.727,
-      "longitude": -157.259,
-      "county": "https://api.weather.gov/zones/county/AKC070"
-    },
-    {
-      "station": "PAKH",
-      "name": "Akhiok",
-      "latitude": 56.9387,
-      "longitude": -154.1826,
-      "county": "https://api.weather.gov/zones/county/AKC150"
-    },
-    {
-      "station": "PAKI",
-      "name": "Kipnuk, Kipnuk Airport",
-      "latitude": 59.93278,
-      "longitude": -164.03028,
-      "county": "https://api.weather.gov/zones/county/AKC050"
-    },
-    {
-      "station": "PAKK",
-      "name": "Koyuk, Koyuk Airport",
-      "latitude": 64.93389,
-      "longitude": -161.15806,
-      "county": "https://api.weather.gov/zones/county/AKC180"
-    },
-    {
-      "station": "PAKN",
-      "name": "King Salmon, King Salmon Airport",
-      "latitude": 58.67667,
-      "longitude": -156.64917,
-      "county": "https://api.weather.gov/zones/county/AKC060"
-    },
-    {
-      "station": "PAKP",
-      "name": "Anaktuvuk Pass, Anaktuvuk Pass Airport",
-      "latitude": 68.13361,
-      "longitude": -151.74333,
-      "county": "https://api.weather.gov/zones/county/AKC185"
-    },
-    {
-      "station": "PAKT",
-      "name": "Ketchikan, Ketchikan International Airport",
-      "latitude": 55.35556,
-      "longitude": -131.71361,
-      "county": "https://api.weather.gov/zones/county/AKC130"
-    },
-    {
-      "station": "PAKU",
-      "name": "Kuparuk, Ugnu-Kuparuk Airport",
-      "latitude": 70.31667,
-      "longitude": -149.58333,
-      "county": "https://api.weather.gov/zones/county/AKC185"
-    },
-    {
-      "station": "PAKV",
-      "name": "Kaltag, Kaltag Airport",
-      "latitude": 64.31667,
-      "longitude": -158.73333,
-      "county": "https://api.weather.gov/zones/county/AKC290"
-    },
-    {
-      "station": "PAKW",
-      "name": "Klawock - Klawock Airport",
-      "latitude": 55.5839,
-      "longitude": -133.067,
-      "county": "https://api.weather.gov/zones/county/AKC198"
-    },
-    {
-      "station": "PAKX",
-      "name": "WILDER NATWICK",
-      "latitude": 60.2,
-      "longitude": -154.3166,
-      "county": "https://api.weather.gov/zones/county/AKC164"
-    },
-    {
-      "station": "PALG",
-      "name": "Kalskag",
-      "latitude": 61.5364,
-      "longitude": -160.3414,
-      "county": "https://api.weather.gov/zones/county/AKC050"
-    },
-    {
-      "station": "PALH",
-      "name": "Anchorage, Lake Hood Seaplane Base",
-      "latitude": 61.18333,
-      "longitude": -149.96667,
-      "county": "https://api.weather.gov/zones/county/AKC020"
-    },
-    {
-      "station": "PALP",
-      "name": "Deadhorse, Alpine Airstrip",
-      "latitude": 70.33333,
-      "longitude": -150.93333,
-      "county": "https://api.weather.gov/zones/county/AKC185"
-    },
-    {
-      "station": "PALU",
-      "name": "Cape Lisburne, Cape Lisburne LRRS Airport",
-      "latitude": 68.88333,
-      "longitude": -166.1,
-      "county": null
-    },
-    {
-      "station": "PAMB",
-      "name": "Manokotak",
-      "latitude": 58.9902,
-      "longitude": -159.0499,
-      "county": "https://api.weather.gov/zones/county/AKC070"
-    },
-    {
-      "station": "PAMC",
-      "name": "McGrath, McGrath Airport",
-      "latitude": 62.96667,
-      "longitude": -155.61667,
-      "county": "https://api.weather.gov/zones/county/AKC290"
-    },
-    {
-      "station": "PAMD",
-      "name": "Middleton Island Airport",
-      "latitude": 59.4423,
-      "longitude": -146.3166,
-      "county": "https://api.weather.gov/zones/county/AKC063"
-    },
-    {
-      "station": "PAMH",
-      "name": "Minchumina, Minchumina Airport",
-      "latitude": 63.88056,
-      "longitude": -152.30056,
-      "county": "https://api.weather.gov/zones/county/AKC290"
-    },
-    {
-      "station": "PAMK",
-      "name": "St Michael Airport",
-      "latitude": 63.49006,
-      "longitude": -162.11039,
-      "county": "https://api.weather.gov/zones/county/AKC180"
-    },
-    {
-      "station": "PAMM",
-      "name": "Metlakatla, Metlakatla Seaplane Base",
-      "latitude": 55.13111,
-      "longitude": -131.57806,
-      "county": null
-    },
-    {
-      "station": "PAMO",
-      "name": "Mountain Village",
-      "latitude": 62.0953,
-      "longitude": -163.6819,
-      "county": "https://api.weather.gov/zones/county/AKC158"
-    },
-    {
-      "station": "PAMR",
-      "name": "Anchorage, Merrill Field Airport",
-      "latitude": 61.21667,
-      "longitude": -149.85,
-      "county": "https://api.weather.gov/zones/county/AKC020"
-    },
-    {
-      "station": "PANA",
-      "name": "Napakiak Airport",
-      "latitude": 60.6903,
-      "longitude": -161.9785,
-      "county": "https://api.weather.gov/zones/county/AKC050"
-    },
-    {
-      "station": "PANC",
-      "name": "Anchorage, Ted Stevens Anchorage International Airport",
-      "latitude": 61.17444,
-      "longitude": -149.99611,
-      "county": "https://api.weather.gov/zones/county/AKC020"
-    },
-    {
-      "station": "PANI",
-      "name": "Aniak, Aniak Airport",
-      "latitude": 61.58139,
-      "longitude": -159.54278,
-      "county": "https://api.weather.gov/zones/county/AKC050"
-    },
-    {
-      "station": "PANN",
-      "name": "Nenana Municipal Airport",
-      "latitude": 64.54796,
-      "longitude": -149.08398,
-      "county": "https://api.weather.gov/zones/county/AKC290"
-    },
-    {
-      "station": "PANU",
-      "name": "Nulato Airport",
-      "latitude": 64.72933,
-      "longitude": -158.07422,
-      "county": "https://api.weather.gov/zones/county/AKC290"
-    },
-    {
-      "station": "PANV",
-      "name": "Anvik, Anvik Airport",
-      "latitude": 62.64833,
-      "longitude": -160.18972,
-      "county": "https://api.weather.gov/zones/county/AKC290"
-    },
-    {
-      "station": "PANW",
-      "name": "New Stuyahok",
-      "latitude": 59.45,
-      "longitude": -157.328,
-      "county": "https://api.weather.gov/zones/county/AKC070"
-    },
-    {
-      "station": "PAOH",
-      "name": "Hoonah - Hoonah Seaplane Base",
-      "latitude": 58.097,
-      "longitude": -135.414,
-      "county": "https://api.weather.gov/zones/county/AKC105"
-    },
-    {
-      "station": "PAOM",
-      "name": "Nome, Nome Airport",
-      "latitude": 64.51194,
-      "longitude": -165.445,
-      "county": "https://api.weather.gov/zones/county/AKC180"
-    },
-    {
-      "station": "PAOO",
-      "name": "Toksook Bay",
-      "latitude": 60.53352,
-      "longitude": -165.1143,
-      "county": "https://api.weather.gov/zones/county/AKC050"
-    },
-    {
-      "station": "PAOR",
-      "name": "Northway, Northway Airport",
-      "latitude": 62.96111,
-      "longitude": -141.92889,
-      "county": "https://api.weather.gov/zones/county/AKC240"
-    },
-    {
-      "station": "PAOT",
-      "name": "Ralph Wien Memorial Airport",
-      "latitude": 66.88576,
-      "longitude": -162.60624,
-      "county": "https://api.weather.gov/zones/county/AKC188"
-    },
-    {
-      "station": "PAOU",
-      "name": "Nelson Lagoon",
-      "latitude": 56.008,
-      "longitude": -161.16,
-      "county": "https://api.weather.gov/zones/county/AKC013"
-    },
-    {
-      "station": "PAPB",
-      "name": "St. George, St. George Airport",
-      "latitude": 56.57861,
-      "longitude": -169.66139,
-      "county": "https://api.weather.gov/zones/county/AKC016"
-    },
-    {
-      "station": "PAPG",
-      "name": "Petersburg",
-      "latitude": 56.8017,
-      "longitude": -132.9453,
-      "county": "https://api.weather.gov/zones/county/AKC195"
-    },
-    {
-      "station": "PAPH",
-      "name": "Port Heiden, Port Heiden Airport",
-      "latitude": 56.95,
-      "longitude": -158.63333,
-      "county": "https://api.weather.gov/zones/county/AKC164"
-    },
-    {
-      "station": "PAPM",
-      "name": "Platinum",
-      "latitude": 59.01667,
-      "longitude": -161.81667,
-      "county": null
-    },
-    {
-      "station": "PAPN",
-      "name": "Pilot Point Airport",
-      "latitude": 57.58,
-      "longitude": -157.572,
-      "county": "https://api.weather.gov/zones/county/AKC164"
-    },
-    {
-      "station": "PAPO",
-      "name": "Point Hope, Point Hope Airport",
-      "latitude": 68.35,
-      "longitude": -166.8,
-      "county": "https://api.weather.gov/zones/county/AKC185"
-    },
-    {
-      "station": "PAPR",
-      "name": "Prospect Creek, Prospect Creek Airport",
-      "latitude": 66.81278,
-      "longitude": -150.64389,
-      "county": "https://api.weather.gov/zones/county/AKC290"
-    },
-    {
-      "station": "PAPT",
-      "name": "Puntilla",
-      "latitude": 62.1,
-      "longitude": -152.75,
-      "county": "https://api.weather.gov/zones/county/AKC170"
-    },
-    {
-      "station": "PAQH",
-      "name": "Quinhagak Airport",
-      "latitude": 59.7551,
-      "longitude": -161.8454,
-      "county": "https://api.weather.gov/zones/county/AKC050"
-    },
-    {
-      "station": "PAQT",
-      "name": "Nuiqsut, Nuiqsut Airport",
-      "latitude": 70.21,
-      "longitude": -151.00556,
-      "county": "https://api.weather.gov/zones/county/AKC185"
-    },
-    {
-      "station": "PARC",
-      "name": "Arctic Village, Arctic Village Airport",
-      "latitude": 68.11444,
-      "longitude": -145.57917,
-      "county": "https://api.weather.gov/zones/county/AKC290"
-    },
-    {
-      "station": "PARS",
-      "name": "Russian Mission",
-      "latitude": 61.775,
-      "longitude": -161.3194,
-      "county": "https://api.weather.gov/zones/county/AKC158"
-    },
-    {
-      "station": "PARY",
-      "name": "Ruby",
-      "latitude": 64.7272,
-      "longitude": -155.4697,
-      "county": "https://api.weather.gov/zones/county/AKC290"
-    },
-    {
-      "station": "PASA",
-      "name": "Savoonga Airport",
-      "latitude": 63.68333,
-      "longitude": -170.5,
-      "county": "https://api.weather.gov/zones/county/AKC180"
-    },
-    {
-      "station": "PASC",
-      "name": "Deadhorse, Deadhorse Airport",
-      "latitude": 70.2,
-      "longitude": -148.46667,
-      "county": "https://api.weather.gov/zones/county/AKC185"
-    },
-    {
-      "station": "PASD",
-      "name": "Sand Point",
-      "latitude": 55.31667,
-      "longitude": -160.51667,
-      "county": "https://api.weather.gov/zones/county/AKC013"
-    },
-    {
-      "station": "PASH",
-      "name": "Shishmaref, Shishmaref Airport",
-      "latitude": 66.26667,
-      "longitude": -166.08333,
-      "county": null
-    },
-    {
-      "station": "PASI",
-      "name": "Sitka - Sitka Airport",
-      "latitude": 57.048,
-      "longitude": -135.3647,
-      "county": "https://api.weather.gov/zones/county/AKC220"
-    },
-    {
-      "station": "PASK",
-      "name": "Selawik",
-      "latitude": 66.61667,
-      "longitude": -160,
-      "county": "https://api.weather.gov/zones/county/AKC188"
-    },
-    {
-      "station": "PASL",
-      "name": "Sleetmute",
-      "latitude": 61.69735,
-      "longitude": -157.16712,
-      "county": "https://api.weather.gov/zones/county/AKC050"
-    },
-    {
-      "station": "PASM",
-      "name": "St. Mary's, St. Mary's Airport",
-      "latitude": 62.05,
-      "longitude": -163.3,
-      "county": "https://api.weather.gov/zones/county/AKC158"
-    },
-    {
-      "station": "PASN",
-      "name": "St. Paul Island, St. Paul Island Airport",
-      "latitude": 57.16667,
-      "longitude": -170.21667,
-      "county": "https://api.weather.gov/zones/county/AKC016"
-    },
-    {
-      "station": "PASO",
-      "name": "Seldovia, Seldovia Airport",
-      "latitude": 59.45,
-      "longitude": -151.7,
-      "county": "https://api.weather.gov/zones/county/AKC122"
-    },
-    {
-      "station": "PASV",
-      "name": "Sparrevohn Airways Facilities Sector",
-      "latitude": 61.1,
-      "longitude": -155.56667,
-      "county": "https://api.weather.gov/zones/county/AKC050"
-    },
-    {
-      "station": "PASX",
-      "name": "Soldotna",
-      "latitude": 60.48333,
-      "longitude": -151.03333,
-      "county": "https://api.weather.gov/zones/county/AKC122"
-    },
-    {
-      "station": "PASY",
-      "name": "Shemya, Eareckson AFB",
-      "latitude": 52.71667,
-      "longitude": 174.11667,
-      "county": "https://api.weather.gov/zones/county/AKC016"
-    },
-    {
-      "station": "PATA",
-      "name": "Tanana, Calhoun Memorial Airport",
-      "latitude": 65.16667,
-      "longitude": -152.1,
-      "county": "https://api.weather.gov/zones/county/AKC290"
-    },
-    {
-      "station": "PATC",
-      "name": "Tin City Airways Facilities Sector",
-      "latitude": 65.56667,
-      "longitude": -167.91667,
-      "county": "https://api.weather.gov/zones/county/AKC180"
-    },
-    {
-      "station": "PATE",
-      "name": "Teller",
-      "latitude": 65.2404,
-      "longitude": -166.3393,
-      "county": "https://api.weather.gov/zones/county/AKC180"
-    },
-    {
-      "station": "PATG",
-      "name": "Togiac Village, Togiak Airport",
-      "latitude": 59.05,
-      "longitude": -160.4,
-      "county": "https://api.weather.gov/zones/county/AKC070"
-    },
-    {
-      "station": "PATK",
-      "name": "Talkeetna, Talkeetna Airport",
-      "latitude": 62.32056,
-      "longitude": -150.09361,
-      "county": "https://api.weather.gov/zones/county/AKC170"
-    },
-    {
-      "station": "PATL",
-      "name": "Takotna, Tatalina LRRS Airport",
-      "latitude": 62.9,
-      "longitude": -155.98333,
-      "county": "https://api.weather.gov/zones/county/AKC290"
-    },
-    {
-      "station": "PATO",
-      "name": "Portage, Portage Glacier",
-      "latitude": 60.78333,
-      "longitude": -148.83333,
-      "county": "https://api.weather.gov/zones/county/AKC020"
-    },
-    {
-      "station": "PATQ",
-      "name": "Atqasuk",
-      "latitude": 70.4673,
-      "longitude": -157.4357,
-      "county": "https://api.weather.gov/zones/county/AKC185"
-    },
-    {
-      "station": "PAUN",
-      "name": "Unalakleet",
-      "latitude": 63.88333,
-      "longitude": -160.8,
-      "county": "https://api.weather.gov/zones/county/AKC180"
-    },
-    {
-      "station": "PAVA",
-      "name": "Chevak Airport",
-      "latitude": 61.5408,
-      "longitude": -165.6009,
-      "county": "https://api.weather.gov/zones/county/AKC158"
-    },
-    {
-      "station": "PAVC",
-      "name": "King Cove",
-      "latitude": 55.116,
-      "longitude": -162.266,
-      "county": "https://api.weather.gov/zones/county/AKC013"
-    },
-    {
-      "station": "PAVD",
-      "name": "Valdez 2",
-      "latitude": 61.13333,
-      "longitude": -146.26667,
-      "county": "https://api.weather.gov/zones/county/AKC063"
-    },
-    {
-      "station": "PAVL",
-      "name": "Kivalina, Kivalina Airport",
-      "latitude": 67.73333,
-      "longitude": -164.55,
-      "county": "https://api.weather.gov/zones/county/AKC188"
-    },
-    {
-      "station": "PAWD",
-      "name": "Seward",
-      "latitude": 60.11667,
-      "longitude": -149.45,
-      "county": "https://api.weather.gov/zones/county/AKC122"
-    },
-    {
-      "station": "PAWG",
-      "name": "Wrangell",
-      "latitude": 56.48333,
-      "longitude": -132.36667,
-      "county": "https://api.weather.gov/zones/county/AKC275"
-    },
-    {
-      "station": "PAWM",
-      "name": "White Mountain Airport",
-      "latitude": 64.6892,
-      "longitude": -163.4127,
-      "county": "https://api.weather.gov/zones/county/AKC180"
-    },
-    {
-      "station": "PAWN",
-      "name": "Noatak, Noatak Airport",
-      "latitude": 67.56667,
-      "longitude": -162.98333,
-      "county": "https://api.weather.gov/zones/county/AKC188"
-    },
-    {
-      "station": "PAWS",
-      "name": "Wasilla, Wasilla Airport",
-      "latitude": 61.57194,
-      "longitude": -149.54056,
-      "county": "https://api.weather.gov/zones/county/AKC170"
-    },
-    {
-      "station": "PAYA",
-      "name": "Yakutat",
-      "latitude": 59.51667,
-      "longitude": -139.66667,
-      "county": "https://api.weather.gov/zones/county/AKC282"
-    },
-    {
-      "station": "PAZK",
-      "name": "Eureka, Skelton Airport",
-      "latitude": 61.93333,
-      "longitude": -147.16667,
-      "county": "https://api.weather.gov/zones/county/AKC170"
-    },
-    {
-      "station": "PFCB",
-      "name": "Chenega Bay Airport",
-      "latitude": 60.07856,
-      "longitude": -147.99473,
-      "county": "https://api.weather.gov/zones/county/AKC063"
-    },
-    {
-      "station": "PFCL",
-      "name": "Clarks Point Airport",
-      "latitude": 58.8337,
-      "longitude": -158.5294,
-      "county": "https://api.weather.gov/zones/county/AKC070"
-    },
-    {
-      "station": "PFEL",
-      "name": "Elim Airport",
-      "latitude": 64.615,
-      "longitude": -162.2705,
-      "county": "https://api.weather.gov/zones/county/AKC180"
-    },
-    {
-      "station": "PFKO",
-      "name": "Kotlik Airport",
-      "latitude": 63.03058,
-      "longitude": -163.53264,
-      "county": "https://api.weather.gov/zones/county/AKC158"
-    },
-    {
-      "station": "PFKT",
-      "name": "Brevig Mission Airport",
-      "latitude": 65.3313,
-      "longitude": -166.4657,
-      "county": "https://api.weather.gov/zones/county/AKC180"
-    },
-    {
-      "station": "PFKW",
-      "name": "Kwethluk Airport",
-      "latitude": 60.7903,
-      "longitude": -161.4437,
-      "county": "https://api.weather.gov/zones/county/AKC050"
-    },
-    {
-      "station": "PFNO",
-      "name": "Noorvik",
-      "latitude": 66.8175,
-      "longitude": -161.0223,
-      "county": "https://api.weather.gov/zones/county/AKC188"
-    },
-    {
-      "station": "PFSH",
-      "name": "Shaktoolik Airport",
-      "latitude": 64.3711,
-      "longitude": -161.224,
-      "county": "https://api.weather.gov/zones/county/AKC180"
-    },
-    {
-      "station": "PFTO",
-      "name": "Tok Junction Airport",
-      "latitude": 63.32951,
-      "longitude": -142.95368,
-      "county": "https://api.weather.gov/zones/county/AKC240"
-    },
-    {
-      "station": "PFWS",
-      "name": "South Naknek Nr 2 Airport",
-      "latitude": 58.7021,
-      "longitude": -157.0026,
-      "county": "https://api.weather.gov/zones/county/AKC060"
-    },
-    {
-      "station": "PFYU",
-      "name": "Fort Yukon, Fort Yukon Airport",
-      "latitude": 66.56667,
-      "longitude": -145.26667,
-      "county": "https://api.weather.gov/zones/county/AKC290"
-    },
-    {
-      "station": "PFZK",
-      "name": "Akiachak Airport",
-      "latitude": 60.91381,
-      "longitude": -161.49333,
-      "county": "https://api.weather.gov/zones/county/AKC050"
-    },
-    {
-      "station": "PPIZ",
-      "name": "Point Lay, Point Lay LRRS Airport",
-      "latitude": 69.71667,
-      "longitude": -163,
-      "county": null
-    },
-    {
-      "station": "SSNX",
-      "name": "SSN Susitna",
-      "latitude": 61.4636,
-      "longitude": -150.7467,
-      "county": "https://api.weather.gov/zones/county/AKC170"
+      "station": "WY_Cheyenne",
+      "name": "Cheyenne",
+      "state": "WY",
+      "latitude": 41.14,
+      "longitude": -104.82
     }
   ]
 }
