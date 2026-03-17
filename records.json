@@ -1,0 +1,66 @@
+{
+  "03-16": {
+    "high": 86, "high_location": "Pierre, SD (2012)",
+    "low": -30, "low_location": "Pokegama Dam, MN (1888)"
+  },
+  "03-17": {
+    "high": 101, "high_location": "Rio Grande City, TX (1908)",
+    "low": -31, "low_location": "Tower, MN (1923)"
+  },
+  "03-18": {
+    "high": 99, "high_location": "Laredo, TX (1907)",
+    "low": -33, "low_location": "Hallock, MN (1923)"
+  },
+  "03-19": {
+    "high": 100, "high_location": "Falcon Lake, TX (2020)",
+    "low": -28, "low_location": "Intl Falls, MN (1965)"
+  },
+  "03-20": {
+    "high": 101, "high_location": "Falcon Lake, TX (2022)",
+    "low": -25, "low_location": "Embarrass, MN (1965)"
+  },
+  "03-21": {
+    "high": 102, "high_location": "Falcon Lake, TX (2022)",
+    "low": -24, "low_location": "Babbitt, MN (1965)"
+  },
+  "03-22": {
+    "high": 103, "high_location": "Rio Grande City, TX (1908)",
+    "low": -24, "low_location": "Cotton, MN (1965)"
+  },
+  "03-23": {
+    "high": 104, "high_location": "Cotulla, TX (1904)",
+    "low": -27, "low_location": "Big Piney, WY (1965)"
+  },
+  "03-24": {
+    "high": 105, "high_location": "Laredo, TX (1904)",
+    "low": -30, "low_location": "Bondurant, WY (1965)"
+  },
+  "03-25": {
+    "high": 100, "high_location": "Tucson, AZ (1988)",
+    "low": -21, "low_location": "Stanley, ID (1965)"
+  },
+  "03-26": {
+    "high": 102, "high_location": "Gila Bend, AZ (1988)",
+    "low": -20, "low_location": "Darwin, CA (1913)"
+  },
+  "03-27": {
+    "high": 100, "high_location": "Pecos, TX (1971)",
+    "low": -22, "low_location": "Saranac Lake, NY (1923)"
+  },
+  "03-28": {
+    "high": 101, "high_location": "Imperial, CA (1988)",
+    "low": -19, "low_location": "Eagle River, WI (1923)"
+  },
+  "03-29": {
+    "high": 103, "high_location": "Death Valley, CA (2015)",
+    "low": -18, "low_location": "Butte, MT (1923)"
+  },
+  "03-30": {
+    "high": 100, "high_location": "McAllen, TX (2021)",
+    "low": -15, "low_location": "Whitefield, NH (1923)"
+  },
+  "03-31": {
+    "high": 104, "high_location": "Laredo, TX (2011)",
+    "low": -12, "low_location": "Mount Washington, NH (1923)"
+  }
+}
