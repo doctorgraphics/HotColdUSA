@@ -514,66 +514,46 @@
     const DATA_URL = "https://raw.githubusercontent.com/doctorgraphics/HotColdUSA/data/latest.json";
 
 async function loadWeather() {
-    try {
-        const response = await fetch(DATA_URL);
-        const data = await response.json();
-        // ... rest of your logic
-    } catch (e) {
-        console.error("Failed to load weather:", e);
-    }
+  const statusMessage = document.getElementById("statusMessage");
+  try {
+    const response = await fetch(`${DATA_URL}?t=${Date.now()}`);
+    const data = await response.json();
+
+    // 1. Identify the winners using the EXACT keys from your JSON
+    const hotList = data.top_5_hot;
+    const coldList = data.top_5_cold;
+    
+    const hottest = hotList[0];
+    const coldest = coldList[0];
+    const spread = Math.round(hottest.temp_f - coldest.temp_f);
+
+    // 2. Update Top Badges
+    document.getElementById("todayDate").textContent = formatShortDate(data.generated_at);
+    document.getElementById("updatedAt").textContent = `Updated ${formatTime(data.generated_at)}`;
+
+    // 3. Update Big Cards
+    document.getElementById("hotTemp").textContent = formatTemp(hottest.temp_f);
+    document.getElementById("hotPlace").textContent = `${hottest.city}, ${hottest.state}`;
+    
+    document.getElementById("coldTemp").textContent = formatTemp(coldest.temp_f);
+    document.getElementById("coldPlace").textContent = `${coldest.city}, ${coldest.state}`;
+
+    // 4. Update Spread & Share Card
+    document.getElementById("spreadValue").textContent = `${spread}°F`;
+    document.getElementById("shareSpread").textContent = `🌡️ Spread — ${spread}°F`;
+    document.getElementById("shareHot").textContent = `🔥 ${hottest.city} — ${formatTemp(hottest.temp_f)}`;
+    document.getElementById("shareCold").textContent = `❄️ ${coldest.city} — ${formatTemp(coldest.temp_f)}`;
+
+    // 5. Render the Tables
+    renderTableRows(document.getElementById("hotTableBody"), hotList);
+    renderTableRows(document.getElementById("coldTableBody"), coldList);
+
+    statusMessage.style.display = "none";
+  } catch (error) {
+    console.error("Layout Error:", error);
+    statusMessage.textContent = "Data found, but could not be displayed. Check console.";
+    statusMessage.className = "error";
+  }
 }
-
-        const data = await response.json();
-
-        const hottest = data.hottest;
-        const coldest = data.coldest;
-        const spread = data.spread_f;
-        const generatedAt = data.generated_at;
-        const stationCount = data.station_count ?? "--";
-
-        document.getElementById("todayDate").textContent = formatShortDate(generatedAt);
-        document.getElementById("updatedAt").textContent = `Updated ${formatTime(generatedAt)}`;
-
-        document.getElementById("hotTemp").textContent = formatTemp(hottest.temp_f);
-        document.getElementById("hotPlace").textContent = placeName(hottest);
-        document.getElementById("hotMeta").textContent =
-          `${hottest.condition || "Unknown"} • Observed ${formatTime(hottest.observed_at)}`;
-
-        document.getElementById("coldTemp").textContent = formatTemp(coldest.temp_f);
-        document.getElementById("coldPlace").textContent = placeName(coldest);
-        document.getElementById("coldMeta").textContent =
-          `${coldest.condition || "Unknown"} • Observed ${formatTime(coldest.observed_at)}`;
-
-        document.getElementById("spreadValue").textContent = formatTemp(spread);
-        document.getElementById("mapHotLabel").textContent = `🔥 ${hottest.city || hottest.station || "Hot"}`;
-        document.getElementById("mapColdLabel").textContent = `❄️ ${coldest.city || coldest.station || "Cold"}`;
-
-        document.getElementById("stationCount").textContent = `Stations checked: ${stationCount}`;
-        document.getElementById("stationCountSide").textContent = stationCount;
-        document.getElementById("dataSource").textContent = data.source || "National Weather Service API";
-        document.getElementById("generatedAt").textContent = formatDateTime(generatedAt);
-
-        document.getElementById("shareDate").textContent = formatShortDate(generatedAt);
-        document.getElementById("shareHot").textContent =
-          `🔥 ${placeName(hottest)} — ${formatTemp(hottest.temp_f)}`;
-        document.getElementById("shareCold").textContent =
-          `❄️ ${placeName(coldest)} — ${formatTemp(coldest.temp_f)}`;
-        document.getElementById("shareSpread").textContent =
-          `🌡️ Spread — ${formatTemp(spread)}`;
-
-        renderTableRows(document.getElementById("hotTableBody"), data.top_hot);
-        renderTableRows(document.getElementById("coldTableBody"), data.top_cold);
-
-        statusMessage.textContent = "Weather data loaded successfully.";
-        statusMessage.className = "loading";
-      } catch (error) {
-        console.error("Failed to load weather data:", error);
-        statusMessage.textContent = "Could not load weather data from the data-storage branch.";
-        statusMessage.className = "error";
-      }
-    }
-
-    loadWeather();
-  </script>
 </body>
 </html>
