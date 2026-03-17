@@ -369,19 +369,37 @@
         </article>
 
         <article class="card section">
-  <h3>Daily Share Card</h3>
-  <div class="share-card">
-    <div class="eyebrow" style="margin-bottom: 10px;">HotCold USA — <span id="shareDate">--</span></div>
-    <div id="shareHot">🔥 Loading...</div>
-    <div id="shareCold">❄️ Loading...</div>
-    <div id="shareSpread" style="border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 8px;">🌡️ Spread — --°F</div>
-    
-    <div style="font-size: 0.8rem; opacity: 0.8;">
-      <div id="shareRecordHigh">📈 Record High: --</div>
-      <div id="shareRecordLow">📉 Record Low: --</div>
-    </div>
-  </div>
-</article>
+          <h3>Daily Share Card</h3>
+          <div class="share-card">
+            <div class="eyebrow" style="margin-bottom: 10px;">HotCold USA — <span id="shareDate">--</span></div>
+            <div id="shareHot">🔥 Loading...</div>
+            <div id="shareCold">❄️ Loading...</div>
+            <div id="shareSpread" style="border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 8px;">🌡️ Spread — --°F</div>
+            <div style="font-size: 0.8rem; opacity: 0.8;">
+              <div id="shareRecordHigh">📈 Record High: --</div>
+              <div id="shareRecordLow">📉 Record Low: --</div>
+            </div>
+          </div>
+        </article>
+        <button onclick="copyShareCard()" style="width: 100%; margin-top: 10px; padding: 12px; border-radius: 12px; background: var(--line); color: var(--text); border: 1px solid var(--line); cursor: pointer; font-weight: 600;">
+          📋 Copy Stats to Clipboard
+        </button>
+
+        <script>
+          function copyShareCard() {
+            const hot = document.getElementById("shareHot").innerText;
+            const cold = document.getElementById("shareCold").innerText;
+            const spread = document.getElementById("shareSpread").innerText;
+            const recH = document.getElementById("shareRecordHigh").innerText;
+            const recL = document.getElementById("shareRecordLow").innerText;
+            
+            const text = `HotCold USA Daily Report:\n${hot}\n${cold}\n${spread}\n${recH}\n${recL}\nCheck it out: your-website-url.com`;
+
+            navigator.clipboard.writeText(text).then(() => {
+              alert("Stats copied to clipboard!");
+            });
+          }
+        </script>
       </div>
     </section>
 
