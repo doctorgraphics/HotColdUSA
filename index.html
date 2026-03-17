@@ -380,27 +380,27 @@
               <div id="shareRecordLow">📉 Record Low: --</div>
             </div>
           </div>
-        </article>
-        <button onclick="copyShareCard()" style="width: 100%; margin-top: 10px; padding: 12px; border-radius: 12px; background: var(--line); color: var(--text); border: 1px solid var(--line); cursor: pointer; font-weight: 600;">
+          <button onclick="copyShareCard()" style="width: 100%; margin-top: 10px; padding: 12px; border-radius: 12px; background: var(--line); color: var(--text); border: 1px solid var(--line); cursor: pointer; font-weight: 600;">
           📋 Copy Stats to Clipboard
-        </button>
-
-        <script>
-          function copyShareCard() {
-            const hot = document.getElementById("shareHot").innerText;
-            const cold = document.getElementById("shareCold").innerText;
-            const spread = document.getElementById("shareSpread").innerText;
-            const recH = document.getElementById("shareRecordHigh").innerText;
-            const recL = document.getElementById("shareRecordLow").innerText;
+          </button>
+          
+          <script>
+            function copyShareCard() {
+              const hot = document.getElementById("shareHot").innerText;
+              const cold = document.getElementById("shareCold").innerText;
+              const spread = document.getElementById("shareSpread").innerText;
+              const recH = document.getElementById("shareRecordHigh").innerText;
+              const recL = document.getElementById("shareRecordLow").innerText;
             
-            const text = `HotCold USA Daily Report:\n${hot}\n${cold}\n${spread}\n${recH}\n${recL}\nCheck it out: your-website-url.com`;
+              const text = `HotCold USA Daily Report:\n${hot}\n${cold}\n${spread}\n${recH}\n${recL}\nCheck it out: your-website-url.com`;
 
-            navigator.clipboard.writeText(text).then(() => {
-              alert("Stats copied to clipboard!");
-            });
-          }
-        </script>
+              navigator.clipboard.writeText(text).then(() => {
+                alert("Stats copied to clipboard!");
+              });
+            }
+          </script>
       </div>
+    </article>
     </section>
 
     <section class="bottom-grid">
@@ -492,13 +492,12 @@
 
         // Share Card
         const recs = data.daily_records || { high: "--", low: "--", high_location: "N/A", low_location: "N/A" };
-
-document.getElementById("shareDate").textContent = formatShortDate(genTime);
-document.getElementById("shareHot").textContent = `🔥 ${hottest.city}: ${formatTemp(hottest.temp_f)}`;
-document.getElementById("shareCold").textContent = `❄️ ${coldest.city}: ${formatTemp(coldest.temp_f)}`;
-document.getElementById("shareSpread").textContent = `🌡️ Spread — ${spread}°F`;
-document.getElementById("shareRecordHigh").textContent = `📈 Record High: ${recs.high}°F (${recs.high_location})`;
-document.getElementById("shareRecordLow").textContent = `📉 Record Low: ${recs.low}°F (${recs.low_location})`;
+        document.getElementById("shareDate").textContent = formatShortDate(genTime);
+        document.getElementById("shareHot").textContent = `🔥 ${hottest.city}: ${formatTemp(hottest.temp_f)}`;
+        document.getElementById("shareCold").textContent = `❄️ ${coldest.city}: ${formatTemp(coldest.temp_f)}`;
+        document.getElementById("shareSpread").textContent = `🌡️ Spread — ${spread}°F`;
+        document.getElementById("shareRecordHigh").textContent = `📈 Record High: ${recs.high}°F (${recs.high_location})`;
+        document.getElementById("shareRecordLow").textContent = `📉 Record Low: ${recs.low}°F (${recs.low_location})`;
 
         renderTable(document.getElementById("hotTableBody"), hotList);
         renderTable(document.getElementById("coldTableBody"), coldList);
