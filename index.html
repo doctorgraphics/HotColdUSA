@@ -379,13 +379,11 @@
               <div id="shareRecordHigh">📈 Record High: --</div>
               <div id="shareRecordLow">📉 Record Low: --</div>
             </div>
-          </div>
-          <button onclick="copyShareCard()" style="width: 100%; margin-top: 10px; padding: 12px; border-radius: 12px; background: var(--line); color: var(--text); border: 1px solid var(--line); cursor: pointer; font-weight: 600;">
-          📋 Copy Stats to Clipboard
-          </button>
-          
-          <script>
-            function copyShareCard() {
+            <button onclick="copyShareCard()" style="width: 100%; margin-top: 10px; padding: 12px; border-radius: 12px; background: var(--line); color: var(--text); border: 1px solid var(--line); cursor: pointer; font-weight: 600;">
+              📋 Copy Stats to Clipboard
+            </button>
+            <script>
+              function copyShareCard() {
               const hot = document.getElementById("shareHot").innerText;
               const cold = document.getElementById("shareCold").innerText;
               const spread = document.getElementById("shareSpread").innerText;
@@ -399,8 +397,8 @@
               });
             }
           </script>
-      </div>
-    </article>
+        </div>
+      </article>
     </section>
 
     <section class="bottom-grid">
