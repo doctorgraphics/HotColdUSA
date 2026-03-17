@@ -1,0 +1,43 @@
+name: Daily Climate Sync
+
+on:
+  schedule:
+    - cron: "5 8 * * *" # Runs at 08:05 UTC (12:05 AM PST)
+  workflow_dispatch:   # Allows manual trigger for testing
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Main
+        uses: actions/checkout@v4
+        with:
+          path: main-repo
+
+      - name: Checkout Data Storage
+        uses: actions/checkout@v4
+        with:
+          ref: data-storage
+          path: data-repo
+
+      - name: Move Latest Data to Runner
+        run: |
+          mkdir -p main-repo/data
+          # Copy current latest.json so we can append the daily records to it
+          cp data-repo/latest.json main-repo/data/latest.json || echo "latest.json not found"
+
+      - name: Run Daily Sync
+        run: |
+          cd main-repo
+          python scripts/daily_sync.py
+
+      - name: Deploy to Data Storage
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./main-repo/data
+          publish_branch: data-storage
+          keep_files: true
