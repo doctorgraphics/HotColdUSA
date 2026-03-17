@@ -185,16 +185,6 @@
       background: linear-gradient(90deg, rgba(8,47,73,0.95) 0%, rgba(30,41,59,0.95) 48%, rgba(124,45,18,0.95) 100%);
     }
 
-    .map::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 40% 45%, rgba(255,255,255,0.14), transparent 28%),
-        radial-gradient(circle at 72% 22%, rgba(255,255,255,0.10), transparent 20%);
-      opacity: 0.9;
-    }
-
     .map-label {
       position: absolute;
       z-index: 1;
@@ -219,17 +209,6 @@
       top: 20%;
     }
 
-    .map-note {
-      position: absolute;
-      left: 18px;
-      right: 18px;
-      bottom: 18px;
-      z-index: 1;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
     .stack {
       display: grid;
       gap: 20px;
@@ -241,8 +220,6 @@
       gap: 12px;
       padding: 6px 0;
     }
-
-    .muted { color: var(--muted); }
 
     .share-card {
       margin-top: 16px;
@@ -284,14 +261,23 @@
     }
 
     .footer {
-      margin-top: 22px;
-      color: var(--muted);
-      font-size: 0.95rem;
+      padding: 40px 0;
+      border-top: 1px solid var(--line);
+      margin-top: 40px;
       text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
     }
 
-    .loading,
-    .error {
+    .footer-content {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+      opacity: 0.6;
+    }
+
+    .loading, .error {
       margin-top: 20px;
       padding: 16px 18px;
       border-radius: 18px;
@@ -299,17 +285,10 @@
       background: rgba(2, 6, 23, 0.6);
     }
 
-    .error {
-      border-color: rgba(248, 113, 113, 0.4);
-      color: #fecaca;
-    }
+    .error { border-color: rgba(248, 113, 113, 0.4); color: #fecaca; }
 
     @media (max-width: 900px) {
-      .grid-2,
-      .main-grid,
-      .bottom-grid {
-        grid-template-columns: 1fr;
-      }
+      .grid-2, .main-grid, .bottom-grid { grid-template-columns: 1fr; }
       .map { min-height: 260px; }
     }
   </style>
@@ -327,7 +306,7 @@
       <div class="badge">
         <div class="eyebrow" style="margin-bottom: 6px;">Today</div>
         <div id="todayDate" style="font-size: 1.15rem; font-weight: 700;">Loading...</div>
-        <div id="updatedAt" class="muted" style="margin-top: 6px;">Waiting for data</div>
+        <div id="updatedAt" style="margin-top: 6px; opacity: 0.6;">Waiting for data</div>
       </div>
     </section>
 
@@ -335,14 +314,14 @@
 
     <section class="grid-2">
       <article class="card extreme hot">
-        <h2>🔥 Hottest Place Right Now</h2>
+        <h2>🔥 Hottest Place Today</h2>
         <div class="temp" id="hotTemp">--°F</div>
         <div class="place" id="hotPlace">Loading...</div>
         <div id="hotMeta" class="meta">Waiting for data</div>
       </article>
 
       <article class="card extreme cold">
-        <h2>❄️ Coldest Place Right Now</h2>
+        <h2>❄️ Coldest Place Today</h2>
         <div class="temp" id="coldTemp">--°F</div>
         <div class="place" id="coldPlace">Loading...</div>
         <div id="coldMeta" class="meta">Waiting for data</div>
@@ -367,40 +346,42 @@
           <div class="map">
             <div class="map-label label-hot" id="mapHotLabel">🔥 Hot</div>
             <div class="map-label label-cold" id="mapColdLabel">❄️ Cold</div>
-            <div class="map-note">
-              Using Open-Meteo for high-accuracy coordinate data.
-            </div>
           </div>
         </div>
       </article>
 
       <div class="stack">
         <article class="card section">
-  <h3>Climate Context</h3>
-  <div class="eyebrow" id="recordDateLabel">March 16 Records</div>
-  
-  <div class="stat-row">
-    <span>All-Time High</span>
-    <span style="color: #fca5a5"><strong id="recHighVal">--°F</strong> <br><small id="recHighLoc">--</small></span>
-  </div>
-  
-  <hr style="border: 0; border-top: 1px solid var(--line); margin: 12px 0;">
-  
-  <div class="stat-row">
-    <span>All-Time Low</span>
-    <span style="color: #7dd3fc"><strong id="recLowVal">--°F</strong> <br><small id="recLowLoc">--</small></span>
-  </div>
-</article>
-
-        <article class="card section">
-          <h3>Daily Share Card</h3>
-          <div class="share-card">
-            <div class="eyebrow" style="margin-bottom: 10px;">HotCold USA — <span id="shareDate">--</span></div>
-            <div id="shareHot">🔥 Loading...</div>
-            <div id="shareCold">❄️ Loading...</div>
-            <div id="shareSpread">🌡️ Spread — --°F</div>
+          <h3>Climate Context</h3>
+          <div class="eyebrow" id="recordDateLabel">Daily Records</div>
+          
+          <div class="stat-row">
+            <span>All-Time High</span>
+            <span style="color: #fca5a5; text-align: right;"><strong id="recHighVal">--°F</strong><br><small id="recHighLoc">--</small></span>
+          </div>
+          
+          <hr style="border: 0; border-top: 1px solid var(--line); margin: 12px 0;">
+          
+          <div class="stat-row">
+            <span>All-Time Low</span>
+            <span style="color: #7dd3fc; text-align: right;"><strong id="recLowVal">--°F</strong><br><small id="recLowLoc">--</small></span>
           </div>
         </article>
+
+        <article class="card section">
+  <h3>Daily Share Card</h3>
+  <div class="share-card">
+    <div class="eyebrow" style="margin-bottom: 10px;">HotCold USA — <span id="shareDate">--</span></div>
+    <div id="shareHot">🔥 Loading...</div>
+    <div id="shareCold">❄️ Loading...</div>
+    <div id="shareSpread" style="border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 8px;">🌡️ Spread — --°F</div>
+    
+    <div style="font-size: 0.8rem; opacity: 0.8;">
+      <div id="shareRecordHigh">📈 Record High: --</div>
+      <div id="shareRecordLow">📉 Record Low: --</div>
+    </div>
+  </div>
+</article>
       </div>
     </section>
 
@@ -409,10 +390,7 @@
         <h3>Top 5 Hottest</h3>
         <table>
           <thead>
-            <tr>
-              <th>Place</th>
-              <th>Temp</th>
-            </tr>
+            <tr><th>Place</th><th>Temp</th></tr>
           </thead>
           <tbody id="hotTableBody"></tbody>
         </table>
@@ -422,29 +400,29 @@
         <h3>Top 5 Coldest</h3>
         <table>
           <thead>
-            <tr>
-              <th>Place</th>
-              <th>Temp</th>
-            </tr>
+            <tr><th>Place</th><th>Temp</th></tr>
           </thead>
           <tbody id="coldTableBody"></tbody>
         </table>
       </article>
     </section>
 
-    <div class="footer">
-      Auto-updated from <code>data-storage</code> branch.
-    </div>
+    <footer class="footer">
+      <div class="footer-content">
+        <span>Provider: <strong>Open-Meteo API</strong></span>
+        <span>Update Frequency: <strong>Hourly</strong></span>
+        <span>Infrastructure: <strong>GitHub Actions</strong></span>
+        <span>Storage: <strong>data-storage branch</strong></span>
+      </div>
+      <p style="margin-top: 20px; opacity: 0.4;">&copy; 2026 HotCold USA</p>
+    </footer>
   </main>
 
   <script>
-    // Configuration
     const DATA_URL = "https://raw.githubusercontent.com/doctorgraphics/HotColdUSA/data-storage/latest.json";
 
-    // Formatters
     function formatTemp(value) {
-      if (value === null || value === undefined) return "--°F";
-      return `${Math.round(value)}°F`;
+      return (value === null || value === undefined) ? "--°F" : `${Math.round(value)}°F`;
     }
 
     function formatShortDate(isoString) {
@@ -457,23 +435,17 @@
 
     function renderTable(tbody, items) {
       tbody.innerHTML = items.map(item => `
-        <tr>
-          <td>${item.city}, ${item.state}</td>
-          <td>${formatTemp(item.temp_f)}</td>
-        </tr>
+        <tr><td>${item.city}, ${item.state}</td><td>${formatTemp(item.temp_f)}</td></tr>
       `).join('');
     }
 
-    // Main Loader
     async function loadWeather() {
       const status = document.getElementById("statusMessage");
       try {
         const response = await fetch(`${DATA_URL}?t=${Date.now()}`);
-        if (!response.ok) throw new Error("File not found on data-storage branch");
-        
+        if (!response.ok) throw new Error("latest.json not found");
         const data = await response.json();
 
-        // 1. Core Variables
         const hotList = data.top_5_hot;
         const coldList = data.top_5_cold;
         const hottest = hotList[0];
@@ -481,30 +453,35 @@
         const spread = Math.abs(Math.round(hottest.temp_f - coldest.temp_f));
         const genTime = data.generated_at;
 
-        // 2. UI Updates
+        // UI Updates
         document.getElementById("todayDate").textContent = formatShortDate(genTime);
         document.getElementById("updatedAt").textContent = `Updated ${formatTime(genTime)}`;
-        document.getElementById("generatedAt").textContent = formatTime(genTime);
-
         document.getElementById("hotTemp").textContent = formatTemp(hottest.temp_f);
         document.getElementById("hotPlace").textContent = `${hottest.city}, ${hottest.state}`;
-        document.getElementById("hotMeta").textContent = `High Ranking • ${hottest.state}`;
-
         document.getElementById("coldTemp").textContent = formatTemp(coldest.temp_f);
         document.getElementById("coldPlace").textContent = `${coldest.city}, ${coldest.state}`;
-        document.getElementById("coldMeta").textContent = `Low Ranking • ${coldest.state}`;
-
         document.getElementById("spreadValue").textContent = `${spread}°F`;
         document.getElementById("mapHotLabel").textContent = `🔥 ${hottest.city}`;
         document.getElementById("mapColdLabel").textContent = `❄️ ${coldest.city}`;
 
-        // 3. Share Card
-        document.getElementById("shareDate").textContent = formatShortDate(genTime);
-        document.getElementById("shareHot").textContent = `🔥 ${hottest.city}: ${formatTemp(hottest.temp_f)}`;
-        document.getElementById("shareCold").textContent = `❄️ ${coldest.city}: ${formatTemp(coldest.temp_f)}`;
-        document.getElementById("shareSpread").textContent = `🌡️ Spread — ${spread}°F`;
+        // Climate Records
+        const recs = data.daily_records || { high: "--", low: "--", high_location: "N/A", low_location: "N/A" };
+        document.getElementById("recordDateLabel").textContent = `${formatShortDate(genTime)} Records`;
+        document.getElementById("recHighVal").textContent = `${recs.high}°F`;
+        document.getElementById("recHighLoc").textContent = recs.high_location;
+        document.getElementById("recLowVal").textContent = `${recs.low}°F`;
+        document.getElementById("recLowLoc").textContent = recs.low_location;
 
-        // 4. Tables
+        // Share Card
+        const recs = data.daily_records || { high: "--", low: "--", high_location: "N/A", low_location: "N/A" };
+
+document.getElementById("shareDate").textContent = formatShortDate(genTime);
+document.getElementById("shareHot").textContent = `🔥 ${hottest.city}: ${formatTemp(hottest.temp_f)}`;
+document.getElementById("shareCold").textContent = `❄️ ${coldest.city}: ${formatTemp(coldest.temp_f)}`;
+document.getElementById("shareSpread").textContent = `🌡️ Spread — ${spread}°F`;
+document.getElementById("shareRecordHigh").textContent = `📈 Record High: ${recs.high}°F (${recs.high_location})`;
+document.getElementById("shareRecordLow").textContent = `📉 Record Low: ${recs.low}°F (${recs.low_location})`;
+
         renderTable(document.getElementById("hotTableBody"), hotList);
         renderTable(document.getElementById("coldTableBody"), coldList);
 
@@ -516,24 +493,7 @@
       }
     }
 
-    // Execute
     loadWeather();
   </script>
 </body>
-  <footer class="footer">
-  <div class="container" style="border-top: 1px solid var(--line); padding-top: 20px;">
-    <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
-      <div>
-        <strong>Source:</strong> Open-Meteo API (WMO-compliant)
-      </div>
-      <div>
-        <strong>Frequency:</strong> Hourly Updates (via GitHub Actions)
-      </div>
-      <div>
-        <strong>Catalog:</strong> 50 US State Capitols / Cities
-      </div>
-    </div>
-    <p style="margin-top: 20px; opacity: 0.6;">&copy; 2026 HotCold USA</p>
-  </div>
-</footer>
 </html>
