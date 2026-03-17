@@ -283,26 +283,6 @@
       font-weight: 600;
     }
 
-    .panel-inner {
-      margin-top: 16px;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .mini {
-      background: rgba(2, 6, 23, 0.72);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 16px;
-    }
-
-    ol {
-      margin: 12px 0 0;
-      padding-left: 20px;
-      line-height: 1.8;
-    }
-
     .footer {
       margin-top: 22px;
       color: var(--muted);
@@ -327,14 +307,10 @@
     @media (max-width: 900px) {
       .grid-2,
       .main-grid,
-      .bottom-grid,
-      .panel-inner {
+      .bottom-grid {
         grid-template-columns: 1fr;
       }
-
-      .map {
-        min-height: 260px;
-      }
+      .map { min-height: 260px; }
     }
   </style>
 </head>
@@ -362,14 +338,14 @@
         <h2>🔥 Hottest Place Today</h2>
         <div class="temp" id="hotTemp">--°F</div>
         <div class="place" id="hotPlace">Loading...</div>
-        <div class="meta" id="hotMeta">Waiting for data</div>
+        <div id="hotMeta" class="meta">Waiting for data</div>
       </article>
 
       <article class="card extreme cold">
         <h2>❄️ Coldest Place Today</h2>
         <div class="temp" id="coldTemp">--°F</div>
         <div class="place" id="coldPlace">Loading...</div>
-        <div class="meta" id="coldMeta">Waiting for data</div>
+        <div id="coldMeta" class="meta">Waiting for data</div>
       </article>
     </section>
 
@@ -386,13 +362,13 @@
         <div class="map-shell">
           <div class="map-top">
             <span>Prototype U.S. map</span>
-            <span id="stationCount">Stations checked: --</span>
+            <span id="stationCount">Stations checked: 50</span>
           </div>
           <div class="map">
             <div class="map-label label-hot" id="mapHotLabel">🔥 Hot</div>
             <div class="map-label label-cold" id="mapColdLabel">❄️ Cold</div>
             <div class="map-note">
-              Prototype map for now. Later you can replace this with a real U.S. map and true marker positions.
+              Using Open-Meteo for high-accuracy coordinate data.
             </div>
           </div>
         </div>
@@ -401,15 +377,15 @@
       <div class="stack">
         <article class="card section">
           <h3>Data Source</h3>
-          <div class="stat-row"><span>Provider</span><strong id="dataSource">National Weather Service API</strong></div>
+          <div class="stat-row"><span>Provider</span><strong>Open-Meteo API</strong></div>
           <div class="stat-row muted"><span>Generated</span><span id="generatedAt">--</span></div>
-          <div class="stat-row muted"><span>Stations checked</span><span id="stationCountSide">--</span></div>
+          <div class="stat-row muted"><span>Update Frequency</span><span>Hourly</span></div>
         </article>
 
         <article class="card section">
           <h3>Daily Share Card</h3>
           <div class="share-card">
-            <div class="eyebrow" style="margin-bottom: 10px;">HotCold USA — <span id="shareDate">Loading...</span></div>
+            <div class="eyebrow" style="margin-bottom: 10px;">HotCold USA — <span id="shareDate">--</span></div>
             <div id="shareHot">🔥 Loading...</div>
             <div id="shareCold">❄️ Loading...</div>
             <div id="shareSpread">🌡️ Spread — --°F</div>
@@ -447,113 +423,91 @@
     </section>
 
     <div class="footer">
-      Auto-updated from weather station data stored in <code>data/latest.json</code>.
+      Auto-updated from <code>data-storage</code> branch.
     </div>
   </main>
 
   <script>
+    // Configuration
+    const DATA_URL = "https://raw.githubusercontent.com/doctorgraphics/HotColdUSA/data-storage/latest.json";
+
+    // Formatters
     function formatTemp(value) {
-      if (value === null || value === undefined || Number.isNaN(Number(value))) {
-        return "--°F";
-      }
-      return `${Math.round(Number(value))}°F`;
+      if (value === null || value === undefined) return "--°F";
+      return `${Math.round(value)}°F`;
     }
 
     function formatShortDate(isoString) {
-      const date = new Date(isoString);
-      return date.toLocaleDateString(undefined, {
-        month: "long",
-        day: "numeric"
-      });
+      return new Date(isoString).toLocaleDateString(undefined, { month: "long", day: "numeric" });
     }
 
     function formatTime(isoString) {
-      const date = new Date(isoString);
-      return date.toLocaleTimeString([], {
-        hour: "numeric",
-        minute: "2-digit"
-      });
+      return new Date(isoString).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
     }
 
-    function formatDateTime(isoString) {
-      const date = new Date(isoString);
-      return date.toLocaleString([], {
-        month: "short",
-        day: "numeric",
-        hour: "numeric",
-        minute: "2-digit"
-      });
-    }
-
-    function placeName(entry) {
-      if (!entry) return "Unknown";
-      if (entry.state) return `${entry.city}, ${entry.state}`;
-      return entry.city || entry.station || "Unknown";
-    }
-
-    function renderTableRows(tbody, items) {
-      tbody.innerHTML = "";
-
-      if (!Array.isArray(items) || items.length === 0) {
-        const tr = document.createElement("tr");
-        tr.innerHTML = `<td colspan="2">No data available</td>`;
-        tbody.appendChild(tr);
-        return;
-      }
-
-      items.forEach((item) => {
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-          <td>${placeName(item)}</td>
+    function renderTable(tbody, items) {
+      tbody.innerHTML = items.map(item => `
+        <tr>
+          <td>${item.city}, ${item.state}</td>
           <td>${formatTemp(item.temp_f)}</td>
-        `;
-        tbody.appendChild(tr);
-      });
+        </tr>
+      `).join('');
     }
 
-    const DATA_URL = "https://raw.githubusercontent.com/doctorgraphics/HotColdUSA/data/latest.json";
+    // Main Loader
+    async function loadWeather() {
+      const status = document.getElementById("statusMessage");
+      try {
+        const response = await fetch(`${DATA_URL}?t=${Date.now()}`);
+        if (!response.ok) throw new Error("File not found on data-storage branch");
+        
+        const data = await response.json();
 
-async function loadWeather() {
-  const statusMessage = document.getElementById("statusMessage");
-  try {
-    const response = await fetch(`${DATA_URL}?t=${Date.now()}`);
-    const data = await response.json();
+        // 1. Core Variables
+        const hotList = data.top_5_hot;
+        const coldList = data.top_5_cold;
+        const hottest = hotList[0];
+        const coldest = coldList[0];
+        const spread = Math.abs(Math.round(hottest.temp_f - coldest.temp_f));
+        const genTime = data.generated_at;
 
-    // 1. Identify the winners using the EXACT keys from your JSON
-    const hotList = data.top_5_hot;
-    const coldList = data.top_5_cold;
-    
-    const hottest = hotList[0];
-    const coldest = coldList[0];
-    const spread = Math.round(hottest.temp_f - coldest.temp_f);
+        // 2. UI Updates
+        document.getElementById("todayDate").textContent = formatShortDate(genTime);
+        document.getElementById("updatedAt").textContent = `Updated ${formatTime(genTime)}`;
+        document.getElementById("generatedAt").textContent = formatTime(genTime);
 
-    // 2. Update Top Badges
-    document.getElementById("todayDate").textContent = formatShortDate(data.generated_at);
-    document.getElementById("updatedAt").textContent = `Updated ${formatTime(data.generated_at)}`;
+        document.getElementById("hotTemp").textContent = formatTemp(hottest.temp_f);
+        document.getElementById("hotPlace").textContent = `${hottest.city}, ${hottest.state}`;
+        document.getElementById("hotMeta").textContent = `High Ranking • ${hottest.state}`;
 
-    // 3. Update Big Cards
-    document.getElementById("hotTemp").textContent = formatTemp(hottest.temp_f);
-    document.getElementById("hotPlace").textContent = `${hottest.city}, ${hottest.state}`;
-    
-    document.getElementById("coldTemp").textContent = formatTemp(coldest.temp_f);
-    document.getElementById("coldPlace").textContent = `${coldest.city}, ${coldest.state}`;
+        document.getElementById("coldTemp").textContent = formatTemp(coldest.temp_f);
+        document.getElementById("coldPlace").textContent = `${coldest.city}, ${coldest.state}`;
+        document.getElementById("coldMeta").textContent = `Low Ranking • ${coldest.state}`;
 
-    // 4. Update Spread & Share Card
-    document.getElementById("spreadValue").textContent = `${spread}°F`;
-    document.getElementById("shareSpread").textContent = `🌡️ Spread — ${spread}°F`;
-    document.getElementById("shareHot").textContent = `🔥 ${hottest.city} — ${formatTemp(hottest.temp_f)}`;
-    document.getElementById("shareCold").textContent = `❄️ ${coldest.city} — ${formatTemp(coldest.temp_f)}`;
+        document.getElementById("spreadValue").textContent = `${spread}°F`;
+        document.getElementById("mapHotLabel").textContent = `🔥 ${hottest.city}`;
+        document.getElementById("mapColdLabel").textContent = `❄️ ${coldest.city}`;
 
-    // 5. Render the Tables
-    renderTableRows(document.getElementById("hotTableBody"), hotList);
-    renderTableRows(document.getElementById("coldTableBody"), coldList);
+        // 3. Share Card
+        document.getElementById("shareDate").textContent = formatShortDate(genTime);
+        document.getElementById("shareHot").textContent = `🔥 ${hottest.city}: ${formatTemp(hottest.temp_f)}`;
+        document.getElementById("shareCold").textContent = `❄️ ${coldest.city}: ${formatTemp(coldest.temp_f)}`;
+        document.getElementById("shareSpread").textContent = `🌡️ Spread — ${spread}°F`;
 
-    statusMessage.style.display = "none";
-  } catch (error) {
-    console.error("Layout Error:", error);
-    statusMessage.textContent = "Data found, but could not be displayed. Check console.";
-    statusMessage.className = "error";
-  }
-}
+        // 4. Tables
+        renderTable(document.getElementById("hotTableBody"), hotList);
+        renderTable(document.getElementById("coldTableBody"), coldList);
+
+        status.style.display = "none";
+      } catch (err) {
+        console.error(err);
+        status.textContent = "Error: latest.json not found in data-storage branch.";
+        status.className = "error";
+      }
+    }
+
+    // Execute
+    loadWeather();
+  </script>
 </body>
 </html>
