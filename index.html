@@ -333,6 +333,7 @@
   <script>
     // Configuration
     const DATA_URL = "https://raw.githubusercontent.com/doctorgraphics/HotColdUSA/data-storage/latest.json";
+    const RECORDS_URL = "https://raw.githubusercontent.com/doctorgraphics/HotColdUSA/data-storage/records.json";
 
     // Formatters
     function formatTemp(value) {
@@ -361,11 +362,23 @@
     async function loadWeather() {
       const status = document.getElementById("statusMessage");
       try {
-        const response = await fetch(`${DATA_URL}?t=${Date.now()}`);
-        if (!response.ok) throw new Error("Could not reach data-storage branch.");
-        const data = await response.json();
+        // Fetch Live Weather & Historical Records at the same time
+        const [weatherResponse, recordsResponse] = await Promise.all([
+          fetch(`${DATA_URL}?t=${Date.now()}`),
+          fetch(`${RECORDS_URL}?t=${Date.now()}`)
+        ]);
 
-        // Safe Data Parsing (Prevents crashes if JSON is missing keys)
+        if (!weatherResponse.ok) throw new Error("Could not reach latest.json");
+        
+        const data = await weatherResponse.json();
+        
+        // Handle Records safely in case the file is missing
+        let recordsData = {};
+        if (recordsResponse.ok) {
+            recordsData = await recordsResponse.json();
+        }
+
+        // Safe Data Parsing
         const hotList = data.top_5_hot || [];
         const coldList = data.top_5_cold || [];
         const hottest = hotList[0] || { city: "N/A", state: "N/A", temp_f: null };
@@ -377,6 +390,14 @@
         }
         
         const genTime = data.generated_at;
+
+        // --- Get Today's Record using local browser time ---
+        const today = new Date();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        const todayKey = `${month}-${day}`; 
+        
+        const recs = recordsData[todayKey] || { high: "--", low: "--", high_location: "N/A", low_location: "N/A" };
 
         // UI Updates - Top Badges
         document.getElementById("todayDate").textContent = formatShortDate(genTime);
@@ -396,15 +417,14 @@
         document.getElementById("mapHotLabel").textContent = `🔥 ${hottest.city}`;
         document.getElementById("mapColdLabel").textContent = `❄️ ${coldest.city}`;
 
-        // Climate Records
-        const recs = data.daily_records || { high: "--", low: "--", high_location: "N/A", low_location: "N/A" };
+        // Climate Records Updates
         document.getElementById("recordDateLabel").textContent = `${formatShortDate(genTime)} Records`;
         document.getElementById("recHighVal").textContent = `${recs.high}°F`;
         document.getElementById("recHighLoc").textContent = recs.high_location;
         document.getElementById("recLowVal").textContent = `${recs.low}°F`;
         document.getElementById("recLowLoc").textContent = recs.low_location;
 
-        // Share Card
+        // Share Card Updates
         document.getElementById("shareDate").textContent = formatShortDate(genTime);
         document.getElementById("shareHot").textContent = `🔥 ${hottest.city}: ${formatTemp(hottest.temp_f)}`;
         document.getElementById("shareCold").textContent = `❄️ ${coldest.city}: ${formatTemp(coldest.temp_f)}`;
@@ -456,6 +476,6 @@
 
     // Initialize
     loadWeather();
-  </script>
+</script>
 </body>
 </html>
