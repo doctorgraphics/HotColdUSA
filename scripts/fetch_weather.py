@@ -56,5 +56,33 @@ def main():
     
     print(f"Latest.json updated with Top 5 extremes.")
 
+# 1. Load Historical Records for Today
+    import pathlib
+    RECORDS_PATH = pathlib.Path("data/records.json")
+    today_key = datetime.now(timezone.utc).strftime("%m-%d")
+    
+    daily_record = {"high": "--", "high_location": "N/A", "low": "--", "low_location": "N/A"}
+    
+    if RECORDS_PATH.exists():
+        try:
+            records_data = json.loads(RECORDS_PATH.read_text())
+            daily_record = records_data.get(today_key, daily_record)
+        except Exception as e:
+            print(f"Could not read records: {e}")
+
+    # Build the Final Output Dictionary
+    output = {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "top_5_hot": observations[:5],
+        "top_5_cold": observations[-5:][::-1],
+        "daily_records": daily_record,      # <--- THIS IS THE MAGIC LINE
+        "source": "Open-Meteo"
+    }
+    
+    # Save to latest.json
+    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    OUTPUT_PATH.write_text(json.dumps(output, indent=2))
+    print("latest.json created successfully!", flush=True)
+
 if __name__ == "__main__":
     main()
