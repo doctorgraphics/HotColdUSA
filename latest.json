@@ -1,7 +1,14 @@
 {
-  "generated_at": "2026-03-19T14:17:59.595504+00:00",
+  "generated_at": "2026-03-19T15:15:51.480743+00:00",
   "record_key": "03-19",
   "top_5_hot": [
+    {
+      "city": "Phoenix",
+      "state": "AZ",
+      "temp_f": 77.5,
+      "lat": 33.448,
+      "lon": -112.074
+    },
     {
       "city": "Honolulu",
       "state": "HI",
@@ -10,69 +17,62 @@
       "lon": -157.858
     },
     {
-      "city": "Phoenix",
-      "state": "AZ",
-      "temp_f": 68.1,
-      "lat": 33.448,
-      "lon": -112.074
-    },
-    {
-      "city": "Austin",
-      "state": "TX",
-      "temp_f": 59.5,
-      "lat": 30.267,
-      "lon": -97.743
-    },
-    {
       "city": "Oklahoma City",
       "state": "OK",
-      "temp_f": 58.5,
+      "temp_f": 66.0,
       "lat": 35.468,
       "lon": -97.516
     },
     {
-      "city": "Sacramento",
-      "state": "CA",
-      "temp_f": 55.8,
-      "lat": 38.576,
-      "lon": -121.493
+      "city": "Austin",
+      "state": "TX",
+      "temp_f": 64.8,
+      "lat": 30.267,
+      "lon": -97.743
+    },
+    {
+      "city": "Denver",
+      "state": "CO",
+      "temp_f": 64.2,
+      "lat": 39.739,
+      "lon": -104.99
     }
   ],
   "top_5_cold": [
     {
       "city": "Juneau",
       "state": "AK",
-      "temp_f": 27.5,
+      "temp_f": 27.2,
       "lat": 58.301,
       "lon": -134.42
     },
     {
-      "city": "Montpelier",
-      "state": "VT",
-      "temp_f": 30.5,
-      "lat": 44.26,
-      "lon": -72.575
-    },
-    {
       "city": "Augusta",
       "state": "ME",
-      "temp_f": 30.5,
+      "temp_f": 31.2,
       "lat": 44.307,
       "lon": -69.782
     },
     {
+      "city": "Montpelier",
+      "state": "VT",
+      "temp_f": 33.0,
+      "lat": 44.26,
+      "lon": -72.575
+    },
+    {
       "city": "St. Paul",
       "state": "MN",
-      "temp_f": 31.9,
+      "temp_f": 33.6,
       "lat": 44.953,
       "lon": -93.09
     },
     {
-      "city": "Providence",
-      "state": "RI",
-      "temp_f": 33.2,
-      "lat": 41.824,
-      "lon": -71.412
+      "city": "Lansing",
+      "state": "MI",
+      "temp_f": 35.6,
+      "lat": 42.734,
+      "lon": -84.555
     }
   ],
   "daily_records": {
