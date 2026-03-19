@@ -1,88 +1,88 @@
 {
-  "generated_at": "2026-03-19T04:38:10.910327+00:00",
+  "generated_at": "2026-03-19T04:49:17.234074+00:00",
   "record_key": "03-19",
   "top_5_hot": [
     {
       "city": "Phoenix",
       "state": "AZ",
-      "temp_f": 82.9,
+      "temp_f": 82.5,
       "lat": 33.448,
       "lon": -112.074
     },
     {
       "city": "Honolulu",
       "state": "HI",
-      "temp_f": 77.9,
+      "temp_f": 77.7,
       "lat": 21.307,
       "lon": -157.858
     },
     {
-      "city": "Sacramento",
-      "state": "CA",
-      "temp_f": 71.2,
-      "lat": 38.576,
-      "lon": -121.493
-    },
-    {
-      "city": "Boise",
-      "state": "ID",
-      "temp_f": 64.1,
-      "lat": 43.618,
-      "lon": -116.202
-    },
-    {
-      "city": "Carson City",
+      "city": "Las Vegas",
       "state": "NV",
-      "temp_f": 63.2,
-      "lat": 39.164,
-      "lon": -119.766
+      "temp_f": 77.1,
+      "lat": 36.169,
+      "lon": -115.14
+    },
+    {
+      "city": "Bakersfield",
+      "state": "CA",
+      "temp_f": 76.3,
+      "lat": 35.373,
+      "lon": -119.018
+    },
+    {
+      "city": "Tucson",
+      "state": "AZ",
+      "temp_f": 75.6,
+      "lat": 32.222,
+      "lon": -110.974
     }
   ],
   "top_5_cold": [
     {
-      "city": "Montpelier",
-      "state": "VT",
-      "temp_f": 21.3,
-      "lat": 44.26,
-      "lon": -72.575
-    },
-    {
-      "city": "Augusta",
-      "state": "ME",
-      "temp_f": 23.2,
-      "lat": 44.307,
-      "lon": -69.782
-    },
-    {
-      "city": "Hartford",
-      "state": "CT",
-      "temp_f": 24.8,
-      "lat": 41.764,
-      "lon": -72.691
+      "city": "Anchorage",
+      "state": "AK",
+      "temp_f": 17.3,
+      "lat": 61.218,
+      "lon": -149.9
     },
     {
       "city": "Providence",
       "state": "RI",
-      "temp_f": 25.9,
+      "temp_f": 25.7,
       "lat": 41.824,
       "lon": -71.412
     },
     {
-      "city": "Albany",
-      "state": "NY",
-      "temp_f": 29.1,
-      "lat": 42.653,
-      "lon": -73.755
+      "city": "Hartford",
+      "state": "CT",
+      "temp_f": 25.7,
+      "lat": 41.764,
+      "lon": -72.682
+    },
+    {
+      "city": "Burlington",
+      "state": "VT",
+      "temp_f": 28.6,
+      "lat": 44.475,
+      "lon": -73.212
+    },
+    {
+      "city": "Madison",
+      "state": "WI",
+      "temp_f": 28.9,
+      "lat": 43.073,
+      "lon": -89.401
     }
   ],
   "daily_records": {
-    "high": "--",
-    "high_location": "N/A",
-    "low": "--",
-    "low_location": "N/A"
+    "high": 100,
+    "high_location": "Falcon Lake, TX (2020)",
+    "low": -28,
+    "low_location": "Intl Falls, MN (1965)"
   },
-  "stations_requested": 50,
-  "stations_returned": 50,
-  "stations_used": 50,
+  "stations_requested": 89,
+  "stations_returned": 89,
+  "stations_used": 89,
   "source": "Open-Meteo / WOPR Tactical"
 }
