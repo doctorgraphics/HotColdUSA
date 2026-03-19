@@ -1,78 +1,78 @@
 {
-  "generated_at": "2026-03-19T19:18:50.083314+00:00",
+  "generated_at": "2026-03-19T20:09:26.814690+00:00",
   "record_key": "03-19",
   "top_5_hot": [
     {
       "city": "Phoenix",
       "state": "AZ",
-      "temp_f": 98.2,
+      "temp_f": 101.3,
       "lat": 33.448,
       "lon": -112.074
     },
     {
       "city": "Oklahoma City",
       "state": "OK",
-      "temp_f": 86.5,
+      "temp_f": 87.9,
       "lat": 35.468,
       "lon": -97.516
     },
     {
       "city": "Denver",
       "state": "CO",
-      "temp_f": 83.5,
+      "temp_f": 84.6,
       "lat": 39.739,
       "lon": -104.99
     },
     {
-      "city": "Austin",
-      "state": "TX",
-      "temp_f": 81.4,
-      "lat": 30.267,
-      "lon": -97.743
+      "city": "Pierre",
+      "state": "SD",
+      "temp_f": 83.7,
+      "lat": 44.368,
+      "lon": -100.351
     },
     {
-      "city": "Topeka",
-      "state": "KS",
-      "temp_f": 80.5,
-      "lat": 39.048,
-      "lon": -95.678
+      "city": "Austin",
+      "state": "TX",
+      "temp_f": 82.6,
+      "lat": 30.267,
+      "lon": -97.743
     }
   ],
   "top_5_cold": [
     {
       "city": "Juneau",
       "state": "AK",
-      "temp_f": 31.8,
+      "temp_f": 32.7,
       "lat": 58.301,
       "lon": -134.42
     },
     {
       "city": "Augusta",
       "state": "ME",
-      "temp_f": 34.0,
+      "temp_f": 33.7,
       "lat": 44.307,
       "lon": -69.782
     },
     {
       "city": "Montpelier",
       "state": "VT",
-      "temp_f": 35.8,
+      "temp_f": 36.2,
       "lat": 44.26,
       "lon": -72.575
     },
     {
-      "city": "Concord",
-      "state": "NH",
-      "temp_f": 40.3,
-      "lat": 43.208,
-      "lon": -71.538
-    },
-    {
       "city": "Providence",
       "state": "RI",
-      "temp_f": 40.5,
+      "temp_f": 38.7,
       "lat": 41.824,
       "lon": -71.412
+    },
+    {
+      "city": "Boston",
+      "state": "MA",
+      "temp_f": 39.5,
+      "lat": 42.36,
+      "lon": -71.058
     }
   ],
   "daily_records": {
