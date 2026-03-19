@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-19T22:04:46.158952+00:00",
+  "generated_at": "2026-03-19T23:06:38.738800+00:00",
   "record_key": "03-19",
   "top_5_hot": [
     {
@@ -12,67 +12,67 @@
     {
       "city": "Oklahoma City",
       "state": "OK",
-      "temp_f": 90.0,
+      "temp_f": 89.3,
       "lat": 35.468,
       "lon": -97.516
     },
     {
       "city": "Sacramento",
       "state": "CA",
-      "temp_f": 86.7,
+      "temp_f": 87.6,
       "lat": 38.576,
       "lon": -121.493
     },
     {
-      "city": "Denver",
-      "state": "CO",
-      "temp_f": 84.5,
-      "lat": 39.739,
-      "lon": -104.99
-    },
-    {
       "city": "Pierre",
       "state": "SD",
-      "temp_f": 84.0,
+      "temp_f": 83.4,
       "lat": 44.368,
       "lon": -100.351
+    },
+    {
+      "city": "Denver",
+      "state": "CO",
+      "temp_f": 83.2,
+      "lat": 39.739,
+      "lon": -104.99
     }
   ],
   "top_5_cold": [
     {
       "city": "Augusta",
       "state": "ME",
-      "temp_f": 33.1,
+      "temp_f": 31.2,
       "lat": 44.307,
       "lon": -69.782
     },
     {
-      "city": "Juneau",
-      "state": "AK",
-      "temp_f": 33.5,
-      "lat": 58.301,
-      "lon": -134.42
-    },
-    {
       "city": "Montpelier",
       "state": "VT",
-      "temp_f": 34.3,
+      "temp_f": 32.5,
       "lat": 44.26,
       "lon": -72.575
     },
     {
-      "city": "Providence",
-      "state": "RI",
-      "temp_f": 38.0,
-      "lat": 41.824,
-      "lon": -71.412
+      "city": "Juneau",
+      "state": "AK",
+      "temp_f": 34.0,
+      "lat": 58.301,
+      "lon": -134.42
     },
     {
       "city": "Hartford",
       "state": "CT",
-      "temp_f": 38.3,
+      "temp_f": 35.4,
       "lat": 41.764,
       "lon": -72.691
+    },
+    {
+      "city": "Providence",
+      "state": "RI",
+      "temp_f": 35.6,
+      "lat": 41.824,
+      "lon": -71.412
     }
   ],
   "daily_records": {
