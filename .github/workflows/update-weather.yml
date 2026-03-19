@@ -37,6 +37,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./data
+          publish_dir: ./main-repo/data
           publish_branch: data-storage
           keep_files: true # Keeps stations.json alive
