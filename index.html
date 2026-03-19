@@ -72,6 +72,15 @@
       line-height: 1.6;
     }
 
+    .subnote {
+      margin-top: 14px;
+      color: rgba(255,255,255,0.72);
+      font-size: 0.95rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
     .badge {
       min-width: 190px;
       padding: 14px 16px;
@@ -141,7 +150,21 @@
       min-height: 310px;
       border-radius: 18px;
       overflow: hidden;
-      background: linear-gradient(90deg, rgba(8,47,73,0.95) 0%, rgba(30,41,59,0.95) 48%, rgba(124,45,18,0.95) 100%);
+      background:
+        linear-gradient(180deg, rgba(2, 6, 23, 0.16) 0%, rgba(2, 6, 23, 0.4) 100%),
+        linear-gradient(90deg, rgba(8,47,73,0.95) 0%, rgba(30,41,59,0.95) 48%, rgba(124,45,18,0.95) 100%);
+    }
+
+    .map::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("https://doctorgraphics.github.io/HotColdUSA/assets/hotcoldusa_wargames_us_map_blue.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      opacity: 0.78;
+      pointer-events: none;
     }
 
     .map-label {
@@ -160,6 +183,18 @@
 
     .stack { display: grid; gap: 20px; }
     .stat-row { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; }
+    .feed-list { margin-top: 14px; display: grid; gap: 10px; }
+    .feed-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 10px 0;
+      border-top: 1px solid var(--line);
+    }
+    .feed-item:first-child { border-top: none; padding-top: 0; }
+    .feed-label { color: var(--muted); }
+    .feed-value { text-align: right; font-weight: 600; }
 
     .share-card {
       margin-top: 16px;
@@ -211,6 +246,11 @@
         <h1>United States Temperature Extremes</h1>
         <div class="subtext">
           A simple web app that shows the warmest and coldest places in the country, plus the national temperature spread.
+        </div>
+        <div class="subnote">
+          <span>Live data feed</span>
+          <span>Tracked 50-city sample</span>
+          <span id="headerCoverage">Valid stations: --</span>
         </div>
       </div>
       <div class="badge">
@@ -275,6 +315,29 @@
           <div class="stat-row">
             <span>All-Time Low</span>
             <span style="color: #7dd3fc; text-align: right;"><strong id="recLowVal">--°F</strong><br><small id="recLowLoc">--</small></span>
+          </div>
+        </article>
+
+        <article class="card section">
+          <h3>Data Feed</h3>
+          <p>Operational details for the generated weather snapshot currently shown on the page.</p>
+          <div class="feed-list">
+            <div class="feed-item">
+              <span class="feed-label">Source</span>
+              <span class="feed-value" id="feedSource">Loading...</span>
+            </div>
+            <div class="feed-item">
+              <span class="feed-label">Record key</span>
+              <span class="feed-value" id="feedRecordKey">--</span>
+            </div>
+            <div class="feed-item">
+              <span class="feed-label">Stations used</span>
+              <span class="feed-value" id="feedStationsUsed">--</span>
+            </div>
+            <div class="feed-item">
+              <span class="feed-label">API responses</span>
+              <span class="feed-value" id="feedStationsReturned">--</span>
+            </div>
           </div>
         </article>
 
@@ -351,11 +414,40 @@
       return new Date(isoString).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
     }
 
+    function buildRecordKey(isoString) {
+      if (!isoString) return null;
+      const date = new Date(isoString);
+      if (Number.isNaN(date.getTime())) return null;
+      const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+      const day = String(date.getUTCDate()).padStart(2, '0');
+      return `${month}-${day}`;
+    }
+
     function renderTable(tbody, items) {
-      if (!items || !Array.isArray(items)) return;
-      tbody.innerHTML = items.map(item => `
-        <tr><td>${item.city || "Unknown"}, ${item.state || ""}</td><td>${formatTemp(item.temp_f)}</td></tr>
-      `).join('');
+      tbody.textContent = "";
+
+      if (!items || !Array.isArray(items) || items.length === 0) {
+        const row = document.createElement("tr");
+        const cell = document.createElement("td");
+        cell.colSpan = 2;
+        cell.textContent = "No data available.";
+        row.appendChild(cell);
+        tbody.appendChild(row);
+        return;
+      }
+
+      items.forEach((item) => {
+        const row = document.createElement("tr");
+        const placeCell = document.createElement("td");
+        const tempCell = document.createElement("td");
+
+        placeCell.textContent = `${item.city || "Unknown"}, ${item.state || ""}`;
+        tempCell.textContent = formatTemp(item.temp_f);
+
+        row.appendChild(placeCell);
+        row.appendChild(tempCell);
+        tbody.appendChild(row);
+      });
     }
 
     // Main API Call
@@ -390,18 +482,19 @@
         }
         
         const genTime = data.generated_at;
-
-        // --- Get Today's Record using local browser time ---
-        const today = new Date();
-        const month = String(today.getMonth() + 1).padStart(2, '0');
-        const day = String(today.getDate()).padStart(2, '0');
-        const todayKey = `${month}-${day}`; 
-        
-        const recs = recordsData[todayKey] || { high: "--", low: "--", high_location: "N/A", low_location: "N/A" };
+        const recordKey = data.record_key || buildRecordKey(genTime);
+        const recs = data.daily_records
+          || (recordKey ? recordsData[recordKey] : null)
+          || { high: "--", low: "--", high_location: "N/A", low_location: "N/A" };
+        const stationCount = data.stations_used ?? hotList.length + coldList.length;
+        const stationsRequested = data.stations_requested ?? "--";
+        const stationsReturned = data.stations_returned ?? "--";
+        const source = data.source || "Unknown";
 
         // UI Updates - Top Badges
         document.getElementById("todayDate").textContent = formatShortDate(genTime);
         document.getElementById("updatedAt").textContent = `Updated ${formatTime(genTime)}`;
+        document.getElementById("headerCoverage").textContent = `Valid stations: ${stationCount}`;
         
         // UI Updates - Extreme Cards
         document.getElementById("hotTemp").textContent = formatTemp(hottest.temp_f);
@@ -416,6 +509,7 @@
         document.getElementById("spreadValue").textContent = spread !== "--" ? `${spread}°F` : "--°F";
         document.getElementById("mapHotLabel").textContent = `🔥 ${hottest.city}`;
         document.getElementById("mapColdLabel").textContent = `❄️ ${coldest.city}`;
+        document.getElementById("stationCount").textContent = `Stations checked: ${stationCount}`;
 
         // Climate Records Updates
         document.getElementById("recordDateLabel").textContent = `${formatShortDate(genTime)} Records`;
@@ -423,6 +517,12 @@
         document.getElementById("recHighLoc").textContent = recs.high_location;
         document.getElementById("recLowVal").textContent = `${recs.low}°F`;
         document.getElementById("recLowLoc").textContent = recs.low_location;
+
+        // Data Feed Updates
+        document.getElementById("feedSource").textContent = source;
+        document.getElementById("feedRecordKey").textContent = recordKey || "--";
+        document.getElementById("feedStationsUsed").textContent = `${stationCount} of ${stationsRequested}`;
+        document.getElementById("feedStationsReturned").textContent = `${stationsReturned} returned`;
 
         // Share Card Updates
         document.getElementById("shareDate").textContent = formatShortDate(genTime);
