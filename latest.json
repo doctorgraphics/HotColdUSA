@@ -1,48 +1,48 @@
 {
-  "generated_at": "2026-03-19T17:20:41.218432+00:00",
+  "generated_at": "2026-03-19T18:15:15.114536+00:00",
   "record_key": "03-19",
   "top_5_hot": [
     {
       "city": "Phoenix",
       "state": "AZ",
-      "temp_f": 91.5,
+      "temp_f": 94.0,
       "lat": 33.448,
       "lon": -112.074
     },
     {
       "city": "Oklahoma City",
       "state": "OK",
-      "temp_f": 78.3,
+      "temp_f": 82.7,
       "lat": 35.468,
       "lon": -97.516
     },
     {
       "city": "Denver",
       "state": "CO",
-      "temp_f": 76.6,
+      "temp_f": 81.5,
       "lat": 39.739,
       "lon": -104.99
     },
     {
       "city": "Austin",
       "state": "TX",
-      "temp_f": 74.6,
+      "temp_f": 78.6,
       "lat": 30.267,
       "lon": -97.743
     },
     {
-      "city": "Honolulu",
-      "state": "HI",
-      "temp_f": 72.9,
-      "lat": 21.307,
-      "lon": -157.858
+      "city": "Jefferson City",
+      "state": "MO",
+      "temp_f": 76.8,
+      "lat": 38.577,
+      "lon": -92.172
     }
   ],
   "top_5_cold": [
     {
       "city": "Juneau",
       "state": "AK",
-      "temp_f": 29.4,
+      "temp_f": 30.7,
       "lat": 58.301,
       "lon": -134.42
     },
@@ -61,18 +61,18 @@
       "lon": -72.575
     },
     {
-      "city": "Concord",
-      "state": "NH",
-      "temp_f": 39.4,
-      "lat": 43.208,
-      "lon": -71.538
+      "city": "Providence",
+      "state": "RI",
+      "temp_f": 39.6,
+      "lat": 41.824,
+      "lon": -71.412
     },
     {
-      "city": "Boston",
-      "state": "MA",
-      "temp_f": 40.1,
-      "lat": 42.36,
-      "lon": -71.058
+      "city": "Albany",
+      "state": "NY",
+      "temp_f": 39.7,
+      "lat": 42.653,
+      "lon": -73.755
     }
   ],
   "daily_records": {
