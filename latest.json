@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-19T04:49:17.234074+00:00",
+  "generated_at": "2026-03-19T04:50:42.630386+00:00",
   "record_key": "03-19",
   "top_5_hot": [
     {
@@ -17,34 +17,41 @@
       "lon": -157.858
     },
     {
-      "city": "Las Vegas",
-      "state": "NV",
-      "temp_f": 77.1,
-      "lat": 36.169,
-      "lon": -115.14
-    },
-    {
-      "city": "Bakersfield",
+      "city": "Sacramento",
       "state": "CA",
-      "temp_f": 76.3,
-      "lat": 35.373,
-      "lon": -119.018
+      "temp_f": 70.5,
+      "lat": 38.576,
+      "lon": -121.493
     },
     {
-      "city": "Tucson",
-      "state": "AZ",
-      "temp_f": 75.6,
-      "lat": 32.222,
-      "lon": -110.974
+      "city": "Boise",
+      "state": "ID",
+      "temp_f": 64.1,
+      "lat": 43.618,
+      "lon": -116.202
+    },
+    {
+      "city": "Carson City",
+      "state": "NV",
+      "temp_f": 62.5,
+      "lat": 39.164,
+      "lon": -119.766
     }
   ],
   "top_5_cold": [
     {
-      "city": "Anchorage",
-      "state": "AK",
-      "temp_f": 17.3,
-      "lat": 61.218,
-      "lon": -149.9
+      "city": "Montpelier",
+      "state": "VT",
+      "temp_f": 21.2,
+      "lat": 44.26,
+      "lon": -72.575
+    },
+    {
+      "city": "Augusta",
+      "state": "ME",
+      "temp_f": 23.0,
+      "lat": 44.307,
+      "lon": -69.782
     },
     {
       "city": "Providence",
@@ -56,16 +63,9 @@
     {
       "city": "Hartford",
       "state": "CT",
-      "temp_f": 25.7,
+      "temp_f": 25.9,
       "lat": 41.764,
-      "lon": -72.682
-    },
-    {
-      "city": "Burlington",
-      "state": "VT",
-      "temp_f": 28.6,
-      "lat": 44.475,
-      "lon": -73.212
+      "lon": -72.691
     },
     {
       "city": "Madison",
@@ -81,8 +81,8 @@
     "low": -28,
     "low_location": "Intl Falls, MN (1965)"
   },
-  "stations_requested": 89,
-  "stations_returned": 89,
-  "stations_used": 89,
+  "stations_requested": 50,
+  "stations_returned": 50,
+  "stations_used": 50,
   "source": "Open-Meteo / WOPR Tactical"
 }
