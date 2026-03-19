@@ -1,39 +1,39 @@
 {
-  "generated_at": "2026-03-19T07:20:31.801446+00:00",
+  "generated_at": "2026-03-19T08:11:15.915958+00:00",
   "record_key": "03-19",
   "top_5_hot": [
     {
-      "city": "Phoenix",
-      "state": "AZ",
-      "temp_f": 76.5,
-      "lat": 33.448,
-      "lon": -112.074
-    },
-    {
       "city": "Honolulu",
       "state": "HI",
-      "temp_f": 75.9,
+      "temp_f": 75.6,
       "lat": 21.307,
       "lon": -157.858
     },
     {
+      "city": "Phoenix",
+      "state": "AZ",
+      "temp_f": 74.7,
+      "lat": 33.448,
+      "lon": -112.074
+    },
+    {
       "city": "Sacramento",
       "state": "CA",
-      "temp_f": 64.6,
+      "temp_f": 63.3,
       "lat": 38.576,
       "lon": -121.493
     },
     {
-      "city": "Boise",
-      "state": "ID",
-      "temp_f": 60.3,
-      "lat": 43.618,
-      "lon": -116.202
+      "city": "Oklahoma City",
+      "state": "OK",
+      "temp_f": 58.8,
+      "lat": 35.468,
+      "lon": -97.516
     },
     {
       "city": "Santa Fe",
       "state": "NM",
-      "temp_f": 59.3,
+      "temp_f": 58.5,
       "lat": 35.687,
       "lon": -105.939
     }
@@ -42,7 +42,7 @@
     {
       "city": "Augusta",
       "state": "ME",
-      "temp_f": 20.5,
+      "temp_f": 19.8,
       "lat": 44.307,
       "lon": -69.782
     },
@@ -56,21 +56,21 @@
     {
       "city": "Providence",
       "state": "RI",
-      "temp_f": 22.3,
+      "temp_f": 21.5,
       "lat": 41.824,
       "lon": -71.412
     },
     {
       "city": "Hartford",
       "state": "CT",
-      "temp_f": 24.9,
+      "temp_f": 24.7,
       "lat": 41.764,
       "lon": -72.691
     },
     {
       "city": "Madison",
       "state": "WI",
-      "temp_f": 28.7,
+      "temp_f": 27.6,
       "lat": 43.073,
       "lon": -89.401
     }
