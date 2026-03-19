@@ -1,78 +1,78 @@
 {
-  "generated_at": "2026-03-19T20:09:26.814690+00:00",
+  "generated_at": "2026-03-19T21:09:52.900781+00:00",
   "record_key": "03-19",
   "top_5_hot": [
     {
       "city": "Phoenix",
       "state": "AZ",
-      "temp_f": 101.3,
+      "temp_f": 103.1,
       "lat": 33.448,
       "lon": -112.074
     },
     {
       "city": "Oklahoma City",
       "state": "OK",
-      "temp_f": 87.9,
+      "temp_f": 89.2,
       "lat": 35.468,
       "lon": -97.516
     },
     {
+      "city": "Sacramento",
+      "state": "CA",
+      "temp_f": 84.9,
+      "lat": 38.576,
+      "lon": -121.493
+    },
+    {
       "city": "Denver",
       "state": "CO",
-      "temp_f": 84.6,
+      "temp_f": 84.7,
       "lat": 39.739,
       "lon": -104.99
     },
     {
       "city": "Pierre",
       "state": "SD",
-      "temp_f": 83.7,
+      "temp_f": 84.7,
       "lat": 44.368,
       "lon": -100.351
-    },
-    {
-      "city": "Austin",
-      "state": "TX",
-      "temp_f": 82.6,
-      "lat": 30.267,
-      "lon": -97.743
     }
   ],
   "top_5_cold": [
     {
       "city": "Juneau",
       "state": "AK",
-      "temp_f": 32.7,
+      "temp_f": 33.3,
       "lat": 58.301,
       "lon": -134.42
     },
     {
       "city": "Augusta",
       "state": "ME",
-      "temp_f": 33.7,
+      "temp_f": 33.9,
       "lat": 44.307,
       "lon": -69.782
     },
     {
       "city": "Montpelier",
       "state": "VT",
-      "temp_f": 36.2,
+      "temp_f": 34.9,
       "lat": 44.26,
       "lon": -72.575
     },
     {
-      "city": "Providence",
-      "state": "RI",
-      "temp_f": 38.7,
-      "lat": 41.824,
-      "lon": -71.412
+      "city": "Hartford",
+      "state": "CT",
+      "temp_f": 39.3,
+      "lat": 41.764,
+      "lon": -72.691
     },
     {
-      "city": "Boston",
-      "state": "MA",
+      "city": "Providence",
+      "state": "RI",
       "temp_f": 39.5,
-      "lat": 42.36,
-      "lon": -71.058
+      "lat": 41.824,
+      "lon": -71.412
     }
   ],
   "daily_records": {
