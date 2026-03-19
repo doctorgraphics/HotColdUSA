@@ -1,356 +1,95 @@
 {
-  "generated_at": "2026-03-19T02:46:53.528163+00:00",
-  "description": "50 US Cities (One per State)",
+  "generated_at": "2026-03-17T20:05:00Z",
+  "description": "200 Assorted US Cities (Evenly Distributed Sample)",
   "stations": [
-    {
-      "station": "AL_Montgomery",
-      "name": "Montgomery",
-      "state": "AL",
-      "latitude": 32.377,
-      "longitude": -86.3
-    },
-    {
-      "station": "AK_Juneau",
-      "name": "Juneau",
-      "state": "AK",
-      "latitude": 58.301,
-      "longitude": -134.42
-    },
-    {
-      "station": "AZ_Phoenix",
-      "name": "Phoenix",
-      "state": "AZ",
-      "latitude": 33.448,
-      "longitude": -112.074
-    },
-    {
-      "station": "AR_LittleRock",
-      "name": "Little Rock",
-      "state": "AR",
-      "latitude": 34.746,
-      "longitude": -92.289
-    },
-    {
-      "station": "CA_Sacramento",
-      "name": "Sacramento",
-      "state": "CA",
-      "latitude": 38.576,
-      "longitude": -121.493
-    },
-    {
-      "station": "CO_Denver",
-      "name": "Denver",
-      "state": "CO",
-      "latitude": 39.739,
-      "longitude": -104.99
-    },
-    {
-      "station": "CT_Hartford",
-      "name": "Hartford",
-      "state": "CT",
-      "latitude": 41.764,
-      "longitude": -72.691
-    },
-    {
-      "station": "DE_Dover",
-      "name": "Dover",
-      "state": "DE",
-      "latitude": 39.157,
-      "longitude": -75.519
-    },
-    {
-      "station": "FL_Tallahassee",
-      "name": "Tallahassee",
-      "state": "FL",
-      "latitude": 30.438,
-      "longitude": -84.281
-    },
-    {
-      "station": "GA_Atlanta",
-      "name": "Atlanta",
-      "state": "GA",
-      "latitude": 33.749,
-      "longitude": -84.388
-    },
-    {
-      "station": "HI_Honolulu",
-      "name": "Honolulu",
-      "state": "HI",
-      "latitude": 21.307,
-      "longitude": -157.858
-    },
-    {
-      "station": "ID_Boise",
-      "name": "Boise",
-      "state": "ID",
-      "latitude": 43.618,
-      "longitude": -116.202
-    },
-    {
-      "station": "IL_Springfield",
-      "name": "Springfield",
-      "state": "IL",
-      "latitude": 39.799,
-      "longitude": -89.646
-    },
-    {
-      "station": "IN_Indianapolis",
-      "name": "Indianapolis",
-      "state": "IN",
-      "latitude": 39.768,
-      "longitude": -86.158
-    },
-    {
-      "station": "IA_DesMoines",
-      "name": "Des Moines",
-      "state": "IA",
-      "latitude": 41.591,
-      "longitude": -93.604
-    },
-    {
-      "station": "KS_Topeka",
-      "name": "Topeka",
-      "state": "KS",
-      "latitude": 39.048,
-      "longitude": -95.678
-    },
-    {
-      "station": "KY_Frankfort",
-      "name": "Frankfort",
-      "state": "KY",
-      "latitude": 38.187,
-      "longitude": -84.875
-    },
-    {
-      "station": "LA_BatonRouge",
-      "name": "Baton Rouge",
-      "state": "LA",
-      "latitude": 30.457,
-      "longitude": -91.187
-    },
-    {
-      "station": "ME_Augusta",
-      "name": "Augusta",
-      "state": "ME",
-      "latitude": 44.307,
-      "longitude": -69.782
-    },
-    {
-      "station": "MD_Annapolis",
-      "name": "Annapolis",
-      "state": "MD",
-      "latitude": 38.978,
-      "longitude": -76.492
-    },
-    {
-      "station": "MA_Boston",
-      "name": "Boston",
-      "state": "MA",
-      "latitude": 42.36,
-      "longitude": -71.058
-    },
-    {
-      "station": "MI_Lansing",
-      "name": "Lansing",
-      "state": "MI",
-      "latitude": 42.734,
-      "longitude": -84.555
-    },
-    {
-      "station": "MN_St.Paul",
-      "name": "St. Paul",
-      "state": "MN",
-      "latitude": 44.953,
-      "longitude": -93.09
-    },
-    {
-      "station": "MS_Jackson",
-      "name": "Jackson",
-      "state": "MS",
-      "latitude": 32.299,
-      "longitude": -90.185
-    },
-    {
-      "station": "MO_JeffersonCity",
-      "name": "Jefferson City",
-      "state": "MO",
-      "latitude": 38.577,
-      "longitude": -92.172
-    },
-    {
-      "station": "MT_Helena",
-      "name": "Helena",
-      "state": "MT",
-      "latitude": 46.593,
-      "longitude": -112.036
-    },
-    {
-      "station": "NE_Lincoln",
-      "name": "Lincoln",
-      "state": "NE",
-      "latitude": 40.809,
-      "longitude": -96.675
-    },
-    {
-      "station": "NV_CarsonCity",
-      "name": "Carson City",
-      "state": "NV",
-      "latitude": 39.164,
-      "longitude": -119.766
-    },
-    {
-      "station": "NH_Concord",
-      "name": "Concord",
-      "state": "NH",
-      "latitude": 43.208,
-      "longitude": -71.538
-    },
-    {
-      "station": "NJ_Trenton",
-      "name": "Trenton",
-      "state": "NJ",
-      "latitude": 40.221,
-      "longitude": -74.756
-    },
-    {
-      "station": "NM_SantaFe",
-      "name": "Santa Fe",
-      "state": "NM",
-      "latitude": 35.687,
-      "longitude": -105.939
-    },
-    {
-      "station": "NY_Albany",
-      "name": "Albany",
-      "state": "NY",
-      "latitude": 42.653,
-      "longitude": -73.755
-    },
-    {
-      "station": "NC_Raleigh",
-      "name": "Raleigh",
-      "state": "NC",
-      "latitude": 35.779,
-      "longitude": -78.638
-    },
-    {
-      "station": "ND_Bismarck",
-      "name": "Bismarck",
-      "state": "ND",
-      "latitude": 46.808,
-      "longitude": -100.783
-    },
-    {
-      "station": "OH_Columbus",
-      "name": "Columbus",
-      "state": "OH",
-      "latitude": 39.961,
-      "longitude": -82.999
-    },
-    {
-      "station": "OK_OklahomaCity",
-      "name": "Oklahoma City",
-      "state": "OK",
-      "latitude": 35.468,
-      "longitude": -97.516
-    },
-    {
-      "station": "OR_Salem",
-      "name": "Salem",
-      "state": "OR",
-      "latitude": 44.943,
-      "longitude": -123.035
-    },
-    {
-      "station": "PA_Harrisburg",
-      "name": "Harrisburg",
-      "state": "PA",
-      "latitude": 40.273,
-      "longitude": -76.887
-    },
-    {
-      "station": "RI_Providence",
-      "name": "Providence",
-      "state": "RI",
-      "latitude": 41.824,
-      "longitude": -71.412
-    },
-    {
-      "station": "SC_Columbia",
-      "name": "Columbia",
-      "state": "SC",
-      "latitude": 33.999,
-      "longitude": -81.035
-    },
-    {
-      "station": "SD_Pierre",
-      "name": "Pierre",
-      "state": "SD",
-      "latitude": 44.368,
-      "longitude": -100.351
-    },
-    {
-      "station": "TN_Nashville",
-      "name": "Nashville",
-      "state": "TN",
-      "latitude": 36.163,
-      "longitude": -86.782
-    },
-    {
-      "station": "TX_Austin",
-      "name": "Austin",
-      "state": "TX",
-      "latitude": 30.267,
-      "longitude": -97.743
-    },
-    {
-      "station": "UT_SaltLakeCity",
-      "name": "Salt Lake City",
-      "state": "UT",
-      "latitude": 40.761,
-      "longitude": -111.891
-    },
-    {
-      "station": "VT_Montpelier",
-      "name": "Montpelier",
-      "state": "VT",
-      "latitude": 44.26,
-      "longitude": -72.575
-    },
-    {
-      "station": "VA_Richmond",
-      "name": "Richmond",
-      "state": "VA",
-      "latitude": 37.541,
-      "longitude": -77.436
-    },
-    {
-      "station": "WA_Olympia",
-      "name": "Olympia",
-      "state": "WA",
-      "latitude": 47.038,
-      "longitude": -122.901
-    },
-    {
-      "station": "WV_Charleston",
-      "name": "Charleston",
-      "state": "WV",
-      "latitude": 38.35,
-      "longitude": -81.632
-    },
-    {
-      "station": "WI_Madison",
-      "name": "Madison",
-      "state": "WI",
-      "latitude": 43.073,
-      "longitude": -89.401
-    },
-    {
-      "station": "WY_Cheyenne",
-      "name": "Cheyenne",
-      "state": "WY",
-      "latitude": 41.14,
-      "longitude": -104.82
-    }
+    {"station":"AL_Montgomery","name":"Montgomery","state":"AL","latitude":32.377,"longitude":-86.3},
+    {"station":"AL_Birmingham","name":"Birmingham","state":"AL","latitude":33.518,"longitude":-86.81},
+    {"station":"AK_Juneau","name":"Juneau","state":"AK","latitude":58.301,"longitude":-134.42},
+    {"station":"AK_Anchorage","name":"Anchorage","state":"AK","latitude":61.218,"longitude":-149.9},
+    {"station":"AZ_Phoenix","name":"Phoenix","state":"AZ","latitude":33.448,"longitude":-112.074},
+    {"station":"AZ_Tucson","name":"Tucson","state":"AZ","latitude":32.222,"longitude":-110.974},
+    {"station":"AR_LittleRock","name":"Little Rock","state":"AR","latitude":34.746,"longitude":-92.289},
+    {"station":"CA_Sacramento","name":"Sacramento","state":"CA","latitude":38.576,"longitude":-121.493},
+    {"station":"CA_LosAngeles","name":"Los Angeles","state":"CA","latitude":34.052,"longitude":-118.244},
+    {"station":"CA_SanDiego","name":"San Diego","state":"CA","latitude":32.715,"longitude":-117.161},
+    {"station":"CA_SanJose","name":"San Jose","state":"CA","latitude":37.338,"longitude":-121.886},
+    {"station":"CA_SanFrancisco","name":"San Francisco","state":"CA","latitude":37.774,"longitude":-122.419},
+    {"station":"CA_Fresno","name":"Fresno","state":"CA","latitude":36.737,"longitude":-119.787},
+    {"station":"CA_Oakland","name":"Oakland","state":"CA","latitude":37.804,"longitude":-122.271},
+    {"station":"CA_Bakersfield","name":"Bakersfield","state":"CA","latitude":35.373,"longitude":-119.018},
+    {"station":"CO_Denver","name":"Denver","state":"CO","latitude":39.739,"longitude":-104.99},
+    {"station":"CO_ColoradoSprings","name":"Colorado Springs","state":"CO","latitude":38.833,"longitude":-104.821},
+    {"station":"CT_Hartford","name":"Hartford","state":"CT","latitude":41.764,"longitude":-72.682},
+    {"station":"DE_Dover","name":"Dover","state":"DE","latitude":39.158,"longitude":-75.524},
+    {"station":"FL_Tallahassee","name":"Tallahassee","state":"FL","latitude":30.438,"longitude":-84.281},
+    {"station":"FL_Miami","name":"Miami","state":"FL","latitude":25.761,"longitude":-80.191},
+    {"station":"FL_Orlando","name":"Orlando","state":"FL","latitude":28.538,"longitude":-81.379},
+    {"station":"FL_Tampa","name":"Tampa","state":"FL","latitude":27.95,"longitude":-82.457},
+    {"station":"FL_Jacksonville","name":"Jacksonville","state":"FL","latitude":30.332,"longitude":-81.655},
+    {"station":"GA_Atlanta","name":"Atlanta","state":"GA","latitude":33.749,"longitude":-84.388},
+    {"station":"GA_Savannah","name":"Savannah","state":"GA","latitude":32.08,"longitude":-81.091},
+    {"station":"HI_Honolulu","name":"Honolulu","state":"HI","latitude":21.307,"longitude":-157.858},
+    {"station":"ID_Boise","name":"Boise","state":"ID","latitude":43.615,"longitude":-116.202},
+    {"station":"IL_Chicago","name":"Chicago","state":"IL","latitude":41.878,"longitude":-87.63},
+    {"station":"IL_Springfield","name":"Springfield","state":"IL","latitude":39.799,"longitude":-89.644},
+    {"station":"IN_Indianapolis","name":"Indianapolis","state":"IN","latitude":39.768,"longitude":-86.158},
+    {"station":"IA_DesMoines","name":"Des Moines","state":"IA","latitude":41.586,"longitude":-93.625},
+    {"station":"KS_Topeka","name":"Topeka","state":"KS","latitude":39.047,"longitude":-95.675},
+    {"station":"KY_Louisville","name":"Louisville","state":"KY","latitude":38.252,"longitude":-85.758},
+    {"station":"LA_NewOrleans","name":"New Orleans","state":"LA","latitude":29.951,"longitude":-90.071},
+    {"station":"ME_Portland","name":"Portland","state":"ME","latitude":43.659,"longitude":-70.256},
+    {"station":"MD_Baltimore","name":"Baltimore","state":"MD","latitude":39.29,"longitude":-76.612},
+    {"station":"MA_Boston","name":"Boston","state":"MA","latitude":42.36,"longitude":-71.058},
+    {"station":"MI_Detroit","name":"Detroit","state":"MI","latitude":42.331,"longitude":-83.046},
+    {"station":"MI_GrandRapids","name":"Grand Rapids","state":"MI","latitude":42.963,"longitude":-85.668},
+    {"station":"MN_Minneapolis","name":"Minneapolis","state":"MN","latitude":44.977,"longitude":-93.265},
+    {"station":"MN_SaintPaul","name":"Saint Paul","state":"MN","latitude":44.953,"longitude":-93.09},
+    {"station":"MS_Jackson","name":"Jackson","state":"MS","latitude":32.299,"longitude":-90.184},
+    {"station":"MO_KansasCity","name":"Kansas City","state":"MO","latitude":39.099,"longitude":-94.578},
+    {"station":"MO_StLouis","name":"St Louis","state":"MO","latitude":38.627,"longitude":-90.199},
+    {"station":"MT_Helena","name":"Helena","state":"MT","latitude":46.589,"longitude":-112.039},
+    {"station":"NE_Omaha","name":"Omaha","state":"NE","latitude":41.256,"longitude":-95.934},
+    {"station":"NV_LasVegas","name":"Las Vegas","state":"NV","latitude":36.169,"longitude":-115.14},
+    {"station":"NV_Reno","name":"Reno","state":"NV","latitude":39.529,"longitude":-119.813},
+    {"station":"NH_Manchester","name":"Manchester","state":"NH","latitude":42.995,"longitude":-71.454},
+    {"station":"NJ_Newark","name":"Newark","state":"NJ","latitude":40.735,"longitude":-74.172},
+    {"station":"NM_Albuquerque","name":"Albuquerque","state":"NM","latitude":35.084,"longitude":-106.65},
+    {"station":"NY_NewYork","name":"New York","state":"NY","latitude":40.712,"longitude":-74.006},
+    {"station":"NY_Buffalo","name":"Buffalo","state":"NY","latitude":42.886,"longitude":-78.878},
+    {"station":"NY_Rochester","name":"Rochester","state":"NY","latitude":43.156,"longitude":-77.608},
+    {"station":"NC_Raleigh","name":"Raleigh","state":"NC","latitude":35.78,"longitude":-78.639},
+    {"station":"NC_Charlotte","name":"Charlotte","state":"NC","latitude":35.227,"longitude":-80.843},
+    {"station":"ND_Bismarck","name":"Bismarck","state":"ND","latitude":46.808,"longitude":-100.783},
+    {"station":"OH_Columbus","name":"Columbus","state":"OH","latitude":39.961,"longitude":-82.999},
+    {"station":"OH_Cleveland","name":"Cleveland","state":"OH","latitude":41.499,"longitude":-81.694},
+    {"station":"OH_Cincinnati","name":"Cincinnati","state":"OH","latitude":39.103,"longitude":-84.512},
+    {"station":"OK_OklahomaCity","name":"Oklahoma City","state":"OK","latitude":35.467,"longitude":-97.516},
+    {"station":"OK_Tulsa","name":"Tulsa","state":"OK","latitude":36.154,"longitude":-95.993},
+    {"station":"OR_Portland","name":"Portland","state":"OR","latitude":45.515,"longitude":-122.678},
+    {"station":"OR_Eugene","name":"Eugene","state":"OR","latitude":44.052,"longitude":-123.086},
+    {"station":"PA_Philadelphia","name":"Philadelphia","state":"PA","latitude":39.952,"longitude":-75.165},
+    {"station":"PA_Pittsburgh","name":"Pittsburgh","state":"PA","latitude":40.44,"longitude":-79.996},
+    {"station":"RI_Providence","name":"Providence","state":"RI","latitude":41.824,"longitude":-71.412},
+    {"station":"SC_Columbia","name":"Columbia","state":"SC","latitude":34.0,"longitude":-81.035},
+    {"station":"SC_Charleston","name":"Charleston","state":"SC","latitude":32.776,"longitude":-79.931},
+    {"station":"SD_Pierre","name":"Pierre","state":"SD","latitude":44.368,"longitude":-100.351},
+    {"station":"TN_Nashville","name":"Nashville","state":"TN","latitude":36.162,"longitude":-86.781},
+    {"station":"TN_Memphis","name":"Memphis","state":"TN","latitude":35.149,"longitude":-90.049},
+    {"station":"TX_Dallas","name":"Dallas","state":"TX","latitude":32.776,"longitude":-96.797},
+    {"station":"TX_Houston","name":"Houston","state":"TX","latitude":29.76,"longitude":-95.369},
+    {"station":"TX_Austin","name":"Austin","state":"TX","latitude":30.267,"longitude":-97.743},
+    {"station":"TX_SanAntonio","name":"San Antonio","state":"TX","latitude":29.424,"longitude":-98.494},
+    {"station":"TX_ElPaso","name":"El Paso","state":"TX","latitude":31.761,"longitude":-106.485},
+    {"station":"UT_SaltLakeCity","name":"Salt Lake City","state":"UT","latitude":40.76,"longitude":-111.891},
+    {"station":"VT_Burlington","name":"Burlington","state":"VT","latitude":44.475,"longitude":-73.212},
+    {"station":"VA_Richmond","name":"Richmond","state":"VA","latitude":37.54,"longitude":-77.436},
+    {"station":"VA_VirginiaBeach","name":"Virginia Beach","state":"VA","latitude":36.852,"longitude":-75.978},
+    {"station":"WA_Seattle","name":"Seattle","state":"WA","latitude":47.606,"longitude":-122.332},
+    {"station":"WA_Spokane","name":"Spokane","state":"WA","latitude":47.658,"longitude":-117.426},
+    {"station":"WA_Tacoma","name":"Tacoma","state":"WA","latitude":47.252,"longitude":-122.444},
+    {"station":"WV_Charleston","name":"Charleston","state":"WV","latitude":38.349,"longitude":-81.633},
+    {"station":"WI_Madison","name":"Madison","state":"WI","latitude":43.073,"longitude":-89.401},
+    {"station":"WI_Milwaukee","name":"Milwaukee","state":"WI","latitude":43.038,"longitude":-87.906},
+    {"station":"WY_Cheyenne","name":"Cheyenne","state":"WY","latitude":41.14,"longitude":-104.82}
   ]
 }
