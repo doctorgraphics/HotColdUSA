@@ -1,39 +1,39 @@
 {
-  "generated_at": "2026-03-19T06:19:24.209950+00:00",
+  "generated_at": "2026-03-19T07:20:31.801446+00:00",
   "record_key": "03-19",
   "top_5_hot": [
     {
       "city": "Phoenix",
       "state": "AZ",
-      "temp_f": 78.0,
+      "temp_f": 76.5,
       "lat": 33.448,
       "lon": -112.074
     },
     {
       "city": "Honolulu",
       "state": "HI",
-      "temp_f": 76.7,
+      "temp_f": 75.9,
       "lat": 21.307,
       "lon": -157.858
     },
     {
       "city": "Sacramento",
       "state": "CA",
-      "temp_f": 67.5,
+      "temp_f": 64.6,
       "lat": 38.576,
       "lon": -121.493
     },
     {
       "city": "Boise",
       "state": "ID",
-      "temp_f": 62.6,
+      "temp_f": 60.3,
       "lat": 43.618,
       "lon": -116.202
     },
     {
       "city": "Santa Fe",
       "state": "NM",
-      "temp_f": 60.2,
+      "temp_f": 59.3,
       "lat": 35.687,
       "lon": -105.939
     }
@@ -42,35 +42,35 @@
     {
       "city": "Augusta",
       "state": "ME",
-      "temp_f": 21.2,
+      "temp_f": 20.5,
       "lat": 44.307,
       "lon": -69.782
     },
     {
       "city": "Montpelier",
       "state": "VT",
-      "temp_f": 21.5,
+      "temp_f": 21.3,
       "lat": 44.26,
       "lon": -72.575
     },
     {
       "city": "Providence",
       "state": "RI",
-      "temp_f": 24.6,
+      "temp_f": 22.3,
       "lat": 41.824,
       "lon": -71.412
     },
     {
       "city": "Hartford",
       "state": "CT",
-      "temp_f": 25.9,
+      "temp_f": 24.9,
       "lat": 41.764,
       "lon": -72.691
     },
     {
       "city": "Madison",
       "state": "WI",
-      "temp_f": 26.7,
+      "temp_f": 28.7,
       "lat": 43.073,
       "lon": -89.401
     }
