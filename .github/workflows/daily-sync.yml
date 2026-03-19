@@ -28,6 +28,7 @@ jobs:
           mkdir -p main-repo/data
           # Copy current latest.json so we don't overwrite current weather
           cp data-repo/latest.json main-repo/data/latest.json || echo "No latest.json found yet"
+          cp data-repo/records.json main-repo/data/records.json || echo "No records.json found yet"
 
       - name: Run Sync Script
         run: |
