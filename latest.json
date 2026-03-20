@@ -1,78 +1,78 @@
 {
-  "generated_at": "2026-03-20T14:15:43.043976+00:00",
+  "generated_at": "2026-03-20T15:14:39.469885+00:00",
   "record_key": "03-20",
   "top_5_hot": [
     {
       "city": "Honolulu",
       "state": "HI",
-      "temp_f": 75.1,
+      "temp_f": 75.3,
       "lat": 21.307,
       "lon": -157.858
     },
     {
       "city": "Phoenix",
       "state": "AZ",
-      "temp_f": 69.2,
+      "temp_f": 75.2,
       "lat": 33.448,
       "lon": -112.074
     },
     {
-      "city": "Nashville",
-      "state": "TN",
-      "temp_f": 64.0,
-      "lat": 36.163,
-      "lon": -86.782
+      "city": "Oklahoma City",
+      "state": "OK",
+      "temp_f": 67.8,
+      "lat": 35.468,
+      "lon": -97.516
     },
     {
       "city": "Austin",
       "state": "TX",
-      "temp_f": 63.3,
+      "temp_f": 67.7,
       "lat": 30.267,
       "lon": -97.743
     },
     {
-      "city": "Oklahoma City",
-      "state": "OK",
-      "temp_f": 63.2,
-      "lat": 35.468,
-      "lon": -97.516
+      "city": "Springfield",
+      "state": "IL",
+      "temp_f": 66.8,
+      "lat": 39.799,
+      "lon": -89.646
     }
   ],
   "top_5_cold": [
     {
       "city": "Juneau",
       "state": "AK",
-      "temp_f": 26.9,
+      "temp_f": 27.0,
       "lat": 58.301,
       "lon": -134.42
     },
     {
       "city": "Montpelier",
       "state": "VT",
-      "temp_f": 33.9,
+      "temp_f": 38.3,
       "lat": 44.26,
       "lon": -72.575
     },
     {
-      "city": "Albany",
-      "state": "NY",
-      "temp_f": 37.4,
-      "lat": 42.653,
-      "lon": -73.755
-    },
-    {
-      "city": "Hartford",
-      "state": "CT",
-      "temp_f": 37.6,
-      "lat": 41.764,
-      "lon": -72.691
+      "city": "Bismarck",
+      "state": "ND",
+      "temp_f": 39.7,
+      "lat": 46.808,
+      "lon": -100.783
     },
     {
       "city": "Augusta",
       "state": "ME",
-      "temp_f": 37.8,
+      "temp_f": 39.9,
       "lat": 44.307,
       "lon": -69.782
+    },
+    {
+      "city": "Carson City",
+      "state": "NV",
+      "temp_f": 41.6,
+      "lat": 39.164,
+      "lon": -119.766
     }
   ],
   "daily_records": {
