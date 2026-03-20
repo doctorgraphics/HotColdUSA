@@ -1,78 +1,78 @@
 {
-  "generated_at": "2026-03-20T01:32:42.862087+00:00",
+  "generated_at": "2026-03-20T02:56:18.146578+00:00",
   "record_key": "03-20",
   "top_5_hot": [
     {
       "city": "Phoenix",
       "state": "AZ",
-      "temp_f": 95.6,
+      "temp_f": 88.9,
       "lat": 33.448,
       "lon": -112.074
     },
     {
-      "city": "Sacramento",
-      "state": "CA",
-      "temp_f": 83.6,
-      "lat": 38.576,
-      "lon": -121.493
-    },
-    {
       "city": "Honolulu",
       "state": "HI",
-      "temp_f": 79.3,
+      "temp_f": 78.3,
       "lat": 21.307,
       "lon": -157.858
     },
     {
+      "city": "Sacramento",
+      "state": "CA",
+      "temp_f": 77.2,
+      "lat": 38.576,
+      "lon": -121.493
+    },
+    {
       "city": "Oklahoma City",
       "state": "OK",
-      "temp_f": 78.3,
+      "temp_f": 73.4,
       "lat": 35.468,
       "lon": -97.516
     },
     {
-      "city": "Carson City",
-      "state": "NV",
-      "temp_f": 77.2,
-      "lat": 39.164,
-      "lon": -119.766
+      "city": "Austin",
+      "state": "TX",
+      "temp_f": 73.0,
+      "lat": 30.267,
+      "lon": -97.743
     }
   ],
   "top_5_cold": [
     {
       "city": "Montpelier",
       "state": "VT",
-      "temp_f": 30.8,
+      "temp_f": 31.0,
       "lat": 44.26,
       "lon": -72.575
     },
     {
       "city": "Augusta",
       "state": "ME",
-      "temp_f": 31.2,
+      "temp_f": 31.1,
       "lat": 44.307,
       "lon": -69.782
     },
     {
-      "city": "Concord",
-      "state": "NH",
-      "temp_f": 31.9,
-      "lat": 43.208,
-      "lon": -71.538
-    },
-    {
       "city": "Hartford",
       "state": "CT",
-      "temp_f": 32.6,
+      "temp_f": 31.9,
       "lat": 41.764,
       "lon": -72.691
     },
     {
-      "city": "Juneau",
-      "state": "AK",
-      "temp_f": 33.7,
-      "lat": 58.301,
-      "lon": -134.42
+      "city": "Concord",
+      "state": "NH",
+      "temp_f": 32.1,
+      "lat": 43.208,
+      "lon": -71.538
+    },
+    {
+      "city": "Boston",
+      "state": "MA",
+      "temp_f": 32.1,
+      "lat": 42.36,
+      "lon": -71.058
     }
   ],
   "daily_records": {
