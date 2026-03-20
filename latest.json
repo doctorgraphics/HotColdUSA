@@ -1,39 +1,39 @@
 {
-  "generated_at": "2026-03-20T17:13:55.480160+00:00",
+  "generated_at": "2026-03-20T18:10:14.829680+00:00",
   "record_key": "03-20",
   "top_5_hot": [
     {
       "city": "Phoenix",
       "state": "AZ",
-      "temp_f": 87.8,
+      "temp_f": 92.7,
       "lat": 33.448,
       "lon": -112.074
     },
     {
       "city": "Oklahoma City",
       "state": "OK",
-      "temp_f": 80.8,
+      "temp_f": 88.0,
       "lat": 35.468,
       "lon": -97.516
     },
     {
       "city": "Jefferson City",
       "state": "MO",
-      "temp_f": 79.4,
+      "temp_f": 84.7,
       "lat": 38.577,
       "lon": -92.172
     },
     {
-      "city": "Springfield",
-      "state": "IL",
-      "temp_f": 79.2,
-      "lat": 39.799,
-      "lon": -89.646
+      "city": "Lincoln",
+      "state": "NE",
+      "temp_f": 82.4,
+      "lat": 40.809,
+      "lon": -96.675
     },
     {
       "city": "Austin",
       "state": "TX",
-      "temp_f": 77.6,
+      "temp_f": 82.2,
       "lat": 30.267,
       "lon": -97.743
     }
@@ -42,14 +42,14 @@
     {
       "city": "Juneau",
       "state": "AK",
-      "temp_f": 31.3,
+      "temp_f": 31.9,
       "lat": 58.301,
       "lon": -134.42
     },
     {
       "city": "Montpelier",
       "state": "VT",
-      "temp_f": 40.9,
+      "temp_f": 37.8,
       "lat": 44.26,
       "lon": -72.575
     },
@@ -63,16 +63,16 @@
     {
       "city": "Providence",
       "state": "RI",
-      "temp_f": 50.0,
+      "temp_f": 50.9,
       "lat": 41.824,
       "lon": -71.412
     },
     {
-      "city": "St. Paul",
-      "state": "MN",
-      "temp_f": 50.3,
-      "lat": 44.953,
-      "lon": -93.09
+      "city": "Albany",
+      "state": "NY",
+      "temp_f": 52.6,
+      "lat": 42.653,
+      "lon": -73.755
     }
   ],
   "daily_records": {
