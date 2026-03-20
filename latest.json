@@ -1,78 +1,78 @@
 {
-  "generated_at": "2026-03-20T16:12:27.385145+00:00",
+  "generated_at": "2026-03-20T17:13:55.480160+00:00",
   "record_key": "03-20",
   "top_5_hot": [
     {
       "city": "Phoenix",
       "state": "AZ",
-      "temp_f": 81.7,
+      "temp_f": 87.8,
       "lat": 33.448,
       "lon": -112.074
     },
     {
-      "city": "Honolulu",
-      "state": "HI",
-      "temp_f": 75.6,
-      "lat": 21.307,
-      "lon": -157.858
-    },
-    {
       "city": "Oklahoma City",
       "state": "OK",
-      "temp_f": 75.2,
+      "temp_f": 80.8,
       "lat": 35.468,
       "lon": -97.516
     },
     {
+      "city": "Jefferson City",
+      "state": "MO",
+      "temp_f": 79.4,
+      "lat": 38.577,
+      "lon": -92.172
+    },
+    {
       "city": "Springfield",
       "state": "IL",
-      "temp_f": 74.1,
+      "temp_f": 79.2,
       "lat": 39.799,
       "lon": -89.646
     },
     {
-      "city": "Jefferson City",
-      "state": "MO",
-      "temp_f": 73.6,
-      "lat": 38.577,
-      "lon": -92.172
+      "city": "Austin",
+      "state": "TX",
+      "temp_f": 77.6,
+      "lat": 30.267,
+      "lon": -97.743
     }
   ],
   "top_5_cold": [
     {
       "city": "Juneau",
       "state": "AK",
-      "temp_f": 29.4,
+      "temp_f": 31.3,
       "lat": 58.301,
       "lon": -134.42
     },
     {
       "city": "Montpelier",
       "state": "VT",
-      "temp_f": 40.1,
+      "temp_f": 40.9,
       "lat": 44.26,
       "lon": -72.575
     },
     {
       "city": "Augusta",
       "state": "ME",
-      "temp_f": 43.6,
+      "temp_f": 45.8,
       "lat": 44.307,
       "lon": -69.782
     },
     {
       "city": "Providence",
       "state": "RI",
-      "temp_f": 46.1,
+      "temp_f": 50.0,
       "lat": 41.824,
       "lon": -71.412
     },
     {
-      "city": "Concord",
-      "state": "NH",
-      "temp_f": 46.3,
-      "lat": 43.208,
-      "lon": -71.538
+      "city": "St. Paul",
+      "state": "MN",
+      "temp_f": 50.3,
+      "lat": 44.953,
+      "lon": -93.09
     }
   ],
   "daily_records": {
