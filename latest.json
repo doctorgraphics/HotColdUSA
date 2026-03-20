@@ -1,78 +1,78 @@
 {
-  "generated_at": "2026-03-20T12:07:49.102252+00:00",
+  "generated_at": "2026-03-20T13:25:26.870836+00:00",
   "record_key": "03-20",
   "top_5_hot": [
     {
       "city": "Honolulu",
       "state": "HI",
-      "temp_f": 75.4,
+      "temp_f": 75.2,
       "lat": 21.307,
       "lon": -157.858
     },
     {
       "city": "Phoenix",
       "state": "AZ",
-      "temp_f": 69.0,
+      "temp_f": 68.4,
       "lat": 33.448,
       "lon": -112.074
     },
     {
-      "city": "Boise",
-      "state": "ID",
-      "temp_f": 57.6,
-      "lat": 43.618,
-      "lon": -116.202
-    },
-    {
-      "city": "Oklahoma City",
-      "state": "OK",
-      "temp_f": 57.3,
-      "lat": 35.468,
-      "lon": -97.516
+      "city": "Little Rock",
+      "state": "AR",
+      "temp_f": 57.7,
+      "lat": 34.746,
+      "lon": -92.289
     },
     {
       "city": "Austin",
       "state": "TX",
-      "temp_f": 57.2,
+      "temp_f": 57.4,
       "lat": 30.267,
       "lon": -97.743
+    },
+    {
+      "city": "Indianapolis",
+      "state": "IN",
+      "temp_f": 57.3,
+      "lat": 39.768,
+      "lon": -86.158
     }
   ],
   "top_5_cold": [
     {
-      "city": "Montpelier",
-      "state": "VT",
-      "temp_f": 27.5,
-      "lat": 44.26,
-      "lon": -72.575
-    },
-    {
-      "city": "Augusta",
-      "state": "ME",
-      "temp_f": 27.8,
-      "lat": 44.307,
-      "lon": -69.782
-    },
-    {
       "city": "Juneau",
       "state": "AK",
-      "temp_f": 29.0,
+      "temp_f": 28.8,
       "lat": 58.301,
       "lon": -134.42
     },
     {
+      "city": "Montpelier",
+      "state": "VT",
+      "temp_f": 31.0,
+      "lat": 44.26,
+      "lon": -72.575
+    },
+    {
+      "city": "Hartford",
+      "state": "CT",
+      "temp_f": 32.9,
+      "lat": 41.764,
+      "lon": -72.691
+    },
+    {
       "city": "Concord",
       "state": "NH",
-      "temp_f": 29.9,
+      "temp_f": 33.1,
       "lat": 43.208,
       "lon": -71.538
     },
     {
-      "city": "Albany",
-      "state": "NY",
-      "temp_f": 30.6,
-      "lat": 42.653,
-      "lon": -73.755
+      "city": "Augusta",
+      "state": "ME",
+      "temp_f": 33.1,
+      "lat": 44.307,
+      "lon": -69.782
     }
   ],
   "daily_records": {
