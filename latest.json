@@ -1,39 +1,39 @@
 {
-  "generated_at": "2026-03-20T07:18:38.924975+00:00",
+  "generated_at": "2026-03-20T08:10:17.231148+00:00",
   "record_key": "03-20",
   "top_5_hot": [
     {
       "city": "Phoenix",
       "state": "AZ",
-      "temp_f": 78.9,
+      "temp_f": 76.8,
       "lat": 33.448,
       "lon": -112.074
     },
     {
       "city": "Honolulu",
       "state": "HI",
-      "temp_f": 75.5,
+      "temp_f": 75.4,
       "lat": 21.307,
       "lon": -157.858
     },
     {
-      "city": "Boise",
-      "state": "ID",
-      "temp_f": 65.2,
-      "lat": 43.618,
-      "lon": -116.202
-    },
-    {
       "city": "Oklahoma City",
       "state": "OK",
-      "temp_f": 64.5,
+      "temp_f": 63.2,
       "lat": 35.468,
       "lon": -97.516
     },
     {
+      "city": "Carson City",
+      "state": "NV",
+      "temp_f": 62.6,
+      "lat": 39.164,
+      "lon": -119.766
+    },
+    {
       "city": "Austin",
       "state": "TX",
-      "temp_f": 63.4,
+      "temp_f": 62.0,
       "lat": 30.267,
       "lon": -97.743
     }
@@ -42,28 +42,28 @@
     {
       "city": "Montpelier",
       "state": "VT",
-      "temp_f": 28.2,
+      "temp_f": 27.6,
       "lat": 44.26,
       "lon": -72.575
     },
     {
       "city": "Augusta",
       "state": "ME",
-      "temp_f": 30.3,
+      "temp_f": 29.3,
       "lat": 44.307,
       "lon": -69.782
     },
     {
       "city": "Juneau",
       "state": "AK",
-      "temp_f": 31.3,
+      "temp_f": 31.2,
       "lat": 58.301,
       "lon": -134.42
     },
     {
       "city": "Boston",
       "state": "MA",
-      "temp_f": 31.8,
+      "temp_f": 31.6,
       "lat": 42.36,
       "lon": -71.058
     },
