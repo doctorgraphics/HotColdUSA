@@ -1,55 +1,55 @@
 {
-  "generated_at": "2026-03-20T23:06:19.331303+00:00",
-  "record_key": "03-20",
+  "generated_at": "2026-03-21T00:13:05.773366+00:00",
+  "record_key": "03-21",
   "top_5_hot": [
     {
       "city": "Phoenix",
       "state": "AZ",
-      "temp_f": 104.5,
+      "temp_f": 103.2,
       "lat": 33.448,
       "lon": -112.074
     },
     {
       "city": "Oklahoma City",
       "state": "OK",
-      "temp_f": 92.9,
+      "temp_f": 89.9,
       "lat": 35.468,
       "lon": -97.516
     },
     {
       "city": "Sacramento",
       "state": "CA",
-      "temp_f": 88.4,
+      "temp_f": 87.9,
       "lat": 38.576,
       "lon": -121.493
     },
     {
-      "city": "Topeka",
-      "state": "KS",
-      "temp_f": 87.6,
-      "lat": 39.048,
-      "lon": -95.678
-    },
-    {
       "city": "Austin",
       "state": "TX",
-      "temp_f": 87.3,
+      "temp_f": 85.1,
       "lat": 30.267,
       "lon": -97.743
+    },
+    {
+      "city": "Denver",
+      "state": "CO",
+      "temp_f": 83.9,
+      "lat": 39.739,
+      "lon": -104.99
     }
   ],
   "top_5_cold": [
     {
       "city": "Juneau",
       "state": "AK",
-      "temp_f": 33.2,
+      "temp_f": 32.8,
       "lat": 58.301,
       "lon": -134.42
     },
     {
       "city": "Montpelier",
       "state": "VT",
-      "temp_f": 33.5,
+      "temp_f": 33.2,
       "lat": 44.26,
       "lon": -72.575
     },
@@ -63,23 +63,23 @@
     {
       "city": "Providence",
       "state": "RI",
-      "temp_f": 43.6,
+      "temp_f": 43.5,
       "lat": 41.824,
       "lon": -71.412
     },
     {
       "city": "Hartford",
       "state": "CT",
-      "temp_f": 45.7,
+      "temp_f": 43.8,
       "lat": 41.764,
       "lon": -72.691
     }
   ],
   "daily_records": {
-    "high": 101,
+    "high": 102,
     "high_location": "Falcon Lake, TX (2022)",
-    "low": -25,
-    "low_location": "Embarrass, MN (1965)"
+    "low": -24,
+    "low_location": "Babbitt, MN (1965)"
   },
   "stations_requested": 50,
   "stations_returned": 50,
