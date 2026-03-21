@@ -1,78 +1,78 @@
 {
-  "generated_at": "2026-03-21T00:13:05.773366+00:00",
+  "generated_at": "2026-03-21T01:32:14.279528+00:00",
   "record_key": "03-21",
   "top_5_hot": [
     {
       "city": "Phoenix",
       "state": "AZ",
-      "temp_f": 103.2,
+      "temp_f": 95.6,
       "lat": 33.448,
       "lon": -112.074
     },
     {
-      "city": "Oklahoma City",
-      "state": "OK",
-      "temp_f": 89.9,
-      "lat": 35.468,
-      "lon": -97.516
-    },
-    {
       "city": "Sacramento",
       "state": "CA",
-      "temp_f": 87.9,
+      "temp_f": 85.2,
       "lat": 38.576,
       "lon": -121.493
     },
     {
+      "city": "Oklahoma City",
+      "state": "OK",
+      "temp_f": 82.8,
+      "lat": 35.468,
+      "lon": -97.516
+    },
+    {
       "city": "Austin",
       "state": "TX",
-      "temp_f": 85.1,
+      "temp_f": 80.9,
       "lat": 30.267,
       "lon": -97.743
     },
     {
-      "city": "Denver",
-      "state": "CO",
-      "temp_f": 83.9,
-      "lat": 39.739,
-      "lon": -104.99
+      "city": "Carson City",
+      "state": "NV",
+      "temp_f": 77.8,
+      "lat": 39.164,
+      "lon": -119.766
     }
   ],
   "top_5_cold": [
     {
       "city": "Juneau",
       "state": "AK",
-      "temp_f": 32.8,
+      "temp_f": 31.8,
       "lat": 58.301,
       "lon": -134.42
     },
     {
       "city": "Montpelier",
       "state": "VT",
-      "temp_f": 33.2,
+      "temp_f": 33.1,
       "lat": 44.26,
       "lon": -72.575
     },
     {
       "city": "Augusta",
       "state": "ME",
-      "temp_f": 36.1,
+      "temp_f": 35.3,
       "lat": 44.307,
       "lon": -69.782
     },
     {
-      "city": "Providence",
-      "state": "RI",
-      "temp_f": 43.5,
-      "lat": 41.824,
-      "lon": -71.412
-    },
-    {
       "city": "Hartford",
       "state": "CT",
-      "temp_f": 43.8,
+      "temp_f": 43.3,
       "lat": 41.764,
       "lon": -72.691
+    },
+    {
+      "city": "Concord",
+      "state": "NH",
+      "temp_f": 43.7,
+      "lat": 43.208,
+      "lon": -71.538
     }
   ],
   "daily_records": {
