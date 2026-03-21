@@ -1,55 +1,55 @@
 {
-  "generated_at": "2026-03-21T01:32:14.279528+00:00",
+  "generated_at": "2026-03-21T02:52:21.554277+00:00",
   "record_key": "03-21",
   "top_5_hot": [
     {
       "city": "Phoenix",
       "state": "AZ",
-      "temp_f": 95.6,
+      "temp_f": 88.9,
       "lat": 33.448,
       "lon": -112.074
     },
     {
       "city": "Sacramento",
       "state": "CA",
-      "temp_f": 85.2,
+      "temp_f": 78.6,
       "lat": 38.576,
       "lon": -121.493
     },
     {
       "city": "Oklahoma City",
       "state": "OK",
-      "temp_f": 82.8,
+      "temp_f": 78.5,
       "lat": 35.468,
       "lon": -97.516
     },
     {
-      "city": "Austin",
-      "state": "TX",
-      "temp_f": 80.9,
-      "lat": 30.267,
-      "lon": -97.743
+      "city": "Honolulu",
+      "state": "HI",
+      "temp_f": 77.1,
+      "lat": 21.307,
+      "lon": -157.858
     },
     {
-      "city": "Carson City",
-      "state": "NV",
-      "temp_f": 77.8,
-      "lat": 39.164,
-      "lon": -119.766
+      "city": "Austin",
+      "state": "TX",
+      "temp_f": 77.1,
+      "lat": 30.267,
+      "lon": -97.743
     }
   ],
   "top_5_cold": [
     {
       "city": "Juneau",
       "state": "AK",
-      "temp_f": 31.8,
+      "temp_f": 31.3,
       "lat": 58.301,
       "lon": -134.42
     },
     {
       "city": "Montpelier",
       "state": "VT",
-      "temp_f": 33.1,
+      "temp_f": 32.8,
       "lat": 44.26,
       "lon": -72.575
     },
@@ -61,16 +61,16 @@
       "lon": -69.782
     },
     {
-      "city": "Hartford",
-      "state": "CT",
-      "temp_f": 43.3,
-      "lat": 41.764,
-      "lon": -72.691
+      "city": "Lansing",
+      "state": "MI",
+      "temp_f": 42.1,
+      "lat": 42.734,
+      "lon": -84.555
     },
     {
       "city": "Concord",
       "state": "NH",
-      "temp_f": 43.7,
+      "temp_f": 43.3,
       "lat": 43.208,
       "lon": -71.538
     }
