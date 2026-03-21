@@ -48,51 +48,12 @@
       backdrop-filter: blur(8px);
     }
 
-    .header {
-      padding: 28px;
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      align-items: flex-start;
-      flex-wrap: wrap;
-    }
-
     .eyebrow {
       text-transform: uppercase;
       letter-spacing: 0.28em;
       color: var(--muted);
       font-size: 0.78rem;
       margin-bottom: 10px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(2rem, 4vw, 3.6rem);
-      line-height: 1.05;
-    }
-
-    .subtext {
-      color: var(--muted);
-      margin-top: 14px;
-      max-width: 760px;
-      line-height: 1.6;
-    }
-
-    .subnote {
-      margin-top: 14px;
-      color: rgba(255,255,255,0.72);
-      font-size: 0.95rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .badge {
-      min-width: 190px;
-      padding: 14px 16px;
-      border-radius: 18px;
-      border: 1px solid var(--line);
-      background: rgba(2, 6, 23, 0.55);
     }
 
     .grid-2 {
@@ -246,26 +207,6 @@
 </head>
 <body>
   <main class="container">
-    <section class="card header">
-      <div>
-        <div class="eyebrow">HotCold USA</div>
-        <h1>United States Temperature Extremes</h1>
-        <div class="subtext">
-          A simple web app that shows the warmest and coldest places in the country, plus the national temperature spread.
-        </div>
-        <div class="subnote">
-          <span>Live data feed</span>
-          <span>Tracked 50-city sample</span>
-          <span id="headerCoverage">Valid stations: --</span>
-        </div>
-      </div>
-      <div class="badge">
-        <div class="eyebrow" style="margin-bottom: 6px;">Today</div>
-        <div id="todayDate" style="font-size: 1.15rem; font-weight: 700;">Loading...</div>
-        <div id="updatedAt" style="margin-top: 6px; opacity: 0.6;">Waiting for data</div>
-      </div>
-    </section>
-
     <div id="statusMessage" class="loading">Loading weather data...</div>
 
     <section class="grid-2">
@@ -313,6 +254,29 @@
           </div>
         </article>
         
+        <article class="card section">
+          <h3>Data Feed</h3>
+          <p>Operational details for the generated weather snapshot currently shown on the page.</p>
+          <div class="feed-list">
+            <div class="feed-item">
+              <span class="feed-label">Source</span>
+              <span class="feed-value" id="feedSource">Loading...</span>
+            </div>
+            <div class="feed-item">
+              <span class="feed-label">Record key</span>
+              <span class="feed-value" id="feedRecordKey">--</span>
+            </div>
+            <div class="feed-item">
+              <span class="feed-label">Stations used</span>
+              <span class="feed-value" id="feedStationsUsed">--</span>
+            </div>
+            <div class="feed-item">
+              <span class="feed-label">API responses</span>
+              <span class="feed-value" id="feedStationsReturned">--</span>
+            </div>
+          </div>
+        </article>
+
         <article class="card section">
           <h3>Data Feed</h3>
           <p>Operational details for the generated weather snapshot currently shown on the page.</p>
@@ -428,9 +392,13 @@
       return new Date(isoString).toLocaleDateString(undefined, { month: "long", day: "numeric" });
     }
 
-    function formatTime(isoString) {
-      if (!isoString) return "--";
-      return new Date(isoString).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+    function buildRecordKey(isoString) {
+      if (!isoString) return null;
+      const date = new Date(isoString);
+      if (Number.isNaN(date.getTime())) return null;
+      const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+      const day = String(date.getUTCDate()).padStart(2, '0');
+      return `${month}-${day}`;
     }
 
     function buildRecordKey(isoString) {
@@ -520,11 +488,6 @@
         const stationsReturned = data.stations_returned ?? "--";
         const source = data.source || "Unknown";
 
-        // UI Updates - Top Badges
-        setTextIfPresent("todayDate", formatShortDate(genTime));
-        setTextIfPresent("updatedAt", `Updated ${formatTime(genTime)}`);
-        setTextIfPresent("headerCoverage", `Valid stations: ${stationCount}`);
-        
         // UI Updates - Extreme Cards
         setTextIfPresent("hotTemp", formatTemp(hottest.temp_f));
         setTextIfPresent("hotPlace", `${hottest.city}, ${hottest.state}`);
@@ -552,12 +515,6 @@
         setTextIfPresent("feedRecordKey", recordKey || "--");
         setTextIfPresent("feedStationsUsed", `${stationCount} of ${stationsRequested}`);
         setTextIfPresent("feedStationsReturned", `${stationsReturned} returned`);
-
-        // Data Feed Updates
-        document.getElementById("feedSource").textContent = source;
-        document.getElementById("feedRecordKey").textContent = recordKey || "--";
-        document.getElementById("feedStationsUsed").textContent = `${stationCount} of ${stationsRequested}`;
-        document.getElementById("feedStationsReturned").textContent = `${stationsReturned} returned`;
 
         // Share Card Updates
         setTextIfPresent("shareDate", formatShortDate(genTime));
