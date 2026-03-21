@@ -23,10 +23,11 @@ jobs:
           ref: data-storage
           path: data-repo
 
-      - name: Sync Catalog to Runner
+      - name: Sync Data Files to Runner
         run: |
           mkdir -p main-repo/data
           cp data-repo/stations.json main-repo/data/stations.json
+          cp data-repo/records.json main-repo/data/records.json || echo "No records.json found yet"
 
       - name: Run Fetch Weather
         run: |
@@ -37,6 +38,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./data
+          publish_dir: ./main-repo/data
           publish_branch: data-storage
           keep_files: true # Keeps stations.json alive

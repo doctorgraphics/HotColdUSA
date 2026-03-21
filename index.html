@@ -42,42 +42,12 @@
       backdrop-filter: blur(8px);
     }
 
-    .header {
-      padding: 28px;
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      align-items: flex-start;
-      flex-wrap: wrap;
-    }
-
     .eyebrow {
       text-transform: uppercase;
       letter-spacing: 0.28em;
       color: var(--muted);
       font-size: 0.78rem;
       margin-bottom: 10px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(2rem, 4vw, 3.6rem);
-      line-height: 1.05;
-    }
-
-    .subtext {
-      color: var(--muted);
-      margin-top: 14px;
-      max-width: 760px;
-      line-height: 1.6;
-    }
-
-    .badge {
-      min-width: 190px;
-      padding: 14px 16px;
-      border-radius: 18px;
-      border: 1px solid var(--line);
-      background: rgba(2, 6, 23, 0.55);
     }
 
     .grid-2 {
@@ -141,7 +111,21 @@
       min-height: 310px;
       border-radius: 18px;
       overflow: hidden;
-      background: linear-gradient(90deg, rgba(8,47,73,0.95) 0%, rgba(30,41,59,0.95) 48%, rgba(124,45,18,0.95) 100%);
+      background:
+        linear-gradient(180deg, rgba(2, 6, 23, 0.16) 0%, rgba(2, 6, 23, 0.4) 100%),
+        linear-gradient(90deg, rgba(8,47,73,0.95) 0%, rgba(30,41,59,0.95) 48%, rgba(124,45,18,0.95) 100%);
+    }
+
+    .map::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("https://doctorgraphics.github.io/HotColdUSA/assets/hotcoldusa_wargames_us_map_blue.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      opacity: 0.78;
+      pointer-events: none;
     }
 
     .map-label {
@@ -160,6 +144,18 @@
 
     .stack { display: grid; gap: 20px; }
     .stat-row { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; }
+    .feed-list { margin-top: 14px; display: grid; gap: 10px; }
+    .feed-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 10px 0;
+      border-top: 1px solid var(--line);
+    }
+    .feed-item:first-child { border-top: none; padding-top: 0; }
+    .feed-label { color: var(--muted); }
+    .feed-value { text-align: right; font-weight: 600; }
 
     .share-card {
       margin-top: 16px;
@@ -205,21 +201,6 @@
 </head>
 <body>
   <main class="container">
-    <section class="card header">
-      <div>
-        <div class="eyebrow">HotCold USA</div>
-        <h1>United States Temperature Extremes</h1>
-        <div class="subtext">
-          A simple web app that shows the warmest and coldest places in the country, plus the national temperature spread.
-        </div>
-      </div>
-      <div class="badge">
-        <div class="eyebrow" style="margin-bottom: 6px;">Today</div>
-        <div id="todayDate" style="font-size: 1.15rem; font-weight: 700;">Loading...</div>
-        <div id="updatedAt" style="margin-top: 6px; opacity: 0.6;">Waiting for data</div>
-      </div>
-    </section>
-
     <div id="statusMessage" class="loading">Loading weather data...</div>
 
     <section class="grid-2">
@@ -279,6 +260,29 @@
         </article>
 
         <article class="card section">
+          <h3>Data Feed</h3>
+          <p>Operational details for the generated weather snapshot currently shown on the page.</p>
+          <div class="feed-list">
+            <div class="feed-item">
+              <span class="feed-label">Source</span>
+              <span class="feed-value" id="feedSource">Loading...</span>
+            </div>
+            <div class="feed-item">
+              <span class="feed-label">Record key</span>
+              <span class="feed-value" id="feedRecordKey">--</span>
+            </div>
+            <div class="feed-item">
+              <span class="feed-label">Stations used</span>
+              <span class="feed-value" id="feedStationsUsed">--</span>
+            </div>
+            <div class="feed-item">
+              <span class="feed-label">API responses</span>
+              <span class="feed-value" id="feedStationsReturned">--</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card section">
           <h3>Daily Share Card</h3>
           <div class="share-card">
             <div class="eyebrow" style="margin-bottom: 10px;">HotCold USA — <span id="shareDate">--</span></div>
@@ -291,7 +295,7 @@
               <div id="shareRecordLow">📉 Record Low: --</div>
             </div>
             
-            <button class="copy-btn" onclick="copyShareCard()" id="copyBtn">📋 Copy Stats to Clipboard</button>
+            <button class="copy-btn" id="copyBtn">📋 Copy Stats to Clipboard</button>
           </div>
         </article>
       </div>
@@ -333,7 +337,6 @@
   <script>
     // Configuration
     const DATA_URL = "https://raw.githubusercontent.com/doctorgraphics/HotColdUSA/data-storage/latest.json";
-    const RECORDS_URL = "https://raw.githubusercontent.com/doctorgraphics/HotColdUSA/data-storage/records.json";
 
     // Formatters
     function formatTemp(value) {
@@ -346,37 +349,70 @@
       return new Date(isoString).toLocaleDateString(undefined, { month: "long", day: "numeric" });
     }
 
-    function formatTime(isoString) {
-      if (!isoString) return "--";
-      return new Date(isoString).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+    function buildRecordKey(isoString) {
+      if (!isoString) return null;
+      const date = new Date(isoString);
+      if (Number.isNaN(date.getTime())) return null;
+      const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+      const day = String(date.getUTCDate()).padStart(2, '0');
+      return `${month}-${day}`;
     }
 
     function renderTable(tbody, items) {
-      if (!items || !Array.isArray(items)) return;
-      tbody.innerHTML = items.map(item => `
-        <tr><td>${item.city || "Unknown"}, ${item.state || ""}</td><td>${formatTemp(item.temp_f)}</td></tr>
-      `).join('');
+      if (!tbody) return;
+      tbody.textContent = "";
+
+      if (!items || !Array.isArray(items) || items.length === 0) {
+        const row = document.createElement("tr");
+        const cell = document.createElement("td");
+        cell.colSpan = 2;
+        cell.textContent = "No data available.";
+        row.appendChild(cell);
+        tbody.appendChild(row);
+        return;
+      }
+
+      items.forEach((item) => {
+        const row = document.createElement("tr");
+        const placeCell = document.createElement("td");
+        const tempCell = document.createElement("td");
+
+        placeCell.textContent = `${item.city || "Unknown"}, ${item.state || ""}`;
+        tempCell.textContent = formatTemp(item.temp_f);
+
+        row.appendChild(placeCell);
+        row.appendChild(tempCell);
+        tbody.appendChild(row);
+      });
+    }
+
+    async function fetchRecordsData() {
+      try {
+        const response = await fetch(`https://raw.githubusercontent.com/doctorgraphics/HotColdUSA/data-storage/records.json?t=${Date.now()}`);
+        if (!response.ok) return {};
+        return response.json();
+      } catch (err) {
+        console.warn("Could not load records.json fallback:", err);
+        return {};
+      }
+    }
+
+    function setTextIfPresent(id, value) {
+      const element = document.getElementById(id);
+      if (element) {
+        element.textContent = value;
+      }
     }
 
     // Main API Call
     async function loadWeather() {
       const status = document.getElementById("statusMessage");
       try {
-        // Fetch Live Weather & Historical Records at the same time
-        const [weatherResponse, recordsResponse] = await Promise.all([
-          fetch(`${DATA_URL}?t=${Date.now()}`),
-          fetch(`${RECORDS_URL}?t=${Date.now()}`)
-        ]);
+        const weatherResponse = await fetch(`${DATA_URL}?t=${Date.now()}`);
 
         if (!weatherResponse.ok) throw new Error("Could not reach latest.json");
         
         const data = await weatherResponse.json();
-        
-        // Handle Records safely in case the file is missing
-        let recordsData = {};
-        if (recordsResponse.ok) {
-            recordsData = await recordsResponse.json();
-        }
 
         // Safe Data Parsing
         const hotList = data.top_5_hot || [];
@@ -390,59 +426,65 @@
         }
         
         const genTime = data.generated_at;
+        const recordKey = data.record_key || buildRecordKey(genTime);
+        const recordsData = data.daily_records ? {} : await fetchRecordsData();
+        const recs = data.daily_records
+          || (recordKey ? recordsData[recordKey] : null)
+          || { high: "--", low: "--", high_location: "N/A", low_location: "N/A" };
+        const stationCount = data.stations_used ?? hotList.length + coldList.length;
+        const stationsRequested = data.stations_requested ?? "--";
+        const stationsReturned = data.stations_returned ?? "--";
+        const source = data.source || "Unknown";
 
-        // --- Get Today's Record using local browser time ---
-        const today = new Date();
-        const month = String(today.getMonth() + 1).padStart(2, '0');
-        const day = String(today.getDate()).padStart(2, '0');
-        const todayKey = `${month}-${day}`; 
-        
-        const recs = recordsData[todayKey] || { high: "--", low: "--", high_location: "N/A", low_location: "N/A" };
-
-        // UI Updates - Top Badges
-        document.getElementById("todayDate").textContent = formatShortDate(genTime);
-        document.getElementById("updatedAt").textContent = `Updated ${formatTime(genTime)}`;
-        
         // UI Updates - Extreme Cards
-        document.getElementById("hotTemp").textContent = formatTemp(hottest.temp_f);
-        document.getElementById("hotPlace").textContent = `${hottest.city}, ${hottest.state}`;
-        document.getElementById("hotMeta").textContent = "Top Ranking";
+        setTextIfPresent("hotTemp", formatTemp(hottest.temp_f));
+        setTextIfPresent("hotPlace", `${hottest.city}, ${hottest.state}`);
+        setTextIfPresent("hotMeta", "Top Ranking");
         
-        document.getElementById("coldTemp").textContent = formatTemp(coldest.temp_f);
-        document.getElementById("coldPlace").textContent = `${coldest.city}, ${coldest.state}`;
-        document.getElementById("coldMeta").textContent = "Top Ranking";
+        setTextIfPresent("coldTemp", formatTemp(coldest.temp_f));
+        setTextIfPresent("coldPlace", `${coldest.city}, ${coldest.state}`);
+        setTextIfPresent("coldMeta", "Top Ranking");
         
         // UI Updates - Map & Spread
-        document.getElementById("spreadValue").textContent = spread !== "--" ? `${spread}°F` : "--°F";
-        document.getElementById("mapHotLabel").textContent = `🔥 ${hottest.city}`;
-        document.getElementById("mapColdLabel").textContent = `❄️ ${coldest.city}`;
+        setTextIfPresent("spreadValue", spread !== "--" ? `${spread}°F` : "--°F");
+        setTextIfPresent("mapHotLabel", `🔥 ${hottest.city}`);
+        setTextIfPresent("mapColdLabel", `❄️ ${coldest.city}`);
+        setTextIfPresent("stationCount", `Stations checked: ${stationCount}`);
 
         // Climate Records Updates
-        document.getElementById("recordDateLabel").textContent = `${formatShortDate(genTime)} Records`;
-        document.getElementById("recHighVal").textContent = `${recs.high}°F`;
-        document.getElementById("recHighLoc").textContent = recs.high_location;
-        document.getElementById("recLowVal").textContent = `${recs.low}°F`;
-        document.getElementById("recLowLoc").textContent = recs.low_location;
+        setTextIfPresent("recordDateLabel", `${formatShortDate(genTime)} Records`);
+        setTextIfPresent("recHighVal", `${recs.high}°F`);
+        setTextIfPresent("recHighLoc", recs.high_location);
+        setTextIfPresent("recLowVal", `${recs.low}°F`);
+        setTextIfPresent("recLowLoc", recs.low_location);
+
+        // Data Feed Updates
+        setTextIfPresent("feedSource", source);
+        setTextIfPresent("feedRecordKey", recordKey || "--");
+        setTextIfPresent("feedStationsUsed", `${stationCount} of ${stationsRequested}`);
+        setTextIfPresent("feedStationsReturned", `${stationsReturned} returned`);
 
         // Share Card Updates
-        document.getElementById("shareDate").textContent = formatShortDate(genTime);
-        document.getElementById("shareHot").textContent = `🔥 ${hottest.city}: ${formatTemp(hottest.temp_f)}`;
-        document.getElementById("shareCold").textContent = `❄️ ${coldest.city}: ${formatTemp(coldest.temp_f)}`;
-        document.getElementById("shareSpread").textContent = spread !== "--" ? `🌡️ Spread — ${spread}°F` : "🌡️ Spread — --°F";
-        document.getElementById("shareRecordHigh").textContent = `📈 Record High: ${recs.high}°F (${recs.high_location})`;
-        document.getElementById("shareRecordLow").textContent = `📉 Record Low: ${recs.low}°F (${recs.low_location})`;
+        setTextIfPresent("shareDate", formatShortDate(genTime));
+        setTextIfPresent("shareHot", `🔥 ${hottest.city}: ${formatTemp(hottest.temp_f)}`);
+        setTextIfPresent("shareCold", `❄️ ${coldest.city}: ${formatTemp(coldest.temp_f)}`);
+        setTextIfPresent("shareSpread", spread !== "--" ? `🌡️ Spread — ${spread}°F` : "🌡️ Spread — --°F");
+        setTextIfPresent("shareRecordHigh", `📈 Record High: ${recs.high}°F (${recs.high_location})`);
+        setTextIfPresent("shareRecordLow", `📉 Record Low: ${recs.low}°F (${recs.low_location})`);
 
         // Tables
         renderTable(document.getElementById("hotTableBody"), hotList);
         renderTable(document.getElementById("coldTableBody"), coldList);
 
         // Hide Status Message on Success
-        status.style.display = "none";
+        if (status) status.style.display = "none";
 
       } catch (err) {
         console.error("Layout Error:", err);
-        status.textContent = "Error: Could not load data. Check console for details.";
-        status.className = "error";
+        if (status) {
+          status.textContent = "Error: Could not load data. Check console for details.";
+          status.className = "error";
+        }
       }
     }
 
@@ -470,11 +512,24 @@
         }, 2000);
       }).catch(err => {
         console.error('Failed to copy text: ', err);
-        alert("Failed to copy. Your browser might block clipboard access.");
+        const originalText = btn.innerText;
+        btn.innerText = "⚠️ Clipboard unavailable";
+        btn.style.background = "rgba(248, 113, 113, 0.15)";
+        btn.style.borderColor = "rgba(248, 113, 113, 0.35)";
+
+        setTimeout(() => {
+          btn.innerText = originalText;
+          btn.style.background = "rgba(255,255,255,0.1)";
+          btn.style.borderColor = "var(--line)";
+        }, 2500);
       });
     }
 
     // Initialize
+    const copyBtn = document.getElementById("copyBtn");
+    if (copyBtn) {
+      copyBtn.addEventListener("click", copyShareCard);
+    }
     loadWeather();
 </script>
 </body>

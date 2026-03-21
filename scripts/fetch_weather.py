@@ -16,6 +16,7 @@ def main():
     # 1. Load the fixed catalog
     stations_data = json.loads(STATIONS_PATH.read_text(encoding="utf-8"))
     catalog = stations_data["stations"]
+    requested_count = len(catalog)
     
     # 2. Build the Batch URL for Open-Meteo
     lats = ",".join(str(s["latitude"]) for s in catalog)
@@ -32,20 +33,39 @@ def main():
 
     # Open-Meteo returns a list if multiple locations are requested
     data_list = results if isinstance(results, list) else [results]
-    
+    returned_count = len(data_list)
+
+    if returned_count != requested_count:
+        print(
+            f"Warning: expected {requested_count} results but received {returned_count}. "
+            "Only matching records will be processed."
+        )
+
     # 3. Process observations including coordinates for the WarGames Map
     observations = []
-    for i, res in enumerate(data_list):
+    for i, res in enumerate(data_list[:requested_count]):
         city_info = catalog[i]
         curr = res.get("current", {})
+        temp = curr.get("temperature_2m")
+
+        if temp is None:
+            print(
+                f"Skipping {city_info['name']}, {city_info['state']} "
+                "because temperature_2m was missing."
+            )
+            continue
         
         observations.append({
             "city": city_info["name"],
             "state": city_info["state"],
-            "temp_f": round(curr.get("temperature_2m", 0), 1),
+            "temp_f": round(temp, 1),
             "lat": city_info["latitude"],
             "lon": city_info["longitude"]
         })
+
+    if not observations:
+        print("Error: no valid observations were returned by the API.")
+        return
 
     # 4. Sort for rankings (Hottest first)
     observations.sort(key=lambda x: x["temp_f"], reverse=True)
@@ -64,9 +84,13 @@ def main():
     # 6. Build the Final Output Dictionary
     output = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
+        "record_key": today_key,
         "top_5_hot": observations[:5],
         "top_5_cold": observations[-5:][::-1], # Reverse so the coldest is index [0]
         "daily_records": daily_record,
+        "stations_requested": requested_count,
+        "stations_returned": returned_count,
+        "stations_used": len(observations),
         "source": "Open-Meteo / WOPR Tactical"
     }
     
