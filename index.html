@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HotCold USA</title>
+  
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  
   <style>
     :root {
       --bg: #0f172a;
@@ -287,17 +293,6 @@
           </div>
           <div class="spread-value" id="spreadValue">--°F</div>
         </div>
-
-        <div class="map-shell">
-          <div class="map-top">
-            <span>Prototype U.S. map</span>
-            <span id="stationCount">Stations checked: 50</span>
-          </div>
-          <div class="map">
-            <div class="map-label label-hot" id="mapHotLabel">🔥 Hot</div>
-            <div class="map-label label-cold" id="mapColdLabel">❄️ Cold</div>
-          </div>
-        </div>
       </article>
 
       <div class="stack">
@@ -315,6 +310,29 @@
           <div class="stat-row">
             <span>All-Time Low</span>
             <span style="color: #7dd3fc; text-align: right;"><strong id="recLowVal">--°F</strong><br><small id="recLowLoc">--</small></span>
+          </div>
+        </article>
+        
+        <article class="card section">
+          <h3>Data Feed</h3>
+          <p>Operational details for the generated weather snapshot currently shown on the page.</p>
+          <div class="feed-list">
+            <div class="feed-item">
+              <span class="feed-label">Source</span>
+              <span class="feed-value" id="feedSource">Loading...</span>
+            </div>
+            <div class="feed-item">
+              <span class="feed-label">Record key</span>
+              <span class="feed-value" id="feedRecordKey">--</span>
+            </div>
+            <div class="feed-item">
+              <span class="feed-label">Stations used</span>
+              <span class="feed-value" id="feedStationsUsed">--</span>
+            </div>
+            <div class="feed-item">
+              <span class="feed-label">API responses</span>
+              <span class="feed-value" id="feedStationsReturned">--</span>
+            </div>
           </div>
         </article>
 
@@ -352,14 +370,16 @@
             <div style="font-size: 0.8rem; opacity: 0.8;">
               <div id="shareRecordHigh">📈 Record High: --</div>
               <div id="shareRecordLow">📉 Record Low: --</div>
-            </div>
+            </div>            
             
             <button class="copy-btn" id="copyBtn">📋 Copy Stats to Clipboard</button>
           </div>
+          <button class="copy-btn" onclick="copyShareCard()" id="copyBtn">📋 Copy Stats to Clipboard</button>
         </article>
+        
       </div>
     </section>
-
+    
     <section class="bottom-grid">
       <article class="card section">
         <h3>Top 5 Hottest</h3>
@@ -532,6 +552,12 @@
         setTextIfPresent("feedRecordKey", recordKey || "--");
         setTextIfPresent("feedStationsUsed", `${stationCount} of ${stationsRequested}`);
         setTextIfPresent("feedStationsReturned", `${stationsReturned} returned`);
+
+        // Data Feed Updates
+        document.getElementById("feedSource").textContent = source;
+        document.getElementById("feedRecordKey").textContent = recordKey || "--";
+        document.getElementById("feedStationsUsed").textContent = `${stationCount} of ${stationsRequested}`;
+        document.getElementById("feedStationsReturned").textContent = `${stationsReturned} returned`;
 
         // Share Card Updates
         setTextIfPresent("shareDate", formatShortDate(genTime));
