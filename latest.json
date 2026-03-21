@@ -1,39 +1,39 @@
 {
-  "generated_at": "2026-03-21T08:05:06.901119+00:00",
+  "generated_at": "2026-03-21T09:07:03.109759+00:00",
   "record_key": "03-21",
   "top_5_hot": [
     {
-      "city": "Phoenix",
-      "state": "AZ",
-      "temp_f": 77.6,
-      "lat": 33.448,
-      "lon": -112.074
-    },
-    {
       "city": "Honolulu",
       "state": "HI",
-      "temp_f": 75.6,
+      "temp_f": 75.8,
       "lat": 21.307,
       "lon": -157.858
     },
     {
+      "city": "Phoenix",
+      "state": "AZ",
+      "temp_f": 74.4,
+      "lat": 33.448,
+      "lon": -112.074
+    },
+    {
       "city": "Nashville",
       "state": "TN",
-      "temp_f": 66.7,
+      "temp_f": 66.8,
       "lat": 36.163,
       "lon": -86.782
     },
     {
       "city": "Austin",
       "state": "TX",
-      "temp_f": 66.7,
+      "temp_f": 65.3,
       "lat": 30.267,
       "lon": -97.743
     },
     {
       "city": "Oklahoma City",
       "state": "OK",
-      "temp_f": 65.8,
+      "temp_f": 64.4,
       "lat": 35.468,
       "lon": -97.516
     }
@@ -42,21 +42,21 @@
     {
       "city": "Montpelier",
       "state": "VT",
-      "temp_f": 31.3,
+      "temp_f": 31.2,
       "lat": 44.26,
       "lon": -72.575
     },
     {
       "city": "Juneau",
       "state": "AK",
-      "temp_f": 32.0,
+      "temp_f": 31.8,
       "lat": 58.301,
       "lon": -134.42
     },
     {
       "city": "Lansing",
       "state": "MI",
-      "temp_f": 33.4,
+      "temp_f": 32.3,
       "lat": 42.734,
       "lon": -84.555
     },
@@ -68,11 +68,11 @@
       "lon": -69.782
     },
     {
-      "city": "Madison",
-      "state": "WI",
-      "temp_f": 39.5,
-      "lat": 43.073,
-      "lon": -89.401
+      "city": "Albany",
+      "state": "NY",
+      "temp_f": 38.6,
+      "lat": 42.653,
+      "lon": -73.755
     }
   ],
   "daily_records": {
