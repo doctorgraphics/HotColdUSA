@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-21T10:04:05.731866+00:00",
+  "generated_at": "2026-03-21T11:04:22.979487+00:00",
   "record_key": "03-21",
   "top_5_hot": [
     {
@@ -12,28 +12,28 @@
     {
       "city": "Phoenix",
       "state": "AZ",
-      "temp_f": 72.2,
+      "temp_f": 70.5,
       "lat": 33.448,
       "lon": -112.074
     },
     {
       "city": "Nashville",
       "state": "TN",
-      "temp_f": 66.2,
+      "temp_f": 64.8,
       "lat": 36.163,
       "lon": -86.782
     },
     {
       "city": "Austin",
       "state": "TX",
-      "temp_f": 63.8,
+      "temp_f": 62.4,
       "lat": 30.267,
       "lon": -97.743
     },
     {
       "city": "Sacramento",
       "state": "CA",
-      "temp_f": 63.2,
+      "temp_f": 62.1,
       "lat": 38.576,
       "lon": -121.493
     }
@@ -42,37 +42,37 @@
     {
       "city": "Montpelier",
       "state": "VT",
-      "temp_f": 30.4,
+      "temp_f": 29.2,
       "lat": 44.26,
       "lon": -72.575
     },
     {
       "city": "Lansing",
       "state": "MI",
-      "temp_f": 31.1,
+      "temp_f": 30.9,
       "lat": 42.734,
       "lon": -84.555
     },
     {
       "city": "Juneau",
       "state": "AK",
-      "temp_f": 32.0,
+      "temp_f": 31.9,
       "lat": 58.301,
       "lon": -134.42
     },
     {
       "city": "Augusta",
       "state": "ME",
-      "temp_f": 33.5,
+      "temp_f": 33.4,
       "lat": 44.307,
       "lon": -69.782
     },
     {
-      "city": "Madison",
-      "state": "WI",
-      "temp_f": 36.7,
-      "lat": 43.073,
-      "lon": -89.401
+      "city": "Albany",
+      "state": "NY",
+      "temp_f": 35.9,
+      "lat": 42.653,
+      "lon": -73.755
     }
   ],
   "daily_records": {
