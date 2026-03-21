@@ -337,6 +337,29 @@
         </article>
 
         <article class="card section">
+          <h3>Data Feed</h3>
+          <p>Operational details for the generated weather snapshot currently shown on the page.</p>
+          <div class="feed-list">
+            <div class="feed-item">
+              <span class="feed-label">Source</span>
+              <span class="feed-value" id="feedSource">Loading...</span>
+            </div>
+            <div class="feed-item">
+              <span class="feed-label">Record key</span>
+              <span class="feed-value" id="feedRecordKey">--</span>
+            </div>
+            <div class="feed-item">
+              <span class="feed-label">Stations used</span>
+              <span class="feed-value" id="feedStationsUsed">--</span>
+            </div>
+            <div class="feed-item">
+              <span class="feed-label">API responses</span>
+              <span class="feed-value" id="feedStationsReturned">--</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card section">
           <h3>Daily Share Card</h3>
           <div class="share-card">
             <div class="eyebrow" style="margin-bottom: 10px;">HotCold USA — <span id="shareDate">--</span></div>
@@ -420,6 +443,7 @@
     }
 
     function renderTable(tbody, items) {
+      if (!tbody) return;
       tbody.textContent = "";
 
       if (!items || !Array.isArray(items) || items.length === 0) {
@@ -457,6 +481,13 @@
       }
     }
 
+    function setTextIfPresent(id, value) {
+      const element = document.getElementById(id);
+      if (element) {
+        element.textContent = value;
+      }
+    }
+
     // Main API Call
     async function loadWeather() {
       const status = document.getElementById("statusMessage");
@@ -490,31 +521,37 @@
         const source = data.source || "Unknown";
 
         // UI Updates - Top Badges
-        document.getElementById("todayDate").textContent = formatShortDate(genTime);
-        document.getElementById("updatedAt").textContent = `Updated ${formatTime(genTime)}`;
-        document.getElementById("headerCoverage").textContent = `Valid stations: ${stationCount}`;
+        setTextIfPresent("todayDate", formatShortDate(genTime));
+        setTextIfPresent("updatedAt", `Updated ${formatTime(genTime)}`);
+        setTextIfPresent("headerCoverage", `Valid stations: ${stationCount}`);
         
         // UI Updates - Extreme Cards
-        document.getElementById("hotTemp").textContent = formatTemp(hottest.temp_f);
-        document.getElementById("hotPlace").textContent = `${hottest.city}, ${hottest.state}`;
-        document.getElementById("hotMeta").textContent = "Top Ranking";
+        setTextIfPresent("hotTemp", formatTemp(hottest.temp_f));
+        setTextIfPresent("hotPlace", `${hottest.city}, ${hottest.state}`);
+        setTextIfPresent("hotMeta", "Top Ranking");
         
-        document.getElementById("coldTemp").textContent = formatTemp(coldest.temp_f);
-        document.getElementById("coldPlace").textContent = `${coldest.city}, ${coldest.state}`;
-        document.getElementById("coldMeta").textContent = "Top Ranking";
+        setTextIfPresent("coldTemp", formatTemp(coldest.temp_f));
+        setTextIfPresent("coldPlace", `${coldest.city}, ${coldest.state}`);
+        setTextIfPresent("coldMeta", "Top Ranking");
         
         // UI Updates - Map & Spread
-        document.getElementById("spreadValue").textContent = spread !== "--" ? `${spread}°F` : "--°F";
-        document.getElementById("mapHotLabel").textContent = `🔥 ${hottest.city}`;
-        document.getElementById("mapColdLabel").textContent = `❄️ ${coldest.city}`;
-        document.getElementById("stationCount").textContent = `Stations checked: ${stationCount}`;
+        setTextIfPresent("spreadValue", spread !== "--" ? `${spread}°F` : "--°F");
+        setTextIfPresent("mapHotLabel", `🔥 ${hottest.city}`);
+        setTextIfPresent("mapColdLabel", `❄️ ${coldest.city}`);
+        setTextIfPresent("stationCount", `Stations checked: ${stationCount}`);
 
         // Climate Records Updates
-        document.getElementById("recordDateLabel").textContent = `${formatShortDate(genTime)} Records`;
-        document.getElementById("recHighVal").textContent = `${recs.high}°F`;
-        document.getElementById("recHighLoc").textContent = recs.high_location;
-        document.getElementById("recLowVal").textContent = `${recs.low}°F`;
-        document.getElementById("recLowLoc").textContent = recs.low_location;
+        setTextIfPresent("recordDateLabel", `${formatShortDate(genTime)} Records`);
+        setTextIfPresent("recHighVal", `${recs.high}°F`);
+        setTextIfPresent("recHighLoc", recs.high_location);
+        setTextIfPresent("recLowVal", `${recs.low}°F`);
+        setTextIfPresent("recLowLoc", recs.low_location);
+
+        // Data Feed Updates
+        setTextIfPresent("feedSource", source);
+        setTextIfPresent("feedRecordKey", recordKey || "--");
+        setTextIfPresent("feedStationsUsed", `${stationCount} of ${stationsRequested}`);
+        setTextIfPresent("feedStationsReturned", `${stationsReturned} returned`);
 
         // Data Feed Updates
         document.getElementById("feedSource").textContent = source;
@@ -523,24 +560,26 @@
         document.getElementById("feedStationsReturned").textContent = `${stationsReturned} returned`;
 
         // Share Card Updates
-        document.getElementById("shareDate").textContent = formatShortDate(genTime);
-        document.getElementById("shareHot").textContent = `🔥 ${hottest.city}: ${formatTemp(hottest.temp_f)}`;
-        document.getElementById("shareCold").textContent = `❄️ ${coldest.city}: ${formatTemp(coldest.temp_f)}`;
-        document.getElementById("shareSpread").textContent = spread !== "--" ? `🌡️ Spread — ${spread}°F` : "🌡️ Spread — --°F";
-        document.getElementById("shareRecordHigh").textContent = `📈 Record High: ${recs.high}°F (${recs.high_location})`;
-        document.getElementById("shareRecordLow").textContent = `📉 Record Low: ${recs.low}°F (${recs.low_location})`;
+        setTextIfPresent("shareDate", formatShortDate(genTime));
+        setTextIfPresent("shareHot", `🔥 ${hottest.city}: ${formatTemp(hottest.temp_f)}`);
+        setTextIfPresent("shareCold", `❄️ ${coldest.city}: ${formatTemp(coldest.temp_f)}`);
+        setTextIfPresent("shareSpread", spread !== "--" ? `🌡️ Spread — ${spread}°F` : "🌡️ Spread — --°F");
+        setTextIfPresent("shareRecordHigh", `📈 Record High: ${recs.high}°F (${recs.high_location})`);
+        setTextIfPresent("shareRecordLow", `📉 Record Low: ${recs.low}°F (${recs.low_location})`);
 
         // Tables
         renderTable(document.getElementById("hotTableBody"), hotList);
         renderTable(document.getElementById("coldTableBody"), coldList);
 
         // Hide Status Message on Success
-        status.style.display = "none";
+        if (status) status.style.display = "none";
 
       } catch (err) {
         console.error("Layout Error:", err);
-        status.textContent = "Error: Could not load data. Check console for details.";
-        status.className = "error";
+        if (status) {
+          status.textContent = "Error: Could not load data. Check console for details.";
+          status.className = "error";
+        }
       }
     }
 
@@ -582,7 +621,10 @@
     }
 
     // Initialize
-    document.getElementById("copyBtn").addEventListener("click", copyShareCard);
+    const copyBtn = document.getElementById("copyBtn");
+    if (copyBtn) {
+      copyBtn.addEventListener("click", copyShareCard);
+    }
     loadWeather();
 </script>
 </body>
