@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-21T09:07:03.109759+00:00",
+  "generated_at": "2026-03-21T10:04:05.731866+00:00",
   "record_key": "03-21",
   "top_5_hot": [
     {
@@ -12,67 +12,67 @@
     {
       "city": "Phoenix",
       "state": "AZ",
-      "temp_f": 74.4,
+      "temp_f": 72.2,
       "lat": 33.448,
       "lon": -112.074
     },
     {
       "city": "Nashville",
       "state": "TN",
-      "temp_f": 66.8,
+      "temp_f": 66.2,
       "lat": 36.163,
       "lon": -86.782
     },
     {
       "city": "Austin",
       "state": "TX",
-      "temp_f": 65.3,
+      "temp_f": 63.8,
       "lat": 30.267,
       "lon": -97.743
     },
     {
-      "city": "Oklahoma City",
-      "state": "OK",
-      "temp_f": 64.4,
-      "lat": 35.468,
-      "lon": -97.516
+      "city": "Sacramento",
+      "state": "CA",
+      "temp_f": 63.2,
+      "lat": 38.576,
+      "lon": -121.493
     }
   ],
   "top_5_cold": [
     {
       "city": "Montpelier",
       "state": "VT",
-      "temp_f": 31.2,
+      "temp_f": 30.4,
       "lat": 44.26,
       "lon": -72.575
     },
     {
-      "city": "Juneau",
-      "state": "AK",
-      "temp_f": 31.8,
-      "lat": 58.301,
-      "lon": -134.42
-    },
-    {
       "city": "Lansing",
       "state": "MI",
-      "temp_f": 32.3,
+      "temp_f": 31.1,
       "lat": 42.734,
       "lon": -84.555
     },
     {
+      "city": "Juneau",
+      "state": "AK",
+      "temp_f": 32.0,
+      "lat": 58.301,
+      "lon": -134.42
+    },
+    {
       "city": "Augusta",
       "state": "ME",
-      "temp_f": 33.9,
+      "temp_f": 33.5,
       "lat": 44.307,
       "lon": -69.782
     },
     {
-      "city": "Albany",
-      "state": "NY",
-      "temp_f": 38.6,
-      "lat": 42.653,
-      "lon": -73.755
+      "city": "Madison",
+      "state": "WI",
+      "temp_f": 36.7,
+      "lat": 43.073,
+      "lon": -89.401
     }
   ],
   "daily_records": {
