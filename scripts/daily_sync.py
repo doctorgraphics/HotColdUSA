@@ -30,6 +30,7 @@ def main():
         data = json.loads(LATEST_PATH.read_text())
 
     # 4. Inject Daily Records
+    data["record_key"] = today_key
     data["daily_records"] = today_record
     
     # 5. Write it back
