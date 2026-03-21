@@ -1,76 +1,76 @@
 {
-  "generated_at": "2026-03-21T15:04:55.796680+00:00",
+  "generated_at": "2026-03-21T16:04:12.164809+00:00",
   "record_key": "03-21",
   "top_5_hot": [
     {
-      "city": "Honolulu",
-      "state": "HI",
-      "temp_f": 75.6,
-      "lat": 21.307,
-      "lon": -157.858
-    },
-    {
       "city": "Phoenix",
       "state": "AZ",
-      "temp_f": 74.6,
+      "temp_f": 81.6,
       "lat": 33.448,
       "lon": -112.074
     },
     {
+      "city": "Oklahoma City",
+      "state": "OK",
+      "temp_f": 78.6,
+      "lat": 35.468,
+      "lon": -97.516
+    },
+    {
       "city": "Nashville",
       "state": "TN",
-      "temp_f": 74.0,
+      "temp_f": 77.9,
       "lat": 36.163,
       "lon": -86.782
     },
     {
       "city": "Columbia",
       "state": "SC",
-      "temp_f": 73.9,
+      "temp_f": 77.0,
       "lat": 33.999,
       "lon": -81.035
     },
     {
-      "city": "Raleigh",
-      "state": "NC",
-      "temp_f": 73.1,
-      "lat": 35.779,
-      "lon": -78.638
+      "city": "Lincoln",
+      "state": "NE",
+      "temp_f": 75.3,
+      "lat": 40.809,
+      "lon": -96.675
     }
   ],
   "top_5_cold": [
     {
-      "city": "Montpelier",
-      "state": "VT",
-      "temp_f": 31.9,
-      "lat": 44.26,
-      "lon": -72.575
-    },
-    {
       "city": "Juneau",
       "state": "AK",
-      "temp_f": 32.3,
+      "temp_f": 33.0,
       "lat": 58.301,
       "lon": -134.42
     },
     {
+      "city": "Montpelier",
+      "state": "VT",
+      "temp_f": 33.9,
+      "lat": 44.26,
+      "lon": -72.575
+    },
+    {
       "city": "Albany",
       "state": "NY",
-      "temp_f": 35.8,
+      "temp_f": 37.4,
       "lat": 42.653,
       "lon": -73.755
     },
     {
       "city": "Lansing",
       "state": "MI",
-      "temp_f": 37.4,
+      "temp_f": 38.9,
       "lat": 42.734,
       "lon": -84.555
     },
     {
       "city": "Augusta",
       "state": "ME",
-      "temp_f": 38.5,
+      "temp_f": 39.4,
       "lat": 44.307,
       "lon": -69.782
     }
