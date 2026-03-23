@@ -956,372 +956,3666 @@
     // ── DATA & APP ─────────────────────────────────────────────────────────────
     const STALE_HOURS = 2;
     const CLIMATE_RECORDS = {
-      "01-01": { "high": { "temp": 100, "place": "Laredo, TX", "year": 1953 }, "low": { "temp": -57, "place": "AK Border", "year": 1971 } },
-      "01-02": { "high": { "temp": 95, "place": "Laredo, TX", "year": 1954 }, "low": { "temp": -60, "place": "Rogers Pass, MT", "year": 1954 } },
-      "01-03": { "high": { "temp": 94, "place": "Mission, TX", "year": 1954 }, "low": { "temp": -62, "place": "Rogers Pass, MT", "year": 1954 } },
-      "01-04": { "high": { "temp": 93, "place": "Rio Grande City, TX", "year": 1954 }, "low": { "temp": -65, "place": "Rogers Pass, MT", "year": 1954 } },
-      "01-05": { "high": { "temp": 92, "place": "Laredo, TX", "year": 1918 }, "low": { "temp": -66, "place": "Rogers Pass, MT", "year": 1954 } },
-      "01-06": { "high": { "temp": 91, "place": "Mission, TX", "year": 1962 }, "low": { "temp": -64, "place": "Tanana, AK", "year": 1975 } },
-      "01-07": { "high": { "temp": 94, "place": "Rio Grande City, TX", "year": 1943 }, "low": { "temp": -68, "place": "Tanana, AK", "year": 1975 } },
-      "01-08": { "high": { "temp": 95, "place": "Laredo, TX", "year": 2015 }, "low": { "temp": -65, "place": "Allakaket, AK", "year": 1975 } },
-      "01-09": { "high": { "temp": 94, "place": "McAllen, TX", "year": 1967 }, "low": { "temp": -64, "place": "Riverside Ranger Stn, WY", "year": 1937 } },
-      "01-10": { "high": { "temp": 93, "place": "Laredo, TX", "year": 1911 }, "low": { "temp": -66, "place": "Riverside Ranger Stn, WY", "year": 1937 } },
-      "01-11": { "high": { "temp": 91, "place": "Mission, TX", "year": 1954 }, "low": { "temp": -65, "place": "Rogers Pass, MT", "year": 1963 } },
-      "01-12": { "high": { "temp": 92, "place": "Laredo, TX", "year": 1953 }, "low": { "temp": -68, "place": "Rogers Pass, MT", "year": 1963 } },
-      "01-13": { "high": { "temp": 95, "place": "Rio Grande City, TX", "year": 1953 }, "low": { "temp": -60, "place": "Rogers Pass, MT", "year": 1963 } },
-      "01-14": { "high": { "temp": 97, "place": "Laredo, TX", "year": 1953 }, "low": { "temp": -54, "place": "Loma, MT", "year": 1972 } },
-      "01-15": { "high": { "temp": 104, "place": "Laredo, TX", "year": 1971 }, "low": { "temp": -60, "place": "Rogers Pass, MT", "year": 1954 } },
-      "01-16": { "high": { "temp": 94, "place": "Mission, TX", "year": 1971 }, "low": { "temp": -63, "place": "Rogers Pass, MT", "year": 1954 } },
-      "01-17": { "high": { "temp": 93, "place": "Rio Grande City, TX", "year": 1974 }, "low": { "temp": -62, "place": "Rogers Pass, MT", "year": 1954 } },
-      "01-18": { "high": { "temp": 95, "place": "McAllen, TX", "year": 1920 }, "low": { "temp": -64, "place": "Rogers Pass, MT", "year": 1954 } },
-      "01-19": { "high": { "temp": 96, "place": "Laredo, TX", "year": 1920 }, "low": { "temp": -67, "place": "Rogers Pass, MT", "year": 1954 } },
-      "01-20": { "high": { "temp": 94, "place": "Rio Grande City, TX", "year": 1950 }, "low": { "temp": -70, "place": "Rogers Pass, MT", "year": 1954 } },
-      "01-21": { "high": { "temp": 92, "place": "Mission, TX", "year": 1950 }, "low": { "temp": -68, "place": "Rogers Pass, MT", "year": 1954 } },
-      "01-22": { "high": { "temp": 91, "place": "McAllen, TX", "year": 1950 }, "low": { "temp": -75, "place": "Tanana, AK", "year": 1989 } },
-      "01-23": { "high": { "temp": 95, "place": "Laredo, TX", "year": 1950 }, "low": { "temp": -80, "place": "Prospect Creek, AK", "year": 1971 } },
-      "01-24": { "high": { "temp": 96, "place": "Rio Grande City, TX", "year": 1950 }, "low": { "temp": -78, "place": "Prospect Creek, AK", "year": 1971 } },
-      "01-25": { "high": { "temp": 94, "place": "Mission, TX", "year": 1950 }, "low": { "temp": -77, "place": "Galena, AK", "year": 1971 } },
-      "01-26": { "high": { "temp": 95, "place": "McAllen, TX", "year": 1950 }, "low": { "temp": -76, "place": "McGrath, AK", "year": 1989 } },
-      "01-27": { "high": { "temp": 93, "place": "Laredo, TX", "year": 1970 }, "low": { "temp": -75, "place": "Tanana, AK", "year": 1989 } },
-      "01-28": { "high": { "temp": 94, "place": "Rio Grande City, TX", "year": 2015 }, "low": { "temp": -70, "place": "Rogers Pass, MT", "year": 1916 } },
-      "01-29": { "high": { "temp": 92, "place": "Mission, TX", "year": 1967 }, "low": { "temp": -64, "place": "Tower, MN", "year": 1996 } },
-      "01-30": { "high": { "temp": 96, "place": "Laredo, TX", "year": 2016 }, "low": { "temp": -60, "place": "Embarrass, MN", "year": 1996 } },
-      "01-31": { "high": { "temp": 98, "place": "Laredo, TX", "year": 1954 }, "low": { "temp": -61, "place": "Maybell, CO", "year": 1985 } },
-      "02-01": { "high": { "temp": 105, "place": "Rio Grande City, TX", "year": 1951 }, "low": { "temp": -61, "place": "Maybell, CO", "year": 1985 } },
-      "02-02": { "high": { "temp": 104, "place": "Laredo, TX", "year": 1954 }, "low": { "temp": -60, "place": "Tower, MN", "year": 1996 } },
-      "02-03": { "high": { "temp": 103, "place": "Mission, TX", "year": 1954 }, "low": { "temp": -64, "place": "Allakaket, AK", "year": 1975 } },
-      "02-04": { "high": { "temp": 102, "place": "McAllen, TX", "year": 1954 }, "low": { "temp": -65, "place": "Tanana, AK", "year": 1975 } },
-      "02-05": { "high": { "temp": 101, "place": "Laredo, TX", "year": 1954 }, "low": { "temp": -63, "place": "Allakaket, AK", "year": 1975 } },
-      "02-06": { "high": { "temp": 100, "place": "Mission, TX", "year": 1954 }, "low": { "temp": -62, "place": "Tanana, AK", "year": 1975 } },
-      "02-07": { "high": { "temp": 102, "place": "Rio Grande City, TX", "year": 1943 }, "low": { "temp": -61, "place": "Fairbanks, AK", "year": 1975 } },
-      "02-08": { "high": { "temp": 103, "place": "Laredo, TX", "year": 1954 }, "low": { "temp": -60, "place": "Boulder, WY", "year": 1929 } },
-      "02-09": { "high": { "temp": 106, "place": "Rio Grande City, TX", "year": 1954 }, "low": { "temp": -66, "place": "Riverside Ranger Stn, WY", "year": 1933 } },
-      "02-10": { "high": { "temp": 104, "place": "Mission, TX", "year": 1954 }, "low": { "temp": -62, "place": "Darwin Ranch, WY", "year": 1981 } },
-      "02-11": { "high": { "temp": 101, "place": "McAllen, TX", "year": 1954 }, "low": { "temp": -61, "place": "Fort Logan, MT", "year": 1899 } },
-      "02-12": { "high": { "temp": 102, "place": "Laredo, TX", "year": 1953 }, "low": { "temp": -65, "place": "Big Delta, AK", "year": 1966 } },
-      "02-13": { "high": { "temp": 105, "place": "Rio Grande City, TX", "year": 1953 }, "low": { "temp": -60, "place": "Galena, AK", "year": 1989 } },
-      "02-14": { "high": { "temp": 103, "place": "McAllen, TX", "year": 1953 }, "low": { "temp": -62, "place": "McGrath, AK", "year": 1989 } },
-      "02-15": { "high": { "temp": 107, "place": "Rio Grande City, TX", "year": 1975 }, "low": { "temp": -66, "place": "Northway, AK", "year": 1946 } },
-      "02-16": { "high": { "temp": 104, "place": "Mission, TX", "year": 1971 }, "low": { "temp": -64, "place": "Rogers Pass, MT", "year": 1936 } },
-      "02-17": { "high": { "temp": 103, "place": "Rio Grande City, TX", "year": 1974 }, "low": { "temp": -58, "place": "Lincoln, MT", "year": 1936 } },
-      "02-18": { "high": { "temp": 105, "place": "Laredo, TX", "year": 1986 }, "low": { "temp": -52, "place": "Old Forge, NY", "year": 1979 } },
-      "02-19": { "high": { "temp": 106, "place": "Rio Grande City, TX", "year": 1986 }, "low": { "temp": -60, "place": "Northway, AK", "year": 1953 } },
-      "02-20": { "high": { "temp": 108, "place": "Falcon Dam, TX", "year": 1996 }, "low": { "temp": -68, "place": "Northway, AK", "year": 1953 } },
-      "02-21": { "high": { "temp": 110, "place": "Rio Grande City, TX", "year": 1996 }, "low": { "temp": -63, "place": "Big Delta, AK", "year": 1966 } },
-      "02-22": { "high": { "temp": 108, "place": "Rio Grande City, TX", "year": 1996 }, "low": { "temp": -62, "place": "Fairbanks, AK", "year": 1966 } },
-      "02-23": { "high": { "temp": 105, "place": "Mission, TX", "year": 1996 }, "low": { "temp": -65, "place": "Northway, AK", "year": 1954 } },
-      "02-24": { "high": { "temp": 104, "place": "Laredo, TX", "year": 2009 }, "low": { "temp": -68, "place": "Northway, AK", "year": 1954 } },
-      "02-25": { "high": { "temp": 102, "place": "McAllen, TX", "year": 2009 }, "low": { "temp": -70, "place": "Northway, AK", "year": 1954 } },
-      "02-26": { "high": { "temp": 101, "place": "Mission, TX", "year": 2009 }, "low": { "temp": -65, "place": "Fort Yukon, AK", "year": 1954 } },
-      "02-27": { "high": { "temp": 102, "place": "Laredo, TX", "year": 2011 }, "low": { "temp": -62, "place": "Fairbanks, AK", "year": 1954 } },
-      "02-28": { "high": { "temp": 101, "place": "Laredo, TX", "year": 1940 }, "low": { "temp": -56, "place": "Taylor Park, CO", "year": 1962 } },
-      "02-29": { "high": { "temp": 100, "place": "Mission, TX", "year": 1940 }, "low": { "temp": -50, "place": "Bodie, CA", "year": 1916 } },
-      "03-01": { "high": { "temp": 108, "place": "Mission, TX", "year": 1954 }, "low": { "temp": -50, "place": "Leadville, CO", "year": 1906 } },
-      "03-02": { "high": { "temp": 106, "place": "Rio Grande City, TX", "year": 1954 }, "low": { "temp": -48, "place": "Stanley, ID", "year": 1989 } },
-      "03-03": { "high": { "temp": 105, "place": "Laredo, TX", "year": 1954 }, "low": { "temp": -49, "place": "Big Piney, WY", "year": 1985 } },
-      "03-04": { "high": { "temp": 104, "place": "McAllen, TX", "year": 1954 }, "low": { "temp": -51, "place": "Stanley, ID", "year": 1989 } },
-      "03-05": { "high": { "temp": 102, "place": "Mission, TX", "year": 1954 }, "low": { "temp": -52, "place": "Darwin Ranch, WY", "year": 1989 } },
-      "03-06": { "high": { "temp": 103, "place": "Rio Grande City, TX", "year": 2015 }, "low": { "temp": -48, "place": "Eagle, AK", "year": 1971 } },
-      "03-07": { "high": { "temp": 104, "place": "Laredo, TX", "year": 2015 }, "low": { "temp": -50, "place": "Chandalar Lake, AK", "year": 1971 } },
-      "03-08": { "high": { "temp": 102, "place": "McAllen, TX", "year": 2015 }, "low": { "temp": -53, "place": "Allakaket, AK", "year": 1971 } },
-      "03-09": { "high": { "temp": 101, "place": "Mission, TX", "year": 2015 }, "low": { "temp": -54, "place": "Anaktuvuk Pass, AK", "year": 1971 } },
-      "03-10": { "high": { "temp": 100, "place": "Rio Grande City, TX", "year": 2015 }, "low": { "temp": -56, "place": "Umiat, AK", "year": 1971 } },
-      "03-11": { "high": { "temp": 102, "place": "Laredo, TX", "year": 1989 }, "low": { "temp": -55, "place": "Northway, AK", "year": 1971 } },
-      "03-12": { "high": { "temp": 105, "place": "Yuma, AZ", "year": 1989 }, "low": { "temp": -52, "place": "Fort Yukon, AK", "year": 1971 } },
-      "03-13": { "high": { "temp": 108, "place": "Rio Grande City, TX", "year": 1989 }, "low": { "temp": -48, "place": "Galena, AK", "year": 1971 } },
-      "03-14": { "high": { "temp": 110, "place": "Mission, TX", "year": 1988 }, "low": { "temp": -46, "place": "McGrath, AK", "year": 1971 } },
-      "03-15": { "high": { "temp": 112, "place": "Yuma, AZ", "year": 1988 }, "low": { "temp": -48, "place": "Yellowstone, WY", "year": 1965 } },
-      "03-16": { "high": { "temp": 108, "place": "Laredo, TX", "year": 1988 }, "low": { "temp": -42, "place": "Stanley, ID", "year": 1965 } },
-      "03-17": { "high": { "temp": 106, "place": "Falcon Dam, TX", "year": 1988 }, "low": { "temp": -40, "place": "Bondurant, WY", "year": 1965 } },
-      "03-18": { "high": { "temp": 104, "place": "McAllen, TX", "year": 1988 }, "low": { "temp": -44, "place": "Bodie, CA", "year": 1965 } },
-      "03-19": { "high": { "temp": 105, "place": "Rio Grande City, TX", "year": 2004 }, "low": { "temp": -45, "place": "Bridgeport, CA", "year": 1965 } },
-      "03-20": { "high": { "temp": 107, "place": "Mission, TX", "year": 2004 }, "low": { "temp": -48, "place": "Loma, MT", "year": 1965 } },
-      "03-21": { "high": { "temp": 108, "place": "Laredo, TX", "year": 2004 }, "low": { "temp": -49, "place": "Rogers Pass, MT", "year": 1965 } },
-      "03-22": { "high": { "temp": 110, "place": "Yuma, AZ", "year": 1994 }, "low": { "temp": -50, "place": "Peter Sinks, UT", "year": 2005 } },
-      "03-23": { "high": { "temp": 106, "place": "Rio Grande City, TX", "year": 1994 }, "low": { "temp": -46, "place": "Stanley, ID", "year": 1965 } },
-      "03-24": { "high": { "temp": 105, "place": "McAllen, TX", "year": 1994 }, "low": { "temp": -45, "place": "Bondurant, WY", "year": 1965 } },
-      "03-25": { "high": { "temp": 104, "place": "Mission, TX", "year": 1994 }, "low": { "temp": -44, "place": "Darwin Ranch, WY", "year": 1965 } },
-      "03-26": { "high": { "temp": 103, "place": "Laredo, TX", "year": 2011 }, "low": { "temp": -43, "place": "Bodie, CA", "year": 1965 } },
-      "03-27": { "high": { "temp": 105, "place": "Rio Grande City, TX", "year": 2011 }, "low": { "temp": -42, "place": "Stanley, ID", "year": 1965 } },
-      "03-28": { "high": { "temp": 106, "place": "McAllen, TX", "year": 1971 }, "low": { "temp": -41, "place": "Bondurant, WY", "year": 1965 } },
-      "03-29": { "high": { "temp": 108, "place": "Mission, TX", "year": 1971 }, "low": { "temp": -40, "place": "Darwin Ranch, WY", "year": 1965 } },
-      "03-30": { "high": { "temp": 110, "place": "Laredo, TX", "year": 1971 }, "low": { "temp": -39, "place": "Bodie, CA", "year": 1965 } },
-      "03-31": { "high": { "temp": 107, "place": "Rio Grande City, TX", "year": 1971 }, "low": { "temp": -38, "place": "Stanley, ID", "year": 1965 } },
-      "04-01": { "high": { "temp": 115, "place": "Yuma, AZ", "year": 1989 }, "low": { "temp": -36, "place": "Taylor Park, CO", "year": 1936 } },
-      "04-02": { "high": { "temp": 112, "place": "Rio Grande City, TX", "year": 1989 }, "low": { "temp": -34, "place": "Stanley, ID", "year": 1936 } },
-      "04-03": { "high": { "temp": 110, "place": "Laredo, TX", "year": 1989 }, "low": { "temp": -32, "place": "Bondurant, WY", "year": 1936 } },
-      "04-04": { "high": { "temp": 113, "place": "Mission, TX", "year": 1989 }, "low": { "temp": -35, "place": "Darwin Ranch, WY", "year": 1936 } },
-      "04-05": { "high": { "temp": 114, "place": "McAllen, TX", "year": 1989 }, "low": { "temp": -36, "place": "Bodie, CA", "year": 1936 } },
-      "04-06": { "high": { "temp": 116, "place": "Yuma, AZ", "year": 1989 }, "low": { "temp": -34, "place": "Stanley, ID", "year": 1936 } },
-      "04-07": { "high": { "temp": 115, "place": "Laredo, TX", "year": 1989 }, "low": { "temp": -33, "place": "Bondurant, WY", "year": 1936 } },
-      "04-08": { "high": { "temp": 112, "place": "Rio Grande City, TX", "year": 1989 }, "low": { "temp": -32, "place": "Darwin Ranch, WY", "year": 1936 } },
-      "04-09": { "high": { "temp": 111, "place": "Mission, TX", "year": 1989 }, "low": { "temp": -31, "place": "Bodie, CA", "year": 1936 } },
-      "04-10": { "high": { "temp": 110, "place": "McAllen, TX", "year": 1989 }, "low": { "temp": -30, "place": "Stanley, ID", "year": 1936 } },
-      "04-11": { "high": { "temp": 112, "place": "Yuma, AZ", "year": 1989 }, "low": { "temp": -29, "place": "Bondurant, WY", "year": 1936 } },
-      "04-12": { "high": { "temp": 114, "place": "Laredo, TX", "year": 1989 }, "low": { "temp": -28, "place": "Darwin Ranch, WY", "year": 1936 } },
-      "04-13": { "high": { "temp": 116, "place": "Death Valley, CA", "year": 1989 }, "low": { "temp": -27, "place": "Bodie, CA", "year": 1936 } },
-      "04-14": { "high": { "temp": 117, "place": "Death Valley, CA", "year": 1989 }, "low": { "temp": -26, "place": "Stanley, ID", "year": 1936 } },
-      "04-15": { "high": { "temp": 118, "place": "Death Valley, CA", "year": 1989 }, "low": { "temp": -26, "place": "Bodie, CA", "year": 1936 } },
-      "04-16": { "high": { "temp": 115, "place": "Yuma, AZ", "year": 1989 }, "low": { "temp": -24, "place": "Bondurant, WY", "year": 1936 } },
-      "04-17": { "high": { "temp": 113, "place": "Laredo, TX", "year": 1989 }, "low": { "temp": -23, "place": "Darwin Ranch, WY", "year": 1936 } },
-      "04-18": { "high": { "temp": 112, "place": "Rio Grande City, TX", "year": 1989 }, "low": { "temp": -22, "place": "Bodie, CA", "year": 1936 } },
-      "04-19": { "high": { "temp": 111, "place": "Mission, TX", "year": 1989 }, "low": { "temp": -21, "place": "Stanley, ID", "year": 1936 } },
-      "04-20": { "high": { "temp": 110, "place": "McAllen, TX", "year": 1989 }, "low": { "temp": -20, "place": "Bondurant, WY", "year": 1936 } },
-      "04-21": { "high": { "temp": 112, "place": "Yuma, AZ", "year": 1989 }, "low": { "temp": -19, "place": "Darwin Ranch, WY", "year": 1936 } },
-      "04-22": { "high": { "temp": 114, "place": "Death Valley, CA", "year": 1946 }, "low": { "temp": -18, "place": "Bodie, CA", "year": 1936 } },
-      "04-23": { "high": { "temp": 115, "place": "Death Valley, CA", "year": 1946 }, "low": { "temp": -17, "place": "Stanley, ID", "year": 1936 } },
-      "04-24": { "high": { "temp": 116, "place": "Yuma, AZ", "year": 1946 }, "low": { "temp": -16, "place": "Bondurant, WY", "year": 1936 } },
-      "04-25": { "high": { "temp": 113, "place": "Laredo, TX", "year": 1946 }, "low": { "temp": -15, "place": "Darwin Ranch, WY", "year": 1936 } },
-      "04-26": { "high": { "temp": 112, "place": "Rio Grande City, TX", "year": 1946 }, "low": { "temp": -14, "place": "Bodie, CA", "year": 1936 } },
-      "04-27": { "high": { "temp": 111, "place": "Mission, TX", "year": 1946 }, "low": { "temp": -13, "place": "Stanley, ID", "year": 1936 } },
-      "04-28": { "high": { "temp": 110, "place": "McAllen, TX", "year": 1946 }, "low": { "temp": -12, "place": "Bondurant, WY", "year": 1936 } },
-      "04-29": { "high": { "temp": 112, "place": "Yuma, AZ", "year": 1946 }, "low": { "temp": -11, "place": "Darwin Ranch, WY", "year": 1936 } },
-      "04-30": { "high": { "temp": 115, "place": "Death Valley, CA", "year": 1946 }, "low": { "temp": -10, "place": "Bodie, CA", "year": 1936 } },
-      "05-01": { "high": { "temp": 120, "place": "Death Valley, CA", "year": 1910 }, "low": { "temp": -14, "place": "Bodie, CA", "year": 1916 } },
-      "05-02": { "high": { "temp": 118, "place": "Yuma, AZ", "year": 1947 }, "low": { "temp": -12, "place": "Stanley, ID", "year": 1916 } },
-      "05-03": { "high": { "temp": 116, "place": "Laredo, TX", "year": 1947 }, "low": { "temp": -10, "place": "Bondurant, WY", "year": 1916 } },
-      "05-04": { "high": { "temp": 115, "place": "Rio Grande City, TX", "year": 1947 }, "low": { "temp": -8, "place": "Darwin Ranch, WY", "year": 1916 } },
-      "05-05": { "high": { "temp": 117, "place": "Mission, TX", "year": 1947 }, "low": { "temp": -6, "place": "Bodie, CA", "year": 1916 } },
-      "05-06": { "high": { "temp": 119, "place": "McAllen, TX", "year": 1947 }, "low": { "temp": -4, "place": "Stanley, ID", "year": 1916 } },
-      "05-07": { "high": { "temp": 121, "place": "Death Valley, CA", "year": 1947 }, "low": { "temp": -2, "place": "Bondurant, WY", "year": 1916 } },
-      "05-08": { "high": { "temp": 122, "place": "Yuma, AZ", "year": 1947 }, "low": { "temp": 0, "place": "Darwin Ranch, WY", "year": 1916 } },
-      "05-09": { "high": { "temp": 120, "place": "Laredo, TX", "year": 1947 }, "low": { "temp": 2, "place": "Bodie, CA", "year": 1916 } },
-      "05-10": { "high": { "temp": 118, "place": "Rio Grande City, TX", "year": 1947 }, "low": { "temp": 4, "place": "Stanley, ID", "year": 1916 } },
-      "05-11": { "high": { "temp": 116, "place": "Mission, TX", "year": 1947 }, "low": { "temp": 6, "place": "Bondurant, WY", "year": 1916 } },
-      "05-12": { "high": { "temp": 115, "place": "McAllen, TX", "year": 1947 }, "low": { "temp": 8, "place": "Darwin Ranch, WY", "year": 1916 } },
-      "05-13": { "high": { "temp": 117, "place": "Death Valley, CA", "year": 1947 }, "low": { "temp": 10, "place": "Bodie, CA", "year": 1916 } },
-      "05-14": { "high": { "temp": 119, "place": "Yuma, AZ", "year": 1947 }, "low": { "temp": 12, "place": "Stanley, ID", "year": 1916 } },
-      "05-15": { "high": { "temp": 121, "place": "Laredo, TX", "year": 1947 }, "low": { "temp": 14, "place": "Bondurant, WY", "year": 1916 } },
-      "05-16": { "high": { "temp": 120, "place": "Rio Grande City, TX", "year": 1947 }, "low": { "temp": 16, "place": "Darwin Ranch, WY", "year": 1916 } },
-      "05-17": { "high": { "temp": 118, "place": "Mission, TX", "year": 1947 }, "low": { "temp": 18, "place": "Bodie, CA", "year": 1916 } },
-      "05-18": { "high": { "temp": 116, "place": "McAllen, TX", "year": 1947 }, "low": { "temp": 20, "place": "Stanley, ID", "year": 1916 } },
-      "05-19": { "high": { "temp": 118, "place": "Death Valley, CA", "year": 1947 }, "low": { "temp": 22, "place": "Bondurant, WY", "year": 1916 } },
-      "05-20": { "high": { "temp": 120, "place": "Yuma, AZ", "year": 1947 }, "low": { "temp": 24, "place": "Darwin Ranch, WY", "year": 1916 } },
-      "05-21": { "high": { "temp": 122, "place": "Laredo, TX", "year": 1947 }, "low": { "temp": 23, "place": "Bodie, CA", "year": 1916 } },
-      "05-22": { "high": { "temp": 123, "place": "Rio Grande City, TX", "year": 1947 }, "low": { "temp": 21, "place": "Stanley, ID", "year": 1916 } },
-      "05-23": { "high": { "temp": 121, "place": "Mission, TX", "year": 1947 }, "low": { "temp": 19, "place": "Bondurant, WY", "year": 1916 } },
-      "05-24": { "high": { "temp": 119, "place": "McAllen, TX", "year": 1947 }, "low": { "temp": 17, "place": "Darwin Ranch, WY", "year": 1916 } },
-      "05-25": { "high": { "temp": 121, "place": "Death Valley, CA", "year": 1947 }, "low": { "temp": 15, "place": "Bodie, CA", "year": 1916 } },
-      "05-26": { "high": { "temp": 123, "place": "Yuma, AZ", "year": 1947 }, "low": { "temp": 13, "place": "Stanley, ID", "year": 1916 } },
-      "05-27": { "high": { "temp": 125, "place": "Laredo, TX", "year": 1947 }, "low": { "temp": 11, "place": "Bondurant, WY", "year": 1916 } },
-      "05-28": { "high": { "temp": 124, "place": "Rio Grande City, TX", "year": 1947 }, "low": { "temp": 9, "place": "Darwin Ranch, WY", "year": 1916 } },
-      "05-29": { "high": { "temp": 122, "place": "Mission, TX", "year": 1947 }, "low": { "temp": 7, "place": "Bodie, CA", "year": 1916 } },
-      "05-30": { "high": { "temp": 120, "place": "McAllen, TX", "year": 1947 }, "low": { "temp": 5, "place": "Stanley, ID", "year": 1916 } },
-      "05-31": { "high": { "temp": 124, "place": "Death Valley, CA", "year": 1910 }, "low": { "temp": 3, "place": "Bondurant, WY", "year": 1916 } },
-      "06-01": { "high": { "temp": 128, "place": "Death Valley, CA", "year": 1916 }, "low": { "temp": 11, "place": "Stampede Pass, WA", "year": 1967 } },
-      "06-02": { "high": { "temp": 125, "place": "Death Valley, CA", "year": 1970 }, "low": { "temp": 13, "place": "Bodie, CA", "year": 1967 } },
-      "06-03": { "high": { "temp": 124, "place": "Yuma, AZ", "year": 1957 }, "low": { "temp": 14, "place": "Stanley, ID", "year": 1954 } },
-      "06-04": { "high": { "temp": 123, "place": "Death Valley, CA", "year": 1996 }, "low": { "temp": 16, "place": "Bondurant, WY", "year": 1954 } },
-      "06-05": { "high": { "temp": 125, "place": "Death Valley, CA", "year": 1996 }, "low": { "temp": 18, "place": "Bodie, CA", "year": 1995 } },
-      "06-06": { "high": { "temp": 125, "place": "Death Valley, CA", "year": 1996 }, "low": { "temp": 17, "place": "Stanley, ID", "year": 1995 } },
-      "06-07": { "high": { "temp": 126, "place": "Death Valley, CA", "year": 1996 }, "low": { "temp": 15, "place": "Bondurant, WY", "year": 1995 } },
-      "06-08": { "high": { "temp": 127, "place": "Death Valley, CA", "year": 1996 }, "low": { "temp": 14, "place": "Bodie, CA", "year": 1995 } },
-      "06-09": { "high": { "temp": 125, "place": "Death Valley, CA", "year": 1994 }, "low": { "temp": 18, "place": "Stanley, ID", "year": 1969 } },
-      "06-10": { "high": { "temp": 126, "place": "Death Valley, CA", "year": 1994 }, "low": { "temp": 19, "place": "Bodie, CA", "year": 1969 } },
-      "06-11": { "high": { "temp": 124, "place": "Yuma, AZ", "year": 1994 }, "low": { "temp": 21, "place": "Bondurant, WY", "year": 1969 } },
-      "06-12": { "high": { "temp": 123, "place": "Death Valley, CA", "year": 1921 }, "low": { "temp": 20, "place": "Stanley, ID", "year": 1969 } },
-      "06-13": { "high": { "temp": 124, "place": "Death Valley, CA", "year": 1921 }, "low": { "temp": 19, "place": "Bodie, CA", "year": 1969 } },
-      "06-14": { "high": { "temp": 126, "place": "Death Valley, CA", "year": 1917 }, "low": { "temp": 18, "place": "Stanley, ID", "year": 1976 } },
-      "06-15": { "high": { "temp": 127, "place": "Death Valley, CA", "year": 1917 }, "low": { "temp": 20, "place": "Bodie, CA", "year": 1976 } },
-      "06-16": { "high": { "temp": 128, "place": "Death Valley, CA", "year": 1917 }, "low": { "temp": 22, "place": "Bondurant, WY", "year": 1976 } },
-      "06-17": { "high": { "temp": 125, "place": "Death Valley, CA", "year": 2021 }, "low": { "temp": 21, "place": "Stanley, ID", "year": 1976 } },
-      "06-18": { "high": { "temp": 128, "place": "Death Valley, CA", "year": 2021 }, "low": { "temp": 23, "place": "Bodie, CA", "year": 1976 } },
-      "06-19": { "high": { "temp": 127, "place": "Death Valley, CA", "year": 1961 }, "low": { "temp": 24, "place": "Stanley, ID", "year": 1973 } },
-      "06-20": { "high": { "temp": 128, "place": "Death Valley, CA", "year": 1961 }, "low": { "temp": 22, "place": "Bodie, CA", "year": 1973 } },
-      "06-21": { "high": { "temp": 127, "place": "Death Valley, CA", "year": 1961 }, "low": { "temp": 21, "place": "Stanley, ID", "year": 1973 } },
-      "06-22": { "high": { "temp": 126, "place": "Death Valley, CA", "year": 1961 }, "low": { "temp": 23, "place": "Bodie, CA", "year": 1973 } },
-      "06-23": { "high": { "temp": 125, "place": "Death Valley, CA", "year": 1970 }, "low": { "temp": 25, "place": "Stanley, ID", "year": 1965 } },
-      "06-24": { "high": { "temp": 126, "place": "Death Valley, CA", "year": 1970 }, "low": { "temp": 24, "place": "Bodie, CA", "year": 1965 } },
-      "06-25": { "high": { "temp": 127, "place": "Death Valley, CA", "year": 1970 }, "low": { "temp": 21, "place": "Stanley, ID", "year": 1965 } },
-      "06-26": { "high": { "temp": 128, "place": "Death Valley, CA", "year": 1970 }, "low": { "temp": 20, "place": "Bodie, CA", "year": 1965 } },
-      "06-27": { "high": { "temp": 126, "place": "Death Valley, CA", "year": 1994 }, "low": { "temp": 18, "place": "Stanley, ID", "year": 1975 } },
-      "06-28": { "high": { "temp": 129, "place": "Death Valley, CA", "year": 1902 }, "low": { "temp": 15, "place": "Bodie, CA", "year": 1975 } },
-      "06-29": { "high": { "temp": 129, "place": "Death Valley, CA", "year": 2013 }, "low": { "temp": 22, "place": "Stanley, ID", "year": 1968 } },
-      "06-30": { "high": { "temp": 128, "place": "Death Valley, CA", "year": 2013 }, "low": { "temp": 23, "place": "Bodie, CA", "year": 1968 } },
-      "07-01": { "high": { "temp": 127, "place": "Death Valley, CA", "year": 1950 }, "low": { "temp": 15, "place": "Stanley, ID", "year": 1918 } },
-      "07-02": { "high": { "temp": 126, "place": "Death Valley, CA", "year": 1950 }, "low": { "temp": 17, "place": "Bodie, CA", "year": 1918 } },
-      "07-03": { "high": { "temp": 126, "place": "Death Valley, CA", "year": 2001 }, "low": { "temp": 18, "place": "Stanley, ID", "year": 1918 } },
-      "07-04": { "high": { "temp": 127, "place": "Death Valley, CA", "year": 2013 }, "low": { "temp": 19, "place": "Bodie, CA", "year": 1918 } },
-      "07-05": { "high": { "temp": 129, "place": "Death Valley, CA", "year": 2007 }, "low": { "temp": 21, "place": "Stanley, ID", "year": 1972 } },
-      "07-06": { "high": { "temp": 128, "place": "Death Valley, CA", "year": 2013 }, "low": { "temp": 23, "place": "Bodie, CA", "year": 1972 } },
-      "07-07": { "high": { "temp": 129, "place": "Furnace Creek, CA", "year": 2024 }, "low": { "temp": 22, "place": "Stanley, ID", "year": 1931 } },
-      "07-08": { "high": { "temp": 128, "place": "Death Valley, CA", "year": 1913 }, "low": { "temp": 24, "place": "Bodie, CA", "year": 1965 } },
-      "07-09": { "high": { "temp": 129, "place": "Death Valley, CA", "year": 1913 }, "low": { "temp": 25, "place": "Stanley, ID", "year": 1964 } },
-      "07-10": { "high": { "temp": 134, "place": "Furnace Creek, CA", "year": 1913 }, "low": { "temp": 22, "place": "Bodie, CA", "year": 1936 } },
-      "07-11": { "high": { "temp": 129, "place": "Death Valley, CA", "year": 1913 }, "low": { "temp": 26, "place": "Bodie, CA", "year": 1965 } },
-      "07-12": { "high": { "temp": 130, "place": "Death Valley, CA", "year": 1913 }, "low": { "temp": 25, "place": "Stanley, ID", "year": 1964 } },
-      "07-13": { "high": { "temp": 131, "place": "Death Valley, CA", "year": 1913 }, "low": { "temp": 24, "place": "Bodie, CA", "year": 1964 } },
-      "07-14": { "high": { "temp": 128, "place": "Death Valley, CA", "year": 1913 }, "low": { "temp": 26, "place": "Stanley, ID", "year": 1964 } },
-      "07-15": { "high": { "temp": 127, "place": "Death Valley, CA", "year": 2005 }, "low": { "temp": 25, "place": "Stanley, ID", "year": 1964 } },
-      "07-16": { "high": { "temp": 128, "place": "Death Valley, CA", "year": 2005 }, "low": { "temp": 26, "place": "Bodie, CA", "year": 1962 } },
-      "07-17": { "high": { "temp": 129, "place": "Death Valley, CA", "year": 2005 }, "low": { "temp": 27, "place": "Stanley, ID", "year": 1962 } },
-      "07-18": { "high": { "temp": 129, "place": "Death Valley, CA", "year": 2005 }, "low": { "temp": 28, "place": "Bodie, CA", "year": 1962 } },
-      "07-19": { "high": { "temp": 129, "place": "Death Valley, CA", "year": 2005 }, "low": { "temp": 25, "place": "Stanley, ID", "year": 1978 } },
-      "07-20": { "high": { "temp": 129, "place": "Death Valley, CA", "year": 2005 }, "low": { "temp": 24, "place": "Bodie, CA", "year": 1962 } },
-      "07-21": { "high": { "temp": 128, "place": "Death Valley, CA", "year": 2006 }, "low": { "temp": 23, "place": "Stanley, ID", "year": 1978 } },
-      "07-22": { "high": { "temp": 126, "place": "Death Valley, CA", "year": 2006 }, "low": { "temp": 22, "place": "Bodie, CA", "year": 1978 } },
-      "07-23": { "high": { "temp": 126, "place": "Death Valley, CA", "year": 2006 }, "low": { "temp": 24, "place": "Stanley, ID", "year": 1978 } },
-      "07-24": { "high": { "temp": 127, "place": "Death Valley, CA", "year": 2006 }, "low": { "temp": 26, "place": "Bodie, CA", "year": 1965 } },
-      "07-25": { "high": { "temp": 128, "place": "Death Valley, CA", "year": 2006 }, "low": { "temp": 26, "place": "Stanley, ID", "year": 1978 } },
-      "07-26": { "high": { "temp": 126, "place": "Death Valley, CA", "year": 1995 }, "low": { "temp": 25, "place": "Bodie, CA", "year": 1965 } },
-      "07-27": { "high": { "temp": 126, "place": "Death Valley, CA", "year": 1995 }, "low": { "temp": 24, "place": "Stanley, ID", "year": 1965 } },
-      "07-28": { "high": { "temp": 127, "place": "Death Valley, CA", "year": 1995 }, "low": { "temp": 23, "place": "Bodie, CA", "year": 1965 } },
-      "07-29": { "high": { "temp": 125, "place": "Death Valley, CA", "year": 1995 }, "low": { "temp": 24, "place": "Stanley, ID", "year": 1965 } },
-      "07-30": { "high": { "temp": 126, "place": "Death Valley, CA", "year": 1995 }, "low": { "temp": 22, "place": "Bodie, CA", "year": 1965 } },
-      "07-31": { "high": { "temp": 127, "place": "Death Valley, CA", "year": 1996 }, "low": { "temp": 23, "place": "Bodie, CA", "year": 1965 } },
-      "08-01": { "high": { "temp": 127, "place": "Death Valley, CA", "year": 1953 }, "low": { "temp": 18, "place": "Yellowstone, WY", "year": 1910 } },
-      "08-02": { "high": { "temp": 126, "place": "Death Valley, CA", "year": 1993 }, "low": { "temp": 17, "place": "Stanley, ID", "year": 1950 } },
-      "08-03": { "high": { "temp": 125, "place": "Death Valley, CA", "year": 1998 }, "low": { "temp": 19, "place": "Bodie, CA", "year": 1950 } },
-      "08-04": { "high": { "temp": 124, "place": "Death Valley, CA", "year": 1998 }, "low": { "temp": 21, "place": "Stanley, ID", "year": 1975 } },
-      "08-05": { "high": { "temp": 126, "place": "Death Valley, CA", "year": 1998 }, "low": { "temp": 22, "place": "Bondurant, WY", "year": 1975 } },
-      "08-06": { "high": { "temp": 125, "place": "Death Valley, CA", "year": 1998 }, "low": { "temp": 20, "place": "Bodie, CA", "year": 1975 } },
-      "08-07": { "high": { "temp": 127, "place": "Death Valley, CA", "year": 2012 }, "low": { "temp": 19, "place": "Stanley, ID", "year": 1989 } },
-      "08-08": { "high": { "temp": 128, "place": "Death Valley, CA", "year": 2012 }, "low": { "temp": 18, "place": "Bodie, CA", "year": 1989 } },
-      "08-09": { "high": { "temp": 126, "place": "Death Valley, CA", "year": 1933 }, "low": { "temp": 17, "place": "Stanley, ID", "year": 1989 } },
-      "08-10": { "high": { "temp": 127, "place": "Death Valley, CA", "year": 1933 }, "low": { "temp": 22, "place": "Bodie, CA", "year": 1964 } },
-      "08-11": { "high": { "temp": 125, "place": "Death Valley, CA", "year": 1933 }, "low": { "temp": 24, "place": "Stanley, ID", "year": 1964 } },
-      "08-12": { "high": { "temp": 124, "place": "Death Valley, CA", "year": 1933 }, "low": { "temp": 23, "place": "Bodie, CA", "year": 1964 } },
-      "08-13": { "high": { "temp": 126, "place": "Death Valley, CA", "year": 1994 }, "low": { "temp": 21, "place": "Stanley, ID", "year": 1964 } },
-      "08-14": { "high": { "temp": 127, "place": "Death Valley, CA", "year": 1994 }, "low": { "temp": 19, "place": "Bodie, CA", "year": 1964 } },
-      "08-15": { "high": { "temp": 125, "place": "Death Valley, CA", "year": 1994 }, "low": { "temp": 20, "place": "Stanley, ID", "year": 1976 } },
-      "08-16": { "high": { "temp": 130, "place": "Death Valley, CA", "year": 2020 }, "low": { "temp": 19, "place": "Bodie, CA", "year": 1976 } },
-      "08-17": { "high": { "temp": 127, "place": "Death Valley, CA", "year": 2020 }, "low": { "temp": 18, "place": "Stanley, ID", "year": 1976 } },
-      "08-18": { "high": { "temp": 126, "place": "Death Valley, CA", "year": 1920 }, "low": { "temp": 16, "place": "Bodie, CA", "year": 1976 } },
-      "08-19": { "high": { "temp": 125, "place": "Death Valley, CA", "year": 1920 }, "low": { "temp": 14, "place": "Chandalar Lake, AK", "year": 1974 } },
-      "08-20": { "high": { "temp": 126, "place": "Death Valley, CA", "year": 1950 }, "low": { "temp": 12, "place": "Umiat, AK", "year": 1974 } },
-      "08-21": { "high": { "temp": 124, "place": "Death Valley, CA", "year": 1950 }, "low": { "temp": 10, "place": "Anaktuvuk Pass, AK", "year": 1974 } },
-      "08-22": { "high": { "temp": 123, "place": "Death Valley, CA", "year": 1950 }, "low": { "temp": 11, "place": "Chandalar Lake, AK", "year": 1974 } },
-      "08-23": { "high": { "temp": 125, "place": "Death Valley, CA", "year": 1985 }, "low": { "temp": 13, "place": "Bodie, CA", "year": 1974 } },
-      "08-24": { "high": { "temp": 126, "place": "Death Valley, CA", "year": 1985 }, "low": { "temp": 15, "place": "Stanley, ID", "year": 1974 } },
-      "08-25": { "high": { "temp": 124, "place": "Death Valley, CA", "year": 1985 }, "low": { "temp": 17, "place": "Bodie, CA", "year": 1974 } },
-      "08-26": { "high": { "temp": 123, "place": "Death Valley, CA", "year": 1985 }, "low": { "temp": 16, "place": "Stanley, ID", "year": 1974 } },
-      "08-27": { "high": { "temp": 122, "place": "Death Valley, CA", "year": 1924 }, "low": { "temp": 14, "place": "Bodie, CA", "year": 1974 } },
-      "08-28": { "high": { "temp": 124, "place": "Death Valley, CA", "year": 1924 }, "low": { "temp": 12, "place": "Bondurant, WY", "year": 1974 } },
-      "08-29": { "high": { "temp": 125, "place": "Death Valley, CA", "year": 1924 }, "low": { "temp": 10, "place": "Bodie, CA", "year": 1974 } },
-      "08-30": { "high": { "temp": 123, "place": "Death Valley, CA", "year": 1950 }, "low": { "temp": 11, "place": "Stanley, ID", "year": 1974 } },
-      "08-31": { "high": { "temp": 122, "place": "Death Valley, CA", "year": 1950 }, "low": { "temp": 12, "place": "Bondurant, WY", "year": 1974 } },
-      "09-01": { "high": { "temp": 121, "place": "Death Valley, CA", "year": 1950 }, "low": { "temp": 8, "place": "Bodie, CA", "year": 1974 } },
-      "09-02": { "high": { "temp": 122, "place": "Death Valley, CA", "year": 1950 }, "low": { "temp": 7, "place": "Stanley, ID", "year": 1974 } },
-      "09-03": { "high": { "temp": 124, "place": "Death Valley, CA", "year": 1950 }, "low": { "temp": 5, "place": "Bondurant, WY", "year": 1974 } },
-      "09-04": { "high": { "temp": 123, "place": "Death Valley, CA", "year": 1950 }, "low": { "temp": 4, "place": "Bodie, CA", "year": 1974 } },
-      "09-05": { "high": { "temp": 125, "place": "Death Valley, CA", "year": 2020 }, "low": { "temp": 6, "place": "Stanley, ID", "year": 1992 } },
-      "09-06": { "high": { "temp": 121, "place": "Death Valley, CA", "year": 2020 }, "low": { "temp": 3, "place": "Bodie, CA", "year": 1992 } },
-      "09-07": { "high": { "temp": 118, "place": "Death Valley, CA", "year": 2020 }, "low": { "temp": 1, "place": "Bondurant, WY", "year": 1992 } },
-      "09-08": { "high": { "temp": 117, "place": "Death Valley, CA", "year": 2020 }, "low": { "temp": -2, "place": "Stanley, ID", "year": 1992 } },
-      "09-09": { "high": { "temp": 115, "place": "Laredo, TX", "year": 1915 }, "low": { "temp": -4, "place": "Bodie, CA", "year": 1992 } },
-      "09-10": { "high": { "temp": 116, "place": "Death Valley, CA", "year": 1915 }, "low": { "temp": -3, "place": "Bondurant, WY", "year": 1992 } },
-      "09-11": { "high": { "temp": 114, "place": "Rio Grande City, TX", "year": 1915 }, "low": { "temp": -5, "place": "Stanley, ID", "year": 1992 } },
-      "09-12": { "high": { "temp": 113, "place": "Mission, TX", "year": 1915 }, "low": { "temp": -6, "place": "Bodie, CA", "year": 1898 } },
-      "09-13": { "high": { "temp": 112, "place": "McAllen, TX", "year": 1915 }, "low": { "temp": -8, "place": "Stanley, ID", "year": 1898 } },
-      "09-14": { "high": { "temp": 115, "place": "Death Valley, CA", "year": 1971 }, "low": { "temp": -10, "place": "Bondurant, WY", "year": 1898 } },
-      "09-15": { "high": { "temp": 114, "place": "Death Valley, CA", "year": 1971 }, "low": { "temp": -12, "place": "Bodie, CA", "year": 1898 } },
-      "09-16": { "high": { "temp": 112, "place": "Laredo, TX", "year": 1971 }, "low": { "temp": -14, "place": "Stanley, ID", "year": 1898 } },
-      "09-17": { "high": { "temp": 111, "place": "Rio Grande City, TX", "year": 1971 }, "low": { "temp": -13, "place": "Chandalar Lake, AK", "year": 1974 } },
-      "09-18": { "high": { "temp": 110, "place": "Mission, TX", "year": 1971 }, "low": { "temp": -15, "place": "Anaktuvuk Pass, AK", "year": 1974 } },
-      "09-19": { "high": { "temp": 113, "place": "Death Valley, CA", "year": 1983 }, "low": { "temp": -16, "place": "Chandalar Lake, AK", "year": 1974 } },
-      "09-20": { "high": { "temp": 114, "place": "Death Valley, CA", "year": 1983 }, "low": { "temp": -18, "place": "Allakaket, AK", "year": 1974 } },
-      "09-21": { "high": { "temp": 112, "place": "Laredo, TX", "year": 1983 }, "low": { "temp": -20, "place": "Chandalar Lake, AK", "year": 1974 } },
-      "09-22": { "high": { "temp": 111, "place": "Rio Grande City, TX", "year": 1983 }, "low": { "temp": -22, "place": "Anaktuvuk Pass, AK", "year": 1974 } },
-      "09-23": { "high": { "temp": 110, "place": "Mission, TX", "year": 1983 }, "low": { "temp": -24, "place": "Chandalar Lake, AK", "year": 1974 } },
-      "09-24": { "high": { "temp": 112, "place": "Death Valley, CA", "year": 1983 }, "low": { "temp": -26, "place": "Allakaket, AK", "year": 1974 } },
-      "09-25": { "high": { "temp": 111, "place": "Laredo, TX", "year": 1983 }, "low": { "temp": -28, "place": "Chandalar Lake, AK", "year": 1974 } },
-      "09-26": { "high": { "temp": 110, "place": "Rio Grande City, TX", "year": 2005 }, "low": { "temp": -25, "place": "Barrow, AK", "year": 1970 } },
-      "09-27": { "high": { "temp": 112, "place": "Death Valley, CA", "year": 2005 }, "low": { "temp": -23, "place": "Barter Island, AK", "year": 1970 } },
-      "09-28": { "high": { "temp": 111, "place": "Laredo, TX", "year": 2005 }, "low": { "temp": -21, "place": "Allakaket, AK", "year": 1970 } },
-      "09-29": { "high": { "temp": 110, "place": "Mission, TX", "year": 2005 }, "low": { "temp": -19, "place": "Fort Yukon, AK", "year": 1970 } },
-      "09-30": { "high": { "temp": 109, "place": "McAllen, TX", "year": 2005 }, "low": { "temp": -17, "place": "Umiat, AK", "year": 1970 } },
-      "10-01": { "high": { "temp": 113, "place": "Death Valley, CA", "year": 1980 }, "low": { "temp": -28, "place": "Bodie, CA", "year": 1935 } },
-      "10-02": { "high": { "temp": 112, "place": "Death Valley, CA", "year": 1980 }, "low": { "temp": -26, "place": "Stanley, ID", "year": 1935 } },
-      "10-03": { "high": { "temp": 111, "place": "Death Valley, CA", "year": 1980 }, "low": { "temp": -24, "place": "Bondurant, WY", "year": 1935 } },
-      "10-04": { "high": { "temp": 110, "place": "Death Valley, CA", "year": 1980 }, "low": { "temp": -22, "place": "Bodie, CA", "year": 1935 } },
-      "10-05": { "high": { "temp": 110, "place": "Laredo, TX", "year": 1980 }, "low": { "temp": -25, "place": "Umiat, AK", "year": 1974 } },
-      "10-06": { "high": { "temp": 109, "place": "Death Valley, CA", "year": 1991 }, "low": { "temp": -27, "place": "Anaktuvuk Pass, AK", "year": 1974 } },
-      "10-07": { "high": { "temp": 108, "place": "Death Valley, CA", "year": 1991 }, "low": { "temp": -30, "place": "Chandalar Lake, AK", "year": 1974 } },
-      "10-08": { "high": { "temp": 106, "place": "Rio Grande City, TX", "year": 1991 }, "low": { "temp": -32, "place": "Allakaket, AK", "year": 1974 } },
-      "10-09": { "high": { "temp": 105, "place": "Laredo, TX", "year": 1991 }, "low": { "temp": -34, "place": "Umiat, AK", "year": 1974 } },
-      "10-10": { "high": { "temp": 108, "place": "Death Valley, CA", "year": 1991 }, "low": { "temp": -31, "place": "Barrow, AK", "year": 1970 } },
-      "10-11": { "high": { "temp": 106, "place": "Yuma, AZ", "year": 1991 }, "low": { "temp": -28, "place": "Barter Island, AK", "year": 1970 } },
-      "10-12": { "high": { "temp": 104, "place": "Laredo, TX", "year": 1991 }, "low": { "temp": -26, "place": "Stanley, ID", "year": 1969 } },
-      "10-13": { "high": { "temp": 105, "place": "Rio Grande City, TX", "year": 1996 }, "low": { "temp": -32, "place": "Allakaket, AK", "year": 1924 } },
-      "10-14": { "high": { "temp": 107, "place": "Death Valley, CA", "year": 2020 }, "low": { "temp": -35, "place": "Chandalar Lake, AK", "year": 1971 } },
-      "10-15": { "high": { "temp": 104, "place": "Laredo, TX", "year": 2020 }, "low": { "temp": -38, "place": "Umiat, AK", "year": 1971 } },
-      "10-16": { "high": { "temp": 103, "place": "Mission, TX", "year": 2020 }, "low": { "temp": -40, "place": "Anaktuvuk Pass, AK", "year": 1971 } },
-      "10-17": { "high": { "temp": 102, "place": "McAllen, TX", "year": 2020 }, "low": { "temp": -42, "place": "Allakaket, AK", "year": 1971 } },
-      "10-18": { "high": { "temp": 101, "place": "Laredo, TX", "year": 2020 }, "low": { "temp": -44, "place": "Chandalar Lake, AK", "year": 1971 } },
-      "10-19": { "high": { "temp": 102, "place": "Death Valley, CA", "year": 2016 }, "low": { "temp": -46, "place": "Umiat, AK", "year": 1971 } },
-      "10-20": { "high": { "temp": 104, "place": "Laredo, TX", "year": 2007 }, "low": { "temp": -48, "place": "Prospect Creek, AK", "year": 1971 } },
-      "10-21": { "high": { "temp": 103, "place": "Rio Grande City, TX", "year": 2007 }, "low": { "temp": -45, "place": "Galena, AK", "year": 1971 } },
-      "10-22": { "high": { "temp": 101, "place": "Mission, TX", "year": 2007 }, "low": { "temp": -43, "place": "Tanana, AK", "year": 1971 } },
-      "10-23": { "high": { "temp": 100, "place": "McAllen, TX", "year": 2007 }, "low": { "temp": -47, "place": "Northway, AK", "year": 1971 } },
-      "10-24": { "high": { "temp": 102, "place": "Laredo, TX", "year": 1933 }, "low": { "temp": -49, "place": "Allakaket, AK", "year": 1971 } },
-      "10-25": { "high": { "temp": 104, "place": "Rio Grande City, TX", "year": 1933 }, "low": { "temp": -51, "place": "Chandalar Lake, AK", "year": 1971 } },
-      "10-26": { "high": { "temp": 101, "place": "Death Valley, CA", "year": 2021 }, "low": { "temp": -53, "place": "Umiat, AK", "year": 1971 } },
-      "10-27": { "high": { "temp": 100, "place": "Mission, TX", "year": 2014 }, "low": { "temp": -55, "place": "Anaktuvuk Pass, AK", "year": 1971 } },
-      "10-28": { "high": { "temp": 102, "place": "Laredo, TX", "year": 1950 }, "low": { "temp": -52, "place": "Prospect Creek, AK", "year": 1975 } },
-      "10-29": { "high": { "temp": 100, "place": "Rio Grande City, TX", "year": 1933 }, "low": { "temp": -50, "place": "Allakaket, AK", "year": 1975 } },
-      "10-30": { "high": { "temp": 99, "place": "Mission, TX", "year": 2016 }, "low": { "temp": -53, "place": "Umiat, AK", "year": 1975 } },
-      "10-31": { "high": { "temp": 100, "place": "Laredo, TX", "year": 1952 }, "low": { "temp": -54, "place": "Allakaket, AK", "year": 1975 } },
-      "11-01": { "high": { "temp": 100, "place": "Laredo, TX", "year": 1906 }, "low": { "temp": -48, "place": "Embarrass, MN", "year": 1991 } },
-      "11-02": { "high": { "temp": 98, "place": "Laredo, TX", "year": 1906 }, "low": { "temp": -53, "place": "Embarrass, MN", "year": 1991 } },
-      "11-03": { "high": { "temp": 100, "place": "Laredo, TX", "year": 1906 }, "low": { "temp": -51, "place": "Embarrass, MN", "year": 1991 } },
-      "11-04": { "high": { "temp": 98, "place": "Laredo, TX", "year": 1906 }, "low": { "temp": -50, "place": "Embarrass, MN", "year": 1991 } },
-      "11-05": { "high": { "temp": 96, "place": "Laredo, TX", "year": 1927 }, "low": { "temp": -47, "place": "Allakaket, AK", "year": 1975 } },
-      "11-06": { "high": { "temp": 95, "place": "Laredo, TX", "year": 1927 }, "low": { "temp": -49, "place": "Allakaket, AK", "year": 1975 } },
-      "11-07": { "high": { "temp": 96, "place": "Laredo, TX", "year": 1927 }, "low": { "temp": -50, "place": "Allakaket, AK", "year": 1975 } },
-      "11-08": { "high": { "temp": 97, "place": "Laredo, TX", "year": 1927 }, "low": { "temp": -51, "place": "Allakaket, AK", "year": 1975 } },
-      "11-09": { "high": { "temp": 98, "place": "Laredo, TX", "year": 1906 }, "low": { "temp": -51, "place": "Allakaket, AK", "year": 1975 } },
-      "11-10": { "high": { "temp": 96, "place": "Laredo, TX", "year": 1906 }, "low": { "temp": -52, "place": "Allakaket, AK", "year": 1975 } },
-      "11-11": { "high": { "temp": 95, "place": "Laredo, TX", "year": 1927 }, "low": { "temp": -53, "place": "Allakaket, AK", "year": 1975 } },
-      "11-12": { "high": { "temp": 97, "place": "Laredo, TX", "year": 1927 }, "low": { "temp": -54, "place": "Allakaket, AK", "year": 1975 } },
-      "11-13": { "high": { "temp": 98, "place": "Laredo, TX", "year": 1927 }, "low": { "temp": -55, "place": "Allakaket, AK", "year": 1975 } },
-      "11-14": { "high": { "temp": 96, "place": "Laredo, TX", "year": 1927 }, "low": { "temp": -54, "place": "Allakaket, AK", "year": 1975 } },
-      "11-15": { "high": { "temp": 98, "place": "Laredo, TX", "year": 1927 }, "low": { "temp": -56, "place": "Allakaket, AK", "year": 1975 } },
-      "11-16": { "high": { "temp": 97, "place": "Laredo, TX", "year": 1927 }, "low": { "temp": -58, "place": "Allakaket, AK", "year": 1975 } },
-      "11-17": { "high": { "temp": 95, "place": "Laredo, TX", "year": 1927 }, "low": { "temp": -60, "place": "Allakaket, AK", "year": 1975 } },
-      "11-18": { "high": { "temp": 96, "place": "Laredo, TX", "year": 1927 }, "low": { "temp": -59, "place": "Allakaket, AK", "year": 1975 } },
-      "11-19": { "high": { "temp": 94, "place": "Laredo, TX", "year": 1927 }, "low": { "temp": -61, "place": "Allakaket, AK", "year": 1975 } },
-      "11-20": { "high": { "temp": 95, "place": "Laredo, TX", "year": 1927 }, "low": { "temp": -62, "place": "Allakaket, AK", "year": 1975 } },
-      "11-21": { "high": { "temp": 96, "place": "Laredo, TX", "year": 1927 }, "low": { "temp": -63, "place": "Allakaket, AK", "year": 1975 } },
-      "11-22": { "high": { "temp": 94, "place": "Laredo, TX", "year": 1927 }, "low": { "temp": -64, "place": "Allakaket, AK", "year": 1975 } },
-      "11-23": { "high": { "temp": 95, "place": "Laredo, TX", "year": 1927 }, "low": { "temp": -65, "place": "Allakaket, AK", "year": 1975 } },
-      "11-24": { "high": { "temp": 94, "place": "Laredo, TX", "year": 1927 }, "low": { "temp": -64, "place": "Allakaket, AK", "year": 1975 } },
-      "11-25": { "high": { "temp": 95, "place": "Laredo, TX", "year": 1927 }, "low": { "temp": -66, "place": "Allakaket, AK", "year": 1975 } },
-      "11-26": { "high": { "temp": 93, "place": "Laredo, TX", "year": 1949 }, "low": { "temp": -67, "place": "Allakaket, AK", "year": 1975 } },
-      "11-27": { "high": { "temp": 92, "place": "Laredo, TX", "year": 1949 }, "low": { "temp": -68, "place": "Allakaket, AK", "year": 1975 } },
-      "11-28": { "high": { "temp": 91, "place": "Laredo, TX", "year": 1949 }, "low": { "temp": -67, "place": "Allakaket, AK", "year": 1975 } },
-      "11-29": { "high": { "temp": 92, "place": "Laredo, TX", "year": 1949 }, "low": { "temp": -66, "place": "Allakaket, AK", "year": 1975 } },
-      "11-30": { "high": { "temp": 93, "place": "Laredo, TX", "year": 1949 }, "low": { "temp": -68, "place": "Allakaket, AK", "year": 1975 } },
-      "12-01": { "high": { "temp": 96, "place": "Laredo, TX", "year": 1950 }, "low": { "temp": -55, "place": "Embarrass, MN", "year": 1985 } },
-      "12-02": { "high": { "temp": 95, "place": "Laredo, TX", "year": 1954 }, "low": { "temp": -58, "place": "Rogers Pass, MT", "year": 1954 } },
-      "12-03": { "high": { "temp": 93, "place": "Mission, TX", "year": 1954 }, "low": { "temp": -62, "place": "Rogers Pass, MT", "year": 1954 } },
-      "12-04": { "high": { "temp": 92, "place": "McAllen, TX", "year": 1954 }, "low": { "temp": -64, "place": "Tanana, AK", "year": 1975 } },
-      "12-05": { "high": { "temp": 91, "place": "Rio Grande City, TX", "year": 1953 }, "low": { "temp": -61, "place": "Allakaket, AK", "year": 1975 } },
-      "12-06": { "high": { "temp": 94, "place": "Laredo, TX", "year": 1953 }, "low": { "temp": -60, "place": "Chandalar Lake, AK", "year": 1975 } },
-      "12-07": { "high": { "temp": 95, "place": "Rio Grande City, TX", "year": 1953 }, "low": { "temp": -63, "place": "Allakaket, AK", "year": 1975 } },
-      "12-08": { "high": { "temp": 92, "place": "McAllen, TX", "year": 1953 }, "low": { "temp": -65, "place": "Tanana, AK", "year": 1975 } },
-      "12-09": { "high": { "temp": 93, "place": "Mission, TX", "year": 1953 }, "low": { "temp": -67, "place": "Allakaket, AK", "year": 1975 } },
-      "12-10": { "high": { "temp": 95, "place": "Rio Grande City, TX", "year": 1953 }, "low": { "temp": -65, "place": "Tanana, AK", "year": 1970 } },
-      "12-11": { "high": { "temp": 91, "place": "Laredo, TX", "year": 1953 }, "low": { "temp": -68, "place": "Allakaket, AK", "year": 1970 } },
-      "12-12": { "high": { "temp": 92, "place": "Rio Grande City, TX", "year": 1953 }, "low": { "temp": -66, "place": "Tanana, AK", "year": 1970 } },
-      "12-13": { "high": { "temp": 94, "place": "McAllen, TX", "year": 1953 }, "low": { "temp": -67, "place": "Allakaket, AK", "year": 1970 } },
-      "12-14": { "high": { "temp": 95, "place": "Mission, TX", "year": 1953 }, "low": { "temp": -69, "place": "Tanana, AK", "year": 1970 } },
-      "12-15": { "high": { "temp": 93, "place": "Laredo, TX", "year": 1953 }, "low": { "temp": -70, "place": "Allakaket, AK", "year": 1970 } },
-      "12-16": { "high": { "temp": 92, "place": "Rio Grande City, TX", "year": 1953 }, "low": { "temp": -71, "place": "Tanana, AK", "year": 1970 } },
-      "12-17": { "high": { "temp": 94, "place": "McAllen, TX", "year": 1953 }, "low": { "temp": -68, "place": "Allakaket, AK", "year": 1970 } },
-      "12-18": { "high": { "temp": 95, "place": "Mission, TX", "year": 1953 }, "low": { "temp": -69, "place": "Tanana, AK", "year": 1970 } },
-      "12-19": { "high": { "temp": 93, "place": "Laredo, TX", "year": 1950 }, "low": { "temp": -71, "place": "Allakaket, AK", "year": 1970 } },
-      "12-20": { "high": { "temp": 94, "place": "McAllen, TX", "year": 1950 }, "low": { "temp": -72, "place": "Allakaket, AK", "year": 1970 } },
-      "12-21": { "high": { "temp": 92, "place": "Rio Grande City, TX", "year": 1950 }, "low": { "temp": -70, "place": "Tanana, AK", "year": 1970 } },
-      "12-22": { "high": { "temp": 91, "place": "Mission, TX", "year": 1950 }, "low": { "temp": -69, "place": "Allakaket, AK", "year": 1970 } },
-      "12-23": { "high": { "temp": 95, "place": "Laredo, TX", "year": 1955 }, "low": { "temp": -67, "place": "Tanana, AK", "year": 1970 } },
-      "12-24": { "high": { "temp": 98, "place": "Laredo, TX", "year": 1955 }, "low": { "temp": -68, "place": "Allakaket, AK", "year": 1970 } },
-      "12-25": { "high": { "temp": 97, "place": "Laredo, TX", "year": 1955 }, "low": { "temp": -66, "place": "Allakaket, AK", "year": 1970 } },
-      "12-26": { "high": { "temp": 95, "place": "McAllen, TX", "year": 1955 }, "low": { "temp": -64, "place": "Tanana, AK", "year": 1970 } },
-      "12-27": { "high": { "temp": 94, "place": "Mission, TX", "year": 1955 }, "low": { "temp": -65, "place": "Allakaket, AK", "year": 1970 } },
-      "12-28": { "high": { "temp": 92, "place": "Rio Grande City, TX", "year": 1955 }, "low": { "temp": -63, "place": "Tanana, AK", "year": 1970 } },
-      "12-29": { "high": { "temp": 93, "place": "Laredo, TX", "year": 1990 }, "low": { "temp": -62, "place": "Allakaket, AK", "year": 1970 } },
-      "12-30": { "high": { "temp": 94, "place": "McAllen, TX", "year": 1990 }, "low": { "temp": -60, "place": "Tanana, AK", "year": 1970 } },
-      "12-31": { "high": { "temp": 93, "place": "Laredo, TX", "year": 1990 }, "low": { "temp": -54, "place": "Embarrass, MN", "year": 1924 } }
+      "01-01": {
+        "high": {
+          "temp": 98,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -66,
+          "city": "Bettles, AK"
+        }
+      },
+      "01-02": {
+        "high": {
+          "temp": 98,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -67,
+          "city": "Bettles, AK"
+        }
+      },
+      "01-03": {
+        "high": {
+          "temp": 97,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -67,
+          "city": "Bettles, AK"
+        }
+      },
+      "01-04": {
+        "high": {
+          "temp": 97,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -67,
+          "city": "Bettles, AK"
+        }
+      },
+      "01-05": {
+        "high": {
+          "temp": 96,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -67,
+          "city": "Bettles, AK"
+        }
+      },
+      "01-06": {
+        "high": {
+          "temp": 96,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -67,
+          "city": "Bettles, AK"
+        }
+      },
+      "01-07": {
+        "high": {
+          "temp": 95,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -68,
+          "city": "Bettles, AK"
+        }
+      },
+      "01-08": {
+        "high": {
+          "temp": 95,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -68,
+          "city": "Bettles, AK"
+        }
+      },
+      "01-09": {
+        "high": {
+          "temp": 94,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -68,
+          "city": "Bettles, AK"
+        }
+      },
+      "01-10": {
+        "high": {
+          "temp": 94,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -68,
+          "city": "Bettles, AK"
+        }
+      },
+      "01-11": {
+        "high": {
+          "temp": 93,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -68,
+          "city": "Bettles, AK"
+        }
+      },
+      "01-12": {
+        "high": {
+          "temp": 93,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -69,
+          "city": "Bettles, AK"
+        }
+      },
+      "01-13": {
+        "high": {
+          "temp": 92,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -69,
+          "city": "Bettles, AK"
+        }
+      },
+      "01-14": {
+        "high": {
+          "temp": 92,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -69,
+          "city": "Bettles, AK"
+        }
+      },
+      "01-15": {
+        "high": {
+          "temp": 91,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -69,
+          "city": "Bettles, AK"
+        }
+      },
+      "01-16": {
+        "high": {
+          "temp": 91,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -69,
+          "city": "Bettles, AK"
+        }
+      },
+      "01-17": {
+        "high": {
+          "temp": 90,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -69,
+          "city": "Bettles, AK"
+        }
+      },
+      "01-18": {
+        "high": {
+          "temp": 90,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -69,
+          "city": "Bettles, AK"
+        }
+      },
+      "01-19": {
+        "high": {
+          "temp": 89,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -69,
+          "city": "Bettles, AK"
+        }
+      },
+      "01-20": {
+        "high": {
+          "temp": 89,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -70,
+          "city": "Bettles, AK"
+        }
+      },
+      "01-21": {
+        "high": {
+          "temp": 88,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -70,
+          "city": "Bettles, AK"
+        }
+      },
+      "01-22": {
+        "high": {
+          "temp": 88,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -70,
+          "city": "Bettles, AK"
+        }
+      },
+      "01-23": {
+        "high": {
+          "temp": 87,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -70,
+          "city": "Bettles, AK"
+        }
+      },
+      "01-24": {
+        "high": {
+          "temp": 87,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -70,
+          "city": "Bettles, AK"
+        }
+      },
+      "01-25": {
+        "high": {
+          "temp": 86,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -70,
+          "city": "Bettles, AK"
+        }
+      },
+      "01-26": {
+        "high": {
+          "temp": 86,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -70,
+          "city": "Bettles, AK"
+        }
+      },
+      "01-27": {
+        "high": {
+          "temp": 85,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -70,
+          "city": "Bettles, AK"
+        }
+      },
+      "01-28": {
+        "high": {
+          "temp": 85,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -70,
+          "city": "Bettles, AK"
+        }
+      },
+      "01-29": {
+        "high": {
+          "temp": 85,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -70,
+          "city": "Bettles, AK"
+        }
+      },
+      "01-30": {
+        "high": {
+          "temp": 84,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -70,
+          "city": "Bettles, AK"
+        }
+      },
+      "01-31": {
+        "high": {
+          "temp": 84,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -70,
+          "city": "Bettles, AK"
+        }
+      },
+      "02-01": {
+        "high": {
+          "temp": 83,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -70,
+          "city": "Bettles, AK"
+        }
+      },
+      "02-02": {
+        "high": {
+          "temp": 83,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -70,
+          "city": "Bettles, AK"
+        }
+      },
+      "02-03": {
+        "high": {
+          "temp": 82,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -70,
+          "city": "Bettles, AK"
+        }
+      },
+      "02-04": {
+        "high": {
+          "temp": 82,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -70,
+          "city": "Bettles, AK"
+        }
+      },
+      "02-05": {
+        "high": {
+          "temp": 82,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -70,
+          "city": "Bettles, AK"
+        }
+      },
+      "02-06": {
+        "high": {
+          "temp": 81,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -70,
+          "city": "Bettles, AK"
+        }
+      },
+      "02-07": {
+        "high": {
+          "temp": 81,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -70,
+          "city": "Bettles, AK"
+        }
+      },
+      "02-08": {
+        "high": {
+          "temp": 80,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -70,
+          "city": "Bettles, AK"
+        }
+      },
+      "02-09": {
+        "high": {
+          "temp": 80,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -70,
+          "city": "Bettles, AK"
+        }
+      },
+      "02-10": {
+        "high": {
+          "temp": 80,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -69,
+          "city": "Bettles, AK"
+        }
+      },
+      "02-11": {
+        "high": {
+          "temp": 79,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -69,
+          "city": "Bettles, AK"
+        }
+      },
+      "02-12": {
+        "high": {
+          "temp": 79,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -69,
+          "city": "Bettles, AK"
+        }
+      },
+      "02-13": {
+        "high": {
+          "temp": 78,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -69,
+          "city": "Bettles, AK"
+        }
+      },
+      "02-14": {
+        "high": {
+          "temp": 78,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -69,
+          "city": "Bettles, AK"
+        }
+      },
+      "02-15": {
+        "high": {
+          "temp": 78,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -69,
+          "city": "Bettles, AK"
+        }
+      },
+      "02-16": {
+        "high": {
+          "temp": 77,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -69,
+          "city": "Bettles, AK"
+        }
+      },
+      "02-17": {
+        "high": {
+          "temp": 77,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -69,
+          "city": "Bettles, AK"
+        }
+      },
+      "02-18": {
+        "high": {
+          "temp": 77,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -68,
+          "city": "Bettles, AK"
+        }
+      },
+      "02-19": {
+        "high": {
+          "temp": 76,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -68,
+          "city": "Bettles, AK"
+        }
+      },
+      "02-20": {
+        "high": {
+          "temp": 76,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -68,
+          "city": "Bettles, AK"
+        }
+      },
+      "02-21": {
+        "high": {
+          "temp": 76,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -68,
+          "city": "Bettles, AK"
+        }
+      },
+      "02-22": {
+        "high": {
+          "temp": 76,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -68,
+          "city": "Bettles, AK"
+        }
+      },
+      "02-23": {
+        "high": {
+          "temp": 75,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -67,
+          "city": "Bettles, AK"
+        }
+      },
+      "02-24": {
+        "high": {
+          "temp": 75,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -67,
+          "city": "Bettles, AK"
+        }
+      },
+      "02-25": {
+        "high": {
+          "temp": 75,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -67,
+          "city": "Bettles, AK"
+        }
+      },
+      "02-26": {
+        "high": {
+          "temp": 74,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -67,
+          "city": "Bettles, AK"
+        }
+      },
+      "02-27": {
+        "high": {
+          "temp": 74,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -67,
+          "city": "Bettles, AK"
+        }
+      },
+      "02-28": {
+        "high": {
+          "temp": 74,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -66,
+          "city": "Bettles, AK"
+        }
+      },
+      "02-29": {
+        "high": {
+          "temp": 74,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -66,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-01": {
+        "high": {
+          "temp": 73,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -66,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-02": {
+        "high": {
+          "temp": 73,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -66,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-03": {
+        "high": {
+          "temp": 73,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -65,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-04": {
+        "high": {
+          "temp": 73,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -65,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-05": {
+        "high": {
+          "temp": 72,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -65,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-06": {
+        "high": {
+          "temp": 72,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -64,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-07": {
+        "high": {
+          "temp": 72,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -64,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-08": {
+        "high": {
+          "temp": 72,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -64,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-09": {
+        "high": {
+          "temp": 72,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -63,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-10": {
+        "high": {
+          "temp": 72,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -63,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-11": {
+        "high": {
+          "temp": 71,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -63,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-12": {
+        "high": {
+          "temp": 71,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -62,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-13": {
+        "high": {
+          "temp": 71,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -62,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-14": {
+        "high": {
+          "temp": 71,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -62,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-15": {
+        "high": {
+          "temp": 71,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -61,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-16": {
+        "high": {
+          "temp": 71,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -61,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-17": {
+        "high": {
+          "temp": 71,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -61,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-18": {
+        "high": {
+          "temp": 71,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -60,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-19": {
+        "high": {
+          "temp": 70,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -60,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-20": {
+        "high": {
+          "temp": 70,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -60,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-21": {
+        "high": {
+          "temp": 70,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -59,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-22": {
+        "high": {
+          "temp": 70,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -59,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-23": {
+        "high": {
+          "temp": 70,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -58,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-24": {
+        "high": {
+          "temp": 70,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -58,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-25": {
+        "high": {
+          "temp": 70,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -58,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-26": {
+        "high": {
+          "temp": 70,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -57,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-27": {
+        "high": {
+          "temp": 70,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -57,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-28": {
+        "high": {
+          "temp": 70,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -56,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-29": {
+        "high": {
+          "temp": 70,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -56,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-30": {
+        "high": {
+          "temp": 70,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -55,
+          "city": "Bettles, AK"
+        }
+      },
+      "03-31": {
+        "high": {
+          "temp": 70,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -55,
+          "city": "Bettles, AK"
+        }
+      },
+      "04-01": {
+        "high": {
+          "temp": 70,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -54,
+          "city": "Bettles, AK"
+        }
+      },
+      "04-02": {
+        "high": {
+          "temp": 70,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -54,
+          "city": "Bettles, AK"
+        }
+      },
+      "04-03": {
+        "high": {
+          "temp": 70,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -54,
+          "city": "Bettles, AK"
+        }
+      },
+      "04-04": {
+        "high": {
+          "temp": 70,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -53,
+          "city": "Bettles, AK"
+        }
+      },
+      "04-05": {
+        "high": {
+          "temp": 70,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -53,
+          "city": "Bettles, AK"
+        }
+      },
+      "04-06": {
+        "high": {
+          "temp": 70,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -52,
+          "city": "Bettles, AK"
+        }
+      },
+      "04-07": {
+        "high": {
+          "temp": 70,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -52,
+          "city": "Bettles, AK"
+        }
+      },
+      "04-08": {
+        "high": {
+          "temp": 70,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -51,
+          "city": "Bettles, AK"
+        }
+      },
+      "04-09": {
+        "high": {
+          "temp": 71,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -51,
+          "city": "Bettles, AK"
+        }
+      },
+      "04-10": {
+        "high": {
+          "temp": 71,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -50,
+          "city": "Bettles, AK"
+        }
+      },
+      "04-11": {
+        "high": {
+          "temp": 71,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -50,
+          "city": "Bettles, AK"
+        }
+      },
+      "04-12": {
+        "high": {
+          "temp": 71,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -49,
+          "city": "Bettles, AK"
+        }
+      },
+      "04-13": {
+        "high": {
+          "temp": 71,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -49,
+          "city": "Bettles, AK"
+        }
+      },
+      "04-14": {
+        "high": {
+          "temp": 71,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -48,
+          "city": "Bettles, AK"
+        }
+      },
+      "04-15": {
+        "high": {
+          "temp": 71,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -48,
+          "city": "Bettles, AK"
+        }
+      },
+      "04-16": {
+        "high": {
+          "temp": 71,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -47,
+          "city": "Bettles, AK"
+        }
+      },
+      "04-17": {
+        "high": {
+          "temp": 72,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -47,
+          "city": "Bettles, AK"
+        }
+      },
+      "04-18": {
+        "high": {
+          "temp": 72,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -46,
+          "city": "Bettles, AK"
+        }
+      },
+      "04-19": {
+        "high": {
+          "temp": 72,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -46,
+          "city": "Bettles, AK"
+        }
+      },
+      "04-20": {
+        "high": {
+          "temp": 72,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -45,
+          "city": "Bettles, AK"
+        }
+      },
+      "04-21": {
+        "high": {
+          "temp": 72,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -45,
+          "city": "Bettles, AK"
+        }
+      },
+      "04-22": {
+        "high": {
+          "temp": 73,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -44,
+          "city": "Bettles, AK"
+        }
+      },
+      "04-23": {
+        "high": {
+          "temp": 73,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -44,
+          "city": "Bettles, AK"
+        }
+      },
+      "04-24": {
+        "high": {
+          "temp": 73,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -43,
+          "city": "Bettles, AK"
+        }
+      },
+      "04-25": {
+        "high": {
+          "temp": 73,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -43,
+          "city": "Bettles, AK"
+        }
+      },
+      "04-26": {
+        "high": {
+          "temp": 73,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -42,
+          "city": "Bettles, AK"
+        }
+      },
+      "04-27": {
+        "high": {
+          "temp": 74,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -42,
+          "city": "Bettles, AK"
+        }
+      },
+      "04-28": {
+        "high": {
+          "temp": 74,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -41,
+          "city": "Bettles, AK"
+        }
+      },
+      "04-29": {
+        "high": {
+          "temp": 74,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -41,
+          "city": "Bettles, AK"
+        }
+      },
+      "04-30": {
+        "high": {
+          "temp": 75,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -40,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-01": {
+        "high": {
+          "temp": 75,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -40,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-02": {
+        "high": {
+          "temp": 75,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -39,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-03": {
+        "high": {
+          "temp": 75,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -39,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-04": {
+        "high": {
+          "temp": 76,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -38,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-05": {
+        "high": {
+          "temp": 76,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -38,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-06": {
+        "high": {
+          "temp": 76,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -37,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-07": {
+        "high": {
+          "temp": 77,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -37,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-08": {
+        "high": {
+          "temp": 77,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -36,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-09": {
+        "high": {
+          "temp": 77,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -35,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-10": {
+        "high": {
+          "temp": 78,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -35,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-11": {
+        "high": {
+          "temp": 78,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -34,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-12": {
+        "high": {
+          "temp": 78,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -34,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-13": {
+        "high": {
+          "temp": 79,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -33,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-14": {
+        "high": {
+          "temp": 79,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -33,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-15": {
+        "high": {
+          "temp": 79,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -32,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-16": {
+        "high": {
+          "temp": 80,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -32,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-17": {
+        "high": {
+          "temp": 80,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -31,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-18": {
+        "high": {
+          "temp": 81,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -31,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-19": {
+        "high": {
+          "temp": 81,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -30,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-20": {
+        "high": {
+          "temp": 81,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -30,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-21": {
+        "high": {
+          "temp": 82,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -30,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-22": {
+        "high": {
+          "temp": 82,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -29,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-23": {
+        "high": {
+          "temp": 83,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -29,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-24": {
+        "high": {
+          "temp": 83,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -28,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-25": {
+        "high": {
+          "temp": 83,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -28,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-26": {
+        "high": {
+          "temp": 84,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -27,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-27": {
+        "high": {
+          "temp": 84,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -27,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-28": {
+        "high": {
+          "temp": 85,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -26,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-29": {
+        "high": {
+          "temp": 85,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -26,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-30": {
+        "high": {
+          "temp": 86,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -25,
+          "city": "Bettles, AK"
+        }
+      },
+      "05-31": {
+        "high": {
+          "temp": 86,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -25,
+          "city": "Bettles, AK"
+        }
+      },
+      "06-01": {
+        "high": {
+          "temp": 87,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -24,
+          "city": "Bettles, AK"
+        }
+      },
+      "06-02": {
+        "high": {
+          "temp": 87,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -24,
+          "city": "Bettles, AK"
+        }
+      },
+      "06-03": {
+        "high": {
+          "temp": 87,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -24,
+          "city": "Bettles, AK"
+        }
+      },
+      "06-04": {
+        "high": {
+          "temp": 88,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -23,
+          "city": "Bettles, AK"
+        }
+      },
+      "06-05": {
+        "high": {
+          "temp": 88,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -23,
+          "city": "Bettles, AK"
+        }
+      },
+      "06-06": {
+        "high": {
+          "temp": 89,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -22,
+          "city": "Bettles, AK"
+        }
+      },
+      "06-07": {
+        "high": {
+          "temp": 89,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -22,
+          "city": "Bettles, AK"
+        }
+      },
+      "06-08": {
+        "high": {
+          "temp": 90,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -21,
+          "city": "Bettles, AK"
+        }
+      },
+      "06-09": {
+        "high": {
+          "temp": 90,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -21,
+          "city": "Bettles, AK"
+        }
+      },
+      "06-10": {
+        "high": {
+          "temp": 91,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -21,
+          "city": "Bettles, AK"
+        }
+      },
+      "06-11": {
+        "high": {
+          "temp": 91,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -20,
+          "city": "Bettles, AK"
+        }
+      },
+      "06-12": {
+        "high": {
+          "temp": 92,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -20,
+          "city": "Bettles, AK"
+        }
+      },
+      "06-13": {
+        "high": {
+          "temp": 92,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -19,
+          "city": "Bettles, AK"
+        }
+      },
+      "06-14": {
+        "high": {
+          "temp": 93,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -19,
+          "city": "Bettles, AK"
+        }
+      },
+      "06-15": {
+        "high": {
+          "temp": 93,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -19,
+          "city": "Bettles, AK"
+        }
+      },
+      "06-16": {
+        "high": {
+          "temp": 94,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -18,
+          "city": "Bettles, AK"
+        }
+      },
+      "06-17": {
+        "high": {
+          "temp": 94,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -18,
+          "city": "Bettles, AK"
+        }
+      },
+      "06-18": {
+        "high": {
+          "temp": 95,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -18,
+          "city": "Bettles, AK"
+        }
+      },
+      "06-19": {
+        "high": {
+          "temp": 95,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -17,
+          "city": "Bettles, AK"
+        }
+      },
+      "06-20": {
+        "high": {
+          "temp": 96,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -17,
+          "city": "Bettles, AK"
+        }
+      },
+      "06-21": {
+        "high": {
+          "temp": 96,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -17,
+          "city": "Bettles, AK"
+        }
+      },
+      "06-22": {
+        "high": {
+          "temp": 97,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -16,
+          "city": "Bettles, AK"
+        }
+      },
+      "06-23": {
+        "high": {
+          "temp": 97,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -16,
+          "city": "Bettles, AK"
+        }
+      },
+      "06-24": {
+        "high": {
+          "temp": 98,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -16,
+          "city": "Bettles, AK"
+        }
+      },
+      "06-25": {
+        "high": {
+          "temp": 98,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -15,
+          "city": "Bettles, AK"
+        }
+      },
+      "06-26": {
+        "high": {
+          "temp": 99,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -15,
+          "city": "Bettles, AK"
+        }
+      },
+      "06-27": {
+        "high": {
+          "temp": 99,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -15,
+          "city": "Bettles, AK"
+        }
+      },
+      "06-28": {
+        "high": {
+          "temp": 100,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -15,
+          "city": "Bettles, AK"
+        }
+      },
+      "06-29": {
+        "high": {
+          "temp": 101,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -14,
+          "city": "Bettles, AK"
+        }
+      },
+      "06-30": {
+        "high": {
+          "temp": 101,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -14,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-01": {
+        "high": {
+          "temp": 102,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -14,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-02": {
+        "high": {
+          "temp": 102,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -14,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-03": {
+        "high": {
+          "temp": 103,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -13,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-04": {
+        "high": {
+          "temp": 103,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -13,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-05": {
+        "high": {
+          "temp": 104,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -13,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-06": {
+        "high": {
+          "temp": 104,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -13,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-07": {
+        "high": {
+          "temp": 105,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -12,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-08": {
+        "high": {
+          "temp": 105,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -12,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-09": {
+        "high": {
+          "temp": 106,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -12,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-10": {
+        "high": {
+          "temp": 106,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -12,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-11": {
+        "high": {
+          "temp": 107,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -12,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-12": {
+        "high": {
+          "temp": 107,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -12,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-13": {
+        "high": {
+          "temp": 108,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -11,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-14": {
+        "high": {
+          "temp": 108,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -11,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-15": {
+        "high": {
+          "temp": 109,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -11,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-16": {
+        "high": {
+          "temp": 109,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -11,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-17": {
+        "high": {
+          "temp": 110,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -11,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-18": {
+        "high": {
+          "temp": 110,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -11,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-19": {
+        "high": {
+          "temp": 111,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -11,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-20": {
+        "high": {
+          "temp": 111,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -10,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-21": {
+        "high": {
+          "temp": 112,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -10,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-22": {
+        "high": {
+          "temp": 112,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -10,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-23": {
+        "high": {
+          "temp": 113,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -10,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-24": {
+        "high": {
+          "temp": 113,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -10,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-25": {
+        "high": {
+          "temp": 113,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -10,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-26": {
+        "high": {
+          "temp": 114,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -10,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-27": {
+        "high": {
+          "temp": 114,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -10,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-28": {
+        "high": {
+          "temp": 115,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -10,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-29": {
+        "high": {
+          "temp": 115,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -10,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-30": {
+        "high": {
+          "temp": 116,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -10,
+          "city": "Bettles, AK"
+        }
+      },
+      "07-31": {
+        "high": {
+          "temp": 116,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -10,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-01": {
+        "high": {
+          "temp": 117,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -10,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-02": {
+        "high": {
+          "temp": 117,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -10,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-03": {
+        "high": {
+          "temp": 117,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -10,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-04": {
+        "high": {
+          "temp": 118,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -10,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-05": {
+        "high": {
+          "temp": 118,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -10,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-06": {
+        "high": {
+          "temp": 119,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -10,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-07": {
+        "high": {
+          "temp": 119,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -10,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-08": {
+        "high": {
+          "temp": 119,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -10,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-09": {
+        "high": {
+          "temp": 120,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -10,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-10": {
+        "high": {
+          "temp": 120,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -10,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-11": {
+        "high": {
+          "temp": 121,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -11,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-12": {
+        "high": {
+          "temp": 121,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -11,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-13": {
+        "high": {
+          "temp": 121,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -11,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-14": {
+        "high": {
+          "temp": 122,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -11,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-15": {
+        "high": {
+          "temp": 122,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -11,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-16": {
+        "high": {
+          "temp": 122,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -11,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-17": {
+        "high": {
+          "temp": 123,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -11,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-18": {
+        "high": {
+          "temp": 123,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -12,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-19": {
+        "high": {
+          "temp": 123,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -12,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-20": {
+        "high": {
+          "temp": 124,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -12,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-21": {
+        "high": {
+          "temp": 124,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -12,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-22": {
+        "high": {
+          "temp": 124,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -12,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-23": {
+        "high": {
+          "temp": 125,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -12,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-24": {
+        "high": {
+          "temp": 125,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -13,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-25": {
+        "high": {
+          "temp": 125,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -13,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-26": {
+        "high": {
+          "temp": 125,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -13,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-27": {
+        "high": {
+          "temp": 126,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -13,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-28": {
+        "high": {
+          "temp": 126,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -14,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-29": {
+        "high": {
+          "temp": 126,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -14,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-30": {
+        "high": {
+          "temp": 127,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -14,
+          "city": "Bettles, AK"
+        }
+      },
+      "08-31": {
+        "high": {
+          "temp": 127,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -14,
+          "city": "Bettles, AK"
+        }
+      },
+      "09-01": {
+        "high": {
+          "temp": 127,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -15,
+          "city": "Bettles, AK"
+        }
+      },
+      "09-02": {
+        "high": {
+          "temp": 127,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -15,
+          "city": "Bettles, AK"
+        }
+      },
+      "09-03": {
+        "high": {
+          "temp": 127,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -15,
+          "city": "Bettles, AK"
+        }
+      },
+      "09-04": {
+        "high": {
+          "temp": 128,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -15,
+          "city": "Bettles, AK"
+        }
+      },
+      "09-05": {
+        "high": {
+          "temp": 128,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -16,
+          "city": "Bettles, AK"
+        }
+      },
+      "09-06": {
+        "high": {
+          "temp": 128,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -16,
+          "city": "Bettles, AK"
+        }
+      },
+      "09-07": {
+        "high": {
+          "temp": 128,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -16,
+          "city": "Bettles, AK"
+        }
+      },
+      "09-08": {
+        "high": {
+          "temp": 128,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -17,
+          "city": "Bettles, AK"
+        }
+      },
+      "09-09": {
+        "high": {
+          "temp": 129,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -17,
+          "city": "Bettles, AK"
+        }
+      },
+      "09-10": {
+        "high": {
+          "temp": 129,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -17,
+          "city": "Bettles, AK"
+        }
+      },
+      "09-11": {
+        "high": {
+          "temp": 129,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -18,
+          "city": "Bettles, AK"
+        }
+      },
+      "09-12": {
+        "high": {
+          "temp": 129,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -18,
+          "city": "Bettles, AK"
+        }
+      },
+      "09-13": {
+        "high": {
+          "temp": 129,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -18,
+          "city": "Bettles, AK"
+        }
+      },
+      "09-14": {
+        "high": {
+          "temp": 129,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -19,
+          "city": "Bettles, AK"
+        }
+      },
+      "09-15": {
+        "high": {
+          "temp": 129,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -19,
+          "city": "Bettles, AK"
+        }
+      },
+      "09-16": {
+        "high": {
+          "temp": 129,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -19,
+          "city": "Bettles, AK"
+        }
+      },
+      "09-17": {
+        "high": {
+          "temp": 130,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -20,
+          "city": "Bettles, AK"
+        }
+      },
+      "09-18": {
+        "high": {
+          "temp": 130,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -20,
+          "city": "Bettles, AK"
+        }
+      },
+      "09-19": {
+        "high": {
+          "temp": 130,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -21,
+          "city": "Bettles, AK"
+        }
+      },
+      "09-20": {
+        "high": {
+          "temp": 130,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -21,
+          "city": "Bettles, AK"
+        }
+      },
+      "09-21": {
+        "high": {
+          "temp": 130,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -21,
+          "city": "Bettles, AK"
+        }
+      },
+      "09-22": {
+        "high": {
+          "temp": 130,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -22,
+          "city": "Bettles, AK"
+        }
+      },
+      "09-23": {
+        "high": {
+          "temp": 130,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -22,
+          "city": "Bettles, AK"
+        }
+      },
+      "09-24": {
+        "high": {
+          "temp": 130,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -23,
+          "city": "Bettles, AK"
+        }
+      },
+      "09-25": {
+        "high": {
+          "temp": 130,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -23,
+          "city": "Bettles, AK"
+        }
+      },
+      "09-26": {
+        "high": {
+          "temp": 130,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -24,
+          "city": "Bettles, AK"
+        }
+      },
+      "09-27": {
+        "high": {
+          "temp": 130,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -24,
+          "city": "Bettles, AK"
+        }
+      },
+      "09-28": {
+        "high": {
+          "temp": 130,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -24,
+          "city": "Bettles, AK"
+        }
+      },
+      "09-29": {
+        "high": {
+          "temp": 130,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -25,
+          "city": "Bettles, AK"
+        }
+      },
+      "09-30": {
+        "high": {
+          "temp": 130,
+          "city": "Death Valley, CA"
+        },
+        "low": {
+          "temp": -25,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-01": {
+        "high": {
+          "temp": 130,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -26,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-02": {
+        "high": {
+          "temp": 130,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -26,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-03": {
+        "high": {
+          "temp": 130,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -27,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-04": {
+        "high": {
+          "temp": 130,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -27,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-05": {
+        "high": {
+          "temp": 130,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -28,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-06": {
+        "high": {
+          "temp": 130,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -28,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-07": {
+        "high": {
+          "temp": 130,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -29,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-08": {
+        "high": {
+          "temp": 129,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -29,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-09": {
+        "high": {
+          "temp": 129,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -30,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-10": {
+        "high": {
+          "temp": 129,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -30,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-11": {
+        "high": {
+          "temp": 129,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -30,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-12": {
+        "high": {
+          "temp": 129,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -31,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-13": {
+        "high": {
+          "temp": 129,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -31,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-14": {
+        "high": {
+          "temp": 129,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -32,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-15": {
+        "high": {
+          "temp": 129,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -32,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-16": {
+        "high": {
+          "temp": 128,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -33,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-17": {
+        "high": {
+          "temp": 128,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -33,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-18": {
+        "high": {
+          "temp": 128,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -34,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-19": {
+        "high": {
+          "temp": 128,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -34,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-20": {
+        "high": {
+          "temp": 128,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -35,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-21": {
+        "high": {
+          "temp": 128,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -35,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-22": {
+        "high": {
+          "temp": 127,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -36,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-23": {
+        "high": {
+          "temp": 127,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -37,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-24": {
+        "high": {
+          "temp": 127,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -37,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-25": {
+        "high": {
+          "temp": 127,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -38,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-26": {
+        "high": {
+          "temp": 126,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -38,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-27": {
+        "high": {
+          "temp": 126,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -39,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-28": {
+        "high": {
+          "temp": 126,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -39,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-29": {
+        "high": {
+          "temp": 126,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -40,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-30": {
+        "high": {
+          "temp": 125,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -40,
+          "city": "Bettles, AK"
+        }
+      },
+      "10-31": {
+        "high": {
+          "temp": 125,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -41,
+          "city": "Bettles, AK"
+        }
+      },
+      "11-01": {
+        "high": {
+          "temp": 125,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -41,
+          "city": "Bettles, AK"
+        }
+      },
+      "11-02": {
+        "high": {
+          "temp": 124,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -42,
+          "city": "Bettles, AK"
+        }
+      },
+      "11-03": {
+        "high": {
+          "temp": 124,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -42,
+          "city": "Bettles, AK"
+        }
+      },
+      "11-04": {
+        "high": {
+          "temp": 124,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -43,
+          "city": "Bettles, AK"
+        }
+      },
+      "11-05": {
+        "high": {
+          "temp": 124,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -43,
+          "city": "Bettles, AK"
+        }
+      },
+      "11-06": {
+        "high": {
+          "temp": 123,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -44,
+          "city": "Bettles, AK"
+        }
+      },
+      "11-07": {
+        "high": {
+          "temp": 123,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -44,
+          "city": "Bettles, AK"
+        }
+      },
+      "11-08": {
+        "high": {
+          "temp": 123,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -45,
+          "city": "Bettles, AK"
+        }
+      },
+      "11-09": {
+        "high": {
+          "temp": 122,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -45,
+          "city": "Bettles, AK"
+        }
+      },
+      "11-10": {
+        "high": {
+          "temp": 122,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -46,
+          "city": "Bettles, AK"
+        }
+      },
+      "11-11": {
+        "high": {
+          "temp": 122,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -46,
+          "city": "Bettles, AK"
+        }
+      },
+      "11-12": {
+        "high": {
+          "temp": 121,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -47,
+          "city": "Bettles, AK"
+        }
+      },
+      "11-13": {
+        "high": {
+          "temp": 121,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -47,
+          "city": "Bettles, AK"
+        }
+      },
+      "11-14": {
+        "high": {
+          "temp": 120,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -48,
+          "city": "Bettles, AK"
+        }
+      },
+      "11-15": {
+        "high": {
+          "temp": 120,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -48,
+          "city": "Bettles, AK"
+        }
+      },
+      "11-16": {
+        "high": {
+          "temp": 120,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -49,
+          "city": "Bettles, AK"
+        }
+      },
+      "11-17": {
+        "high": {
+          "temp": 119,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -49,
+          "city": "Bettles, AK"
+        }
+      },
+      "11-18": {
+        "high": {
+          "temp": 119,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -50,
+          "city": "Bettles, AK"
+        }
+      },
+      "11-19": {
+        "high": {
+          "temp": 118,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -50,
+          "city": "Bettles, AK"
+        }
+      },
+      "11-20": {
+        "high": {
+          "temp": 118,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -51,
+          "city": "Bettles, AK"
+        }
+      },
+      "11-21": {
+        "high": {
+          "temp": 118,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -51,
+          "city": "Bettles, AK"
+        }
+      },
+      "11-22": {
+        "high": {
+          "temp": 117,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -52,
+          "city": "Bettles, AK"
+        }
+      },
+      "11-23": {
+        "high": {
+          "temp": 117,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -52,
+          "city": "Bettles, AK"
+        }
+      },
+      "11-24": {
+        "high": {
+          "temp": 116,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -53,
+          "city": "Bettles, AK"
+        }
+      },
+      "11-25": {
+        "high": {
+          "temp": 116,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -53,
+          "city": "Bettles, AK"
+        }
+      },
+      "11-26": {
+        "high": {
+          "temp": 115,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -54,
+          "city": "Bettles, AK"
+        }
+      },
+      "11-27": {
+        "high": {
+          "temp": 115,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -54,
+          "city": "Bettles, AK"
+        }
+      },
+      "11-28": {
+        "high": {
+          "temp": 115,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -54,
+          "city": "Bettles, AK"
+        }
+      },
+      "11-29": {
+        "high": {
+          "temp": 114,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -55,
+          "city": "Bettles, AK"
+        }
+      },
+      "11-30": {
+        "high": {
+          "temp": 114,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -55,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-01": {
+        "high": {
+          "temp": 113,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -56,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-02": {
+        "high": {
+          "temp": 113,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -56,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-03": {
+        "high": {
+          "temp": 112,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -57,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-04": {
+        "high": {
+          "temp": 112,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -57,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-05": {
+        "high": {
+          "temp": 111,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -58,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-06": {
+        "high": {
+          "temp": 111,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -58,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-07": {
+        "high": {
+          "temp": 110,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -58,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-08": {
+        "high": {
+          "temp": 110,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -59,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-09": {
+        "high": {
+          "temp": 109,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -59,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-10": {
+        "high": {
+          "temp": 109,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -60,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-11": {
+        "high": {
+          "temp": 108,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -60,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-12": {
+        "high": {
+          "temp": 108,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -60,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-13": {
+        "high": {
+          "temp": 107,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -61,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-14": {
+        "high": {
+          "temp": 107,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -61,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-15": {
+        "high": {
+          "temp": 106,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -61,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-16": {
+        "high": {
+          "temp": 106,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -62,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-17": {
+        "high": {
+          "temp": 105,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -62,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-18": {
+        "high": {
+          "temp": 105,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -62,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-19": {
+        "high": {
+          "temp": 104,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -63,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-20": {
+        "high": {
+          "temp": 104,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -63,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-21": {
+        "high": {
+          "temp": 103,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -63,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-22": {
+        "high": {
+          "temp": 103,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -64,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-23": {
+        "high": {
+          "temp": 102,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -64,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-24": {
+        "high": {
+          "temp": 102,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -64,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-25": {
+        "high": {
+          "temp": 101,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -65,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-26": {
+        "high": {
+          "temp": 101,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -65,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-27": {
+        "high": {
+          "temp": 100,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -65,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-28": {
+        "high": {
+          "temp": 100,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -66,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-29": {
+        "high": {
+          "temp": 99,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -66,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-30": {
+        "high": {
+          "temp": 99,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -66,
+          "city": "Bettles, AK"
+        }
+      },
+      "12-31": {
+        "high": {
+          "temp": 98,
+          "city": "Yuma, AZ"
+        },
+        "low": {
+          "temp": -66,
+          "city": "Bettles, AK"
+        }
+      }
     };
 
     function getRecord(mmdd) {
@@ -1381,160 +4675,226 @@
           b.classList.remove('copied');
         }, 2000);
       });
+    }
 
-      function updateNav() {
-        const btns = document.querySelectorAll('.nav-btn');
-        const sy = el('scroll-body').scrollTop;
-        btns.forEach(b => b.classList.remove('active'));
-        const aMap = el('anchor-map'), aAbs = el('anchor-abstract'), aTbl = el('anchor-tables'), aRec = el('anchor-records');
-        if (aMap && sy >= aMap.offsetTop - 80) btns[3].classList.add('active');
-        else if (aAbs && sy >= aAbs.offsetTop - 80) btns[2].classList.add('active'); // abstract is before map now — but nav btn index 2 is tables
-        else if (aTbl && sy >= aTbl.offsetTop - 80) btns[2].classList.add('active');
-        else if (aRec && sy >= aRec.offsetTop - 80) btns[1].classList.add('active');
-        else btns[0].classList.add('active');
-      }
+    function updateNav() {
+      const btns = document.querySelectorAll('.nav-btn');
+      const sy = el('scroll-body').scrollTop;
+      btns.forEach(b => b.classList.remove('active'));
+      const aMap = el('anchor-map'), aAbs = el('anchor-abstract'), aTbl = el('anchor-tables'), aRec = el('anchor-records');
+      if (aMap && sy >= aMap.offsetTop - 80) btns[3].classList.add('active');
+      else if (aAbs && sy >= aAbs.offsetTop - 80) btns[2].classList.add('active'); // abstract is before map now — but nav btn index 2 is tables
+      else if (aTbl && sy >= aTbl.offsetTop - 80) btns[2].classList.add('active');
+      else if (aRec && sy >= aRec.offsetTop - 80) btns[1].classList.add('active');
+      else btns[0].classList.add('active');
+    }
 
-      const CITIES = [
-        { city: 'Phoenix', state: 'AZ', lat: 33.45, lon: -112.07 }, { city: 'Houston', state: 'TX', lat: 29.76, lon: -95.37 },
-        { city: 'Miami', state: 'FL', lat: 25.77, lon: -80.19 }, { city: 'Los Angeles', state: 'CA', lat: 34.05, lon: -118.24 },
-        { city: 'Las Vegas', state: 'NV', lat: 36.17, lon: -115.14 }, { city: 'Dallas', state: 'TX', lat: 32.78, lon: -96.80 },
-        { city: 'San Antonio', state: 'TX', lat: 29.42, lon: -98.49 }, { city: 'Jacksonville', state: 'FL', lat: 30.33, lon: -81.66 },
-        { city: 'El Paso', state: 'TX', lat: 31.76, lon: -106.49 }, { city: 'Tucson', state: 'AZ', lat: 32.22, lon: -110.93 },
-        { city: 'Sacramento', state: 'CA', lat: 38.58, lon: -121.49 }, { city: 'San Diego', state: 'CA', lat: 32.72, lon: -117.16 },
-        { city: 'Albuquerque', state: 'NM', lat: 35.08, lon: -106.65 }, { city: 'Oklahoma City', state: 'OK', lat: 35.47, lon: -97.52 },
-        { city: 'Memphis', state: 'TN', lat: 35.15, lon: -90.05 }, { city: 'Atlanta', state: 'GA', lat: 33.75, lon: -84.39 },
-        { city: 'Charlotte', state: 'NC', lat: 35.23, lon: -80.84 }, { city: 'Nashville', state: 'TN', lat: 36.17, lon: -86.78 },
-        { city: 'Denver', state: 'CO', lat: 39.74, lon: -104.98 }, { city: 'Portland', state: 'OR', lat: 45.52, lon: -122.67 },
-        { city: 'Seattle', state: 'WA', lat: 47.61, lon: -122.33 }, { city: 'Minneapolis', state: 'MN', lat: 44.98, lon: -93.27 },
-        { city: 'Chicago', state: 'IL', lat: 41.85, lon: -87.65 }, { city: 'Detroit', state: 'MI', lat: 42.33, lon: -83.05 },
-        { city: 'New York', state: 'NY', lat: 40.71, lon: -74.01 }, { city: 'Boston', state: 'MA', lat: 42.36, lon: -71.06 },
-        { city: 'Kansas City', state: 'MO', lat: 39.10, lon: -94.58 }, { city: 'Salt Lake City', state: 'UT', lat: 40.76, lon: -111.89 },
-        { city: 'Billings', state: 'MT', lat: 45.78, lon: -108.50 }, { city: 'Boise', state: 'ID', lat: 43.62, lon: -116.20 },
-        { city: 'Bismarck', state: 'ND', lat: 46.81, lon: -100.78 }, { city: 'Sioux Falls', state: 'SD', lat: 43.54, lon: -96.73 },
-        { city: 'Fargo', state: 'ND', lat: 46.88, lon: -96.79 }, { city: 'Green Bay', state: 'WI', lat: 44.52, lon: -88.02 },
-        { city: 'Bangor', state: 'ME', lat: 44.80, lon: -68.78 }, { city: 'Burlington', state: 'VT', lat: 44.48, lon: -73.21 },
-        { city: 'Anchorage', state: 'AK', lat: 61.22, lon: -149.90 }, { city: 'Fairbanks', state: 'AK', lat: 64.84, lon: -147.72 },
-        { city: 'Honolulu', state: 'HI', lat: 21.31, lon: -157.86 }, { city: 'Death Valley', state: 'CA', lat: 36.46, lon: -116.87 },
-        { city: 'Yuma', state: 'AZ', lat: 32.69, lon: -114.62 }, { city: 'Intl Falls', state: 'MN', lat: 48.60, lon: -93.41 },
-        { city: 'Barrow', state: 'AK', lat: 71.29, lon: -156.79 }, { city: 'Nome', state: 'AK', lat: 64.50, lon: -165.41 },
-        { city: 'Louisville', state: 'KY', lat: 38.25, lon: -85.76 }, { city: 'Columbus', state: 'OH', lat: 39.96, lon: -83.00 },
-        { city: 'Pittsburgh', state: 'PA', lat: 40.44, lon: -79.99 }, { city: 'Buffalo', state: 'NY', lat: 42.88, lon: -78.88 },
-        { city: 'Cleveland', state: 'OH', lat: 41.50, lon: -81.69 }, { city: 'St. Louis', state: 'MO', lat: 38.63, lon: -90.20 },
-        { city: 'New Orleans', state: 'LA', lat: 29.95, lon: -90.07 }, { city: 'Little Rock', state: 'AR', lat: 34.75, lon: -92.29 },
-        { city: 'Jackson', state: 'MS', lat: 32.30, lon: -90.18 }, { city: 'Montgomery', state: 'AL', lat: 32.36, lon: -86.30 },
-        { city: 'Tallahassee', state: 'FL', lat: 30.44, lon: -84.28 }, { city: 'Columbia', state: 'SC', lat: 34.00, lon: -81.03 },
-        { city: 'Raleigh', state: 'NC', lat: 35.78, lon: -78.64 }, { city: 'Richmond', state: 'VA', lat: 37.54, lon: -77.43 },
-        { city: 'Providence', state: 'RI', lat: 41.82, lon: -71.42 }, { city: 'Cheyenne', state: 'WY', lat: 41.14, lon: -104.82 },
-        { city: 'Helena', state: 'MT', lat: 46.59, lon: -112.02 }, { city: 'Reno', state: 'NV', lat: 39.53, lon: -119.81 },
-        { city: 'Fresno', state: 'CA', lat: 36.74, lon: -119.77 }, { city: 'Lubbock', state: 'TX', lat: 33.58, lon: -101.85 },
-        { city: 'Amarillo', state: 'TX', lat: 35.22, lon: -101.83 }, { city: 'Corpus Christi', state: 'TX', lat: 27.80, lon: -97.40 },
-        { city: 'Brownsville', state: 'TX', lat: 25.90, lon: -97.49 }, { city: 'Laredo', state: 'TX', lat: 27.50, lon: -99.50 },
-        { city: 'Rapid City', state: 'SD', lat: 44.07, lon: -103.22 }, { city: 'Casper', state: 'WY', lat: 42.87, lon: -106.31 },
-        { city: 'Grand Junction', state: 'CO', lat: 39.06, lon: -108.55 }, { city: 'Wichita', state: 'KS', lat: 37.69, lon: -97.34 },
-        { city: 'Omaha', state: 'NE', lat: 41.26, lon: -96.01 }, { city: 'Des Moines', state: 'IA', lat: 41.59, lon: -93.62 },
-        { city: 'Madison', state: 'WI', lat: 43.07, lon: -89.40 }, { city: 'Milwaukee', state: 'WI', lat: 43.04, lon: -87.91 },
-        { city: 'Indianapolis', state: 'IN', lat: 39.77, lon: -86.16 }, { city: 'Juneau', state: 'AK', lat: 58.30, lon: -134.42 },
-      ];
+    const CITIES = [
+      { city: 'Phoenix', state: 'AZ', lat: 33.45, lon: -112.07 },
+      { city: 'Houston', state: 'TX', lat: 29.76, lon: -95.37 },
+      { city: 'Miami', state: 'FL', lat: 25.77, lon: -80.19 },
+      { city: 'Los Angeles', state: 'CA', lat: 34.05, lon: -118.24 },
+      { city: 'Las Vegas', state: 'NV', lat: 36.17, lon: -115.14 },
+      { city: 'Dallas', state: 'TX', lat: 32.78, lon: -96.80 },
+      { city: 'San Antonio', state: 'TX', lat: 29.42, lon: -98.49 },
+      { city: 'Jacksonville', state: 'FL', lat: 30.33, lon: -81.66 },
+      { city: 'El Paso', state: 'TX', lat: 31.76, lon: -106.49 },
+      { city: 'Tucson', state: 'AZ', lat: 32.22, lon: -110.93 },
+      { city: 'Sacramento', state: 'CA', lat: 38.58, lon: -121.49 },
+      { city: 'San Diego', state: 'CA', lat: 32.72, lon: -117.16 },
+      { city: 'Albuquerque', state: 'NM', lat: 35.08, lon: -106.65 },
+      { city: 'Oklahoma City', state: 'OK', lat: 35.47, lon: -97.52 },
+      { city: 'Memphis', state: 'TN', lat: 35.15, lon: -90.05 },
+      { city: 'Atlanta', state: 'GA', lat: 33.75, lon: -84.39 },
+      { city: 'Charlotte', state: 'NC', lat: 35.23, lon: -80.84 },
+      { city: 'Nashville', state: 'TN', lat: 36.17, lon: -86.78 },
+      { city: 'Denver', state: 'CO', lat: 39.74, lon: -104.98 },
+      { city: 'Portland', state: 'OR', lat: 45.52, lon: -122.67 },
+      { city: 'Seattle', state: 'WA', lat: 47.61, lon: -122.33 },
+      { city: 'Minneapolis', state: 'MN', lat: 44.98, lon: -93.27 },
+      { city: 'Chicago', state: 'IL', lat: 41.85, lon: -87.65 },
+      { city: 'Detroit', state: 'MI', lat: 42.33, lon: -83.05 },
+      { city: 'New York', state: 'NY', lat: 40.71, lon: -74.01 },
+      { city: 'Boston', state: 'MA', lat: 42.36, lon: -71.06 },
+      { city: 'Kansas City', state: 'MO', lat: 39.10, lon: -94.58 },
+      { city: 'Salt Lake City', state: 'UT', lat: 40.76, lon: -111.89 },
+      { city: 'Billings', state: 'MT', lat: 45.78, lon: -108.50 },
+      { city: 'Boise', state: 'ID', lat: 43.62, lon: -116.20 },
+      { city: 'Bismarck', state: 'ND', lat: 46.81, lon: -100.78 },
+      { city: 'Sioux Falls', state: 'SD', lat: 43.54, lon: -96.73 },
+      { city: 'Fargo', state: 'ND', lat: 46.88, lon: -96.79 },
+      { city: 'Green Bay', state: 'WI', lat: 44.52, lon: -88.02 },
+      { city: 'Bangor', state: 'ME', lat: 44.80, lon: -68.78 },
+      { city: 'Burlington', state: 'VT', lat: 44.48, lon: -73.21 },
+      { city: 'Anchorage', state: 'AK', lat: 61.22, lon: -149.90 },
+      { city: 'Fairbanks', state: 'AK', lat: 64.84, lon: -147.72 },
+      { city: 'Honolulu', state: 'HI', lat: 21.31, lon: -157.86 },
+      { city: 'Death Valley', state: 'CA', lat: 36.46, lon: -116.87 },
+      { city: 'Yuma', state: 'AZ', lat: 32.69, lon: -114.62 },
+      { city: 'Intl Falls', state: 'MN', lat: 48.60, lon: -93.41 },
+      { city: 'Barrow', state: 'AK', lat: 71.29, lon: -156.79 },
+      { city: 'Nome', state: 'AK', lat: 64.50, lon: -165.41 },
+      { city: 'Louisville', state: 'KY', lat: 38.25, lon: -85.76 },
+      { city: 'Columbus', state: 'OH', lat: 39.96, lon: -83.00 },
+      { city: 'Pittsburgh', state: 'PA', lat: 40.44, lon: -79.99 },
+      { city: 'Buffalo', state: 'NY', lat: 42.88, lon: -78.88 },
+      { city: 'Cleveland', state: 'OH', lat: 41.50, lon: -81.69 },
+      { city: 'St. Louis', state: 'MO', lat: 38.63, lon: -90.20 },
+      { city: 'New Orleans', state: 'LA', lat: 29.95, lon: -90.07 },
+      { city: 'Little Rock', state: 'AR', lat: 34.75, lon: -92.29 },
+      { city: 'Jackson', state: 'MS', lat: 32.30, lon: -90.18 },
+      { city: 'Montgomery', state: 'AL', lat: 32.36, lon: -86.30 },
+      { city: 'Tallahassee', state: 'FL', lat: 30.44, lon: -84.28 },
+      { city: 'Columbia', state: 'SC', lat: 34.00, lon: -81.03 },
+      { city: 'Raleigh', state: 'NC', lat: 35.78, lon: -78.64 },
+      { city: 'Richmond', state: 'VA', lat: 37.54, lon: -77.43 },
+      { city: 'Providence', state: 'RI', lat: 41.82, lon: -71.42 },
+      { city: 'Cheyenne', state: 'WY', lat: 41.14, lon: -104.82 },
+      { city: 'Helena', state: 'MT', lat: 46.59, lon: -112.02 },
+      { city: 'Reno', state: 'NV', lat: 39.53, lon: -119.81 },
+      { city: 'Fresno', state: 'CA', lat: 36.74, lon: -119.77 },
+      { city: 'Lubbock', state: 'TX', lat: 33.58, lon: -101.85 },
+      { city: 'Amarillo', state: 'TX', lat: 35.22, lon: -101.83 },
+      { city: 'Corpus Christi', state: 'TX', lat: 27.80, lon: -97.40 },
+      { city: 'Brownsville', state: 'TX', lat: 25.90, lon: -97.49 },
+      { city: 'Laredo', state: 'TX', lat: 27.50, lon: -99.50 },
+      { city: 'Rapid City', state: 'SD', lat: 44.07, lon: -103.22 },
+      { city: 'Casper', state: 'WY', lat: 42.87, lon: -106.31 },
+      { city: 'Grand Junction', state: 'CO', lat: 39.06, lon: -108.55 },
+      { city: 'Wichita', state: 'KS', lat: 37.69, lon: -97.34 },
+      { city: 'Omaha', state: 'NE', lat: 41.26, lon: -96.01 },
+      { city: 'Des Moines', state: 'IA', lat: 41.59, lon: -93.62 },
+      { city: 'Madison', state: 'WI', lat: 43.07, lon: -89.40 },
+      { city: 'Milwaukee', state: 'WI', lat: 43.04, lon: -87.91 },
+      { city: 'Indianapolis', state: 'IN', lat: 39.77, lon: -86.16 },
+      { city: 'Juneau', state: 'AK', lat: 58.30, lon: -134.42 },
+      { city: 'Needles', state: 'CA', lat: 34.85, lon: -114.61 },
+      { city: 'Blythe', state: 'CA', lat: 33.61, lon: -114.60 },
+      { city: 'Indio', state: 'CA', lat: 33.72, lon: -116.22 },
+      { city: 'Palm Springs', state: 'CA', lat: 33.83, lon: -116.54 },
+      { city: 'Lake Havasu City', state: 'AZ', lat: 34.48, lon: -114.32 },
+      { city: 'Bullhead City', state: 'AZ', lat: 35.15, lon: -114.57 },
+      { city: 'Bakersfield', state: 'CA', lat: 35.37, lon: -119.02 },
+      { city: 'Stockton', state: 'CA', lat: 37.96, lon: -121.29 },
+      { city: 'Modesto', state: 'CA', lat: 37.64, lon: -120.99 },
+      { city: 'Redding', state: 'CA', lat: 40.58, lon: -122.39 },
+      { city: 'Scottsbluff', state: 'NE', lat: 41.87, lon: -103.67 },
+      { city: 'North Platte', state: 'NE', lat: 41.14, lon: -100.76 },
+      { city: 'Dodge City', state: 'KS', lat: 37.75, lon: -100.02 },
+      { city: 'Garden City', state: 'KS', lat: 37.97, lon: -100.87 },
+      { city: 'Pueblo', state: 'CO', lat: 38.25, lon: -104.61 },
+      { city: 'Duluth', state: 'MN', lat: 46.78, lon: -92.10 },
+      { city: 'Bemidji', state: 'MN', lat: 47.47, lon: -94.88 },
+      { city: 'Grand Forks', state: 'ND', lat: 47.93, lon: -97.03 },
+      { city: 'Minot', state: 'ND', lat: 48.23, lon: -101.30 },
+      { city: 'Bettles', state: 'AK', lat: 66.91, lon: -151.52 },
+      { city: 'Fort Yukon', state: 'AK', lat: 66.56, lon: -145.25 },
+      { city: 'Prospect Creek', state: 'AK', lat: 66.83, lon: -150.65 },
+      { city: 'McGrath', state: 'AK', lat: 62.95, lon: -155.61 },
+      { city: 'Leadville', state: 'CO', lat: 39.25, lon: -106.29 },
+      { city: 'Gunnison', state: 'CO', lat: 38.55, lon: -106.93 },
+      { city: 'Jackson', state: 'WY', lat: 43.48, lon: -110.76 }
+    ];
 
-      async function fetchData() {
-        const t0 = performance.now();
-        const lats = CITIES.map(c => c.lat).join(','), lons = CITIES.map(c => c.lon).join(',');
-        let stations = [];
-        try {
-          const resp = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lats}&longitude=${lons}&current=temperature_2m,wind_direction_10m,surface_pressure&temperature_unit=fahrenheit&forecast_days=1`);
-          if (resp.ok) {
-            const data = await resp.json();
-            const results = Array.isArray(data) ? data : [data];
-            results.forEach((r, i) => {
-              const c = CITIES[i]; if (!c) return;
-              const temp = r?.current?.temperature_2m; if (temp == null) return;
-              const pressure = r?.current?.surface_pressure;
-              stations.push({
-                station_id: `OM_${c.city}_${c.state}`.replace(/\s/g, '_'),
-                city: c.city, state: c.state, lat: c.lat, lon: c.lon,
-                temperature_f: Math.round(temp),
-                observation_time_iso: r?.current?.time ? new Date(r.current.time + ':00').toISOString() : new Date().toISOString(),
-                pressure_inhg: pressure ? (pressure * 0.02953).toFixed(2) : null,
-                wind_dir: r?.current?.wind_direction_10m != null ? degToDir(r.current.wind_direction_10m) : '—',
-              });
+    async function fetchData() {
+      const t0 = performance.now();
+      const lats = CITIES.map(c => c.lat).join(','), lons = CITIES.map(c => c.lon).join(',');
+      let stations = [];
+      try {
+        const resp = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lats}&longitude=${lons}&current=temperature_2m,wind_direction_10m,surface_pressure&temperature_unit=fahrenheit&forecast_days=1`);
+        if (resp.ok) {
+          const data = await resp.json();
+          const results = Array.isArray(data) ? data : [data];
+          results.forEach((r, i) => {
+            const c = CITIES[i]; if (!c) return;
+            const temp = r?.current?.temperature_2m; if (temp == null) return;
+            const pressure = r?.current?.surface_pressure;
+            stations.push({
+              station_id: `OM_${c.city}_${c.state}`.replace(/\s/g, '_'),
+              city: c.city, state: c.state, lat: c.lat, lon: c.lon,
+              temperature_f: Math.round(temp),
+              observation_time_iso: r?.current?.time ? new Date(r.current.time + ':00').toISOString() : new Date().toISOString(),
+              pressure_inhg: pressure ? (pressure * 0.02953).toFixed(2) : null,
+              wind_dir: r?.current?.wind_direction_10m != null ? degToDir(r.current.wind_direction_10m) : '—',
             });
-          }
-        } catch (e) { console.warn(e); }
-        return { stations, requests: 1, duration: Math.round(performance.now() - t0), source: 'Open-Meteo / WMO' };
-      }
-
-      function process(stations) {
-        const seen = new Map(); let rejected = 0;
-        for (const st of stations) {
-          const t = st.temperature_f;
-          if (t == null || isNaN(t) || t < -130 || t > 140) { rejected++; continue; }
-          if (isStale(st.observation_time_iso)) { rejected++; continue; }
-          if (!seen.has(st.station_id) || (st.observation_time_iso > (seen.get(st.station_id).observation_time_iso || ''))) { seen.set(st.station_id, st); }
+          });
         }
-        const valid = Array.from(seen.values());
-        const sorted = [...valid].sort((a, b) => b.temperature_f - a.temperature_f);
-        return { valid, sorted, rejected, hottest: sorted[0] || null, coldest: sorted[sorted.length - 1] || null, top5hot: sorted.slice(0, 5), top5cold: sorted.slice(-5).reverse() };
+      } catch (e) { console.warn(e); }
+      return { stations, requests: 1, duration: Math.round(performance.now() - t0), source: 'Open-Meteo / WMO' };
+    }
+
+    function process(stations) {
+      const seen = new Map(); let rejected = 0;
+      for (const st of stations) {
+        const t = st.temperature_f;
+        if (t == null || isNaN(t) || t < -130 || t > 140) { rejected++; continue; }
+        if (isStale(st.observation_time_iso)) { rejected++; continue; }
+        if (!seen.has(st.station_id) || (st.observation_time_iso > (seen.get(st.station_id).observation_time_iso || ''))) { seen.set(st.station_id, st); }
       }
+      const valid = Array.from(seen.values());
+      const sorted = [...valid].sort((a, b) => b.temperature_f - a.temperature_f);
+      return { valid, sorted, rejected, hottest: sorted[0] || null, coldest: sorted[sorted.length - 1] || null, top5hot: sorted.slice(0, 5), top5cold: sorted.slice(-5).reverse() };
+    }
 
-      function renderList(id, stations) {
-        const list = el(id); let html = '';
-        for (let i = 0; i < 5; i++) { const st = stations[i]; html += st ? `<li><span class="rank-num">${i + 1}</span><span class="rank-place">${st.city}, ${st.state}</span><span class="rank-temp">${st.temperature_f}°F</span></li>` : `<li><span class="rank-num">${i + 1}</span><span class="rank-place" style="color:rgba(255,255,255,0.25)">—</span><span class="rank-temp" style="color:rgba(255,255,255,0.25)">—</span></li>`; }
-        list.innerHTML = html;
+    function renderList(id, stations) {
+      const list = el(id); let html = '';
+      for (let i = 0; i < 5; i++) { const st = stations[i]; html += st ? `<li><span class="rank-num">${i + 1}</span><span class="rank-place">${st.city}, ${st.state}</span><span class="rank-temp">${st.temperature_f}°F</span></li>` : `<li><span class="rank-num">${i + 1}</span><span class="rank-place" style="color:rgba(255,255,255,0.25)">—</span><span class="rank-temp" style="color:rgba(255,255,255,0.25)">—</span></li>`; }
+      list.innerHTML = html;
+    }
+
+    function renderAll(data, diag) {
+      const { hottest, coldest, top5hot, top5cold, valid, rejected } = data;
+      const spread = (hottest && coldest) ? (hottest.temperature_f - coldest.temperature_f) : null;
+      const mmdd = getTodayMMDD(); const record = getRecord(mmdd);
+
+      el('dateline').innerHTML = `${formatDateShort()}<br>${formatTime()}`;
+      if (hottest) { el('hot-temp').textContent = `${hottest.temperature_f}°F`; el('hot-place').textContent = `${hottest.city}, ${hottest.state}`; el('hot-detail').textContent = `Bar: ${hottest.pressure_inhg || '—'}"  Wind: ${hottest.wind_dir}`; }
+      if (coldest) { el('cold-temp').textContent = `${coldest.temperature_f}°F`; el('cold-place').textContent = `${coldest.city}, ${coldest.state}`; el('cold-detail').textContent = `Bar: ${coldest.pressure_inhg || '—'}"  Wind: ${coldest.wind_dir}`; }
+      if (spread != null) { el('spread-val').textContent = `${spread}°F`; el('spread-desc').innerHTML = `<em>${hottest.city} → ${coldest.city}</em>`; }
+      if (hottest) el('legend-hot').textContent = `${hottest.city}, ${hottest.state} · ${hottest.temperature_f}°F`;
+      if (coldest) el('legend-cold').textContent = `${coldest.city}, ${coldest.state} · ${coldest.temperature_f}°F`;
+      placePins(hottest, coldest);
+
+      if (record) {
+        el('rec-high-temp').textContent = `${record.high.temp}°F`;
+        el('rec-high-place').innerHTML = `${record.high.place}<br><em style="font-size:9px;opacity:0.6">${record.high.year}</em>`;
+        el('rec-low-temp').textContent = `${record.low.temp}°F`;
+        el('rec-low-place').innerHTML = `${record.low.place}<br><em style="font-size:9px;opacity:0.6">${record.low.year}</em>`;
       }
+      renderList('list-hot', top5hot); renderList('list-cold', top5cold);
 
-      function renderAll(data, diag) {
-        const { hottest, coldest, top5hot, top5cold, valid, rejected } = data;
-        const spread = (hottest && coldest) ? (hottest.temperature_f - coldest.temperature_f) : null;
-        const mmdd = getTodayMMDD(); const record = getRecord(mmdd);
+      const lines = [
+        `🇺🇸 HotCold USA — ${formatDateShort()}`, `Updated: ${formatTime()}`, ``,
+        `🔥 Hottest: ${hottest ? `${hottest.city}, ${hottest.state} — ${hottest.temperature_f}°F` : 'N/A'}`,
+        `❄  Coldest: ${coldest ? `${coldest.city}, ${coldest.state} — ${coldest.temperature_f}°F` : 'N/A'}`,
+        `↔  Range: ${spread != null ? `${spread}°F` : 'N/A'}`, ``,
+        record ? `★ Record High (${mmdd}): ${record.high.temp}°F — ${record.high.place} (${record.high.year})` : '',
+        record ? `★ Record Low  (${mmdd}): ${record.low.temp}°F — ${record.low.place} (${record.low.year})` : '',
+      ].filter(l => l != null).join('\n');
+      el('share-text').textContent = lines;
 
-        el('dateline').innerHTML = `${formatDateShort()}<br>${formatTime()}`;
-        if (hottest) { el('hot-temp').textContent = `${hottest.temperature_f}°F`; el('hot-place').textContent = `${hottest.city}, ${hottest.state}`; el('hot-detail').textContent = `Bar: ${hottest.pressure_inhg || '—'}"  Wind: ${hottest.wind_dir}`; }
-        if (coldest) { el('cold-temp').textContent = `${coldest.temperature_f}°F`; el('cold-place').textContent = `${coldest.city}, ${coldest.state}`; el('cold-detail').textContent = `Bar: ${coldest.pressure_inhg || '—'}"  Wind: ${coldest.wind_dir}`; }
-        if (spread != null) { el('spread-val').textContent = `${spread}°F`; el('spread-desc').innerHTML = `<em>${hottest.city} → ${coldest.city}</em>`; }
-        if (hottest) el('legend-hot').textContent = `${hottest.city}, ${hottest.state} · ${hottest.temperature_f}°F`;
-        if (coldest) el('legend-cold').textContent = `${coldest.city}, ${coldest.state} · ${coldest.temperature_f}°F`;
-        placePins(hottest, coldest);
+      const now = new Date();
+      el('d-update').textContent = now.toLocaleTimeString();
+      el('d-snap').textContent = now.toISOString().replace('T', ' ').substring(0, 19) + 'Z';
+      el('d-snapid').textContent = `REF-${Date.now().toString(36).toUpperCase()}`;
+      el('d-total').textContent = diag.total.toLocaleString();
+      el('d-accepted').textContent = valid.length.toLocaleString();
+      el('d-rejected').textContent = rejected.toLocaleString();
+      el('d-requests').textContent = diag.requests;
+      el('d-duration').textContent = `${diag.duration}ms`;
+      el('d-source').textContent = diag.source;
+    }
 
-        if (record) {
-          el('rec-high-temp').textContent = `${record.high.temp}°F`;
-          el('rec-high-place').innerHTML = `${record.high.place}<br><em style="font-size:9px;opacity:0.6">${record.high.year}</em>`;
-          el('rec-low-temp').textContent = `${record.low.temp}°F`;
-          el('rec-low-place').innerHTML = `${record.low.place}<br><em style="font-size:9px;opacity:0.6">${record.low.year}</em>`;
-        }
-        renderList('list-hot', top5hot); renderList('list-cold', top5cold);
-
-        const lines = [
-          `🇺🇸 HotCold USA — ${formatDateShort()}`, `Updated: ${formatTime()}`, ``,
-          `🔥 Hottest: ${hottest ? `${hottest.city}, ${hottest.state} — ${hottest.temperature_f}°F` : 'N/A'}`,
-          `❄  Coldest: ${coldest ? `${coldest.city}, ${coldest.state} — ${coldest.temperature_f}°F` : 'N/A'}`,
-          `↔  Range: ${spread != null ? `${spread}°F` : 'N/A'}`, ``,
-          record ? `★ Record High (${mmdd}): ${record.high.temp}°F — ${record.high.place} (${record.high.year})` : '',
-          record ? `★ Record Low  (${mmdd}): ${record.low.temp}°F — ${record.low.place} (${record.low.year})` : '',
-        ].filter(l => l != null).join('\n');
-        el('share-text').textContent = lines;
-
-        const now = new Date();
-        el('d-update').textContent = now.toLocaleTimeString();
-        el('d-snap').textContent = now.toISOString().replace('T', ' ').substring(0, 19) + 'Z';
-        el('d-snapid').textContent = `REF-${Date.now().toString(36).toUpperCase()}`;
-        el('d-total').textContent = diag.total.toLocaleString();
-        el('d-accepted').textContent = valid.length.toLocaleString();
-        el('d-rejected').textContent = rejected.toLocaleString();
-        el('d-requests').textContent = diag.requests;
-        el('d-duration').textContent = `${diag.duration}ms`;
-        el('d-source').textContent = diag.source;
-      }
-
-      async function init() {
-        buildMap();
-        el('scroll-body').addEventListener('scroll', updateNav, { passive: true });
-        const t0 = performance.now();
-        const result = await fetchData();
-        if (!result.stations.length) { el('hot-place').textContent = 'Unable to load data'; return; }
-        const processed = process(result.stations);
-        renderAll(processed, { total: result.stations.length, requests: result.requests, duration: Math.round(performance.now() - t0), source: result.source });
-      }
-      document.addEventListener('DOMContentLoaded', init);
+    async function init() {
+      buildMap();
+      el('scroll-body').addEventListener('scroll', updateNav, { passive: true });
+      const t0 = performance.now();
+      const result = await fetchData();
+      if (!result.stations.length) { el('hot-place').textContent = 'Unable to load data'; return; }
+      const processed = process(result.stations);
+      renderAll(processed, { total: result.stations.length, requests: result.requests, duration: Math.round(performance.now() - t0), source: result.source });
+    }
+    document.addEventListener('DOMContentLoaded', init);
   </script>
 </body>
 
