@@ -1,0 +1,184 @@
+/* ============================================================
+   themes.css — HotCold USA
+   Theme variable overrides.
+
+   Each theme is a single [data-theme="x"] block on <body>
+   that redefines every custom property from styles.css.
+   No layout or component rules live here — only values.
+
+   Themes
+   ──────
+   patriot   Original navy / red / gold.  The default.
+   ranger    Earthy forest green and amber.  Outdoorsy.
+   dispatch  High-contrast newsroom black and white.
+   glacier   Ice-blue arctic palette.
+   ember     Deep charcoal with molten orange accents.
+   ============================================================ */
+
+
+/* ── 1. PATRIOT ───────────────────────────────────────────────
+   The original colour scheme, reproduced here as an explicit
+   override so switching back from another theme is clean.
+   Navy background, crimson accent, amber gold highlights.
+   ─────────────────────────────────────────────────────────── */
+
+[data-theme="patriot"] {
+  --c-bg:         #0a1628;
+  --c-bg-mid:     #122040;
+  --c-bg-raised:  #1e3560;
+  --c-border:     #1e3560;
+  --c-accent:     #bf0a30;
+  --c-accent-dim: #7a0620;
+  --c-gold:       #f5a623;
+  --c-gold-dim:   #c07d10;
+  --c-text:       #ffffff;
+  --c-text-dim:   rgba(255, 255, 255, 0.70);
+  --c-text-faint: rgba(255, 255, 255, 0.30);
+  --c-hot:        #ff8a8a;
+  --c-hot-mid:    #e8102e;
+  --c-cold:       #8ad4ff;
+  --c-cold-dim:   #b8e0ff;
+  --c-star:       #e8d48a;
+  --c-map-bg:     #0d1f3c;
+  --c-map-state:  #152844;
+  --c-map-stroke: #253d62;
+
+  --f-head: 'Oswald', sans-serif;
+  --f-body: 'Source Serif 4', Georgia, serif;
+  --f-mono: 'Share Tech Mono', monospace;
+}
+
+
+/* ── 2. RANGER ────────────────────────────────────────────────
+   Deep forest green base with warm amber accents and
+   earthy tan text.  Feels like a National Park service board.
+   Hot readings lean orange; cold readings stay sky-blue.
+   ─────────────────────────────────────────────────────────── */
+
+[data-theme="ranger"] {
+  --c-bg:         #0f1f0f;
+  --c-bg-mid:     #172917;
+  --c-bg-raised:  #1f3a1f;
+  --c-border:     #2a4a2a;
+  --c-accent:     #c47c1a;
+  --c-accent-dim: #6b420d;
+  --c-gold:       #d4a843;
+  --c-gold-dim:   #8a6820;
+  --c-text:       #f0e8d0;
+  --c-text-dim:   rgba(240, 232, 208, 0.70);
+  --c-text-faint: rgba(240, 232, 208, 0.30);
+  --c-hot:        #ffaa66;
+  --c-hot-mid:    #d4621a;
+  --c-cold:       #88ccee;
+  --c-cold-dim:   #b8ddf5;
+  --c-star:       #d4a843;
+  --c-map-bg:     #0a170a;
+  --c-map-state:  #152515;
+  --c-map-stroke: #2a4a2a;
+
+  --f-head: 'Oswald', sans-serif;
+  --f-body: 'Source Serif 4', Georgia, serif;
+  --f-mono: 'Share Tech Mono', monospace;
+}
+
+
+/* ── 3. DISPATCH ──────────────────────────────────────────────
+   Newsroom black-and-white with a single red alert accent.
+   Near-black background, true white text, tight greys for
+   surfaces.  Feels like a wire-service terminal.
+   Hot readings in red; cold readings in a cool steel blue.
+   ─────────────────────────────────────────────────────────── */
+
+[data-theme="dispatch"] {
+  --c-bg:         #0d0d0d;
+  --c-bg-mid:     #181818;
+  --c-bg-raised:  #252525;
+  --c-border:     #333333;
+  --c-accent:     #cc1122;
+  --c-accent-dim: #660011;
+  --c-gold:       #cccccc;
+  --c-gold-dim:   #777777;
+  --c-text:       #f0f0f0;
+  --c-text-dim:   rgba(240, 240, 240, 0.65);
+  --c-text-faint: rgba(240, 240, 240, 0.30);
+  --c-hot:        #ff6666;
+  --c-hot-mid:    #cc1122;
+  --c-cold:       #7ab8d4;
+  --c-cold-dim:   #aad4e8;
+  --c-star:       #888888;
+  --c-map-bg:     #080808;
+  --c-map-state:  #1a1a1a;
+  --c-map-stroke: #3a3a3a;
+
+  --f-head: 'Oswald', sans-serif;
+  --f-body: 'Source Serif 4', Georgia, serif;
+  --f-mono: 'Share Tech Mono', monospace;
+}
+
+
+/* ── 4. GLACIER ───────────────────────────────────────────────
+   Deep arctic blue-black base with icy cyan highlights.
+   Everything reads cold — surfaces are dark navy-teal,
+   accents are glacial blue-white.  Hot readings contrast
+   sharply in warm coral so they pop against the cold palette.
+   ─────────────────────────────────────────────────────────── */
+
+[data-theme="glacier"] {
+  --c-bg:         #070e18;
+  --c-bg-mid:     #0d1a28;
+  --c-bg-raised:  #102030;
+  --c-border:     #1a3348;
+  --c-accent:     #2a7faa;
+  --c-accent-dim: #0f3a55;
+  --c-gold:       #66c8e8;
+  --c-gold-dim:   #2a6888;
+  --c-text:       #ddf0f8;
+  --c-text-dim:   rgba(221, 240, 248, 0.65);
+  --c-text-faint: rgba(221, 240, 248, 0.28);
+  --c-hot:        #ff9977;
+  --c-hot-mid:    #dd5533;
+  --c-cold:       #88ddff;
+  --c-cold-dim:   #bbeeff;
+  --c-star:       #88ccdd;
+  --c-map-bg:     #040a10;
+  --c-map-state:  #0c1825;
+  --c-map-stroke: #1a3348;
+
+  --f-head: 'Oswald', sans-serif;
+  --f-body: 'Source Serif 4', Georgia, serif;
+  --f-mono: 'Share Tech Mono', monospace;
+}
+
+
+/* ── 5. EMBER ─────────────────────────────────────────────────
+   Near-black charcoal base with glowing molten-orange accents.
+   Surfaces are warm dark greys rather than cool blue-blacks.
+   Feels like cooling lava or a late-night weather alert.
+   Cold readings use a muted violet-blue for contrast.
+   ─────────────────────────────────────────────────────────── */
+
+[data-theme="ember"] {
+  --c-bg:         #110e0b;
+  --c-bg-mid:     #1c1612;
+  --c-bg-raised:  #281f17;
+  --c-border:     #3a2c1e;
+  --c-accent:     #c45c10;
+  --c-accent-dim: #6b2e08;
+  --c-gold:       #e8922a;
+  --c-gold-dim:   #8a4e10;
+  --c-text:       #f5ece0;
+  --c-text-dim:   rgba(245, 236, 224, 0.68);
+  --c-text-faint: rgba(245, 236, 224, 0.28);
+  --c-hot:        #ffaa55;
+  --c-hot-mid:    #dd5500;
+  --c-cold:       #8899cc;
+  --c-cold-dim:   #aabdee;
+  --c-star:       #cc7722;
+  --c-map-bg:     #0c0906;
+  --c-map-state:  #1a1208;
+  --c-map-stroke: #3a2c1e;
+
+  --f-head: 'Oswald', sans-serif;
+  --f-body: 'Source Serif 4', Georgia, serif;
+  --f-mono: 'Share Tech Mono', monospace;
+}
