@@ -11,7 +11,9 @@
   <title>HotCold USA</title>
   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bitter:wght@400;700&family=Bungee&family=Cinzel:wght@400;500;700&family=Cormorant+Garamond:wght@400;500;700&family=Courier+Prime:wght@400;700&family=DM+Serif+Display:ital@0;1&family=Fira+Code:wght@400;500&family=Forum&family=IBM+Plex+Mono:wght@400;500&family=JetBrains+Mono:wght@400;500&family=Limelight&family=Orbitron:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bitter:wght@400;700&family=Bungee&family=Cinzel:wght@400;500;700&family=Cormorant+Garamond:wght@400;500;700&family=Courier+Prime:wght@400;700&family=DM+Serif+Display:ital@0;1&family=Fira+Code:wght@400;500&family=Forum&family=IBM+Plex+Mono:wght@400;500&family=JetBrains+Mono:wght@400;500&family=Limelight&family=Orbitron:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
 
   <!--
     ═══════════════════════════════════════════════════════
@@ -56,14 +58,6 @@
 
   <!-- ── SCROLL BODY ─────────────────────────────────────────────────────── -->
   <div class="scroll-body" id="scroll-body">
-
-    <!-- THEME SWITCHER ───────────────────────────────────────────────────── -->
-    <div class="theme-bar" id="theme-bar">
-      <span class="theme-bar-label">Theme</span>
-      <div class="theme-btn-group" id="theme-btn-group">
-        <!-- Populated by themes.js → buildThemeSwitcher() -->
-      </div>
-    </div>
 
     <!-- EXTREMES ─────────────────────────────────────────────────────────── -->
     <div class="section-label">Today's Extremes</div>
@@ -113,7 +107,8 @@
         <span class="list-header-title">Highest Temperatures</span>
       </div>
       <ul class="rank-list" id="list-hot">
-        <li><span class="rank-num">—</span><span class="rank-place loading-dim">loading</span><span class="rank-temp">—</span></li>
+        <li><span class="rank-num">—</span><span class="rank-place loading-dim">loading</span><span
+            class="rank-temp">—</span></li>
       </ul>
     </div>
 
@@ -124,7 +119,8 @@
         <span class="list-header-title">Lowest Temperatures</span>
       </div>
       <ul class="rank-list" id="list-cold">
-        <li><span class="rank-num">—</span><span class="rank-place loading-dim">loading</span><span class="rank-temp">—</span></li>
+        <li><span class="rank-num">—</span><span class="rank-place loading-dim">loading</span><span
+            class="rank-temp">—</span></li>
       </ul>
     </div>
 
@@ -165,14 +161,20 @@
         <span>Show Diagnostics</span><span class="diag-arrow">▾</span>
       </button>
       <div class="diag-body" id="diag-body">
-        <div class="diag-row"><span class="diag-key">Last Update</span><span class="diag-val" id="d-update">—</span></div>
+        <div class="diag-row"><span class="diag-key">Last Update</span><span class="diag-val" id="d-update">—</span>
+        </div>
         <div class="diag-row"><span class="diag-key">Snapshot</span><span class="diag-val" id="d-snap">—</span></div>
         <div class="diag-row"><span class="diag-key">Ref.</span><span class="diag-val" id="d-snapid">—</span></div>
-        <div class="diag-row"><span class="diag-key">Stations Observed</span><span class="diag-val" id="d-total">—</span></div>
-        <div class="diag-row"><span class="diag-key">Accepted</span><span class="diag-val" id="d-accepted">—</span></div>
-        <div class="diag-row"><span class="diag-key">Rejected</span><span class="diag-val" id="d-rejected">—</span></div>
-        <div class="diag-row"><span class="diag-key">Requests</span><span class="diag-val" id="d-requests">—</span></div>
-        <div class="diag-row"><span class="diag-key">Duration</span><span class="diag-val" id="d-duration">—</span></div>
+        <div class="diag-row"><span class="diag-key">Stations Observed</span><span class="diag-val"
+            id="d-total">—</span></div>
+        <div class="diag-row"><span class="diag-key">Accepted</span><span class="diag-val" id="d-accepted">—</span>
+        </div>
+        <div class="diag-row"><span class="diag-key">Rejected</span><span class="diag-val" id="d-rejected">—</span>
+        </div>
+        <div class="diag-row"><span class="diag-key">Requests</span><span class="diag-val" id="d-requests">—</span>
+        </div>
+        <div class="diag-row"><span class="diag-key">Duration</span><span class="diag-val" id="d-duration">—</span>
+        </div>
         <div class="diag-row"><span class="diag-key">Source</span><span class="diag-val" id="d-source">—</span></div>
         <div class="diag-row"><span class="diag-key">Freshness</span><span class="diag-val">2 hours</span></div>
       </div>
@@ -191,14 +193,6 @@
     <div class="page-footer">Data: National Weather Service · Open-Meteo / WMO<br>E Pluribus Unum</div>
 
   </div><!-- /scroll-body -->
-
-  <!-- ── BOTTOM NAV ─────────────────────────────────────────────────────── -->
-  <nav class="bottom-nav">
-    <button class="nav-btn active" onclick="scrollToTop()"><span class="nav-icon">🔥</span>Extremes</button>
-    <button class="nav-btn" onclick="scrollToId('anchor-records')"><span class="nav-icon">★</span>Records</button>
-    <button class="nav-btn" onclick="scrollToId('anchor-tables')"><span class="nav-icon">≡</span>Tables</button>
-    <button class="nav-btn" onclick="scrollToId('anchor-map')"><span class="nav-icon">🗺</span>Map</button>
-  </nav>
 
   <!--
     ═══════════════════════════════════════════════════════
@@ -222,5 +216,5 @@
   <script src="js/app.js"></script>
 
 </body>
-</html>
 
+</html>
