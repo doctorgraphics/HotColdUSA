@@ -1,148 +1,184 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="theme-color" content="#efe2c8" id="theme-color-meta">
+  <meta name="theme-color" content="#0a1628" id="theme-color-meta">
 
   <title>HotCold USA</title>
+
   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bitter:wght@400;700&family=Bungee&family=Cinzel:wght@400;500;700&family=Cormorant+Garamond:wght@400;500;700&family=Courier+Prime:wght@400;700&family=DM+Serif+Display:ital@0;1&family=Fira+Code:wght@400;500&family=Forum&family=IBM+Plex+Mono:wght@400;500&family=JetBrains+Mono:wght@400;500&family=Limelight&family=Orbitron:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap"
-    rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;1,300;1,400&family=Share+Tech+Mono&display=swap">
 
   <!--
-    ═══════════════════════════════════════════════════════
-    EXTERNAL FILE MAP
-    ═══════════════════════════════════════════════════════
-    styles.css   — all layout & component styles,
-                   written against CSS custom properties
-                   so themes drop in by swapping :root vars
+    ---------------------------------------------------------------
+    STYLESHEET LOAD ORDER
+    ---------------------------------------------------------------
+    styles.css   Layout, typography, and all component rules.
+                 Every colour/font value is a CSS custom property
+                 so themes hot-swap without touching this file.
 
-    themes.css   — the theme variable sets themselves;
-                   one [data-theme="x"] block per theme
-
-    data.js      — CITIES array (station lat/lon list)
-    records.js   — CLIMATE_RECORDS object (historical
-                   daily high/low records, JSON-shaped)
-    map.js       — STATE_D SVG path data + buildMap(),
-                   placePins(), ll2xy() helpers
-    app.js       — fetchData(), process(), renderAll(),
-                   UI helpers, init()
-    themes.js    — applyTheme(), buildThemeSwitcher(),
-                   theme metadata, localStorage persist
-    ═══════════════════════════════════════════════════════
+    themes.css   One [data-theme="x"] block per theme, each
+                 redefining the full set of custom properties
+                 from styles.css.  Active theme is set via
+                 data-theme on <body> by themes.js.
+    ---------------------------------------------------------------
   -->
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/themes.css">
 </head>
 
+<!--
+  data-theme="patriot" is the default.
+  themes.js overwrites this attribute on load using the value
+  stored in localStorage, then on every theme-button click.
+-->
+
 <body data-theme="patriot">
 
-  <!-- iOS status-bar spacer -->
-  <div class="status-bar"></div>
+  <!-- iOS notch / status-bar safe-area spacer -->
+  <div class="status-bar" aria-hidden="true"></div>
 
-  <!-- ── HEADER ──────────────────────────────────────────────────────────── -->
+  <!-- -- HEADER -------------------------------------------------------------- -->
   <header class="app-header">
-    <div>
-      <span class="app-eyebrow">National Weather · U.S.A.</span>
+    <div class="app-title-group">
+      <span class="app-eyebrow">National Weather � U.S.A.</span>
       <span class="app-title">Hot<span>Cold</span>&nbsp;USA</span>
     </div>
-    <div class="header-date" id="dateline">Loading…</div>
-    <div style="font-size:28px;flex-shrink:0">🇺🇸</div>
+    <div class="header-date" id="dateline" aria-live="polite">Loading�</div>
+    <div class="header-flag" aria-hidden="true">????</div>
   </header>
 
-  <!-- ── SCROLL BODY ─────────────────────────────────────────────────────── -->
+  <!-- -- SCROLL BODY --------------------------------------------------------- -->
   <div class="scroll-body" id="scroll-body">
 
-    <!-- EXTREMES ─────────────────────────────────────────────────────────── -->
+    <!-- THEME SWITCHER ------------------------------------------------------
+         Buttons are injected by themes.js ? buildThemeSwitcher().
+         The container must exist in the DOM before scripts run.        -->
+    <div class="theme-bar" id="theme-bar" role="group" aria-label="Colour theme">
+      <span class="theme-bar-label">Theme</span>
+      <div class="theme-btn-group" id="theme-btn-group"></div>
+    </div>
+
+    <!-- TODAY'S EXTREMES ----------------------------------------------------
+         Section anchor id is on the section-label so scrollToTop() and
+         the nav highlight logic both target the same element.          -->
     <div class="section-label">Today's Extremes</div>
     <div class="hero-extremes">
+
       <div class="extreme-card hot">
-        <span class="ext-badge">🔥 Hottest</span>
-        <span class="ext-temp" id="hot-temp">—</span>
-        <span class="ext-place" id="hot-place"><span class="loading-dim">loading…</span></span>
+        <span class="ext-badge">?? Hottest</span>
+        <span class="ext-temp" id="hot-temp">�</span>
+        <span class="ext-place" id="hot-place">
+          <span class="loading-dim">loading�</span>
+        </span>
         <div class="ext-detail" id="hot-detail"></div>
       </div>
+
       <div class="extreme-card cold">
-        <span class="ext-badge">❄ Coldest</span>
-        <span class="ext-temp" id="cold-temp">—</span>
-        <span class="ext-place" id="cold-place"><span class="loading-dim">loading…</span></span>
+        <span class="ext-badge">? Coldest</span>
+        <span class="ext-temp" id="cold-temp">�</span>
+        <span class="ext-place" id="cold-place">
+          <span class="loading-dim">loading�</span>
+        </span>
         <div class="ext-detail" id="cold-detail"></div>
       </div>
+
     </div>
 
     <div class="spread-banner">
       <div>
         <div class="spread-label">National Range</div>
-        <div class="spread-val" id="spread-val">—</div>
+        <div class="spread-val" id="spread-val">�</div>
       </div>
       <div class="spread-desc" id="spread-desc"><em>hot minus cold</em></div>
     </div>
 
-    <!-- RECORDS ──────────────────────────────────────────────────────────── -->
+    <!-- RECORDS FOR THIS DATE -----------------------------------------------
+         id="anchor-records" is the scroll target for the Records nav button. -->
     <div class="section-label" id="anchor-records">Records for This Date</div>
     <div class="records-grid">
+
       <div class="rec-card rec-high">
-        <span class="rec-label">★ Record High</span>
-        <span class="rec-temp" id="rec-high-temp">—°F</span>
-        <span class="rec-place" id="rec-high-place"><span class="loading-dim">loading…</span></span>
+        <span class="rec-label">? Record High</span>
+        <span class="rec-temp" id="rec-high-temp">��F</span>
+        <span class="rec-place" id="rec-high-place">
+          <span class="loading-dim">loading�</span>
+        </span>
       </div>
+
       <div class="rec-card rec-low">
-        <span class="rec-label">★ Record Low</span>
-        <span class="rec-temp" id="rec-low-temp">—°F</span>
-        <span class="rec-place" id="rec-low-place"><span class="loading-dim">loading…</span></span>
+        <span class="rec-label">? Record Low</span>
+        <span class="rec-temp" id="rec-low-temp">��F</span>
+        <span class="rec-place" id="rec-low-place">
+          <span class="loading-dim">loading�</span>
+        </span>
       </div>
+
     </div>
 
-    <!-- RANKING TABLES ───────────────────────────────────────────────────── -->
+    <!-- RANKING TABLES ------------------------------------------------------
+         id="anchor-tables" is the scroll target for the Tables nav button. -->
     <div class="section-label" id="anchor-tables">Five Hottest Stations</div>
     <div class="list-card hot-list">
       <div class="list-header">
-        <span style="font-size:13px">🔥</span>
+        <span class="list-header-icon" aria-hidden="true">??</span>
         <span class="list-header-title">Highest Temperatures</span>
       </div>
-      <ul class="rank-list" id="list-hot">
-        <li><span class="rank-num">—</span><span class="rank-place loading-dim">loading</span><span
-            class="rank-temp">—</span></li>
+      <ul class="rank-list" id="list-hot" aria-label="Five hottest stations">
+        <li>
+          <span class="rank-num">�</span>
+          <span class="rank-place loading-dim">loading</span>
+          <span class="rank-temp">�</span>
+        </li>
       </ul>
     </div>
 
     <div class="section-label">Five Coldest Stations</div>
     <div class="list-card cold-list">
       <div class="list-header">
-        <span style="font-size:13px">❄</span>
+        <span class="list-header-icon" aria-hidden="true">?</span>
         <span class="list-header-title">Lowest Temperatures</span>
       </div>
-      <ul class="rank-list" id="list-cold">
-        <li><span class="rank-num">—</span><span class="rank-place loading-dim">loading</span><span
-            class="rank-temp">—</span></li>
+      <ul class="rank-list" id="list-cold" aria-label="Five coldest stations">
+        <li>
+          <span class="rank-num">�</span>
+          <span class="rank-place loading-dim">loading</span>
+          <span class="rank-temp">�</span>
+        </li>
       </ul>
     </div>
 
-    <!-- DAILY REPORT ─────────────────────────────────────────────────────── -->
+    <!-- DAILY REPORT / SHARE TEXT -------------------------------------------
+         id="anchor-abstract" is referenced by updateNav() in app.js.  -->
     <div class="section-label" id="anchor-abstract">Daily Report</div>
     <div class="abstract-card">
-      <div class="abstract-text" id="share-text">Compiling report…</div>
+      <div class="abstract-text" id="share-text" aria-live="polite">Compiling report�</div>
       <div class="abstract-foot">
-        <span class="abstract-footnote">† Bar. est. ‡ Wind approx.</span>
+        <span class="abstract-footnote">� Bar. est. � Wind approx.</span>
         <button class="btn-copy" id="btn-copy" onclick="copyShare()">Copy</button>
       </div>
     </div>
 
-    <!-- MAP ──────────────────────────────────────────────────────────────── -->
+    <!-- NATIONAL MAP --------------------------------------------------------
+         id="anchor-map" is the scroll target for the Map nav button.
+         States are injected by map.js ? buildMap() into #states-group.
+         Temperature pins are injected by map.js ? placePins() into
+         #pins-group after each data fetch and after theme changes.    -->
     <div class="section-label" id="anchor-map">National Map</div>
     <div class="map-wrap">
-      <svg id="us-map" viewBox="0 0 1000 589" xmlns="http://www.w3.org/2000/svg" style="stroke-linejoin:round">
-        <rect id="map-bg-rect" width="1000" height="589" fill="var(--map-bg, #0d1f3c)" />
+      <svg id="us-map" viewBox="0 0 1000 589" xmlns="http://www.w3.org/2000/svg" role="img"
+        aria-label="Map of the United States showing hottest and coldest stations" style="stroke-linejoin:round">
+        <rect class="map-bg-rect" width="1000" height="589" />
         <g id="states-group"></g>
         <g id="pins-group"></g>
       </svg>
-      <div class="map-legend">
+      <div class="map-legend" aria-hidden="true">
         <div class="legend-item">
           <div class="legend-dot hot"></div>
           <span id="legend-hot">Hottest station</span>
@@ -154,60 +190,115 @@
       </div>
     </div>
 
-    <!-- DIAGNOSTICS ──────────────────────────────────────────────────────── -->
+    <!-- DATA FEED / DIAGNOSTICS ---------------------------------------------
+         Collapsed by default; toggleDiag() in app.js opens/closes it. -->
     <div class="section-label">Data Feed</div>
     <div class="diag-card">
-      <button class="diag-toggle" id="diag-toggle" onclick="toggleDiag()" aria-expanded="false">
-        <span>Show Diagnostics</span><span class="diag-arrow">▾</span>
+      <button class="diag-toggle" id="diag-toggle" onclick="toggleDiag()" aria-expanded="false"
+        aria-controls="diag-body">
+        <span>Show Diagnostics</span>
+        <span class="diag-arrow" aria-hidden="true">?</span>
       </button>
-      <div class="diag-body" id="diag-body">
-        <div class="diag-row"><span class="diag-key">Last Update</span><span class="diag-val" id="d-update">—</span>
+      <div class="diag-body" id="diag-body" role="region" aria-label="Diagnostics">
+        <div class="diag-row">
+          <span class="diag-key">Last Update</span>
+          <span class="diag-val" id="d-update">�</span>
         </div>
-        <div class="diag-row"><span class="diag-key">Snapshot</span><span class="diag-val" id="d-snap">—</span></div>
-        <div class="diag-row"><span class="diag-key">Ref.</span><span class="diag-val" id="d-snapid">—</span></div>
-        <div class="diag-row"><span class="diag-key">Stations Observed</span><span class="diag-val"
-            id="d-total">—</span></div>
-        <div class="diag-row"><span class="diag-key">Accepted</span><span class="diag-val" id="d-accepted">—</span>
+        <div class="diag-row">
+          <span class="diag-key">Snapshot</span>
+          <span class="diag-val" id="d-snap">�</span>
         </div>
-        <div class="diag-row"><span class="diag-key">Rejected</span><span class="diag-val" id="d-rejected">—</span>
+        <div class="diag-row">
+          <span class="diag-key">Ref.</span>
+          <span class="diag-val" id="d-snapid">�</span>
         </div>
-        <div class="diag-row"><span class="diag-key">Requests</span><span class="diag-val" id="d-requests">—</span>
+        <div class="diag-row">
+          <span class="diag-key">Stations Observed</span>
+          <span class="diag-val" id="d-total">�</span>
         </div>
-        <div class="diag-row"><span class="diag-key">Duration</span><span class="diag-val" id="d-duration">—</span>
+        <div class="diag-row">
+          <span class="diag-key">Accepted</span>
+          <span class="diag-val" id="d-accepted">�</span>
         </div>
-        <div class="diag-row"><span class="diag-key">Source</span><span class="diag-val" id="d-source">—</span></div>
-        <div class="diag-row"><span class="diag-key">Freshness</span><span class="diag-val">2 hours</span></div>
+        <div class="diag-row">
+          <span class="diag-key">Rejected</span>
+          <span class="diag-val" id="d-rejected">�</span>
+        </div>
+        <div class="diag-row">
+          <span class="diag-key">Requests</span>
+          <span class="diag-val" id="d-requests">�</span>
+        </div>
+        <div class="diag-row">
+          <span class="diag-key">Duration</span>
+          <span class="diag-val" id="d-duration">�</span>
+        </div>
+        <div class="diag-row">
+          <span class="diag-key">Source</span>
+          <span class="diag-val" id="d-source">�</span>
+        </div>
+        <div class="diag-row">
+          <span class="diag-key">Freshness</span>
+          <span class="diag-val">2 hours</span>
+        </div>
       </div>
     </div>
 
-    <!-- THEME SWITCHER ───────────────────────────────────────────────────── -->
-    <div class="theme-bar" id="theme-bar">
-      <span class="theme-bar-label">Theme</span>
-      <div class="theme-btn-group" id="theme-btn-group">
-        <!-- Populated by themes.js → buildThemeSwitcher() -->
-      </div>
+    <!-- FOOTER ------------------------------------------------------------ -->
+    <div class="stars-row" aria-hidden="true">? ? ? ? ? ? ? ? ? ? ? ? ?</div>
+    <div class="page-footer">
+      Data: National Weather Service � Open-Meteo / WMO<br>
+      E Pluribus Unum
     </div>
-
-    <!-- FOOTER ───────────────────────────────────────────────────────────── -->
-    <div class="stars-row">★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★</div>
-    <div class="page-footer">Data: National Weather Service · Open-Meteo / WMO<br>E Pluribus Unum</div>
 
   </div><!-- /scroll-body -->
 
-  <!--
-    ═══════════════════════════════════════════════════════
-    SCRIPT LOAD ORDER — each file depends on the ones above it
+  <!-- -- BOTTOM NAV ---------------------------------------------------------- -->
+  <nav class="bottom-nav" aria-label="Page sections">
+    <button class="nav-btn active" onclick="scrollToTop()">
+      <span class="nav-icon" aria-hidden="true">??</span>
+      Extremes
+    </button>
+    <button class="nav-btn" onclick="scrollToId('anchor-records')">
+      <span class="nav-icon" aria-hidden="true">?</span>
+      Records
+    </button>
+    <button class="nav-btn" onclick="scrollToId('anchor-tables')">
+      <span class="nav-icon" aria-hidden="true">=</span>
+      Tables
+    </button>
+    <button class="nav-btn" onclick="scrollToId('anchor-map')">
+      <span class="nav-icon" aria-hidden="true">??</span>
+      Map
+    </button>
+  </nav>
 
-    1. data.js      exposes: CITIES, STALE_HOURS
-    2. records.js   exposes: CLIMATE_RECORDS
-    3. map.js       exposes: STATE_D, buildMap(), placePins()
-                    depends on: nothing
-    4. themes.js    exposes: applyTheme(), buildThemeSwitcher()
-                    depends on: nothing (pure DOM + localStorage)
-    5. app.js       depends on: all of the above
-                    calls:  buildMap(), placePins(), applyTheme(),
-                            buildThemeSwitcher() inside init()
-    ═══════════════════════════════════════════════════════
+  <!--
+    ---------------------------------------------------------------
+    SCRIPT LOAD ORDER
+    Each file is a plain <script> (no module) so all declarations
+    land in the global scope and later files can reference them.
+    Load order must be preserved � each file depends on the ones
+    above it.
+    ---------------------------------------------------------------
+
+    1. data.js      Declares: CITIES[], STALE_HOURS
+
+    2. records.js   Declares: CLIMATE_RECORDS{}
+
+    3. map.js       Declares: STATE_D{}, svgEl(), buildMap(),
+                              ll2xy(), placePins(), makePin()
+                    Needs:    nothing
+
+    4. themes.js    Declares: THEME_CATALOG[], getSavedTheme(),
+                              applyTheme(), buildThemeSwitcher()
+                    Needs:    nothing (pure DOM + localStorage)
+
+    5. app.js       Declares: init() and all app functions
+                    Needs:    everything above
+                    Calls on DOMContentLoaded:
+                              buildThemeSwitcher(), applyTheme(),
+                              buildMap(), fetchData(), renderAll()
+    ---------------------------------------------------------------
   -->
   <script src="js/data.js"></script>
   <script src="js/records.js"></script>

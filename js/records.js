@@ -408,3 +408,4 @@ const CLIMATE_RECORDS = {
   "12-30": { "high": { "temp":  99, "city": "Yuma, AZ"         }, "low": { "temp": -66, "city": "Bettles, AK" } },
   "12-31": { "high": { "temp":  98, "city": "Yuma, AZ"         }, "low": { "temp": -66, "city": "Bettles, AK" } },
 };
+

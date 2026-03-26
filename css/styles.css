@@ -97,8 +97,6 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100dvh;
-  font-size: 17px;
-  line-height: 1.5;
 }
 
 
@@ -124,9 +122,22 @@ body {
   gap: 8px;
 }
 
+/* Wraps the eyebrow + title lines in the header */
+.app-title-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Flag emoji in the header — sized via class, not inline style */
+.header-flag {
+  font-size: 28px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
 .app-eyebrow {
   font-family: var(--f-head);
-  font-size: 12px;
+  font-size: 8px;
   font-weight: 400;
   letter-spacing: 0.3em;
   color: var(--c-gold);
@@ -137,7 +148,7 @@ body {
 
 .app-title {
   font-family: var(--f-head);
-  font-size: 30px;
+  font-size: 26px;
   font-weight: 700;
   letter-spacing: 0.05em;
   line-height: 1;
@@ -151,7 +162,7 @@ body {
 
 .header-date {
   font-family: var(--f-mono);
-  font-size: 13px;
+  font-size: 10px;
   color: var(--c-text-dim);
   text-align: right;
   line-height: 1.5;
@@ -178,11 +189,11 @@ body {
   border-right: 1px solid var(--c-border);
   padding: 8px 4px 6px;
   font-family: var(--f-head);
-  font-size: 12px;
+  font-size: 8px;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.35);
+  color: var(--c-text-faint);
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -206,7 +217,7 @@ body {
 }
 
 .nav-icon {
-  font-size: 17px;
+  font-size: 15px;
   line-height: 1;
 }
 
@@ -235,7 +246,7 @@ body {
 
 .theme-bar-label {
   font-family: var(--f-head);
-  font-size: 12px;
+  font-size: 8px;
   font-weight: 500;
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -251,7 +262,7 @@ body {
 
 .theme-btn {
   font-family: var(--f-head);
-  font-size: 12px;
+  font-size: 8px;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -281,7 +292,7 @@ body {
 
 .section-label {
   font-family: var(--f-head);
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.3em;
   color: var(--c-gold);
@@ -340,7 +351,7 @@ body {
 
 .ext-badge {
   font-family: var(--f-head);
-  font-size: 12px;
+  font-size: 8px;
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -358,7 +369,7 @@ body {
 
 .ext-temp {
   font-family: var(--f-head);
-  font-size: 48px;
+  font-size: 42px;
   font-weight: 700;
   line-height: 1;
   display: block;
@@ -371,7 +382,7 @@ body {
 .ext-place {
   font-family: var(--f-body);
   font-style: italic;
-  font-size: 14px;
+  font-size: 11px;
   color: var(--c-text-dim);
   margin-top: 5px;
   display: block;
@@ -380,8 +391,8 @@ body {
 
 .ext-detail {
   font-family: var(--f-mono);
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.35);
+  font-size: 9px;
+  color: var(--c-text-faint);
   margin-top: 6px;
   line-height: 1.6;
 }
@@ -402,24 +413,24 @@ body {
 
 .spread-label {
   font-family: var(--f-head);
-  font-size: 13px;
+  font-size: 9px;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--c-text-dim);
 }
 
 .spread-val {
   font-family: var(--f-head);
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 700;
 }
 
 .spread-desc {
   font-family: var(--f-body);
   font-style: italic;
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.5);
+  font-size: 10px;
+  color: var(--c-text-dim);
   text-align: right;
   max-width: 100px;
   line-height: 1.3;
@@ -445,7 +456,7 @@ body {
 
 .rec-label {
   font-family: var(--f-head);
-  font-size: 12px;
+  font-size: 8px;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -456,7 +467,7 @@ body {
 
 .rec-temp {
   font-family: var(--f-head);
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 700;
   display: block;
   line-height: 1;
@@ -473,7 +484,7 @@ body {
 .rec-place {
   font-family: var(--f-body);
   font-style: italic;
-  font-size: 13px;
+  font-size: 10px;
   color: var(--c-text-dim);
   display: block;
   margin-top: 4px;
@@ -500,9 +511,16 @@ body {
   background: var(--c-bg-raised);
 }
 
+/* Icon emoji in list-card headers — sized via class, not inline style */
+.list-header-icon {
+  font-size: 13px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
 .list-header-title {
   font-family: var(--f-head);
-  font-size: 14px;
+  font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -516,7 +534,7 @@ body {
   display: flex;
   align-items: center;
   padding: 9px 14px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--c-border);
   gap: 10px;
 }
 
@@ -526,7 +544,7 @@ body {
 
 .rank-num {
   font-family: var(--f-mono);
-  font-size: 13px;
+  font-size: 10px;
   color: var(--c-gold-dim);
   width: 16px;
   text-align: right;
@@ -535,13 +553,13 @@ body {
 
 .rank-place {
   font-family: var(--f-body);
-  font-size: 15px;
+  font-size: 13px;
   flex: 1;
 }
 
 .rank-temp {
   font-family: var(--f-head);
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 600;
   flex-shrink: 0;
 }
@@ -567,9 +585,9 @@ body {
 
 .abstract-text {
   font-family: var(--f-mono);
-  font-size: 14px;
+  font-size: 11px;
   line-height: 1.85;
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--c-text-dim);
   padding: 14px;
   white-space: pre-wrap;
   border-bottom: 1px solid var(--c-border);
@@ -586,14 +604,14 @@ body {
 .abstract-footnote {
   font-family: var(--f-body);
   font-style: italic;
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.3);
+  font-size: 10px;
+  color: var(--c-text-faint);
   flex: 1;
 }
 
 .btn-copy {
   font-family: var(--f-head);
-  font-size: 13px;
+  font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -619,6 +637,11 @@ body {
 
 /* ── 13. MAP ──────────────────────────────────────────────── */
 
+/* Smooth colour transitions when switching themes */
+body {
+  transition: background 0.2s, color 0.2s;
+}
+
 .map-wrap {
   margin: 0 12px;
   border: 1px solid var(--c-border);
@@ -633,6 +656,11 @@ body {
   height: auto;
 }
 
+/* SVG background rect — filled via CSS so theme changes take effect */
+.map-bg-rect {
+  fill: var(--c-map-bg);
+}
+
 .state-path {
   stroke: var(--c-map-stroke);
   stroke-width: 0.5;
@@ -645,7 +673,7 @@ body {
   display: flex;
   gap: 16px;
   font-family: var(--f-mono);
-  font-size: 13px;
+  font-size: 10px;
   color: var(--c-text-dim);
   border-top: 1px solid var(--c-border);
   flex-wrap: wrap;
@@ -693,11 +721,11 @@ body {
   width: 100%;
   cursor: pointer;
   font-family: var(--f-head);
-  font-size: 13px;
+  font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--c-text-faint);
   min-height: 44px;
 }
 
@@ -722,7 +750,7 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 6px 14px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid var(--c-border);
 }
 
 .diag-row:last-child {
@@ -731,7 +759,7 @@ body {
 
 .diag-key {
   font-family: var(--f-head);
-  font-size: 12px;
+  font-size: 9px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--c-text-faint);
@@ -739,8 +767,8 @@ body {
 
 .diag-val {
   font-family: var(--f-mono);
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.5);
+  font-size: 10px;
+  color: var(--c-text-dim);
 }
 
 
@@ -748,7 +776,7 @@ body {
 
 .stars-row {
   text-align: center;
-  font-size: 12px;
+  font-size: 9px;
   color: var(--c-star);
   letter-spacing: 0.4em;
   padding: 8px 0 0;
@@ -761,8 +789,8 @@ body {
   border-top: 1px solid var(--c-border);
   font-family: var(--f-body);
   font-style: italic;
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.25);
+  font-size: 10px;
+  color: var(--c-text-faint);
   text-align: center;
   line-height: 1.6;
 }
@@ -772,7 +800,7 @@ body {
 
 .loading-dim {
   font-family: var(--f-mono);
-  font-size: 14px;
+  font-size: 11px;
   color: var(--c-text-faint);
 }
 
@@ -791,4 +819,3 @@ body {
 
 .map-pulse-hot  { animation: pulse-hot  2.0s ease-in-out infinite; }
 .map-pulse-cold { animation: pulse-cold 2.6s ease-in-out infinite; }
-
