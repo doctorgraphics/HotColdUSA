@@ -111,17 +111,53 @@ function scrollToId(id) {
   el(id)?.scrollIntoView({ behavior: 'smooth' });
 }
 
+function setCopyButtonState(label, copied = false) {
+  const btn = el('btn-copy');
+  btn.textContent = label;
+  btn.classList.toggle('copied', copied);
+}
+
+function resetCopyButton() {
+  setTimeout(() => setCopyButtonState('Copy', false), 2000);
+}
+
+function fallbackCopyText(text) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.setAttribute('readonly', '');
+  ta.style.position = 'fixed';
+  ta.style.top = '-9999px';
+  document.body.appendChild(ta);
+  ta.select();
+
+  let ok = false;
+  try {
+    ok = document.execCommand('copy');
+  } catch (_) {
+    ok = false;
+  }
+
+  ta.remove();
+  return ok;
+}
+
 // Called by the Copy button in the daily-report card.
-function copyShare() {
-  navigator.clipboard.writeText(el('share-text').textContent).then(() => {
-    const btn = el('btn-copy');
-    btn.textContent = '✓ Copied';
-    btn.classList.add('copied');
-    setTimeout(() => {
-      btn.textContent = 'Copy';
-      btn.classList.remove('copied');
-    }, 2000);
-  });
+async function copyShare() {
+  const text = el('share-text').textContent;
+
+  try {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(text);
+    } else if (!fallbackCopyText(text)) {
+      throw new Error('Clipboard unavailable');
+    }
+
+    setCopyButtonState('Copied', true);
+  } catch (_) {
+    setCopyButtonState('Copy Failed', false);
+  }
+
+  resetCopyButton();
 }
 
 // Highlights the correct bottom-nav button as the user scrolls.
@@ -401,4 +437,5 @@ async function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
 

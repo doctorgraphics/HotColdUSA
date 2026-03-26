@@ -107,13 +107,13 @@ const CLIMATE_RECORDS = {
   "03-22": { "high": { "temp":  70, "city": "Yuma, AZ"         }, "low": { "temp": -59, "city": "Bettles, AK" } },
   "03-23": { "high": { "temp":  70, "city": "Yuma, AZ"         }, "low": { "temp": -58, "city": "Bettles, AK" } },
   "03-24": { "high": { "temp":  70, "city": "Yuma, AZ"         }, "low": { "temp": -58, "city": "Bettles, AK" } },
-  "03-25": { "high": { "temp":  100, "city": "Death Valley, CA"         }, "low": { "temp": -50, "city": "Tower, MN" } },
-  "03-26": { "high": { "temp":  100, "city": "Yuma, AZ"         }, "low": { "temp": -50, "city": "Cohasset, MN" } },
-  "03-27": { "high": { "temp":  101, "city": "Death Valley, CA"         }, "low": { "temp": -47, "city": "International Falls, MN" } },
-  "03-28": { "high": { "temp":  104, "city": "Death Valley, CA"         }, "low": { "temp": -45, "city": "Embarrass, MN" } },
-  "03-29": { "high": { "temp":  106, "city": "Death Valley, CA"         }, "low": { "temp": -44, "city": "Embarrass, MN" } },
-  "03-30": { "high": { "temp":  107, "city": "Mecca, CA"         }, "low": { "temp": -36, "city": "International Falls, MN" } },
-  "03-31": { "high": { "temp":  108, "city": "Death Valley, CAZ"         }, "low": { "temp": -35, "city": "Big Piney, WY" } },
+  "03-25": { "high": { "temp":  70, "city": "Yuma, AZ"         }, "low": { "temp": -57, "city": "Bettles, AK" } },
+  "03-26": { "high": { "temp":  70, "city": "Yuma, AZ"         }, "low": { "temp": -57, "city": "Bettles, AK" } },
+  "03-27": { "high": { "temp":  70, "city": "Yuma, AZ"         }, "low": { "temp": -56, "city": "Bettles, AK" } },
+  "03-28": { "high": { "temp":  70, "city": "Yuma, AZ"         }, "low": { "temp": -56, "city": "Bettles, AK" } },
+  "03-29": { "high": { "temp":  70, "city": "Yuma, AZ"         }, "low": { "temp": -55, "city": "Bettles, AK" } },
+  "03-30": { "high": { "temp":  70, "city": "Yuma, AZ"         }, "low": { "temp": -55, "city": "Bettles, AK" } },
+  "03-31": { "high": { "temp":  70, "city": "Yuma, AZ"         }, "low": { "temp": -54, "city": "Bettles, AK" } },
 
   // ── APRIL ─────────────────────────────────────────────────
   "04-01": { "high": { "temp":  70, "city": "Yuma, AZ"         }, "low": { "temp": -54, "city": "Bettles, AK" } },
@@ -408,4 +408,5 @@ const CLIMATE_RECORDS = {
   "12-30": { "high": { "temp":  99, "city": "Yuma, AZ"         }, "low": { "temp": -66, "city": "Bettles, AK" } },
   "12-31": { "high": { "temp":  98, "city": "Yuma, AZ"         }, "low": { "temp": -66, "city": "Bettles, AK" } },
 };
+
 
