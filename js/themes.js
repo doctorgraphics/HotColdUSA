@@ -1,4 +1,4 @@
-﻿// ============================================================
+// ============================================================
 // themes.js - HotCold USA
 //
 // Responsibilities
@@ -40,6 +40,26 @@ const THEME_CATALOG = [
     id:    'ember',
     label: 'Desert',
     bg:    '#f0ddc3',
+  },
+  {
+    id:    'harbor',
+    label: 'Harbor',
+    bg:    '#dfe9ef',
+  },
+  {
+    id:    'canopy',
+    label: 'Canopy',
+    bg:    '#e7e1cf',
+  },
+  {
+    id:    'motel',
+    label: 'Motel',
+    bg:    '#f8e7cf',
+  },
+  {
+    id:    'squall',
+    label: 'Squall',
+    bg:    '#1d2730',
   },
 ];
 
@@ -97,3 +117,4 @@ function buildThemeSwitcher() {
     container.appendChild(btn);
   });
 }
+

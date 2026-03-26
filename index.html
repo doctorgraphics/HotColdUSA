@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bitter:wght@400;700&family=Bungee&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Courier+Prime:wght@400;700&family=DM+Serif+Display:ital@0;1&family=Fira+Code:wght@400;700&family=Forum&family=IBM+Plex+Mono:wght@400;500;700&family=JetBrains+Mono:wght@400;700&family=Limelight&family=Orbitron:wght@400;500;700&family=Oswald:wght@400;500;600;700&family=Share+Tech+Mono&family=Source+Serif+4:ital,wght@0,300;0,400;1,300;1,400&family=Space+Mono:wght@400;700&display=swap">
+    href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;1,400&family=Alegreya+Sans+SC:wght@500;700&family=Archivo+Black&family=Bebas+Neue&family=Bitter:wght@400;700&family=Bungee&family=Chivo+Mono:wght@400;700&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Courier+Prime:wght@400;700&family=DM+Serif+Display:ital@0;1&family=Fira+Code:wght@400;700&family=Forum&family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Mono:wght@400;500;700&family=JetBrains+Mono:wght@400;700&family=Limelight&family=Manrope:wght@500;700;800&family=Orbitron:wght@400;500;700&family=Oswald:wght@400;500;600;700&family=Share+Tech+Mono&family=Source+Serif+4:ital,wght@0,300;0,400;1,300;1,400&family=Space+Mono:wght@400;700&display=swap">
 
   <!--
     ---------------------------------------------------------------
@@ -48,23 +48,15 @@
   <!-- -- HEADER -------------------------------------------------------------- -->
   <header class="app-header">
     <div class="app-title-group">
-      <span class="app-eyebrow">National Weather · U.S.A.</span>
+      <span class="app-eyebrow">National Weather ï¿½ U.S.A.</span>
       <span class="app-title">Hot<span>Cold</span>&nbsp;USA</span>
     </div>
-    <div class="header-date" id="dateline" aria-live="polite">Loading…</div>
+    <div class="header-date" id="dateline" aria-live="polite">Loadingï¿½</div>
     <div class="header-flag" aria-hidden="true">????</div>
   </header>
 
   <!-- -- SCROLL BODY --------------------------------------------------------- -->
   <div class="scroll-body" id="scroll-body">
-
-    <!-- THEME SWITCHER ------------------------------------------------------
-         Buttons are injected by themes.js ? buildThemeSwitcher().
-         The container must exist in the DOM before scripts run.        -->
-    <div class="theme-bar" id="theme-bar" role="group" aria-label="Colour theme">
-      <span class="theme-bar-label">Theme</span>
-      <div class="theme-btn-group" id="theme-btn-group"></div>
-    </div>
 
     <!-- TODAY'S EXTREMES ----------------------------------------------------
          Section anchor id is on the section-label so scrollToTop() and
@@ -74,18 +66,18 @@
 
       <div class="extreme-card hot">
         <span class="ext-badge">?? Hottest</span>
-        <span class="ext-temp" id="hot-temp">—</span>
+        <span class="ext-temp" id="hot-temp">ï¿½</span>
         <span class="ext-place" id="hot-place">
-          <span class="loading-dim">loading…</span>
+          <span class="loading-dim">loadingï¿½</span>
         </span>
         <div class="ext-detail" id="hot-detail"></div>
       </div>
 
       <div class="extreme-card cold">
         <span class="ext-badge">? Coldest</span>
-        <span class="ext-temp" id="cold-temp">—</span>
+        <span class="ext-temp" id="cold-temp">ï¿½</span>
         <span class="ext-place" id="cold-place">
-          <span class="loading-dim">loading…</span>
+          <span class="loading-dim">loadingï¿½</span>
         </span>
         <div class="ext-detail" id="cold-detail"></div>
       </div>
@@ -95,7 +87,7 @@
     <div class="spread-banner">
       <div>
         <div class="spread-label">National Range</div>
-        <div class="spread-val" id="spread-val">—</div>
+        <div class="spread-val" id="spread-val">ï¿½</div>
       </div>
       <div class="spread-desc" id="spread-desc"><em>hot minus cold</em></div>
     </div>
@@ -107,17 +99,17 @@
 
       <div class="rec-card rec-high">
         <span class="rec-label">? Record High</span>
-        <span class="rec-temp" id="rec-high-temp">—°F</span>
+        <span class="rec-temp" id="rec-high-temp">ï¿½ï¿½F</span>
         <span class="rec-place" id="rec-high-place">
-          <span class="loading-dim">loading…</span>
+          <span class="loading-dim">loadingï¿½</span>
         </span>
       </div>
 
       <div class="rec-card rec-low">
         <span class="rec-label">? Record Low</span>
-        <span class="rec-temp" id="rec-low-temp">—°F</span>
+        <span class="rec-temp" id="rec-low-temp">ï¿½ï¿½F</span>
         <span class="rec-place" id="rec-low-place">
-          <span class="loading-dim">loading…</span>
+          <span class="loading-dim">loadingï¿½</span>
         </span>
       </div>
 
@@ -133,9 +125,9 @@
       </div>
       <ul class="rank-list" id="list-hot" aria-label="Five hottest stations">
         <li>
-          <span class="rank-num">—</span>
+          <span class="rank-num">ï¿½</span>
           <span class="rank-place loading-dim">loading</span>
-          <span class="rank-temp">—</span>
+          <span class="rank-temp">ï¿½</span>
         </li>
       </ul>
     </div>
@@ -148,9 +140,9 @@
       </div>
       <ul class="rank-list" id="list-cold" aria-label="Five coldest stations">
         <li>
-          <span class="rank-num">—</span>
+          <span class="rank-num">ï¿½</span>
           <span class="rank-place loading-dim">loading</span>
-          <span class="rank-temp">—</span>
+          <span class="rank-temp">ï¿½</span>
         </li>
       </ul>
     </div>
@@ -159,9 +151,9 @@
          id="anchor-abstract" is referenced by updateNav() in app.js.  -->
     <div class="section-label" id="anchor-abstract">Daily Report</div>
     <div class="abstract-card">
-      <div class="abstract-text" id="share-text" aria-live="polite">Compiling report…</div>
+      <div class="abstract-text" id="share-text" aria-live="polite">Compiling reportï¿½</div>
       <div class="abstract-foot">
-        <span class="abstract-footnote">† Bar. est. ‡ Wind approx.</span>
+        <span class="abstract-footnote">ï¿½ Bar. est. ï¿½ Wind approx.</span>
         <button class="btn-copy" id="btn-copy" onclick="copyShare()">Copy</button>
       </div>
     </div>
@@ -203,39 +195,39 @@
       <div class="diag-body" id="diag-body" role="region" aria-label="Diagnostics">
         <div class="diag-row">
           <span class="diag-key">Last Update</span>
-          <span class="diag-val" id="d-update">—</span>
+          <span class="diag-val" id="d-update">ï¿½</span>
         </div>
         <div class="diag-row">
           <span class="diag-key">Snapshot</span>
-          <span class="diag-val" id="d-snap">—</span>
+          <span class="diag-val" id="d-snap">ï¿½</span>
         </div>
         <div class="diag-row">
           <span class="diag-key">Ref.</span>
-          <span class="diag-val" id="d-snapid">—</span>
+          <span class="diag-val" id="d-snapid">ï¿½</span>
         </div>
         <div class="diag-row">
           <span class="diag-key">Stations Observed</span>
-          <span class="diag-val" id="d-total">—</span>
+          <span class="diag-val" id="d-total">ï¿½</span>
         </div>
         <div class="diag-row">
           <span class="diag-key">Accepted</span>
-          <span class="diag-val" id="d-accepted">—</span>
+          <span class="diag-val" id="d-accepted">ï¿½</span>
         </div>
         <div class="diag-row">
           <span class="diag-key">Rejected</span>
-          <span class="diag-val" id="d-rejected">—</span>
+          <span class="diag-val" id="d-rejected">ï¿½</span>
         </div>
         <div class="diag-row">
           <span class="diag-key">Requests</span>
-          <span class="diag-val" id="d-requests">—</span>
+          <span class="diag-val" id="d-requests">ï¿½</span>
         </div>
         <div class="diag-row">
           <span class="diag-key">Duration</span>
-          <span class="diag-val" id="d-duration">—</span>
+          <span class="diag-val" id="d-duration">ï¿½</span>
         </div>
         <div class="diag-row">
           <span class="diag-key">Source</span>
-          <span class="diag-val" id="d-source">—</span>
+          <span class="diag-val" id="d-source">ï¿½</span>
         </div>
         <div class="diag-row">
           <span class="diag-key">Freshness</span>
@@ -244,10 +236,19 @@
       </div>
     </div>
 
+    <!-- THEME SWITCHER ------------------------------------------------------
+      Buttons are injected by themes.js ? buildThemeSwitcher().
+      The container must exist in the DOM before scripts run.        -->
+    <div class="theme-bar" id="theme-bar" role="group" aria-label="Colour theme">
+      <span class="theme-bar-label">Theme</span>
+      <div class="theme-btn-group" id="theme-btn-group"></div>
+    </div>
+
+
     <!-- FOOTER ------------------------------------------------------------ -->
     <div class="stars-row" aria-hidden="true">? ? ? ? ? ? ? ? ? ? ? ? ?</div>
     <div class="page-footer">
-      Data: National Weather Service · Open-Meteo / WMO<br>
+      Data: National Weather Service ï¿½ Open-Meteo / WMO<br>
       E Pluribus Unum
     </div>
 
@@ -278,7 +279,7 @@
     SCRIPT LOAD ORDER
     Each file is a plain <script> (no module) so all declarations
     land in the global scope and later files can reference them.
-    Load order must be preserved — each file depends on the ones
+    Load order must be preserved ï¿½ each file depends on the ones
     above it.
     ---------------------------------------------------------------
 
@@ -310,5 +311,3 @@
 </body>
 
 </html>
-
-

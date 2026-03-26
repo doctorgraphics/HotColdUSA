@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    themes.css - HotCold USA
    Theme variable overrides.
 
@@ -169,3 +169,124 @@
   --f-body: 'Bitter', Georgia, serif;
   --f-mono: 'JetBrains Mono', monospace;
 }
+/* 6. HARBOR
+   Maritime signal-book. Salt-white paper, deep navy panels,
+   vermilion accents, and clean modern sans display faces.
+   Feels like a weather bureau pinned to a dockmaster's wall. */
+
+[data-theme="harbor"] {
+  --c-bg:         #dfe9ef;
+  --c-bg-mid:     #f4f8fb;
+  --c-bg-raised:  #c8d8e4;
+  --c-border:     #55758e;
+  --c-accent:     #c94f3d;
+  --c-accent-dim: #8f382c;
+  --c-gold:       #305f7b;
+  --c-gold-dim:   #6788a0;
+  --c-text:       #102334;
+  --c-text-dim:   rgba(16, 35, 52, 0.72);
+  --c-text-faint: rgba(16, 35, 52, 0.32);
+  --c-hot:        #d65b43;
+  --c-hot-mid:    #c94f3d;
+  --c-cold:       #2c88b8;
+  --c-cold-dim:   #62a8d0;
+  --c-star:       #3f6d88;
+  --c-map-bg:     #d4e1ea;
+  --c-map-state:  #bdd0dd;
+  --c-map-stroke: #55758e;
+
+  --f-head: 'Manrope', sans-serif;
+  --f-body: 'Fraunces', Georgia, serif;
+  --f-mono: 'Chivo Mono', monospace;
+}
+
+/* 7. CANOPY
+   National-park signage. Moss green, trail-map cream, and
+   sturdy small-caps typography with a printed field-guide feel. */
+
+[data-theme="canopy"] {
+  --c-bg:         #e7e1cf;
+  --c-bg-mid:     #f3eedf;
+  --c-bg-raised:  #d6ccb3;
+  --c-border:     #6d7152;
+  --c-accent:     #9b4f2e;
+  --c-accent-dim: #6f3922;
+  --c-gold:       #58633e;
+  --c-gold-dim:   #7d8761;
+  --c-text:       #28301f;
+  --c-text-dim:   rgba(40, 48, 31, 0.74);
+  --c-text-faint: rgba(40, 48, 31, 0.34);
+  --c-hot:        #b45c34;
+  --c-hot-mid:    #9b4f2e;
+  --c-cold:       #547a84;
+  --c-cold-dim:   #7fa1aa;
+  --c-star:       #5d6941;
+  --c-map-bg:     #ddd5bd;
+  --c-map-state:  #c8bea1;
+  --c-map-stroke: #6d7152;
+
+  --f-head: 'Alegreya Sans SC', sans-serif;
+  --f-body: 'Alegreya', Georgia, serif;
+  --f-mono: 'Chivo Mono', monospace;
+}
+
+/* 8. MOTEL
+   Roadside postcard. Sun-faded cream, diner red, pool-tile teal,
+   and billboard display type with playful high-contrast warmth. */
+
+[data-theme="motel"] {
+  --c-bg:         #f8e7cf;
+  --c-bg-mid:     #fff4e6;
+  --c-bg-raised:  #f0d7b7;
+  --c-border:     #ba6a4a;
+  --c-accent:     #d54b3d;
+  --c-accent-dim: #9b332a;
+  --c-gold:       #167d7f;
+  --c-gold-dim:   #4c9d9f;
+  --c-text:       #4b241b;
+  --c-text-dim:   rgba(75, 36, 27, 0.72);
+  --c-text-faint: rgba(75, 36, 27, 0.30);
+  --c-hot:        #d54b3d;
+  --c-hot-mid:    #b73b30;
+  --c-cold:       #1f9aa5;
+  --c-cold-dim:   #6cc4ca;
+  --c-star:       #1b8b8d;
+  --c-map-bg:     #f4dec2;
+  --c-map-state:  #efcfad;
+  --c-map-stroke: #ba6a4a;
+
+  --f-head: 'Bebas Neue', sans-serif;
+  --f-body: 'Fraunces', Georgia, serif;
+  --f-mono: 'Chivo Mono', monospace;
+}
+
+/* 9. SQUALL
+   Storm-warning board. Steel blue, hazard orange, and dense
+   utilitarian type for a sharper industrial forecast-room look. */
+
+[data-theme="squall"] {
+  --c-bg:         #1d2730;
+  --c-bg-mid:     #263440;
+  --c-bg-raised:  #324655;
+  --c-border:     #7f95a4;
+  --c-accent:     #f06c3b;
+  --c-accent-dim: #8d4628;
+  --c-gold:       #d9e3ea;
+  --c-gold-dim:   #95a9b6;
+  --c-text:       #eef4f7;
+  --c-text-dim:   rgba(238, 244, 247, 0.76);
+  --c-text-faint: rgba(238, 244, 247, 0.32);
+  --c-hot:        #ff9367;
+  --c-hot-mid:    #f06c3b;
+  --c-cold:       #7ac7f0;
+  --c-cold-dim:   #abdff8;
+  --c-star:       #d7e0e7;
+  --c-map-bg:     #172029;
+  --c-map-state:  #22303a;
+  --c-map-stroke: #7f95a4;
+
+  --f-head: 'Archivo Black', sans-serif;
+  --f-body: 'Source Serif 4', Georgia, serif;
+  --f-mono: 'IBM Plex Mono', monospace;
+}
+
