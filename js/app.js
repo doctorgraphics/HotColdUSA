@@ -77,13 +77,13 @@ function displayTemp(tempF) {
 
 function formatTemp(tempF) {
   const suffix = settings.tempUnit === 'c' ? 'C' : 'F';
-  return `${displayTemp(tempF)}°${suffix}`;
+  return `${displayTemp(tempF)}${String.fromCharCode(176)}${suffix}`;
 }
 
 function formatTempDelta(deltaF) {
   const value = settings.tempUnit === 'c' ? Math.round(deltaF * 5 / 9) : Math.round(deltaF);
   const suffix = settings.tempUnit === 'c' ? 'C' : 'F';
-  return `${value}°${suffix}`;
+  return `${value}${String.fromCharCode(176)}${suffix}`;
 }
 
 function haversineMiles(a, b) {
@@ -416,8 +416,8 @@ function renderAll(data, diag) {
     el('spread-desc').innerHTML = `<em>${hottest.city} to ${coldest.city}</em><br>${formatDistanceMiles(distanceMiles)} apart`;
   }
 
-  if (hottest) el('legend-hot').textContent = `${hottest.city}, ${hottest.state} · ${formatTemp(hottest.temperature_f)}`;
-  if (coldest) el('legend-cold').textContent = `${coldest.city}, ${coldest.state} · ${formatTemp(coldest.temperature_f)}`;
+  if (hottest) el('legend-hot').textContent = ${hottest.city},   ;
+  if (coldest) el('legend-cold').textContent = ${coldest.city},   ;
   placePins(hottest, coldest);
 
   if (record) {

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -25,10 +25,10 @@
 
   <header class="app-header">
     <div class="app-title-group">
-      <span class="app-eyebrow">National Weather � U.S.A.</span>
+      <span class="app-eyebrow">National Weather &middot; U.S.A.</span>
       <span class="app-title">Hot<span>Cold</span>&nbsp;USA</span>
     </div>
-    <div class="header-date" id="dateline" aria-live="polite">Loading�</div>
+    <div class="header-date" id="dateline" aria-live="polite">Loading...</div>
     <div class="header-flag" aria-hidden="true">????</div>
   </header>
 
@@ -72,15 +72,15 @@
     <div class="hero-extremes">
       <div class="extreme-card hot">
         <span class="ext-badge">?? Hottest</span>
-        <span class="ext-temp" id="hot-temp">�</span>
-        <span class="ext-place" id="hot-place"><span class="loading-dim">loading�</span></span>
+        <span class="ext-temp" id="hot-temp">--</span>
+        <span class="ext-place" id="hot-place"><span class="loading-dim">loading...</span></span>
         <div class="ext-detail" id="hot-detail"></div>
       </div>
 
       <div class="extreme-card cold">
         <span class="ext-badge">? Coldest</span>
-        <span class="ext-temp" id="cold-temp">�</span>
-        <span class="ext-place" id="cold-place"><span class="loading-dim">loading�</span></span>
+        <span class="ext-temp" id="cold-temp">--</span>
+        <span class="ext-place" id="cold-place"><span class="loading-dim">loading...</span></span>
         <div class="ext-detail" id="cold-detail"></div>
       </div>
     </div>
@@ -88,7 +88,7 @@
     <div class="spread-banner">
       <div>
         <div class="spread-label">National Range</div>
-        <div class="spread-val" id="spread-val">�</div>
+        <div class="spread-val" id="spread-val">--</div>
       </div>
       <div class="spread-desc" id="spread-desc"><em>hot minus cold</em></div>
     </div>
@@ -97,14 +97,14 @@
     <div class="records-grid">
       <div class="rec-card rec-high">
         <span class="rec-label">? Record High</span>
-        <span class="rec-temp" id="rec-high-temp">��°F</span>
-        <span class="rec-place" id="rec-high-place"><span class="loading-dim">loading�</span></span>
+        <span class="rec-temp" id="rec-high-temp">--&deg;F</span>
+        <span class="rec-place" id="rec-high-place"><span class="loading-dim">loading...</span></span>
       </div>
 
       <div class="rec-card rec-low">
         <span class="rec-label">? Record Low</span>
-        <span class="rec-temp" id="rec-low-temp">��°F</span>
-        <span class="rec-place" id="rec-low-place"><span class="loading-dim">loading�</span></span>
+        <span class="rec-temp" id="rec-low-temp">--&deg;F</span>
+        <span class="rec-place" id="rec-low-place"><span class="loading-dim">loading...</span></span>
       </div>
     </div>
 
@@ -116,9 +116,9 @@
       </div>
       <ul class="rank-list" id="list-hot" aria-label="Five hottest stations">
         <li>
-          <span class="rank-num">�</span>
+          <span class="rank-num">--</span>
           <span class="rank-place loading-dim">loading</span>
-          <span class="rank-temp">�</span>
+          <span class="rank-temp">--</span>
         </li>
       </ul>
     </div>
@@ -131,18 +131,18 @@
       </div>
       <ul class="rank-list" id="list-cold" aria-label="Five coldest stations">
         <li>
-          <span class="rank-num">�</span>
+          <span class="rank-num">--</span>
           <span class="rank-place loading-dim">loading</span>
-          <span class="rank-temp">�</span>
+          <span class="rank-temp">--</span>
         </li>
       </ul>
     </div>
 
     <div class="section-label" id="anchor-abstract">Daily Report</div>
     <div class="abstract-card">
-      <div class="abstract-text" id="share-text" aria-live="polite">Compiling report�</div>
+      <div class="abstract-text" id="share-text" aria-live="polite">Compiling report...</div>
       <div class="abstract-foot">
-        <span class="abstract-footnote">� Bar. est. � Wind approx.</span>
+        <span class="abstract-footnote">Bar. est. &middot; Wind approx.</span>
         <button class="btn-copy" id="btn-copy" onclick="copyShare()">Copy</button>
       </div>
     </div>
@@ -177,22 +177,22 @@
       <div class="diag-body" id="diag-body" role="region" aria-label="Diagnostics">
         <div class="diag-row"><span class="diag-key">Temp Units</span><select class="diag-select" id="unit-temp"><option value="f">Fahrenheit</option><option value="c">Celsius</option></select></div>
         <div class="diag-row"><span class="diag-key">Distance</span><select class="diag-select" id="unit-distance"><option value="mi">Miles</option><option value="km">Kilometers</option></select></div>
-        <div class="diag-row"><span class="diag-key">Last Update</span><span class="diag-val" id="d-update">�</span></div>
-        <div class="diag-row"><span class="diag-key">Snapshot</span><span class="diag-val" id="d-snap">�</span></div>
-        <div class="diag-row"><span class="diag-key">Ref.</span><span class="diag-val" id="d-snapid">�</span></div>
-        <div class="diag-row"><span class="diag-key">Stations Observed</span><span class="diag-val" id="d-total">�</span></div>
-        <div class="diag-row"><span class="diag-key">Accepted</span><span class="diag-val" id="d-accepted">�</span></div>
-        <div class="diag-row"><span class="diag-key">Rejected</span><span class="diag-val" id="d-rejected">�</span></div>
-        <div class="diag-row"><span class="diag-key">Requests</span><span class="diag-val" id="d-requests">�</span></div>
-        <div class="diag-row"><span class="diag-key">Duration</span><span class="diag-val" id="d-duration">�</span></div>
-        <div class="diag-row"><span class="diag-key">Source</span><span class="diag-val" id="d-source">�</span></div>
+        <div class="diag-row"><span class="diag-key">Last Update</span><span class="diag-val" id="d-update">--</span></div>
+        <div class="diag-row"><span class="diag-key">Snapshot</span><span class="diag-val" id="d-snap">--</span></div>
+        <div class="diag-row"><span class="diag-key">Ref.</span><span class="diag-val" id="d-snapid">--</span></div>
+        <div class="diag-row"><span class="diag-key">Stations Observed</span><span class="diag-val" id="d-total">--</span></div>
+        <div class="diag-row"><span class="diag-key">Accepted</span><span class="diag-val" id="d-accepted">--</span></div>
+        <div class="diag-row"><span class="diag-key">Rejected</span><span class="diag-val" id="d-rejected">--</span></div>
+        <div class="diag-row"><span class="diag-key">Requests</span><span class="diag-val" id="d-requests">--</span></div>
+        <div class="diag-row"><span class="diag-key">Duration</span><span class="diag-val" id="d-duration">--</span></div>
+        <div class="diag-row"><span class="diag-key">Source</span><span class="diag-val" id="d-source">--</span></div>
         <div class="diag-row"><span class="diag-key">Freshness</span><span class="diag-val">2 hours</span></div>
       </div>
     </div>
 
     <div class="stars-row" aria-hidden="true">? ? ? ? ? ? ? ? ? ? ? ? ?</div>
     <div class="page-footer">
-      Data: National Weather Service � Open-Meteo / WMO<br>
+      Data: National Weather Service &middot; Open-Meteo / WMO<br>
       E Pluribus Unum
     </div>
   </div>

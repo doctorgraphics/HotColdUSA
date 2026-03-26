@@ -1,13 +1,13 @@
 // ============================================================
-// map.js — HotCold USA
+// map.js â€” HotCold USA
 //
 // Contains the SVG path data for all 50 US states + DC,
 // and the functions that build and update the map.
 //
 // Exposes
-// ───────
+// â”€â”€â”€â”€â”€â”€â”€
 //   STATE_D        Object of { stateCode: svgPathString }
-//                  paths for the SimpleMaps 1000×589 LAEA
+//                  paths for the SimpleMaps 1000Ã—589 LAEA
 //                  USA projection.
 //
 //   svgEl(tag, attrs)
@@ -19,7 +19,7 @@
 //
 //   ll2xy(lat, lon)
 //                  Converts WGS-84 coordinates to pixel
-//                  coordinates in the 1000×589 SVG viewport
+//                  coordinates in the 1000Ã—589 SVG viewport
 //                  using a linear approximation calibrated
 //                  to the projection.
 //
@@ -28,13 +28,13 @@
 //                  pins in #pins-group after each data fetch.
 //
 // Depends on: nothing.
-// Called by:  app.js → init() calls buildMap() and
+// Called by:  app.js â†’ init() calls buildMap() and
 //             renderAll() calls placePins().
 // ============================================================
 
 
-// ── STATE SVG PATH DATA ───────────────────────────────────────
-// Source: SimpleMaps 1000×589 Lambert Azimuthal Equal-Area
+// â”€â”€ STATE SVG PATH DATA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Source: SimpleMaps 1000Ã—589 Lambert Azimuthal Equal-Area
 // USA projection.  Keys are two-letter USPS state codes.
 
 const STATE_D = {
@@ -92,7 +92,7 @@ const STATE_D = {
 };
 
 
-// ── SVG HELPERS ───────────────────────────────────────────────
+// â”€â”€ SVG HELPERS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 // Creates an element in the SVG namespace with the given attrs.
 function svgEl(tag, attrs) {
@@ -102,10 +102,10 @@ function svgEl(tag, attrs) {
 }
 
 
-// ── BUILD MAP ─────────────────────────────────────────────────
+// â”€â”€ BUILD MAP â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 // Renders one <path> per state into #states-group.
-// Called once on page load by app.js → init().
+// Called once on page load by app.js â†’ init().
 function buildGrooveColorMap() {
   const colors = ['1', '2', '3', '4'];
   const grooveNeighbors = {
@@ -202,20 +202,20 @@ function buildMap() {
 }
 
 
-// ── COORDINATE PROJECTION ─────────────────────────────────────
+// â”€â”€ COORDINATE PROJECTION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 // Converts WGS-84 lat/lon to pixel coordinates within the
-// 1000×589 SimpleMaps SVG viewport.
+// 1000Ã—589 SimpleMaps SVG viewport.
 //
 // This SVG uses a Lambert Azimuthal Equal-Area projection
-// centred at lat₀ = 45°N, lon₀ = 100°W.  The formula below
+// centred at latâ‚€ = 45Â°N, lonâ‚€ = 100Â°W.  The formula below
 // is a linear approximation calibrated to five reference cities:
 //
-//   Miami FL     (25.77, -80.19) → (875, 450)
-//   Seattle WA   (47.61, -122.33) → (140, 130)
-//   Boston MA    (42.36, -71.06)  → (940, 200)
-//   El Paso TX   (31.76, -106.49) → (310, 390)
-//   Minneapolis  (44.98, -93.27)  → (560, 175)
+//   Miami FL     (25.77, -80.19) â†’ (875, 450)
+//   Seattle WA   (47.61, -122.33) â†’ (140, 130)
+//   Boston MA    (42.36, -71.06)  â†’ (940, 200)
+//   El Paso TX   (31.76, -106.49) â†’ (310, 390)
+//   Minneapolis  (44.98, -93.27)  â†’ (560, 175)
 function ll2xy(lat, lon) {
   const dlon = lon - (-100); // offset from centre longitude
   const dlat = lat - 45;     // offset from centre latitude
@@ -228,7 +228,7 @@ function ll2xy(lat, lon) {
 }
 
 
-// ── PIN PLACEMENT ─────────────────────────────────────────────
+// â”€â”€ PIN PLACEMENT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 // Clears and redraws the hot and cold pins after each data fetch.
 function placePins(hot, cold) {
@@ -256,7 +256,7 @@ function makePin(pg, station, isHot) {
     ? styles.getPropertyValue('--c-hot-mid')
     : styles.getPropertyValue('--c-cold')).trim() || (isHot ? '#e8102e' : '#64b4ff');
   const labelColor = styles.getPropertyValue('--c-bg-mid').trim() || '#ffffff';
-  const label = station.temperature_f + '°';
+  const label = station.temperature_f + String.fromCharCode(176);
   const pillW = 36, pillH = 17, pinY = y - 26;
 
   // Pulsing halo ring
