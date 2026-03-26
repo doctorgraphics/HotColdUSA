@@ -29,9 +29,9 @@
   --c-accent-dim: #5b2015;
   --c-gold:       #8a5b24;
   --c-gold-dim:   #aa8150;
-  --c-text:       #2f2418;
-  --c-text-dim:   rgba(47, 36, 24, 0.72);
-  --c-text-faint: rgba(47, 36, 24, 0.34);
+  --c-text:       #24180f;
+  --c-text-dim:   rgba(36, 24, 15, 0.84);
+  --c-text-faint: rgba(36, 24, 15, 0.56);
   --c-hot:        #9f3a24;
   --c-hot-mid:    #7f2f1f;
   --c-cold:       #5b6f7d;
@@ -61,8 +61,8 @@
   --c-gold:       #f1d38b;
   --c-gold-dim:   #b68a3a;
   --c-text:       #f6efd9;
-  --c-text-dim:   rgba(246, 239, 217, 0.72);
-  --c-text-faint: rgba(246, 239, 217, 0.30);
+  --c-text-dim:   rgba(246, 239, 217, 0.84);
+  --c-text-faint: rgba(246, 239, 217, 0.52);
   --c-hot:        #f08a5d;
   --c-hot-mid:    #cf6a43;
   --c-cold:       #81d4d6;
@@ -92,8 +92,8 @@
   --c-gold:       #ffc96a;
   --c-gold-dim:   #a46a1f;
   --c-text:       #ffd28a;
-  --c-text-dim:   rgba(255, 210, 138, 0.72);
-  --c-text-faint: rgba(255, 210, 138, 0.30);
+  --c-text-dim:   rgba(255, 210, 138, 0.84);
+  --c-text-faint: rgba(255, 210, 138, 0.52);
   --c-hot:        #ff9d2e;
   --c-hot-mid:    #ffb347;
   --c-cold:       #7fd3b0;
@@ -123,8 +123,8 @@
   --c-gold:       #9fe9ff;
   --c-gold-dim:   #58add6;
   --c-text:       #eaf7ff;
-  --c-text-dim:   rgba(234, 247, 255, 0.74);
-  --c-text-faint: rgba(234, 247, 255, 0.30);
+  --c-text-dim:   rgba(234, 247, 255, 0.86);
+  --c-text-faint: rgba(234, 247, 255, 0.52);
   --c-hot:        #ff7a5c;
   --c-hot-mid:    #ff5f45;
   --c-cold:       #7fe7ff;
@@ -153,9 +153,9 @@
   --c-accent-dim: #87503c;
   --c-gold:       #b07a3d;
   --c-gold-dim:   #8a6849;
-  --c-text:       #3d2f22;
-  --c-text-dim:   rgba(61, 47, 34, 0.74);
-  --c-text-faint: rgba(61, 47, 34, 0.32);
+  --c-text:       #2e2116;
+  --c-text-dim:   rgba(46, 33, 22, 0.84);
+  --c-text-faint: rgba(46, 33, 22, 0.54);
   --c-hot:        #c85a3d;
   --c-hot-mid:    #a4462e;
   --c-cold:       #4f9d99;
@@ -183,9 +183,9 @@
   --c-accent-dim: #8f382c;
   --c-gold:       #305f7b;
   --c-gold-dim:   #6788a0;
-  --c-text:       #102334;
-  --c-text-dim:   rgba(16, 35, 52, 0.72);
-  --c-text-faint: rgba(16, 35, 52, 0.32);
+  --c-text:       #0d1a28;
+  --c-text-dim:   rgba(13, 26, 40, 0.84);
+  --c-text-faint: rgba(13, 26, 40, 0.54);
   --c-hot:        #d65b43;
   --c-hot-mid:    #c94f3d;
   --c-cold:       #2c88b8;
@@ -213,9 +213,9 @@
   --c-accent-dim: #6f3922;
   --c-gold:       #58633e;
   --c-gold-dim:   #7d8761;
-  --c-text:       #28301f;
-  --c-text-dim:   rgba(40, 48, 31, 0.74);
-  --c-text-faint: rgba(40, 48, 31, 0.34);
+  --c-text:       #1d2416;
+  --c-text-dim:   rgba(29, 36, 22, 0.84);
+  --c-text-faint: rgba(29, 36, 22, 0.56);
   --c-hot:        #b45c34;
   --c-hot-mid:    #9b4f2e;
   --c-cold:       #547a84;
@@ -243,9 +243,9 @@
   --c-accent-dim: #9b332a;
   --c-gold:       #167d7f;
   --c-gold-dim:   #4c9d9f;
-  --c-text:       #4b241b;
-  --c-text-dim:   rgba(75, 36, 27, 0.72);
-  --c-text-faint: rgba(75, 36, 27, 0.30);
+  --c-text:       #34150f;
+  --c-text-dim:   rgba(52, 21, 15, 0.84);
+  --c-text-faint: rgba(52, 21, 15, 0.54);
   --c-hot:        #d54b3d;
   --c-hot-mid:    #b73b30;
   --c-cold:       #1f9aa5;
@@ -274,8 +274,8 @@
   --c-gold:       #d9e3ea;
   --c-gold-dim:   #95a9b6;
   --c-text:       #eef4f7;
-  --c-text-dim:   rgba(238, 244, 247, 0.76);
-  --c-text-faint: rgba(238, 244, 247, 0.32);
+  --c-text-dim:   rgba(238, 244, 247, 0.86);
+  --c-text-faint: rgba(238, 244, 247, 0.54);
   --c-hot:        #ff9367;
   --c-hot-mid:    #f06c3b;
   --c-cold:       #7ac7f0;
@@ -289,4 +289,226 @@
   --f-body: 'Source Serif 4', Georgia, serif;
   --f-mono: 'IBM Plex Mono', monospace;
 }
+/* 10. GROOVE
+   1970s travel-poster. Burnt orange, avocado, harvest gold,
+   and walnut brown with a colorful map that feels screen-printed. */
+
+[data-theme="groove"] {
+  --c-bg:         #f4d7a7;
+  --c-bg-mid:     #faecd0;
+  --c-bg-raised:  #e8bb74;
+  --c-border:     #7a4b2e;
+  --c-accent:     #d95f3a;
+  --c-accent-dim: #9b452b;
+  --c-gold:       #7b6a22;
+  --c-gold-dim:   #9d8840;
+  --c-text:       #3a2417;
+  --c-text-dim:   rgba(58, 36, 23, 0.86);
+  --c-text-faint: rgba(58, 36, 23, 0.58);
+  --c-hot:        #cf4d2f;
+  --c-hot-mid:    #b8432b;
+  --c-cold:       #2c7a78;
+  --c-cold-dim:   #4ea9a1;
+  --c-star:       #8e6f1d;
+  --c-map-bg:     #f1c98d;
+  --c-map-state:  #d8a254;
+  --c-map-stroke: #7a4b2e;
+
+  --f-head: 'Shrikhand', cursive;
+  --f-body: 'Alegreya', Georgia, serif;
+  --f-mono: 'Chivo Mono', monospace;
+}
+
+body[data-theme="groove"] .state-path {
+  stroke: #7a4b2e;
+  stroke-width: 0.9;
+}
+
+body[data-theme="groove"] .state-path[data-groove-color="1"] { fill: #d95f3a; }
+body[data-theme="groove"] .state-path[data-groove-color="2"] { fill: #d7a83c; }
+body[data-theme="groove"] .state-path[data-groove-color="3"] { fill: #6d8b3d; }
+body[data-theme="groove"] .state-path[data-groove-color="4"] { fill: #2c7a78; }
+/* 11. TELETYPE
+   Old wire-service printout. Tractor-feed paper, dense mono text,
+   squared boxes, and typewriter ink with red pencil weather marks. */
+
+[data-theme="teletype"] {
+  --c-bg:         #ece7d5;
+  --c-bg-mid:     #f6f2e5;
+  --c-bg-raised:  #e0dac8;
+  --c-border:     #6c6659;
+  --c-accent:     #9f3b2f;
+  --c-accent-dim: #7b2f26;
+  --c-gold:       #3a3a34;
+  --c-gold-dim:   #6a675e;
+  --c-text:       #1f1f1c;
+  --c-text-dim:   rgba(31, 31, 28, 0.88);
+  --c-text-faint: rgba(31, 31, 28, 0.60);
+  --c-hot:        #8d3528;
+  --c-hot-mid:    #9f3b2f;
+  --c-cold:       #385c69;
+  --c-cold-dim:   #5f7f8b;
+  --c-star:       #4c4b44;
+  --c-map-bg:     #e5dfce;
+  --c-map-state:  #d4cebf;
+  --c-map-stroke: #6c6659;
+
+  --f-head: 'Courier Prime', monospace;
+  --f-body: 'Courier Prime', monospace;
+  --f-mono: 'Courier Prime', monospace;
+}
+
+body[data-theme="teletype"] {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(31, 31, 28, 0.03) 0,
+    rgba(31, 31, 28, 0.03) 1px,
+    transparent 1px,
+    transparent 32px
+  );
+}
+
+body[data-theme="teletype"] .app-title,
+body[data-theme="teletype"] .app-eyebrow,
+body[data-theme="teletype"] .section-label,
+body[data-theme="teletype"] .list-header-title,
+body[data-theme="teletype"] .rec-label,
+body[data-theme="teletype"] .spread-label,
+body[data-theme="teletype"] .theme-bar-label,
+body[data-theme="teletype"] .nav-btn,
+body[data-theme="teletype"] .diag-toggle,
+body[data-theme="teletype"] .diag-key {
+  font-family: 'Courier Prime', monospace;
+  letter-spacing: 0.08em;
+}
+
+body[data-theme="teletype"] .app-title,
+body[data-theme="teletype"] .ext-temp,
+body[data-theme="teletype"] .rec-temp,
+body[data-theme="teletype"] .spread-val,
+body[data-theme="teletype"] .rank-temp {
+  font-weight: 700;
+}
+
+body[data-theme="teletype"] .extreme-card,
+body[data-theme="teletype"] .rec-card,
+body[data-theme="teletype"] .list-card,
+body[data-theme="teletype"] .abstract-card,
+body[data-theme="teletype"] .diag-card,
+body[data-theme="teletype"] .map-wrap,
+body[data-theme="teletype"] .theme-btn,
+body[data-theme="teletype"] .btn-copy {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+body[data-theme="teletype"] .list-header,
+body[data-theme="teletype"] .diag-row,
+body[data-theme="teletype"] .rank-list li,
+body[data-theme="teletype"] .abstract-text,
+body[data-theme="teletype"] .page-footer,
+body[data-theme="teletype"] .map-legend {
+  border-style: dashed;
+}
+
+body[data-theme="teletype"] .map-wrap {
+  background-color: #e7e0cf;
+  background-image:
+    repeating-linear-gradient(to right, rgba(31, 31, 28, 0.05) 0, rgba(31, 31, 28, 0.05) 1px, transparent 1px, transparent 28px),
+    repeating-linear-gradient(to bottom, rgba(31, 31, 28, 0.05) 0, rgba(31, 31, 28, 0.05) 1px, transparent 1px, transparent 28px);
+}
+
+body[data-theme="teletype"] .map-bg-rect {
+  fill: rgba(246, 242, 229, 0.86);
+}
+
+body[data-theme="teletype"] .state-path {
+  fill: #d8d1c2;
+  stroke: #5c564c;
+  stroke-width: 1;
+}
+
+body[data-theme="teletype"] .map-legend {
+  background: #f6f2e5;
+}
+
+body[data-theme="teletype"] .legend-dot {
+  border-radius: 0;
+  border: 1px solid #5c564c;
+}
+
+body[data-theme="teletype"] .legend-dot.hot {
+  background: #8d3528;
+}
+
+body[data-theme="teletype"] .legend-dot.cold {
+  background: #385c69;
+}
+/* 12. CIVIL
+   Civil War broadside. Aged paper, iron ink, muted Union blue,
+   and worn red accents with nineteenth-century printed type. */
+
+[data-theme="civil"] {
+  --c-bg:         #e5d7bd;
+  --c-bg-mid:     #f0e5cf;
+  --c-bg-raised:  #d8c7a6;
+  --c-border:     #746347;
+  --c-accent:     #8a3e33;
+  --c-accent-dim: #653027;
+  --c-gold:       #5b4d2a;
+  --c-gold-dim:   #7d6d4c;
+  --c-text:       #241b14;
+  --c-text-dim:   rgba(36, 27, 20, 0.86);
+  --c-text-faint: rgba(36, 27, 20, 0.58);
+  --c-hot:        #9a4435;
+  --c-hot-mid:    #7f362a;
+  --c-cold:       #516476;
+  --c-cold-dim:   #73889a;
+  --c-star:       #6a5a31;
+  --c-map-bg:     #ddd0b6;
+  --c-map-state:  #cbb998;
+  --c-map-stroke: #746347;
+
+  --f-head: 'IM Fell English SC', serif;
+  --f-body: 'EB Garamond', Georgia, serif;
+  --f-mono: 'Courier Prime', monospace;
+}
+
+body[data-theme="civil"] {
+  background-image:
+    linear-gradient(rgba(90, 72, 40, 0.04), rgba(90, 72, 40, 0.04)),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(36, 27, 20, 0.015) 0,
+      rgba(36, 27, 20, 0.015) 2px,
+      transparent 2px,
+      transparent 38px
+    );
+}
+
+body[data-theme="civil"] .app-title,
+body[data-theme="civil"] .app-eyebrow,
+body[data-theme="civil"] .section-label,
+body[data-theme="civil"] .list-header-title,
+body[data-theme="civil"] .rec-label,
+body[data-theme="civil"] .spread-label,
+body[data-theme="civil"] .theme-bar-label,
+body[data-theme="civil"] .nav-btn {
+  letter-spacing: 0.06em;
+}
+
+body[data-theme="civil"] .extreme-card,
+body[data-theme="civil"] .rec-card,
+body[data-theme="civil"] .list-card,
+body[data-theme="civil"] .abstract-card,
+body[data-theme="civil"] .diag-card,
+body[data-theme="civil"] .map-wrap {
+  box-shadow: inset 0 0 0 1px rgba(90, 72, 40, 0.08);
+}
+
+body[data-theme="civil"] .state-path {
+  stroke-width: 0.75;
+}
+
+
 

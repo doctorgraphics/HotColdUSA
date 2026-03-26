@@ -106,10 +106,97 @@ function svgEl(tag, attrs) {
 
 // Renders one <path> per state into #states-group.
 // Called once on page load by app.js → init().
+function buildGrooveColorMap() {
+  const colors = ['1', '2', '3', '4'];
+  const grooveNeighbors = {
+    AL: ['FL', 'GA', 'MS', 'TN'],
+    AK: [],
+    AZ: ['CA', 'NV', 'UT', 'NM'],
+    AR: ['LA', 'TX', 'OK', 'MO', 'TN', 'MS'],
+    CA: ['OR', 'NV', 'AZ'],
+    CO: ['WY', 'NE', 'KS', 'OK', 'NM', 'AZ', 'UT'],
+    CT: ['NY', 'MA', 'RI'],
+    DC: ['MD'],
+    DE: ['MD', 'NJ', 'PA'],
+    FL: ['AL', 'GA'],
+    GA: ['FL', 'AL', 'TN', 'NC', 'SC'],
+    HI: [],
+    IA: ['MN', 'SD', 'NE', 'MO', 'IL', 'WI'],
+    ID: ['WA', 'OR', 'NV', 'UT', 'WY', 'MT'],
+    IL: ['WI', 'IA', 'MO', 'KY', 'IN'],
+    IN: ['MI', 'OH', 'KY', 'IL'],
+    KS: ['NE', 'MO', 'OK', 'CO'],
+    KY: ['IL', 'IN', 'OH', 'WV', 'VA', 'TN', 'MO'],
+    LA: ['TX', 'AR', 'MS'],
+    MA: ['RI', 'CT', 'NY', 'VT', 'NH'],
+    MD: ['VA', 'WV', 'PA', 'DE', 'DC'],
+    ME: ['NH'],
+    MI: ['OH', 'IN', 'WI'],
+    MN: ['ND', 'SD', 'IA', 'WI'],
+    MO: ['IA', 'IL', 'KY', 'TN', 'AR', 'OK', 'KS', 'NE'],
+    MS: ['LA', 'AR', 'TN', 'AL'],
+    MT: ['ND', 'SD', 'WY', 'ID'],
+    NC: ['VA', 'TN', 'GA', 'SC'],
+    ND: ['MN', 'SD', 'MT'],
+    NE: ['SD', 'IA', 'MO', 'KS', 'CO', 'WY'],
+    NH: ['ME', 'MA', 'VT'],
+    NJ: ['NY', 'DE', 'PA'],
+    NM: ['AZ', 'UT', 'CO', 'OK', 'TX'],
+    NV: ['OR', 'ID', 'UT', 'AZ', 'CA'],
+    NY: ['PA', 'NJ', 'CT', 'MA', 'VT'],
+    OH: ['PA', 'WV', 'KY', 'IN', 'MI'],
+    OK: ['KS', 'MO', 'AR', 'TX', 'NM', 'CO'],
+    OR: ['WA', 'ID', 'NV', 'CA'],
+    PA: ['NY', 'NJ', 'DE', 'MD', 'WV', 'OH'],
+    RI: ['CT', 'MA'],
+    SC: ['NC', 'GA'],
+    SD: ['ND', 'MN', 'IA', 'NE', 'WY', 'MT'],
+    TN: ['KY', 'VA', 'NC', 'GA', 'AL', 'MS', 'AR', 'MO'],
+    TX: ['NM', 'OK', 'AR', 'LA'],
+    UT: ['ID', 'WY', 'CO', 'NM', 'AZ', 'NV'],
+    VA: ['NC', 'TN', 'KY', 'WV', 'MD'],
+    VT: ['NY', 'NH', 'MA'],
+    WA: ['ID', 'OR'],
+    WI: ['MI', 'MN', 'IA', 'IL'],
+    WV: ['OH', 'PA', 'MD', 'VA', 'KY'],
+    WY: ['MT', 'SD', 'NE', 'CO', 'UT', 'ID'],
+  };
+
+  const states = Object.keys(STATE_D).sort((a, b) => {
+    const degreeDiff = (grooveNeighbors[b]?.length || 0) - (grooveNeighbors[a]?.length || 0);
+    return degreeDiff || a.localeCompare(b);
+  });
+  const assigned = {};
+
+  function visit(index) {
+    if (index >= states.length) return true;
+
+    const state = states[index];
+    const blocked = new Set(
+      (grooveNeighbors[state] || []).map((neighbor) => assigned[neighbor]).filter(Boolean)
+    );
+
+    for (const color of colors) {
+      if (blocked.has(color)) continue;
+      assigned[state] = color;
+      if (visit(index + 1)) return true;
+    }
+
+    delete assigned[state];
+    return false;
+  }
+
+  visit(0);
+  return assigned;
+}
+
+const GROOVE_COLOR_MAP = buildGrooveColorMap();
+
 function buildMap() {
   const sg = document.getElementById('states-group');
   Object.entries(STATE_D).forEach(([code, d]) => {
     const p = svgEl('path', { id: 'st-' + code, d, class: 'state-path' });
+    if (GROOVE_COLOR_MAP[code]) p.setAttribute('data-groove-color', GROOVE_COLOR_MAP[code]);
     sg.appendChild(p);
   });
 }
@@ -164,7 +251,11 @@ function makePin(pg, station, isHot) {
     y = p.y;
   }
 
-  const color = isHot ? '#e8102e' : '#64b4ff';
+  const styles = getComputedStyle(document.body);
+  const color = (isHot
+    ? styles.getPropertyValue('--c-hot-mid')
+    : styles.getPropertyValue('--c-cold')).trim() || (isHot ? '#e8102e' : '#64b4ff');
+  const labelColor = styles.getPropertyValue('--c-bg-mid').trim() || '#ffffff';
   const label = station.temperature_f + '°';
   const pillW = 36, pillH = 17, pinY = y - 26;
 
@@ -197,8 +288,12 @@ function makePin(pg, station, isHot) {
     'font-family':        'Oswald,sans-serif',
     'font-size':          '11',
     'font-weight':        '700',
-    fill:                 '#ffffff',
+    fill:                 labelColor,
   });
   t.textContent = label;
   pg.appendChild(t);
 }
+
+
+
+

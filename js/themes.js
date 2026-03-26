@@ -61,6 +61,21 @@ const THEME_CATALOG = [
     label: 'Squall',
     bg:    '#1d2730',
   },
+  {
+    id:    'groove',
+    label: '70s',
+    bg:    '#f4d7a7',
+  },
+  {
+    id:    'teletype',
+    label: 'TTY',
+    bg:    '#ece7d5',
+  },
+  {
+    id:    'civil',
+    label: 'Civil',
+    bg:    '#e5d7bd',
+  },
 ];
 
 const THEME_STORAGE_KEY = 'hotcold-theme';
@@ -117,4 +132,8 @@ function buildThemeSwitcher() {
     container.appendChild(btn);
   });
 }
+
+
+
+
 

@@ -14,38 +14,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;1,400&family=Alegreya+Sans+SC:wght@500;700&family=Archivo+Black&family=Bebas+Neue&family=Bitter:wght@400;700&family=Bungee&family=Chivo+Mono:wght@400;700&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Courier+Prime:wght@400;700&family=DM+Serif+Display:ital@0;1&family=Fira+Code:wght@400;700&family=Forum&family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Mono:wght@400;500;700&family=JetBrains+Mono:wght@400;700&family=Limelight&family=Manrope:wght@500;700;800&family=Orbitron:wght@400;500;700&family=Oswald:wght@400;500;600;700&family=Share+Tech+Mono&family=Source+Serif+4:ital,wght@0,300;0,400;1,300;1,400&family=Space+Mono:wght@400;700&display=swap">
+    href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;1,400&family=Alegreya+Sans+SC:wght@500;700&family=Archivo+Black&family=Bebas+Neue&family=Bitter:wght@400;700&family=Bungee&family=Chivo+Mono:wght@400;700&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Courier+Prime:wght@400;700&family=DM+Serif+Display:ital@0;1&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Fira+Code:wght@400;700&family=Forum&family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Mono:wght@400;500;700&family=IM+Fell+English+SC&family=JetBrains+Mono:wght@400;700&family=Limelight&family=Manrope:wght@500;700;800&family=Orbitron:wght@400;500;700&family=Oswald:wght@400;500;600;700&family=Share+Tech+Mono&family=Shrikhand&family=Source+Serif+4:ital,wght@0,300;0,400;1,300;1,400&family=Space+Mono:wght@400;700&display=swap">
 
-  <!--
-    ---------------------------------------------------------------
-    STYLESHEET LOAD ORDER
-    ---------------------------------------------------------------
-    styles.css   Layout, typography, and all component rules.
-                 Every colour/font value is a CSS custom property
-                 so themes hot-swap without touching this file.
-
-    themes.css   One [data-theme="x"] block per theme, each
-                 redefining the full set of custom properties
-                 from styles.css.  Active theme is set via
-                 data-theme on <body> by themes.js.
-    ---------------------------------------------------------------
-  -->
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/themes.css">
 </head>
 
-<!--
-  data-theme="patriot" is the default.
-  themes.js overwrites this attribute on load using the value
-  stored in localStorage, then on every theme-button click.
--->
-
 <body data-theme="patriot">
-
-  <!-- iOS notch / status-bar safe-area spacer -->
   <div class="status-bar" aria-hidden="true"></div>
 
-  <!-- -- HEADER -------------------------------------------------------------- -->
   <header class="app-header">
     <div class="app-title-group">
       <span class="app-eyebrow">National Weather � U.S.A.</span>
@@ -55,33 +32,57 @@
     <div class="header-flag" aria-hidden="true">????</div>
   </header>
 
-  <!-- -- SCROLL BODY --------------------------------------------------------- -->
   <div class="scroll-body" id="scroll-body">
+    <div class="theme-bar" id="theme-bar" role="group" aria-label="Colour theme">
+      <span class="theme-bar-label">Theme</span>
+      <div class="theme-btn-group" id="theme-btn-group"></div>
+    </div>
 
-    <!-- TODAY'S EXTREMES ----------------------------------------------------
-         Section anchor id is on the section-label so scrollToTop() and
-         the nav highlight logic both target the same element.          -->
+    <div class="section-label" id="anchor-custom">Custom Locations</div>
+    <div class="custom-card">
+      <form class="custom-form" id="custom-form">
+        <div class="custom-field-grid">
+          <label class="custom-field">
+            <span class="custom-field-label">City</span>
+            <input id="custom-city" name="city" type="text" maxlength="40" placeholder="Bishop" required>
+          </label>
+          <label class="custom-field">
+            <span class="custom-field-label">State</span>
+            <input id="custom-state" name="state" type="text" maxlength="20" placeholder="CA">
+          </label>
+          <label class="custom-field">
+            <span class="custom-field-label">Latitude</span>
+            <input id="custom-lat" name="lat" type="number" inputmode="decimal" step="any" min="-90" max="90" placeholder="37.36" required>
+          </label>
+          <label class="custom-field">
+            <span class="custom-field-label">Longitude</span>
+            <input id="custom-lon" name="lon" type="number" inputmode="decimal" step="any" min="-180" max="180" placeholder="-118.40" required>
+          </label>
+        </div>
+        <div class="custom-form-foot">
+          <span class="custom-footnote">Saved on this device and included in the temperature fetch.</span>
+          <button class="btn-copy custom-submit" type="submit">Add Location</button>
+        </div>
+      </form>
+      <div class="custom-status" id="custom-status" aria-live="polite"></div>
+      <ul class="custom-list" id="custom-list" aria-label="Saved custom locations"></ul>
+    </div>
+
     <div class="section-label">Today's Extremes</div>
     <div class="hero-extremes">
-
       <div class="extreme-card hot">
         <span class="ext-badge">?? Hottest</span>
         <span class="ext-temp" id="hot-temp">�</span>
-        <span class="ext-place" id="hot-place">
-          <span class="loading-dim">loading�</span>
-        </span>
+        <span class="ext-place" id="hot-place"><span class="loading-dim">loading�</span></span>
         <div class="ext-detail" id="hot-detail"></div>
       </div>
 
       <div class="extreme-card cold">
         <span class="ext-badge">? Coldest</span>
         <span class="ext-temp" id="cold-temp">�</span>
-        <span class="ext-place" id="cold-place">
-          <span class="loading-dim">loading�</span>
-        </span>
+        <span class="ext-place" id="cold-place"><span class="loading-dim">loading�</span></span>
         <div class="ext-detail" id="cold-detail"></div>
       </div>
-
     </div>
 
     <div class="spread-banner">
@@ -92,31 +93,21 @@
       <div class="spread-desc" id="spread-desc"><em>hot minus cold</em></div>
     </div>
 
-    <!-- RECORDS FOR THIS DATE -----------------------------------------------
-         id="anchor-records" is the scroll target for the Records nav button. -->
     <div class="section-label" id="anchor-records">Records for This Date</div>
     <div class="records-grid">
-
       <div class="rec-card rec-high">
         <span class="rec-label">? Record High</span>
-        <span class="rec-temp" id="rec-high-temp">��F</span>
-        <span class="rec-place" id="rec-high-place">
-          <span class="loading-dim">loading�</span>
-        </span>
+        <span class="rec-temp" id="rec-high-temp">��°F</span>
+        <span class="rec-place" id="rec-high-place"><span class="loading-dim">loading�</span></span>
       </div>
 
       <div class="rec-card rec-low">
         <span class="rec-label">? Record Low</span>
-        <span class="rec-temp" id="rec-low-temp">��F</span>
-        <span class="rec-place" id="rec-low-place">
-          <span class="loading-dim">loading�</span>
-        </span>
+        <span class="rec-temp" id="rec-low-temp">��°F</span>
+        <span class="rec-place" id="rec-low-place"><span class="loading-dim">loading�</span></span>
       </div>
-
     </div>
 
-    <!-- RANKING TABLES ------------------------------------------------------
-         id="anchor-tables" is the scroll target for the Tables nav button. -->
     <div class="section-label" id="anchor-tables">Five Hottest Stations</div>
     <div class="list-card hot-list">
       <div class="list-header">
@@ -147,8 +138,6 @@
       </ul>
     </div>
 
-    <!-- DAILY REPORT / SHARE TEXT -------------------------------------------
-         id="anchor-abstract" is referenced by updateNav() in app.js.  -->
     <div class="section-label" id="anchor-abstract">Daily Report</div>
     <div class="abstract-card">
       <div class="abstract-text" id="share-text" aria-live="polite">Compiling report�</div>
@@ -158,11 +147,6 @@
       </div>
     </div>
 
-    <!-- NATIONAL MAP --------------------------------------------------------
-         id="anchor-map" is the scroll target for the Map nav button.
-         States are injected by map.js ? buildMap() into #states-group.
-         Temperature pins are injected by map.js ? placePins() into
-         #pins-group after each data fetch and after theme changes.    -->
     <div class="section-label" id="anchor-map">National Map</div>
     <div class="map-wrap">
       <svg id="us-map" viewBox="0 0 1000 589" xmlns="http://www.w3.org/2000/svg" role="img"
@@ -183,8 +167,6 @@
       </div>
     </div>
 
-    <!-- DATA FEED / DIAGNOSTICS ---------------------------------------------
-         Collapsed by default; toggleDiag() in app.js opens/closes it. -->
     <div class="section-label">Data Feed</div>
     <div class="diag-card">
       <button class="diag-toggle" id="diag-toggle" onclick="toggleDiag()" aria-expanded="false"
@@ -193,121 +175,41 @@
         <span class="diag-arrow" aria-hidden="true">?</span>
       </button>
       <div class="diag-body" id="diag-body" role="region" aria-label="Diagnostics">
-        <div class="diag-row">
-          <span class="diag-key">Last Update</span>
-          <span class="diag-val" id="d-update">�</span>
-        </div>
-        <div class="diag-row">
-          <span class="diag-key">Snapshot</span>
-          <span class="diag-val" id="d-snap">�</span>
-        </div>
-        <div class="diag-row">
-          <span class="diag-key">Ref.</span>
-          <span class="diag-val" id="d-snapid">�</span>
-        </div>
-        <div class="diag-row">
-          <span class="diag-key">Stations Observed</span>
-          <span class="diag-val" id="d-total">�</span>
-        </div>
-        <div class="diag-row">
-          <span class="diag-key">Accepted</span>
-          <span class="diag-val" id="d-accepted">�</span>
-        </div>
-        <div class="diag-row">
-          <span class="diag-key">Rejected</span>
-          <span class="diag-val" id="d-rejected">�</span>
-        </div>
-        <div class="diag-row">
-          <span class="diag-key">Requests</span>
-          <span class="diag-val" id="d-requests">�</span>
-        </div>
-        <div class="diag-row">
-          <span class="diag-key">Duration</span>
-          <span class="diag-val" id="d-duration">�</span>
-        </div>
-        <div class="diag-row">
-          <span class="diag-key">Source</span>
-          <span class="diag-val" id="d-source">�</span>
-        </div>
-        <div class="diag-row">
-          <span class="diag-key">Freshness</span>
-          <span class="diag-val">2 hours</span>
-        </div>
+        <div class="diag-row"><span class="diag-key">Temp Units</span><select class="diag-select" id="unit-temp"><option value="f">Fahrenheit</option><option value="c">Celsius</option></select></div>
+        <div class="diag-row"><span class="diag-key">Distance</span><select class="diag-select" id="unit-distance"><option value="mi">Miles</option><option value="km">Kilometers</option></select></div>
+        <div class="diag-row"><span class="diag-key">Last Update</span><span class="diag-val" id="d-update">�</span></div>
+        <div class="diag-row"><span class="diag-key">Snapshot</span><span class="diag-val" id="d-snap">�</span></div>
+        <div class="diag-row"><span class="diag-key">Ref.</span><span class="diag-val" id="d-snapid">�</span></div>
+        <div class="diag-row"><span class="diag-key">Stations Observed</span><span class="diag-val" id="d-total">�</span></div>
+        <div class="diag-row"><span class="diag-key">Accepted</span><span class="diag-val" id="d-accepted">�</span></div>
+        <div class="diag-row"><span class="diag-key">Rejected</span><span class="diag-val" id="d-rejected">�</span></div>
+        <div class="diag-row"><span class="diag-key">Requests</span><span class="diag-val" id="d-requests">�</span></div>
+        <div class="diag-row"><span class="diag-key">Duration</span><span class="diag-val" id="d-duration">�</span></div>
+        <div class="diag-row"><span class="diag-key">Source</span><span class="diag-val" id="d-source">�</span></div>
+        <div class="diag-row"><span class="diag-key">Freshness</span><span class="diag-val">2 hours</span></div>
       </div>
     </div>
 
-    <!-- THEME SWITCHER ------------------------------------------------------
-      Buttons are injected by themes.js ? buildThemeSwitcher().
-      The container must exist in the DOM before scripts run.        -->
-    <div class="theme-bar" id="theme-bar" role="group" aria-label="Colour theme">
-      <span class="theme-bar-label">Theme</span>
-      <div class="theme-btn-group" id="theme-btn-group"></div>
-    </div>
-
-
-    <!-- FOOTER ------------------------------------------------------------ -->
     <div class="stars-row" aria-hidden="true">? ? ? ? ? ? ? ? ? ? ? ? ?</div>
     <div class="page-footer">
       Data: National Weather Service � Open-Meteo / WMO<br>
       E Pluribus Unum
     </div>
+  </div>
 
-  </div><!-- /scroll-body -->
-
-  <!-- -- BOTTOM NAV ---------------------------------------------------------- -->
   <nav class="bottom-nav" aria-label="Page sections">
-    <button class="nav-btn active" onclick="scrollToTop()">
-      <span class="nav-icon" aria-hidden="true">??</span>
-      Extremes
-    </button>
-    <button class="nav-btn" onclick="scrollToId('anchor-records')">
-      <span class="nav-icon" aria-hidden="true">?</span>
-      Records
-    </button>
-    <button class="nav-btn" onclick="scrollToId('anchor-tables')">
-      <span class="nav-icon" aria-hidden="true">=</span>
-      Tables
-    </button>
-    <button class="nav-btn" onclick="scrollToId('anchor-map')">
-      <span class="nav-icon" aria-hidden="true">??</span>
-      Map
-    </button>
+    <button class="nav-btn active" onclick="scrollToTop()"><span class="nav-icon" aria-hidden="true">??</span>Extremes</button>
+    <button class="nav-btn" onclick="scrollToId('anchor-records')"><span class="nav-icon" aria-hidden="true">?</span>Records</button>
+    <button class="nav-btn" onclick="scrollToId('anchor-tables')"><span class="nav-icon" aria-hidden="true">=</span>Tables</button>
+    <button class="nav-btn" onclick="scrollToId('anchor-map')"><span class="nav-icon" aria-hidden="true">??</span>Map</button>
   </nav>
 
-  <!--
-    ---------------------------------------------------------------
-    SCRIPT LOAD ORDER
-    Each file is a plain <script> (no module) so all declarations
-    land in the global scope and later files can reference them.
-    Load order must be preserved � each file depends on the ones
-    above it.
-    ---------------------------------------------------------------
-
-    1. data.js      Declares: CITIES[], STALE_HOURS
-
-    2. records.js   Declares: CLIMATE_RECORDS{}
-
-    3. map.js       Declares: STATE_D{}, svgEl(), buildMap(),
-                              ll2xy(), placePins(), makePin()
-                    Needs:    nothing
-
-    4. themes.js    Declares: THEME_CATALOG[], getSavedTheme(),
-                              applyTheme(), buildThemeSwitcher()
-                    Needs:    nothing (pure DOM + localStorage)
-
-    5. app.js       Declares: init() and all app functions
-                    Needs:    everything above
-                    Calls on DOMContentLoaded:
-                              buildThemeSwitcher(), applyTheme(),
-                              buildMap(), fetchData(), renderAll()
-    ---------------------------------------------------------------
-  -->
   <script src="js/data.js"></script>
   <script src="js/records.js"></script>
   <script src="js/map.js"></script>
   <script src="js/themes.js"></script>
   <script src="js/app.js"></script>
-
 </body>
 
 </html>
+

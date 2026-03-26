@@ -1,34 +1,19 @@
 // ============================================================
-// app.js — HotCold USA
-//
-// Depends on (must be loaded first, in order):
-//   data.js      → CITIES, STALE_HOURS
-//   records.js   → CLIMATE_RECORDS
-//   map.js       → buildMap(), placePins()
-//   themes.js    → buildThemeSwitcher(), applyTheme(),
-//                  getSavedTheme()
-//
-// Sections
-// ────────
-//  1. DOM shorthand
-//  2. Date / time helpers
-//  3. Data helpers  (getRecord, isStale, degToDir)
-//  4. UI interactions  (toggleDiag, scroll, copyShare, updateNav)
-//  5. Fetch  (fetchData)
-//  6. Process  (process)
-//  7. Render  (renderList, renderAll)
-//  8. Init
+// app.js - HotCold USA
 // ============================================================
 
+const CUSTOM_LOCATIONS_KEY = 'hotcold-custom-locations';
+const TEMP_UNIT_KEY = 'hotcold-temp-unit';
+const DISTANCE_UNIT_KEY = 'hotcold-distance-unit';
 
-// ── 1. DOM SHORTHAND ──────────────────────────────────────────
+const settings = {
+  tempUnit: 'f',
+  distanceUnit: 'mi',
+};
 
 function el(id) {
   return document.getElementById(id);
 }
-
-
-// ── 2. DATE / TIME HELPERS ────────────────────────────────────
 
 function getTodayMMDD() {
   const n = new Date();
@@ -38,75 +23,193 @@ function getTodayMMDD() {
 function formatDateShort() {
   return new Date().toLocaleDateString('en-US', {
     weekday: 'short',
-    month:   'short',
-    day:     'numeric',
-    year:    'numeric',
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
   });
 }
 
 function formatTime() {
   return new Date().toLocaleTimeString('en-US', {
-    hour:         'numeric',
-    minute:       '2-digit',
+    hour: 'numeric',
+    minute: '2-digit',
     timeZoneName: 'short',
   });
 }
 
-
-// ── 3. DATA HELPERS ───────────────────────────────────────────
-
-// Look up the CLIMATE_RECORDS entry for a given MM-DD string.
-// Falls back to the nearest calendar date if an exact match
-// is not found (handles leap-day edge cases gracefully).
 function getRecord(mmdd) {
   if (CLIMATE_RECORDS[mmdd]) return CLIMATE_RECORDS[mmdd];
 
   const [m, d] = mmdd.split('-').map(Number);
   const day = (m - 1) * 30 + d;
-  let best = null, bd = 999;
+  let best = null;
+  let bestDistance = 999;
 
-  for (const [k, v] of Object.entries(CLIMATE_RECORDS)) {
-    const [km, kd] = k.split('-').map(Number);
-    const dist = Math.abs(((km - 1) * 30 + kd) - day);
-    if (dist < bd) { bd = dist; best = v; }
+  for (const [key, value] of Object.entries(CLIMATE_RECORDS)) {
+    const [km, kd] = key.split('-').map(Number);
+    const distance = Math.abs(((km - 1) * 30 + kd) - day);
+    if (distance < bestDistance) {
+      bestDistance = distance;
+      best = value;
+    }
   }
+
   return best;
 }
 
-// Returns true if the ISO timestamp is missing or older than
-// STALE_HOURS (defined in data.js).
 function isStale(iso) {
   return !iso || (Date.now() - new Date(iso).getTime()) > STALE_HOURS * 3600000;
 }
 
-// Converts a wind bearing in degrees to a compass abbreviation.
 function degToDir(deg) {
-  if (deg == null) return '—';
-  const dirs = ['N','NNE','NE','ENE','E','ESE','SE','SSE',
-                'S','SSW','SW','WSW','W','WNW','NW','NNW'];
+  if (deg == null) return '-';
+  const dirs = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
   return dirs[Math.round(deg / 22.5) % 16];
 }
 
+function toCelsius(tempF) {
+  return (tempF - 32) * 5 / 9;
+}
 
-// ── 4. UI INTERACTIONS ────────────────────────────────────────
+function displayTemp(tempF) {
+  return settings.tempUnit === 'c' ? Math.round(toCelsius(tempF)) : Math.round(tempF);
+}
+
+function formatTemp(tempF) {
+  const suffix = settings.tempUnit === 'c' ? 'C' : 'F';
+  return `${displayTemp(tempF)}�${suffix}`;
+}
+
+function formatTempDelta(deltaF) {
+  const value = settings.tempUnit === 'c' ? Math.round(deltaF * 5 / 9) : Math.round(deltaF);
+  const suffix = settings.tempUnit === 'c' ? 'C' : 'F';
+  return `${value}�${suffix}`;
+}
+
+function haversineMiles(a, b) {
+  const toRad = (deg) => deg * Math.PI / 180;
+  const r = 3958.8;
+  const dLat = toRad(b.lat - a.lat);
+  const dLon = toRad(b.lon - a.lon);
+  const lat1 = toRad(a.lat);
+  const lat2 = toRad(b.lat);
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLon / 2) ** 2;
+  return 2 * r * Math.asin(Math.sqrt(h));
+}
+
+function formatDistanceMiles(distanceMiles) {
+  if (distanceMiles == null) return 'N/A';
+  if (settings.distanceUnit === 'km') {
+    return `${Math.round(distanceMiles * 1.60934).toLocaleString()} km`;
+  }
+  return `${Math.round(distanceMiles).toLocaleString()} mi`;
+}
+
+function loadUnitSettings() {
+  try {
+    const savedTemp = localStorage.getItem(TEMP_UNIT_KEY);
+    const savedDistance = localStorage.getItem(DISTANCE_UNIT_KEY);
+    if (savedTemp === 'f' || savedTemp === 'c') settings.tempUnit = savedTemp;
+    if (savedDistance === 'mi' || savedDistance === 'km') settings.distanceUnit = savedDistance;
+  } catch (_) {}
+}
+
+function saveUnitSettings() {
+  try {
+    localStorage.setItem(TEMP_UNIT_KEY, settings.tempUnit);
+    localStorage.setItem(DISTANCE_UNIT_KEY, settings.distanceUnit);
+  } catch (_) {}
+}
+
+function syncUnitControls() {
+  el('unit-temp').value = settings.tempUnit;
+  el('unit-distance').value = settings.distanceUnit;
+}
+
+function normalizeCustomLocation(entry) {
+  const city = String(entry.city || '').trim();
+  const state = String(entry.state || '').trim();
+  const lat = Number(entry.lat);
+  const lon = Number(entry.lon);
+
+  if (!city || Number.isNaN(lat) || Number.isNaN(lon)) return null;
+  if (lat < -90 || lat > 90 || lon < -180 || lon > 180) return null;
+
+  return {
+    id: entry.id || `custom_${city}_${state}_${lat}_${lon}`.replace(/\s+/g, '_'),
+    city,
+    state: state || 'Custom',
+    lat,
+    lon,
+    custom: true,
+  };
+}
+
+function loadCustomLocations() {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(CUSTOM_LOCATIONS_KEY) || '[]');
+    if (!Array.isArray(parsed)) return [];
+    return parsed.map(normalizeCustomLocation).filter(Boolean);
+  } catch (_) {
+    return [];
+  }
+}
+
+function saveCustomLocations(locations) {
+  try {
+    localStorage.setItem(CUSTOM_LOCATIONS_KEY, JSON.stringify(locations));
+  } catch (_) {}
+}
+
+function getCustomLocations() {
+  return loadCustomLocations();
+}
+
+function getAllLocations() {
+  return [...CITIES, ...getCustomLocations()];
+}
+
+function setCustomStatus(message, isError = false) {
+  const status = el('custom-status');
+  status.textContent = message;
+  status.classList.toggle('error', isError);
+}
+
+function renderCustomLocations() {
+  const list = el('custom-list');
+  const locations = getCustomLocations();
+
+  if (!locations.length) {
+    list.innerHTML = '<li class="custom-empty">No custom locations yet.</li>';
+    return;
+  }
+
+  list.innerHTML = locations.map((location) => `
+    <li class="custom-item">
+      <div class="custom-item-main">
+        <span class="custom-item-name">${location.city}, ${location.state}</span>
+        <span class="custom-item-coords">${location.lat.toFixed(2)}, ${location.lon.toFixed(2)}</span>
+      </div>
+      <button class="custom-remove" type="button" data-location-id="${location.id}">Remove</button>
+    </li>
+  `).join('');
+}
 
 let diagOpen = false;
+let refreshToken = 0;
+let latestRender = null;
 
-// Called by the diagnostics toggle button in index.html.
 function toggleDiag() {
   diagOpen = !diagOpen;
   el('diag-body').classList.toggle('open', diagOpen);
   el('diag-toggle').setAttribute('aria-expanded', String(diagOpen));
-  el('diag-toggle').querySelector('span').textContent =
-    diagOpen ? 'Hide Diagnostics' : 'Show Diagnostics';
+  el('diag-toggle').querySelector('span').textContent = diagOpen ? 'Hide Diagnostics' : 'Show Diagnostics';
 }
 
-// Called by the Extremes nav button.
 function scrollToTop() {
   el('scroll-body').scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Called by the Records, Tables, and Map nav buttons.
 function scrollToId(id) {
   el(id)?.scrollIntoView({ behavior: 'smooth' });
 }
@@ -141,7 +244,6 @@ function fallbackCopyText(text) {
   return ok;
 }
 
-// Called by the Copy button in the daily-report card.
 async function copyShare() {
   const text = el('share-text').textContent;
 
@@ -151,7 +253,6 @@ async function copyShare() {
     } else if (!fallbackCopyText(text)) {
       throw new Error('Clipboard unavailable');
     }
-
     setCopyButtonState('Copied', true);
   } catch (_) {
     setCopyButtonState('Copy Failed', false);
@@ -160,36 +261,29 @@ async function copyShare() {
   resetCopyButton();
 }
 
-// Highlights the correct bottom-nav button as the user scrolls.
-// Anchors are section-label divs with id="anchor-*" in index.html.
 function updateNav() {
   const btns = document.querySelectorAll('.nav-btn');
-  const sy   = el('scroll-body').scrollTop;
-  btns.forEach(b => b.classList.remove('active'));
+  const sy = el('scroll-body').scrollTop;
+  btns.forEach((btn) => btn.classList.remove('active'));
 
   const aMap = el('anchor-map');
   const aAbs = el('anchor-abstract');
   const aTbl = el('anchor-tables');
   const aRec = el('anchor-records');
 
-  if      (aMap && sy >= aMap.offsetTop - 80) btns[3].classList.add('active');
+  if (aMap && sy >= aMap.offsetTop - 80) btns[3].classList.add('active');
   else if (aAbs && sy >= aAbs.offsetTop - 80) btns[2].classList.add('active');
   else if (aTbl && sy >= aTbl.offsetTop - 80) btns[2].classList.add('active');
   else if (aRec && sy >= aRec.offsetTop - 80) btns[1].classList.add('active');
-  else                                         btns[0].classList.add('active');
+  else btns[0].classList.add('active');
 }
 
-
-// ── 5. FETCH ──────────────────────────────────────────────────
-
-// Fetches current conditions for all CITIES (defined in data.js)
-// from the Open-Meteo batch API in a single request.
-// Returns { stations[], requests, duration, source }.
 async function fetchData() {
-  const t0   = performance.now();
-  const lats = CITIES.map(c => c.lat).join(',');
-  const lons = CITIES.map(c => c.lon).join(',');
-  let stations = [];
+  const t0 = performance.now();
+  const locations = getAllLocations();
+  const lats = locations.map((c) => c.lat).join(',');
+  const lons = locations.map((c) => c.lon).join(',');
+  const stations = [];
 
   try {
     const url = [
@@ -202,36 +296,32 @@ async function fetchData() {
     ].join('');
 
     const resp = await fetch(url);
-
     if (resp.ok) {
-      const data    = await resp.json();
+      const data = await resp.json();
       const results = Array.isArray(data) ? data : [data];
 
-      results.forEach((r, i) => {
-        const c    = CITIES[i];
-        if (!c) return;
+      results.forEach((result, index) => {
+        const location = locations[index];
+        if (!location) return;
 
-        const temp = r?.current?.temperature_2m;
+        const temp = result?.current?.temperature_2m;
         if (temp == null) return;
 
-        const pressure = r?.current?.surface_pressure;
-
+        const pressure = result?.current?.surface_pressure;
         stations.push({
-          station_id: `OM_${c.city}_${c.state}`.replace(/\s/g, '_'),
-          city:       c.city,
-          state:      c.state,
-          lat:        c.lat,
-          lon:        c.lon,
+          station_id: `OM_${location.id || `${location.city}_${location.state}`}`.replace(/\s/g, '_'),
+          city: location.city,
+          state: location.state,
+          lat: location.lat,
+          lon: location.lon,
           temperature_f: Math.round(temp),
-          observation_time_iso: r?.current?.time
-            ? new Date(r.current.time + ':00').toISOString()
+          observation_time_iso: result?.current?.time
+            ? new Date(result.current.time + ':00').toISOString()
             : new Date().toISOString(),
-          pressure_inhg: pressure
-            ? (pressure * 0.02953).toFixed(2)
-            : null,
-          wind_dir: r?.current?.wind_direction_10m != null
-            ? degToDir(r.current.wind_direction_10m)
-            : '—',
+          pressure_inhg: pressure ? (pressure * 0.02953).toFixed(2) : null,
+          wind_dir: result?.current?.wind_direction_10m != null
+            ? degToDir(result.current.wind_direction_10m)
+            : '-',
         });
       });
     }
@@ -243,16 +333,10 @@ async function fetchData() {
     stations,
     requests: 1,
     duration: Math.round(performance.now() - t0),
-    source:   'Open-Meteo / WMO',
+    source: 'Open-Meteo / WMO',
   };
 }
 
-
-// ── 6. PROCESS ────────────────────────────────────────────────
-
-// Validates and deduplicates raw station observations.
-// Returns the sorted list plus convenience references to the
-// hottest, coldest, and top-5 extremes at each end.
 function process(stations) {
   const seen = new Map();
   let rejected = 0;
@@ -260,46 +344,36 @@ function process(stations) {
   for (const st of stations) {
     const t = st.temperature_f;
 
-    // Reject readings outside the physically plausible range
-    if (t == null || isNaN(t) || t < -130 || t > 140) {
+    if (t == null || Number.isNaN(t) || t < -130 || t > 140) {
       rejected++;
       continue;
     }
 
-    // Reject stale observations
     if (isStale(st.observation_time_iso)) {
       rejected++;
       continue;
     }
 
-    // Keep the most recent reading per station
     const existing = seen.get(st.station_id);
-    if (!existing ||
-        st.observation_time_iso > (existing.observation_time_iso || '')) {
+    if (!existing || st.observation_time_iso > (existing.observation_time_iso || '')) {
       seen.set(st.station_id, st);
     }
   }
 
-  const valid  = Array.from(seen.values());
+  const valid = Array.from(seen.values());
   const sorted = [...valid].sort((a, b) => b.temperature_f - a.temperature_f);
 
   return {
     valid,
     sorted,
     rejected,
-    hottest:  sorted[0]                 || null,
-    coldest:  sorted[sorted.length - 1] || null,
-    top5hot:  sorted.slice(0, 5),
+    hottest: sorted[0] || null,
+    coldest: sorted[sorted.length - 1] || null,
+    top5hot: sorted.slice(0, 5),
     top5cold: sorted.slice(-5).reverse(),
   };
 }
 
-
-// ── 7. RENDER ─────────────────────────────────────────────────
-
-// Renders a ranked list of up to 5 stations into a <ul>.
-// Fills remaining rows with placeholder dashes if fewer
-// than 5 stations are available.
 function renderList(id, stations) {
   const list = el(id);
   let html = '';
@@ -307,135 +381,182 @@ function renderList(id, stations) {
   for (let i = 0; i < 5; i++) {
     const st = stations[i];
     if (st) {
-      html += `<li>
-        <span class="rank-num">${i + 1}</span>
-        <span class="rank-place">${st.city}, ${st.state}</span>
-        <span class="rank-temp">${st.temperature_f}°F</span>
-      </li>`;
+      html += `<li><span class="rank-num">${i + 1}</span><span class="rank-place">${st.city}, ${st.state}</span><span class="rank-temp">${formatTemp(st.temperature_f)}</span></li>`;
     } else {
-      html += `<li>
-        <span class="rank-num">${i + 1}</span>
-        <span class="rank-place" style="opacity:0.25">—</span>
-        <span class="rank-temp"  style="opacity:0.25">—</span>
-      </li>`;
+      html += `<li><span class="rank-num">${i + 1}</span><span class="rank-place" style="opacity:0.25">-</span><span class="rank-temp" style="opacity:0.25">-</span></li>`;
     }
   }
 
   list.innerHTML = html;
 }
 
-// Populates every data-bound element on the page.
-// Note: records.js stores the location as `.city`, not `.place`
-// (the original code referenced .place — this is the fix).
 function renderAll(data, diag) {
   const { hottest, coldest, top5hot, top5cold, valid, rejected } = data;
-  const spread = (hottest && coldest)
-    ? hottest.temperature_f - coldest.temperature_f
-    : null;
-  const mmdd   = getTodayMMDD();
+  const spreadF = hottest && coldest ? hottest.temperature_f - coldest.temperature_f : null;
+  const distanceMiles = hottest && coldest ? haversineMiles(hottest, coldest) : null;
+  const mmdd = getTodayMMDD();
   const record = getRecord(mmdd);
 
-  // Header dateline
   el('dateline').innerHTML = `${formatDateShort()}<br>${formatTime()}`;
 
-  // Extreme cards
   if (hottest) {
-    el('hot-temp').textContent   = `${hottest.temperature_f}°F`;
-    el('hot-place').textContent  = `${hottest.city}, ${hottest.state}`;
-    el('hot-detail').textContent = `Bar: ${hottest.pressure_inhg || '—'}"  Wind: ${hottest.wind_dir}`;
+    el('hot-temp').textContent = formatTemp(hottest.temperature_f);
+    el('hot-place').textContent = `${hottest.city}, ${hottest.state}`;
+    el('hot-detail').textContent = `Bar: ${hottest.pressure_inhg || '-'}"  Wind: ${hottest.wind_dir}`;
   }
+
   if (coldest) {
-    el('cold-temp').textContent   = `${coldest.temperature_f}°F`;
-    el('cold-place').textContent  = `${coldest.city}, ${coldest.state}`;
-    el('cold-detail').textContent = `Bar: ${coldest.pressure_inhg || '—'}"  Wind: ${coldest.wind_dir}`;
+    el('cold-temp').textContent = formatTemp(coldest.temperature_f);
+    el('cold-place').textContent = `${coldest.city}, ${coldest.state}`;
+    el('cold-detail').textContent = `Bar: ${coldest.pressure_inhg || '-'}"  Wind: ${coldest.wind_dir}`;
   }
 
-  // Spread banner
-  if (spread != null) {
-    el('spread-val').textContent  = `${spread}°F`;
-    el('spread-desc').innerHTML   = `<em>${hottest.city} → ${coldest.city}</em>`;
+  if (spreadF != null) {
+    el('spread-val').textContent = formatTempDelta(spreadF);
+    el('spread-desc').innerHTML = `<em>${hottest.city} to ${coldest.city}</em><br>${formatDistanceMiles(distanceMiles)} apart`;
   }
 
-  // Map pin labels
-  if (hottest) el('legend-hot').textContent  = `${hottest.city}, ${hottest.state} · ${hottest.temperature_f}°F`;
-  if (coldest) el('legend-cold').textContent = `${coldest.city}, ${coldest.state} · ${coldest.temperature_f}°F`;
+  if (hottest) el('legend-hot').textContent = `${hottest.city}, ${hottest.state} � ${formatTemp(hottest.temperature_f)}`;
+  if (coldest) el('legend-cold').textContent = `${coldest.city}, ${coldest.state} � ${formatTemp(coldest.temperature_f)}`;
   placePins(hottest, coldest);
 
-  // Records section — field is .city not .place (fix from original)
   if (record) {
-    el('rec-high-temp').textContent = `${record.high.temp}°F`;
-    el('rec-high-place').innerHTML  =
-      `${record.high.city}<br><em style="font-size:9px;opacity:0.6"></em>`;
-    el('rec-low-temp').textContent  = `${record.low.temp}°F`;
-    el('rec-low-place').innerHTML   =
-      `${record.low.city}<br><em style="font-size:9px;opacity:0.6"></em>`;
+    el('rec-high-temp').textContent = formatTemp(record.high.temp);
+    el('rec-high-place').innerHTML = `${record.high.city}<br><em style="font-size:9px;opacity:0.6"></em>`;
+    el('rec-low-temp').textContent = formatTemp(record.low.temp);
+    el('rec-low-place').innerHTML = `${record.low.city}<br><em style="font-size:9px;opacity:0.6"></em>`;
   }
 
-  // Ranking tables
-  renderList('list-hot',  top5hot);
+  renderList('list-hot', top5hot);
   renderList('list-cold', top5cold);
 
-  // Daily report / share text
   const lines = [
-    `🇺🇸 HotCold USA — ${formatDateShort()}`,
+    `HotCold USA - ${formatDateShort()}`,
     `Updated: ${formatTime()}`,
-    ``,
-    `🔥 Hottest: ${hottest ? `${hottest.city}, ${hottest.state} — ${hottest.temperature_f}°F` : 'N/A'}`,
-    `❄  Coldest: ${coldest ? `${coldest.city}, ${coldest.state} — ${coldest.temperature_f}°F` : 'N/A'}`,
-    `↔  Range: ${spread != null ? `${spread}°F` : 'N/A'}`,
-    ``,
-    record ? `★ Record High (${mmdd}): ${record.high.temp}°F — ${record.high.city}` : '',
-    record ? `★ Record Low  (${mmdd}): ${record.low.temp}°F — ${record.low.city}`  : '',
-  ].filter(l => l != null).join('\n');
+    '',
+    `Hottest: ${hottest ? `${hottest.city}, ${hottest.state} - ${formatTemp(hottest.temperature_f)}` : 'N/A'}`,
+    `Coldest: ${coldest ? `${coldest.city}, ${coldest.state} - ${formatTemp(coldest.temperature_f)}` : 'N/A'}`,
+    `Range: ${spreadF != null ? formatTempDelta(spreadF) : 'N/A'}`,
+    `Distance: ${formatDistanceMiles(distanceMiles)}`,
+    '',
+    record ? `Record High (${mmdd}): ${formatTemp(record.high.temp)} - ${record.high.city}` : '',
+    record ? `Record Low (${mmdd}): ${formatTemp(record.low.temp)} - ${record.low.city}` : '',
+  ].filter(Boolean).join('\n');
   el('share-text').textContent = lines;
 
-  // Diagnostics panel
   const now = new Date();
-  el('d-update').textContent   = now.toLocaleTimeString();
-  el('d-snap').textContent     = now.toISOString().replace('T', ' ').substring(0, 19) + 'Z';
-  el('d-snapid').textContent   = `REF-${Date.now().toString(36).toUpperCase()}`;
-  el('d-total').textContent    = diag.total.toLocaleString();
+  el('d-update').textContent = now.toLocaleTimeString();
+  el('d-snap').textContent = now.toISOString().replace('T', ' ').substring(0, 19) + 'Z';
+  el('d-snapid').textContent = `REF-${Date.now().toString(36).toUpperCase()}`;
+  el('d-total').textContent = diag.total.toLocaleString();
   el('d-accepted').textContent = valid.length.toLocaleString();
   el('d-rejected').textContent = rejected.toLocaleString();
   el('d-requests').textContent = diag.requests;
   el('d-duration').textContent = `${diag.duration}ms`;
-  el('d-source').textContent   = diag.source;
+  el('d-source').textContent = diag.source;
+
+  latestRender = { data, diag };
 }
 
+async function refreshData() {
+  const token = ++refreshToken;
+  const t0 = performance.now();
 
-// ── 8. INIT ───────────────────────────────────────────────────
+  setCustomStatus(`Tracking ${getAllLocations().length} total locations.`);
 
-async function init() {
-  // Theme switcher — runs before data loads so it's immediately usable
-  buildThemeSwitcher();
-  applyTheme(getSavedTheme());
-
-  // Map skeleton — state paths drawn once, pins added after fetch
-  buildMap();
-
-  // Scroll-based nav highlighting
-  el('scroll-body').addEventListener('scroll', updateNav, { passive: true });
-
-  // Fetch, process, render
-  const t0     = performance.now();
   const result = await fetchData();
+  if (token !== refreshToken) return;
 
   if (!result.stations.length) {
-    el('hot-place').textContent  = 'Unable to load data';
+    el('hot-place').textContent = 'Unable to load data';
     el('cold-place').textContent = 'Check connection and reload';
     return;
   }
 
   const processed = process(result.stations);
-
   renderAll(processed, {
-    total:    result.stations.length,
+    total: result.stations.length,
     requests: result.requests,
     duration: Math.round(performance.now() - t0),
-    source:   result.source,
+    source: result.source,
   });
 }
 
+function rerenderLatest() {
+  if (latestRender) renderAll(latestRender.data, latestRender.diag);
+}
+
+function handleUnitChange() {
+  settings.tempUnit = el('unit-temp').value;
+  settings.distanceUnit = el('unit-distance').value;
+  saveUnitSettings();
+  rerenderLatest();
+}
+
+function handleCustomLocationSubmit(event) {
+  event.preventDefault();
+
+  const location = normalizeCustomLocation({
+    city: el('custom-city').value,
+    state: el('custom-state').value,
+    lat: el('custom-lat').value,
+    lon: el('custom-lon').value,
+  });
+
+  if (!location) {
+    setCustomStatus('Enter a city plus valid latitude and longitude.', true);
+    return;
+  }
+
+  const locations = getCustomLocations();
+  const duplicate = locations.some((item) =>
+    item.city.toLowerCase() === location.city.toLowerCase() &&
+    item.state.toLowerCase() === location.state.toLowerCase() &&
+    Math.abs(item.lat - location.lat) < 0.001 &&
+    Math.abs(item.lon - location.lon) < 0.001);
+
+  if (duplicate) {
+    setCustomStatus('That location is already saved.', true);
+    return;
+  }
+
+  locations.push(location);
+  saveCustomLocations(locations);
+  renderCustomLocations();
+  el('custom-form').reset();
+  setCustomStatus(`Added ${location.city}, ${location.state}.`);
+  refreshData();
+}
+
+function handleCustomListClick(event) {
+  const button = event.target.closest('[data-location-id]');
+  if (!button) return;
+
+  const id = button.getAttribute('data-location-id');
+  const locations = getCustomLocations();
+  const next = locations.filter((location) => location.id !== id);
+  const removed = locations.find((location) => location.id === id);
+  saveCustomLocations(next);
+  renderCustomLocations();
+  setCustomStatus(removed ? `Removed ${removed.city}, ${removed.state}.` : 'Location removed.');
+  refreshData();
+}
+
+async function init() {
+  loadUnitSettings();
+  buildThemeSwitcher();
+  applyTheme(getSavedTheme());
+  buildMap();
+
+  el('custom-form').addEventListener('submit', handleCustomLocationSubmit);
+  el('custom-list').addEventListener('click', handleCustomListClick);
+  el('unit-temp').addEventListener('change', handleUnitChange);
+  el('unit-distance').addEventListener('change', handleUnitChange);
+  el('scroll-body').addEventListener('scroll', updateNav, { passive: true });
+
+  syncUnitControls();
+  renderCustomLocations();
+  await refreshData();
+}
+
 document.addEventListener('DOMContentLoaded', init);
-
-
